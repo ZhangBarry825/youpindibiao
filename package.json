@@ -9,6 +9,6 @@
   "author": "ZhangBarry",
   "license": "ISC",
   "dependencies": {
-    "vant": "^2.9.0"
+    "@vant/weapp": "^1.3.3"
   }
 }

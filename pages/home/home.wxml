@@ -1,0 +1,439 @@
+<!--pages/home/home.wxml-->
+<view class="page">
+    <view class="address">
+        <image src="../../static/images/location.png"></image>
+        <view class="text">建业五栋大楼</view>
+    </view>
+    <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
+            <image src="{{item}}" class="slide-image" width="100%" height="200" />
+        </swiper-item>
+    </swiper>
+    <van-search
+            class="searchInput"
+            value="{{ searchKeyword }}"
+            bind:search="onSearchChange"
+            bind:cancel="onSearchCancel"
+            shape="round"
+            background="none"
+            placeholder="请输入搜索关键词"
+    />
+    <view class="menu-box">
+        <view class="top">
+            <view class="left">
+                <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">
+                    <van-tab title="精选"></van-tab>
+                    <van-tab title="国酒茅台"></van-tab>
+                    <van-tab title="美容护肤"></van-tab>
+                    <van-tab title="梦洁家纺"></van-tab>
+                </van-tabs>
+            </view>
+            <view class="right" bind:tap="toggleShow">
+                <image wx:if="{{!showMenus}}" mode="aspectFit" src="../../static/images/top.png"></image>
+                <image wx:if="{{showMenus}}" mode="aspectFit" src="../../static/images/down.png"></image>
+            </view>
+        </view>
+        <view class="items {{showMenus?'':'heightController'}}">
+            <view class="item">精选</view>
+            <view class="item">国酒茅台</view>
+            <view class="item">美容护肤</view>
+            <view class="item">梦洁家纺</view>
+            <view class="item">精选</view>
+            <view class="item">国酒茅台</view>
+            <view class="item">美容护肤</view>
+            <view class="item">梦洁家纺</view>
+            <view class="item">精选</view>
+            <view class="item">国酒茅台</view>
+            <view class="item">美容护肤</view>
+            <view class="item">梦洁家纺</view>
+        </view>
+    </view>
+    <view class="shopping">
+        <view class="title">
+            <view class="left">
+                <image src="../../static/images/clock.png"></image>
+                限时抢购
+            </view>
+            <view class="right">查看更多+</view>
+        </view>
+        <van-tabs color="#F16500" active="{{ timeTagsActive }}" bind:change="onTimeTagsChange" >
+            <van-tab title="10:00"></van-tab>
+            <van-tab title="16:00"></van-tab>
+            <van-tab title="20:00"></van-tab>
+        </van-tabs>
+        <view class="time">
+            正在进行中，离结束还有 <view class="red"> 11 : 06 : 20</view>
+        </view>
+
+        <view class="goods">
+            <view class="good">
+                <view class="left">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="title">
+                        [200组]新疆丝路宝典一等若羌灰枣
+                        500g[200组]新疆丝路宝典一等若羌灰枣
+                        500g[200组]新疆丝路宝典一等若羌灰枣
+                        500g
+                    </view>
+                    <view class="detail">
+                        <view class="price">
+                            <view class="line1">
+                                抢购价：<view class="color">￥19.9</view>
+                            </view>
+                            <view class="line2">
+                                原价：<view class="color">￥22.9</view>
+                            </view>
+                        </view>
+                        <view class="button">立即抢购</view>
+                    </view>
+                </view>
+            </view>
+            <view class="good">
+                <view class="left">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="title">
+                        [200组]新疆丝路宝典一等若羌灰枣
+                        500g[200组]新疆丝路宝典一等若羌灰枣
+                        500g[200组]新疆丝路宝典一等若羌灰枣
+                        500g
+                    </view>
+                    <view class="detail">
+                        <view class="price">
+                            <view class="line1">
+                                抢购价：<view class="color">￥19.9</view>
+                            </view>
+                            <view class="line2">
+                                原价：<view class="color">￥22.9</view>
+                            </view>
+                        </view>
+                        <view class="button">立即抢购</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="shops">
+        <view class="title">
+            <view class="left">
+                <image src="../../static/images/shop.png"></image>
+                附近商家
+            </view>
+            <view class="right">查看更多+</view>
+        </view>
+        <view class="items">
+            <view class="item">
+                <view class="left">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="line1">
+                        <view class="title">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
+                        <view class="location">
+                            <image mode="aspectFit" src="../../static/images/arround.png"></image>
+                            1.5km
+                        </view>
+                    </view>
+                    <view class="line2">
+                        营业时间：9:00~21:00
+                    </view>
+                    <view class="line3">
+                        <view class="count">人均：26 月售101单</view>
+                        <view class="score">
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star-half.png"></image>
+                            <image src="../../static/images/star-none.png"></image>
+                            4.8
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="line1">
+                        <view class="title">个个鲜朱雀门店</view>
+                        <view class="location">
+                            <image mode="aspectFit" src="../../static/images/arround.png"></image>
+                            1.5km
+                        </view>
+                    </view>
+                    <view class="line2">
+                        营业时间：9:00~21:00
+                    </view>
+                    <view class="line3">
+                        <view class="count">人均：26 月售101单</view>
+                        <view class="score">
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star-half.png"></image>
+                            <image src="../../static/images/star-none.png"></image>
+                            4.8
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="line1">
+                        <view class="title">个个鲜朱雀门店</view>
+                        <view class="location">
+                            <image mode="aspectFit" src="../../static/images/arround.png"></image>
+                            1.5km
+                        </view>
+                    </view>
+                    <view class="line2">
+                        营业时间：9:00~21:00
+                    </view>
+                    <view class="line3">
+                        <view class="count">人均：26 月售101单</view>
+                        <view class="score">
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star.png"></image>
+                            <image src="../../static/images/star-half.png"></image>
+                            <image src="../../static/images/star-none.png"></image>
+                            4.8
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="banners">
+        <view class="banner">
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+        </view>
+        <view class="banner">
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+        </view>
+        <view class="banner">
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+        </view>
+    </view>
+    <view class="hot-goods">
+        <view class="title">
+            <view class="left">
+                <image src="../../static/images/goods.png"></image>
+                热门商品
+            </view>
+            <view class="right">查看更多+</view>
+        </view>
+        <view class="good-items">
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="banners">
+        <view class="banner">
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+        </view>
+    </view>
+    <view class="new-goods">
+        <view class="title">
+            <view class="left">
+                <image src="../../static/images/goods-up.png"></image>
+                最新商家
+            </view>
+            <view class="right">查看更多+</view>
+        </view>
+        <view class="good-items">
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+
+
+
+
+
