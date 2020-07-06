@@ -67,6 +67,7 @@
   height: 60%;
 }
 .page .menu-box .items {
+  height: 220rpx;
   transition: 2s;
   overflow: hidden;
   width: 100%;
@@ -84,9 +85,6 @@
   padding: 20rpx 0;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.page .menu-box .heightController {
-  height: 0;
 }
 .page .shopping {
   margin-top: 20rpx;

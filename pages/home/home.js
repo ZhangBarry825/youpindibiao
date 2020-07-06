@@ -14,6 +14,7 @@ Page({
     searchKeyword:"",
     tagsActive:0,
     timeTagsActive:0,
+    menusAnimation:{}
   },
   onSearchChange(event){
     console.log(event.detail)
@@ -40,6 +41,10 @@ Page({
       this.setData({
         showMenus:false
       })
+      this.data.menusAnimation.height(0).step({duration:500})
+      this.setData({
+        menusAnimation: this.data.menusAnimation.export()   //输出动画
+      })
     }else {
       this.setData({
         showMenus:true
@@ -50,7 +55,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let menusAnimation = wx.createAnimation({
+      duration:2000,
+      timingFunction:'linear',
+      delay:0,
+    })
 
+    this.setData({
+      menusAnimation:menusAnimation
+    })
   },
 
   /**
