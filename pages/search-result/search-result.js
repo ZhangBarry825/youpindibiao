@@ -8,6 +8,7 @@ Page({
     searchKeyword:"",
     toView: 'green',
     focus:false,
+    height: wx.getSystemInfoSync().windowHeight - 100
   },
   scrollToTop() {
     console.log('scrollToTop')

@@ -33,7 +33,7 @@
                 <image wx:if="{{showMenus}}" mode="aspectFit" src="../../static/images/down.png"></image>
             </view>
         </view>
-        <view class="items {{showMenus?'':'heightController'}}" animation="{{menusAnimation}}">
+        <view class="items {{showMenus?'':'heightController'}}">
             <view class="item">精选</view>
             <view class="item">国酒茅台</view>
             <view class="item">美容护肤</view>

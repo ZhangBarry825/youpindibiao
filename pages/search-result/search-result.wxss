@@ -68,6 +68,10 @@
   justify-content: center;
   align-items: center;
 }
+.page .scroll-box {
+  width: 100%;
+  box-sizing: border-box;
+}
 .page .shop-box {
   width: 100%;
   display: flex;

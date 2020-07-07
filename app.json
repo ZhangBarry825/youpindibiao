@@ -1,12 +1,12 @@
 {
   "pages":[
-    "pages/panic-buying/panic-buying",
-    "pages/home/home",
 
+    "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
     "pages/trolley/trolley",
     "pages/mine/mine",
+    "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
 
 

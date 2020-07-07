@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeTab:0
+    activeTab:0,
+    height: wx.getSystemInfoSync().windowHeight-95
   },
   onTabChange(event){
     wx.showToast({
@@ -17,11 +18,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let windowHeight = wx.getSystemInfoSync().windowHeight
-    console.log(windowHeight,9090)
-    this.setData({
-      height: windowHeight - 95
-    })
+    // let windowHeight = wx.getSystemInfoSync().windowHeight
+    // console.log(windowHeight,9090)
+    // this.setData({
+    //   height: windowHeight - 95
+    // })
   },
 
   /**
