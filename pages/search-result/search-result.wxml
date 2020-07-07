@@ -1,0 +1,144 @@
+<!--pages/search-result/search-result.wxml-->
+<view class="page">
+    <van-search
+            class="searchInput"
+            background="#f26500"
+            shape="round"
+            value="{{ searchKeyword }}"
+            placeholder="请输入搜索关键词"
+            use-action-slot
+            bind:change="onSearchChange"
+            bind:search="onSearchClick"
+            bind:focus="onSearchFocus"
+            bind:cancel="onSearchCancel"
+    >
+<!--        <view slot="action" style="color: #fff" bind:tap="onSearchClick">搜索</view>-->
+        <view slot="action" wx:if="{{focus}}" style="color: #fff" bind:tap="onSearchCancel">取消</view>
+    </van-search>
+
+    <view class="history" wx:if="{{focus}}">
+        <view class="title">
+            <image src="../../static/images/search-input.png"></image>
+            最近搜索
+        </view>
+        <view class="items1">
+            <view class="item">苹果</view>
+            <view class="item">男装</view>
+            <view class="item">女款春装</view>
+            <view class="item">平板电脑</view>
+            <view class="item">手机</view>
+            <view class="item">母婴用品</view>
+        </view>
+        <view class="title">
+            <image src="../../static/images/hot-input.png"></image>
+            热门搜索
+        </view>
+        <view class="items2">
+            <view class="item">女款春装</view>
+            <view class="item">平板电脑</view>
+            <view class="item">母婴用品</view>
+            <view class="item">手机</view>
+        </view>
+    </view>
+
+    <van-tabs wx:if="{{!focus}}" tab-class="tab-class" nav-class="nav-class" color="#f26500" bind:click="onTabsClick" animated>
+        <van-tab title="商家">
+            <view class="shop-box">
+                <view class="shop-item">
+                    <view class="left">
+                        <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    </view>
+                    <view class="right">
+                        <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
+                        <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
+                        <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
+                    </view>
+                </view>
+                <view class="shop-item">
+                    <view class="left">
+                        <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    </view>
+                    <view class="right">
+                        <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
+                        <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
+                        <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
+                    </view>
+                </view>
+                <view class="shop-item">
+                    <view class="left">
+                        <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    </view>
+                    <view class="right">
+                        <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
+                        <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
+                        <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab  title="商品">
+            <view class="goods-box">
+                <view class="goods-item">
+                    <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+                    <view class="bottom">
+                        <view class="price">￥1360</view>
+                        <view class="trolley">
+                            <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+                    <view class="bottom">
+                        <view class="price">￥1360</view>
+                        <view class="trolley">
+                            <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+                    <view class="bottom">
+                        <view class="price">￥1360</view>
+                        <view class="trolley">
+                            <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+                    <view class="bottom">
+                        <view class="price">￥1360</view>
+                        <view class="trolley">
+                            <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+                    <view class="bottom">
+                        <view class="price">￥1360</view>
+                        <view class="trolley">
+                            <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+                    <view class="bottom">
+                        <view class="price">￥1360</view>
+                        <view class="trolley">
+                            <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>

@@ -1,0 +1,186 @@
+.page{
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  position: absolute;
+  .searchInput{
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .history{
+    width: 100%;
+    display: flex;
+    padding: 30rpx;
+    box-sizing: border-box;
+    flex-direction: column;
+    .title{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      font-size:28rpx;
+      font-weight:400;
+      color:rgba(102,102,102,1);
+      margin: 20rpx 0;
+      image{
+        margin-right: 20rpx;
+        width: 29rpx;
+        height: 29rpx;
+      }
+    }
+    .items1{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      .item{
+        font-size:23rpx;
+        font-weight:400;
+        color:rgba(102,102,102,1);
+        padding: 5rpx 40rpx;
+        box-sizing: border-box;
+        border:1px solid rgba(191,191,191,1);
+        border-radius:25rpx;
+        display: flex;
+        margin: 15rpx 10rpx;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .items2{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      .item{
+        font-size:23rpx;
+        font-weight:400;
+        color:rgba(102,102,102,1);
+        padding: 5rpx 20rpx;
+        box-sizing: border-box;
+        border-radius:25rpx;
+        display: flex;
+        margin: 15rpx 10rpx;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .shop-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    overflow: scroll;
+    padding-bottom: 20rpx;
+    .shop-item{
+      width: 100%;
+      background-color: #ffffff;
+      border-bottom: 1px solid #f5f5f5;
+      padding: 20rpx;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      .left{
+        width: 146rpx;
+        height: 146rpx;
+        border-radius:6rpx;
+        overflow: hidden;
+        image{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .right{
+        width: calc(100% - 146rpx);
+        display: flex;
+        flex-direction: column;
+        padding: 10rpx 20rpx;
+        box-sizing: border-box;
+        justify-content: space-around;
+        .line1{
+          font-size:33rpx;
+          font-weight:400;
+          color:rgba(0,0,0,1);
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .line2{
+          font-size:28rpx;
+          font-weight:400;
+          color:rgba(153,153,153,1);
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .line3{
+          font-size:23rpx;
+          font-weight:400;
+          color:rgba(153,153,153,1);
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  .goods-box{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color:#f5f5f5 ;
+    padding-bottom: 20rpx;
+    .goods-item{
+      margin-top: 15rpx;
+      background-color: #ffffff;
+      width: 369rpx;
+      .goods-image{
+        width: 369rpx;
+        height: 369rpx;
+      }
+      .title{
+        box-sizing: border-box;
+        padding: 0 10rpx;
+        font-size:28rpx;
+        font-weight:400;
+        color:rgba(0,0,0,1);
+        line-height:40rpx;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .bottom{
+        padding: 0 10rpx;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size:28rpx;
+        font-weight:400;
+        color:rgba(255,32,32,1);
+        image{
+          width: 34rpx;
+          height: 34rpx;
+        }
+      }
+    }
+  }
+}

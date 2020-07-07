@@ -1,10 +1,12 @@
 {
   "pages":[
+    "pages/search-result/search-result",
     "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
     "pages/trolley/trolley",
     "pages/mine/mine",
+
 
 
 
