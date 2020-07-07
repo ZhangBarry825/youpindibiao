@@ -1,38 +1,39 @@
-// pages/goods-detail/goods-detail.js
+// pages/nearby-shops/nearby-shops.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    ],
-    showShare:false,
-    showSpecification:false,
-    number:1,
+    searchKeyword:"",
+    focus:false,
+    height: wx.getSystemInfoSync().windowHeight - 100,
+    activeIndex:0
   },
-  minusNum(){
-    if(this.data.number>1){
-      this.setData({number:this.data.number-1})
-    }
+  changeMenu(e){
+    this.setData({
+      activeIndex:e.currentTarget.dataset.index
+    })
   },
-  addNum(){
-    this.setData({number:this.data.number+1})
+  onSearchFocus(){
+    this.setData({
+      focus:true
+    })
   },
-  showShare() {
-    this.setData({ showShare: true });
+  onSearchCancel(){
+    console.log('onSearchCancel')
+    this.setData({
+      searchKeyword:'',
+      focus:false
+    })
   },
-  onShareClose(){
-    this.setData({ showShare: false });
+  onSearchClick(){
+    console.log(this.data.searchKeyword)
   },
-  showSpecification() {
-    this.setData({ showSpecification: true });
-  },
-  onSpecificationClose(){
-    this.setData({ showSpecification: false });
+  onSearchChange(e){
+    this.setData({
+      searchKeyword:e.detail
+    })
   },
   /**
    * 生命周期函数--监听页面加载

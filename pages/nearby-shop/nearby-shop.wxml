@@ -1,0 +1,155 @@
+<!--pages/goods-detail/goods-detail.wxml-->
+<view class="page">
+    <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
+            autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
+            <image src="{{item}}" class="slide-image"/>
+        </swiper-item>
+    </swiper>
+    <view class="shop-info">
+        <view class="left">
+            <image src="../../static/images/avatar.gif"></image>
+        </view>
+        <view class="middle">
+            <view class="line1">
+                个个鲜朱雀门店
+                <view class="score">
+                    <image src="../../static/images/star.png"></image>
+                    <image src="../../static/images/star.png"></image>
+                    <image src="../../static/images/star.png"></image>
+                    <image src="../../static/images/star-half.png"></image>
+                    <image src="../../static/images/star-none.png"></image>
+                </view>
+            </view>
+            <view class="line2">
+                营业时间：9:00~21:00
+            </view>
+            <view class="line3">
+                <view class="count">人均：26 月售101单</view>
+            </view>
+        </view>
+        <view class="right">
+            <view class="line1">
+                <image src="../../static/images/like.png"></image>
+                收藏
+            </view>
+            <view class="line1">
+                <image src="../../static/images/call.png"></image>
+                电话
+            </view>
+        </view>
+    </view>
+    <view class="shop-detail">
+        <view class="title">
+            商家信息
+        </view>
+        <view class="item">
+            <view class="line">
+                <view class="name">地址：</view>
+                <view class="content">北京市亦庄经济技术开发区中和街16号北京市亦庄经济技术开发区中和街16号</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="line">
+                <view class="name">简介：</view>
+                <view class="content">主营业务食品生鲜，等等一些介绍信息可以在这里展示一些介绍信息可以在这里展示一些介绍信息可以在这里展示。</view>
+            </view>
+        </view>
+    </view>
+    <view class="comment">
+        <view class="title">
+            用户评论
+        </view>
+        <view class="item">
+            <view class="line1">
+                <view class="name">谭某某</view>
+                <view class="stars">
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                </view>
+            </view>
+            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
+            <view class="line3">2016-02-18 10:10:10</view>
+            <view class="button">查看更多评论</view>
+        </view>
+    </view>
+    <view class="all-goods">
+        <view class="title">
+            全部商品
+        </view>
+        <view class="good-items">
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+

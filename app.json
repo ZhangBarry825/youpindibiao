@@ -2,7 +2,9 @@
   "pages":[
 
 
-    "pages/goods-detail/goods-detail",
+
+
+    "pages/nearby-shop/nearby-shop",
     "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
@@ -10,8 +12,8 @@
     "pages/mine/mine",
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
-
-
+    "pages/goods-detail/goods-detail",
+    "pages/nearby-shops/nearby-shops",
 
 
 

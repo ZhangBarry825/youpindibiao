@@ -1,4 +1,4 @@
-// pages/goods-detail/goods-detail.js
+// pages/nearby-shop/nearby-shop.js
 Page({
 
   /**
