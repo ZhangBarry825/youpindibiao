@@ -1,0 +1,57 @@
+<!--pages/goods-comment/goods-comment.wxml-->
+<view class="page">
+    <view class="comment-box">
+        <view class="item">
+            <view class="line1">
+                <view class="name">谭某某</view>
+                <view class="stars">
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                </view>
+            </view>
+            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
+            <view class="line3">
+                <van-image wx:key="index" wx:for-index="idx" wx:for="{{urls}}" bind:tap="previewImg" data-url="{{index}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{item}}" />
+            </view>
+            <view class="line4">2016-02-18 10:10:10</view>
+        </view>
+        <view class="item">
+            <view class="line1">
+                <view class="name">谭某某</view>
+                <view class="stars">
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                </view>
+            </view>
+            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
+            <view class="line3">
+                <van-image wx:key="index" wx:for-index="idx" wx:for="{{urls}}" bind:tap="previewImg" data-url="{{index}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{item}}" />
+            </view>
+            <view class="line4">2016-02-18 10:10:10</view>
+        </view>
+        <view class="item">
+            <view class="line1">
+                <view class="name">谭某某</view>
+                <view class="stars">
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                </view>
+            </view>
+            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
+            <view class="line3">
+                <van-image wx:key="index" wx:for-index="idx" wx:for="{{[]}}" bind:tap="previewImg" data-url="{{index}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{item}}" />
+            </view>
+            <view class="line4">2016-02-18 10:10:10</view>
+        </view>
+    </view>
+
+</view>

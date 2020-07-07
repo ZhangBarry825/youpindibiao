@@ -3,8 +3,8 @@
 
 
 
+    "pages/goods-comment/goods-comment",
 
-    "pages/nearby-shop/nearby-shop",
     "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
@@ -14,8 +14,8 @@
     "pages/search-result/search-result",
     "pages/goods-detail/goods-detail",
     "pages/nearby-shops/nearby-shops",
-
-
+    "pages/nearby-shop/nearby-shop",
+    "pages/goods-list/goods-list",
 
     "pages/index/index",
     "pages/logs/logs"

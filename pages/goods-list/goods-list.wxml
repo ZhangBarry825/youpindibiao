@@ -1,0 +1,112 @@
+<!--pages/goods-list/goods-list.wxml-->
+<view class="page">
+    <view class="menus">
+        <view class="menu" bind:tap="changeMenu" data-index="{{0}}">
+            <view class="text">销量</view>
+            <image src="../../static/images/orderby.png"></image>
+        </view>
+        <view class="menu" bind:tap="changeMenu" data-index="{{0}}">
+            <view class="text">好评</view>
+            <image src="../../static/images/orderby.png"></image>
+        </view>
+        <view class="menu" bind:tap="changeMenu" data-index="{{0}}">
+            <view class="text">价格</view>
+            <image src="../../static/images/orderby.png"></image>
+        </view>
+    </view>
+
+    <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+        <view class="good-items">
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="good-item">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+                <view class="title">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥168</view>
+                        <view class="text2">￥298</view>
+                    </view>
+                    <view class="trolley">
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
