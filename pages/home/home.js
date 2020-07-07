@@ -14,7 +14,17 @@ Page({
     searchKeyword:"",
     tagsActive:0,
     timeTagsActive:0,
-    menusAnimation:{}
+    menusAnimation:{},
+    showRedPackage:true
+  },
+
+  //领取红包
+  catchRedPackage(){
+    console.log('我领到红包了')
+  },
+  //隐藏红包
+  hideRedPackage(){
+    this.setData({ showRedPackage: false });
   },
   onSearchChange(event){
     console.log(event.detail)

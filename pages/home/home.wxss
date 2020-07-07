@@ -580,3 +580,50 @@
   width: 100%;
   height: 100%;
 }
+.page .wrapper {
+  margin-top: 200rpx;
+  width: 100%;
+  box-sizing: border-box;
+  height: 500rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.page .wrapper image {
+  width: 100%;
+  left: -2rpx;
+  position: relative;
+}
+.page .wrapper .count {
+  top: 230rpx;
+  position: absolute;
+  font-size: 56rpx;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 0px 1px 1px rgba(109, 109, 109, 0.75);
+}
+.page .wrapper .tip1 {
+  top: 190rpx;
+  position: absolute;
+  font-size: 21rpx;
+  font-weight: 400;
+  color: #ea2d19;
+}
+.page .wrapper .tip2 {
+  top: 338rpx;
+  position: absolute;
+  font-size: 21rpx;
+  font-weight: 400;
+  color: #ea2d19;
+  white-space: pre-wrap;
+}
+.page .wrapper .tip3 {
+  bottom: 32rpx;
+  position: absolute;
+  font-size: 18rpx;
+  line-height: 1.3;
+  font-weight: 400;
+  color: #ffffff;
+  white-space: pre-wrap;
+}

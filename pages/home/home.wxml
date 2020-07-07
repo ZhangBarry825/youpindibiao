@@ -429,6 +429,17 @@
             </view>
         </view>
     </view>
+
+    <van-overlay show="{{ showRedPackage }}" bind:click="hideRedPackage">
+        <view class="wrapper">
+            <image mode="aspectFit" src="../../static/images/red-package.png"></image>
+            <view class="tip1">欢迎加入优品地标</view>
+            <view class="tip2" catch:tap="catchRedPackage" >立即\n查看</view>
+            <view class="tip3">红包已发放到您的钱包！\n请在七日有效期内使用
+            </view>
+            <view class="count">￥10</view>
+        </view>
+    </van-overlay>
 </view>
 
 
