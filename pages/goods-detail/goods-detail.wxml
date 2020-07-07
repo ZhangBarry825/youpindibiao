@@ -1,0 +1,178 @@
+<!--pages/goods-detail/goods-detail.wxml-->
+<view class="page">
+    <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
+            autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
+            <image src="{{item}}" class="slide-image"/>
+        </swiper-item>
+    </swiper>
+    <view class="goods-info">
+        <view class="goods-title">Phantom 3 Standard 2.7K航拍器无人机</view>
+        <view class="goods-price">
+            <view class="left">
+                <view class="line1">
+                    <view class="text1">抢购价：
+                        <view class="num">￥5990.00</view>
+                    </view>
+                    <view class="text2">原价： <view class="num">￥6000.00</view></view>
+                </view>
+                <view class="line2">
+                    <view class="text1">销量：1265</view>
+                    <view class="text2">库存：1999</view>
+                </view>
+            </view>
+            <view class="right" bind:tap="showShare">
+                <image src="../../static/images/share.png"></image>
+                分享
+            </view>
+        </view>
+    </view>
+
+    <view class="specification" bind:tap="showSpecification">
+        可选型号和规格
+        <image src="../../static/images/right.png"></image>
+    </view>
+    <view class="comment">
+        <view class="title">
+            <view class="border"></view>
+            热门评论
+        </view>
+        <view class="item">
+            <view class="line1">
+                <view class="name">谭某某</view>
+                <view class="stars">
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                    <image src="../../static/images/star-red.png"></image>
+                </view>
+            </view>
+            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
+            <view class="line3">2016-02-18 10:10:10</view>
+            <view class="button">查看更多评论</view>
+        </view>
+    </view>
+
+    <view class="goods-detail">
+        <view class="title">
+            <view class="border"></view>
+            商品详情
+        </view>
+        <view class="content">
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+        </view>
+    </view>
+
+    <view class="bottom-box">
+        <view class="like">
+            <image src="../../static/images/like.png"></image>
+            收藏
+        </view>
+        <view class="add">加入购物车</view>
+        <view class="buy">立即购买</view>
+    </view>
+
+    <van-popup
+            show="{{ showShare }}"
+            position="bottom"
+            bind:close="onShareClose"
+    >
+        <view class="icons">
+            <view class="icon">
+                <image src="../../static/images/wechat.png"></image>
+                微信
+            </view>
+            <view class="icon">
+                <image src="../../static/images/souhu.png"></image>
+                新浪微博
+            </view>
+            <view class="icon">
+                <image src="../../static/images/weibo.png"></image>
+                腾讯微博
+            </view>
+            <view class="icon">
+                <image src="../../static/images/qq-zone.png"></image>
+                QQ空间
+            </view>
+        </view>
+        <van-button custom-class="shareCancel" color="#f26500" catch:tap="onShareClose">取消</van-button>
+    </van-popup>
+    <van-popup
+            custom-class="Spe-custom-class"
+            show="{{ showSpecification }}"
+            position="bottom"
+
+            bind:close="onSpecificationClose"
+    >
+        <view class="close-spe-box">
+            <view class="image-box" catch:tap="onSpecificationClose">
+                <image src="../../static/images/cancel.png"></image>
+            </view>
+        </view>
+        <view class="spe-goods-info">
+            <view class="left">
+                <image src="../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="title">DJI大疆精灵Phantom 3 Standard 2.7K航拍器无人机 新手入门力荐</view>
+                <view class="price">￥ 5990.00</view>
+            </view>
+        </view>
+        <view class="spe-goods-item">
+            <view class="title">版本</view>
+            <view class="item selected">PRO 儿童版
+                <image src="../../static/images/angle.png"></image>
+            </view>
+            <view class="item">PRO 5 成人版
+                <image src="../../static/images/angle.png"></image>
+            </view>
+        </view>
+        <view class="spe-goods-item">
+            <view class="title">颜色</view>
+            <view class="item selected">灰色
+                <image src="../../static/images/angle.png"></image>
+            </view>
+            <view class="item">银白
+                <image src="../../static/images/angle.png"></image>
+            </view>
+            <view class="item">金色
+                <image src="../../static/images/angle.png"></image>
+            </view>
+        </view>
+        <view class="spe-goods-item">
+            <view class="title">内存</view>
+            <view class="item">32GB
+                <image src="../../static/images/angle.png"></image>
+            </view>
+            <view class="item selected">64GB
+                <image src="../../static/images/angle.png"></image>
+            </view>
+            <view class="item">128GB
+                <image src="../../static/images/angle.png"></image>
+            </view>
+        </view>
+        <view class="spe-goods-item spe-goods-num">
+            <view class="title">数量</view>
+            <view class="minus" catch:tap="minusNum">-</view>
+            <view class="number">{{number}}</view>
+            <view class="add" catch:tap="addNum">+</view>
+        </view>
+    </van-popup>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
