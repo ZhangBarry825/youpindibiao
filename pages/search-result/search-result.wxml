@@ -41,7 +41,7 @@
         </view>
     </view>
 
-    <van-tabs wx:if="{{!focus}}" tab-class="tab-class" nav-class="nav-class" color="#f26500" bind:click="onTabsClick" animated>
+    <van-tabs wx:if="{{!focus}}" color="#f26500" bind:click="onTabsClick" animated>
         <van-tab title="商家">
             <view class="shop-box">
                 <view class="shop-item">

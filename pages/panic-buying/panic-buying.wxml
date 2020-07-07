@@ -1,0 +1,712 @@
+<!--pages/panic-buying/panic-buying.wxml-->
+<view class="page">
+    <van-tabs color="#f26500" tab-active-class="tab-active-class" active="{{ activeTab }}" bind:change="onTabChange">
+        <van-tab title-style="title-style" title="10:00 正在进行">
+            <view class="timing">
+                正在进行中，离结束还有
+                <view class="red">11 : 06 : 20</view>
+            </view>
+            <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+                <view class="goods">
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </van-tab>
+        <van-tab title="16:00 即将开始">
+            <view class="timing">
+                <view class="red">16 : 00 : 00</view>
+                即将开始
+            </view>
+            <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+                <view class="goods">
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+
+                </view>
+            </scroll-view>
+        </van-tab>
+        <van-tab title="20:00 即将开始">
+            <view class="timing">
+                <view class="red">20 : 00 : 00</view>
+                即将开始
+            </view>
+            <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+                <view class="goods">
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good">
+                        <view class="left">
+                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        </view>
+                        <view class="right">
+                            <view class="title">
+                                [200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g[200组]新疆丝路宝典一等若羌灰枣
+                                500g
+                            </view>
+                            <view class="detail">
+                                <view class="price">
+                                    <view class="line1">
+                                        抢购价：
+                                        <view class="color">￥19.9</view>
+                                    </view>
+                                    <view class="line2">
+                                        原价：
+                                        <view class="color">￥22.9</view>
+                                    </view>
+                                </view>
+                                <view class="button2">立即抢购</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </van-tab>
+    </van-tabs>
+</view>

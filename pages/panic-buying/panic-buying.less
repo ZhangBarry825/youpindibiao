@@ -1,0 +1,138 @@
+.page {
+  width: 100%;
+  position: relative;
+  .title-style{
+
+  }
+  .tab-active-class {
+    color: #f26500;
+  }
+  .timing {
+    padding: 30rpx 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-size: 25rpx;
+    font-weight: 400;
+    color: rgba(76, 76, 76, 1);
+    line-height: 35rpx;
+
+    .red {
+      color: #F16500;
+    }
+  }
+  .scroll-box{
+    width: 100%;
+    box-sizing: border-box;
+    .goods {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+
+      .good {
+        width: 100%;
+        padding-bottom: 20rpx;
+        display: flex;
+        flex-direction: row;
+
+        .left {
+          width: 246rpx;
+          height: 187rpx;
+
+          image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .right {
+          width: calc(100% - 246rpx);
+          //padding: 10rpx 20rpx;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          .title {
+            padding: 10rpx 20rpx;
+            font-size: 28rpx;
+            color: #4C4C4C;
+            box-sizing: border-box;
+
+            line-height: 1.3;
+            max-height: 2.7rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+          }
+
+          .detail {
+            padding: 10rpx 20rpx;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .price {
+              color: #4C4C4C;
+              font-size: 22rpx;
+
+              .line1 {
+                display: flex;
+                align-items: flex-end;
+
+                .color {
+                  color: #F16500;
+                  font-size: 30rpx;
+                }
+              }
+
+              .line2 {
+                display: flex;
+
+                .color {
+                  text-decoration: line-through;
+                }
+              }
+            }
+
+            .button {
+              width: 128rpx;
+              height: 46rpx;
+              background: rgba(241, 101, 0, 1);
+              border-radius: 7rpx;
+
+              font-size: 21rpx;
+              font-weight: 400;
+              color: rgba(255, 255, 255, 1);
+              line-height: 35rpx;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .button2{
+              background-color: gainsboro;
+              width: 128rpx;
+              height: 46rpx;
+              border-radius: 7rpx;
+
+              font-size: 21rpx;
+              font-weight: 400;
+              color: rgba(255, 255, 255, 1);
+              line-height: 35rpx;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
