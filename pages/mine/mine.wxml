@@ -1,2 +1,67 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="mine-page">
+    <view class="mine-back">
+        <image mode="aspectFill" class="back-img" src="../../static/images/mine-back.png"></image>
+        <view class="left">
+            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+        </view>
+        <view class="right">
+            <view class="line1">举个栗子</view>
+            <view class="line2">15023245869</view>
+            <view class="line3">V1会员</view>
+        </view>
+    </view>
+
+    <view class="order-box">
+        <van-cell value="" is-link>
+            <view slot="title">
+                <view class="order">
+                    <view class="left">
+                        <image src="../../static/images/order1.png"></image>
+                        我的订单
+                    </view>
+                    <view class="right">查看全部订单</view>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell value="">
+            <view slot="title">
+                <view class="order-menu">
+                    <view class="order-item">
+                        <van-icon name="cash-on-deliver" size="43rpx" info="9" />
+                        <text>待付款</text>
+                    </view>
+                    <view class="order-item">
+                        <van-icon name="send-gift-o" size="43rpx" info="" />
+                        <text>待发货</text>
+                    </view>
+                    <view class="order-item">
+                        <van-icon name="logistics" size="43rpx" info="" />
+                        <text>待收货</text>
+                    </view>
+                    <view class="order-item">
+                        <van-icon name="edit" size="43rpx" info="" />
+                        <text>待评价</text>
+                    </view>
+                    <view class="order-item">
+                        <van-icon name="after-sale" size="43rpx" info="" />
+                        <text>退款售后</text>
+                    </view>
+                </view>
+            </view>
+        </van-cell>
+    </view>
+
+    <view class="menu-box">
+        <van-cell value="">
+            <view slot="title">
+                <view class="mine-menu">
+                    <view class="menu-item">
+                        <image src="../../static/images/m1.png"></image>
+                        <text>待付款</text>
+                    </view>
+                </view>
+            </view>
+        </van-cell>
+    </view>
+</view>

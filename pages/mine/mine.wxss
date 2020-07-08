@@ -1,1 +1,126 @@
-/* pages/mine/mine.wxss */
+.mine-page {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #f7f7f7;
+  z-index: -2;
+}
+.mine-page .mine-back {
+  width: 100%;
+  height: 315rpx;
+  position: relative;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mine-page .mine-back .left {
+  width: 133rpx;
+  height: 133rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.mine-page .mine-back .left image {
+  width: 100%;
+  height: 100%;
+}
+.mine-page .mine-back .right {
+  width: calc(100% - 133rpx);
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+}
+.mine-page .mine-back .right .line1 {
+  font-size: 35rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.mine-page .mine-back .right .line2 {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 10rpx 0;
+}
+.mine-page .mine-back .right .line3 {
+  font-size: 23rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.mine-page .mine-back .back-img {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+.mine-page .order-box {
+  width: 100%;
+}
+.mine-page .order-box .van-cell__right-icon-wrap {
+  margin-top: 10rpx;
+}
+.mine-page .order-box .order {
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mine-page .order-box .order .left {
+  font-size: 33rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+  display: flex;
+  align-items: center;
+}
+.mine-page .order-box .order .left image {
+  margin-right: 20rpx;
+  width: 45rpx;
+  height: 45rpx;
+}
+.mine-page .order-box .order .right {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+.mine-page .order-box .order-menu {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+.mine-page .order-box .order-menu .order-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+.mine-page .order-box .order-menu .order-item text {
+  margin-top: 10rpx;
+}
+.mine-page .menu-box .mine-menu {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+  background-color: #d5d5d5;
+}
+.mine-page .menu-box .mine-menu .menu-item {
+  width: 188rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+}
+.mine-page .menu-box .mine-menu .menu-item image {
+  width: 57rpx ;
+  height: 57rpx;
+}
