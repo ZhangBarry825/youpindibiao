@@ -3,12 +3,12 @@
 
 
 
-    "pages/goods-comment/goods-comment",
+    "pages/trolley/trolley",
 
     "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
-    "pages/trolley/trolley",
+
     "pages/mine/mine",
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
@@ -16,6 +16,7 @@
     "pages/nearby-shops/nearby-shops",
     "pages/nearby-shop/nearby-shop",
     "pages/goods-list/goods-list",
+    "pages/goods-comment/goods-comment",
 
     "pages/index/index",
     "pages/logs/logs"

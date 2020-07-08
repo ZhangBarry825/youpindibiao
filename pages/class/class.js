@@ -5,9 +5,82 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    searchKeyword:"",
+    focus:false,
+    height: wx.getSystemInfoSync().windowHeight - 55,
+    mainActiveIndex: 0,
+    activeId: null,
+    navItems:[
+      {
+        id:0,
+        text:'手机平板',
+      },
+      {
+        id:1,
+        text:'童装、玩具',
+      },
+      {
+        id:2,
+        text:'户外运动',
+      },
+      {
+        id:0,
+        text:'手机平板',
+      },
+      {
+        id:1,
+        text:'童装、玩具',
+      },
+      {
+        id:2,
+        text:'户外运动',
+      },
+      {
+        id:0,
+        text:'手机平板',
+      },
+      {
+        id:1,
+        text:'童装、玩具',
+      },
+      {
+        id:2,
+        text:'户外运动',
+      }
+    ]
   },
 
+  onClickNav({ detail = {} }) {
+    this.setData({
+      mainActiveIndex: detail.index || 0,
+    });
+  },
+
+  onClickNavItem({ detail = {} }) {
+    const activeId = this.data.activeId === detail.id ? null : detail.id;
+
+    this.setData({ activeId });
+  },
+  onSearchFocus(){
+    this.setData({
+      focus:true
+    })
+  },
+  onSearchCancel(){
+    console.log('onSearchCancel')
+    this.setData({
+      searchKeyword:'',
+      focus:false
+    })
+  },
+  onSearchClick(){
+    console.log(this.data.searchKeyword)
+  },
+  onSearchChange(e){
+    this.setData({
+      searchKeyword:e.detail
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

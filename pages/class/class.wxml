@@ -1,2 +1,79 @@
 <!--pages/class/class.wxml-->
-<text>pages/class/class.wxml</text>
+<view class="page">
+    <van-search
+            class="searchInput"
+            background="#f26500"
+            shape="round"
+            value="{{ searchKeyword }}"
+            placeholder="请输入搜索关键词"
+            use-action-slot
+            bind:change="onSearchChange"
+            bind:search="onSearchClick"
+            bind:focus="onSearchFocus"
+            bind:cancel="onSearchCancel"
+    >
+        <!--        <view slot="action" style="color: #fff" bind:tap="onSearchClick">搜索</view>-->
+        <view slot="action" wx:if="{{focus}}" style="color: #fff" bind:tap="onSearchCancel">取消</view>
+    </van-search>
+    <view class="history" wx:if="{{focus}}">
+        <view class="title">
+            <image src="../../static/images/search-input.png"></image>
+            最近搜索
+        </view>
+        <view class="items1">
+            <view class="item">苹果</view>
+            <view class="item">男装</view>
+            <view class="item">女款春装</view>
+            <view class="item">平板电脑</view>
+            <view class="item">手机</view>
+            <view class="item">母婴用品</view>
+        </view>
+        <view class="title">
+            <image src="../../static/images/hot-input.png"></image>
+            热门搜索
+        </view>
+        <view class="items2">
+            <view class="item">女款春装</view>
+            <view class="item">平板电脑</view>
+            <view class="item">母婴用品</view>
+            <view class="item">手机</view>
+        </view>
+    </view>
+    <view class="page-content"  style="height:{{height?height+'px':'auto'}}">
+        <van-tree-select
+                class="nav-box"
+                main-active-class="main-active-class"
+                main-item-class="main-item-class"
+                content-item-class="content-item-class"
+                items="{{ navItems }}"
+                main-active-index="{{ mainActiveIndex }}"
+                active-id="{{ activeId }}"
+                bind:click-nav="onClickNav"
+                bind:click-item="onClickNavItem"
+        >
+<!--            <image src="https://img.yzcdn.cn/vant/apple-1.jpg" slot="content" />-->
+            <view class="goods-items" slot="content">
+                <view class="goods-item">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="text">华为</view>
+                </view>
+                <view class="goods-item">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="text">samsung</view>
+                </view>
+                <view class="goods-item">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="text">apple</view>
+                </view>
+                <view class="goods-item" wx:for="{{15}}">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="text">华为华为华为</view>
+                </view>
+                <view class="goods-item">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <view class="text">华为华为华为华为华为华为华为华为华为华为华为华为</view>
+                </view>
+            </view>
+        </van-tree-select>
+    </view>
+</view>

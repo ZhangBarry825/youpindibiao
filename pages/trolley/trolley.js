@@ -5,9 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    nothing:false,
+    shopChecked:false,
+    goodsChecked:false
   },
-
+  onShopCheckedChange(event){
+    this.setData({
+      shopChecked: event.detail,
+    });
+  },
+  onGoodsCheckedChange(event){
+    this.setData({
+      goodsChecked: event.detail,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
