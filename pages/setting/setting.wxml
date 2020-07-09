@@ -1,0 +1,58 @@
+<!--pages/setting/setting.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-cell
+                custom-class="custom-class"
+                value-class="value-class"
+                label-class="label-class"
+                title-class="title-class"
+                is-link >
+            <view slot="title">
+               <view class="left">
+                   <image class="left1" src="../../static/images/setting1.png"></image>
+                   <text>意见反馈</text>
+               </view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="custom-class"
+                value-class="value-class"
+                label-class="label-class"
+                title-class="title-class"
+                is-link >
+            <view slot="title">
+                <view class="left">
+                    <image class="left2"  src="../../static/images/setting2.png"></image>
+                    <text>帮助中心</text>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="custom-class"
+                value-class="value-class"
+                label-class="label-class"
+                title-class="title-class"
+                is-link >
+            <view slot="title">
+                <view class="left">
+                    <image class="left3"  src="../../static/images/setting3.png"></image>
+                    <text>关于我们</text>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="custom-class"
+                value-class="value-class"
+                label-class="label-class"
+                title-class="title-class"
+                value="400-7777-051"
+                is-link >
+            <view slot="title">
+                <view class="left">
+                    <image class="left4"  src="../../static/images/setting4.png"></image>
+                    <text>客服热线</text>
+                </view>
+            </view>
+        </van-cell>
+    </van-cell-group>
+</view>

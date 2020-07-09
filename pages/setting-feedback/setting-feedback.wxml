@@ -1,0 +1,35 @@
+<!--pages/setting-feedback/setting-feedback.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-field
+                title-width="150rpx"
+                value="{{ phone }}"
+                label="手机号码"
+                placeholder="请输入手机号码"
+                bind:change="onPhoneChange"
+        />
+        <van-field
+                title-width="150rpx"
+                value="{{ email }}"
+                label="您的邮箱"
+                placeholder="请输入邮箱"
+                bind:change="onEmailChange"
+        />
+    </van-cell-group>
+
+
+    <van-field
+            input-class="input-class"
+            type="textarea"
+            title-width="150rpx"
+            value="{{ message }}"
+            placeholder="请输入您的反馈内容"
+            bind:change="onMessageChange"
+    />
+
+    <view class="tips">
+        请详细描述您遇到的问题，有助于我们快速定位并解决问题,
+    </view>
+
+    <view class="submit-button">提交</view>
+</view>

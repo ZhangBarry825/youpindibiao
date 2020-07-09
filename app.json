@@ -1,7 +1,9 @@
 {
   "pages":[
 
-    "pages/address-detail/address-detail",
+
+
+    "pages/setting-help/setting-help",
 
     "pages/home/home",
     "pages/class/class",
@@ -14,7 +16,10 @@
     "pages/edit-userInfo/edit-userInfo",
     "pages/message/message",
     "pages/address-list/address-list",
-
+    "pages/address-detail/address-detail",
+    "pages/setting/setting",
+    "pages/setting-about-us/setting-about-us",
+    "pages/setting-feedback/setting-feedback",
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
