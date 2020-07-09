@@ -2,13 +2,13 @@
   "pages":[
 
 
-    "pages/mine/mine",
+
 
     "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
     "pages/trolley/trolley",
-
+    "pages/mine/mine",
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
     "pages/goods-detail/goods-detail",
@@ -18,6 +18,10 @@
     "pages/goods-comment/goods-comment",
     "pages/order/order-confirm/order-confirm",
     "pages/order/order-payed/order-payed",
+    "pages/order/order-list/order-list",
+    "pages/order/order-status/order-status",
+    "pages/order/order-appraise/order-appraise",
+
 
 
     "pages/index/index",

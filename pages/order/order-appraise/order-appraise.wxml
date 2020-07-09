@@ -1,0 +1,51 @@
+<!--pages/order/order-appraise/order-appraise.wxml-->
+<view class="page">
+    <view class="item">
+        <view class="goods">
+            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            <view class="goods-info">
+                <view class="title">正宗广西荔浦芋头新鲜槟榔香芋农家产品有机5斤疯抢</view>
+                <view class="price">￥36.00</view>
+            </view>
+        </view>
+        <van-cell-group>
+            <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                      title-class="title-class" title="评价" value=""/>
+            <van-cell custom-class="textarea-custom-class" value="">
+                <view slot="title">
+                    <van-field
+                            input-class="input-class"
+                            value="{{ message }}"
+                            label=""
+                            type="textarea"
+                            placeholder="请输入评语"
+                            autosize
+                    />
+                </view>
+            </van-cell>
+            <van-cell custom-class="picture-custom-class" value="">
+                <view slot="title">
+                    <van-uploader
+                            max-count="3"
+                            file-list="{{ fileList }}"
+                            bind:after-read="afterRead"/>
+                </view>
+            </van-cell>
+            <van-cell custom-class="score-custom-class" value="">
+                <view slot="title">
+                    商品评分
+                    <van-rate
+                            value="{{ scoreValue }}"
+                            size="{{ 20 }}"
+                            color="#ffb820"
+                            void-color="#eee"
+                            void-icon="star"
+                            bind:change="onScoreChange"
+                    />
+                </view>
+            </van-cell>
+        </van-cell-group>
+
+        <view class="submit-button">提交评价</view>
+    </view>
+</view>

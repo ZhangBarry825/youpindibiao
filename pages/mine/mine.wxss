@@ -56,6 +56,7 @@
 }
 .mine-page .order-box {
   width: 100%;
+  margin-bottom: 10rpx;
 }
 .mine-page .order-box .van-cell__right-icon-wrap {
   margin-top: 10rpx;
@@ -103,24 +104,13 @@
 .mine-page .order-box .order-menu .order-item text {
   margin-top: 10rpx;
 }
-.mine-page .menu-box .mine-menu {
-  display: flex;
-  flex-direction: row;
-  padding: 10rpx 20rpx;
-  box-sizing: border-box;
-  justify-content: space-between;
-  background-color: #d5d5d5;
+.mine-page .menu-box image {
+  width: 57rpx;
+  height: 57rpx;
 }
-.mine-page .menu-box .mine-menu .menu-item {
-  width: 188rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.mine-page .menu-box text {
+  margin-top: 20rpx;
   font-size: 28rpx;
   font-weight: 400;
   color: #333333;
-}
-.mine-page .menu-box .mine-menu .menu-item image {
-  width: 57rpx ;
-  height: 57rpx;
 }

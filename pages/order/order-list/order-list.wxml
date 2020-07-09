@@ -1,0 +1,284 @@
+<!--pages/order/order-list/order-list.wxml-->
+<view class="page">
+    <van-tabs tab-active-class="tab-active-class" color="#F26500" tab-class="tab-class" active="{{ tagsActive }}"
+              bind:change="onTagChange">
+        <van-tab title="全部"></van-tab>
+        <van-tab title="待付款"></van-tab>
+        <van-tab title="待发货"></van-tab>
+        <van-tab title="待收货"></van-tab>
+        <van-tab title="待评价"></van-tab>
+    </van-tabs>
+    <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+        <view class="shop-list">
+            <view class="shop-title">
+                <view class="left">
+                    <van-checkbox
+                            icon-size="15px"
+                            value="{{ shopChecked }}"
+                            checked-color="#F26500"
+                            bind:change="onShopCheckedChange"
+                    >
+                        <image src="../../../static/images/shop-title.png"></image>
+                        <text>dji大疆官方旗舰店</text>
+                    </van-checkbox>
+                </view>
+                <view class="right">
+                                        交易成功
+                </view>
+            </view>
+            <view class="goods-list">
+                <view class="goods-item">
+                    <view class="goods-info">
+                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <view class="goods-detail">
+                            <view class="d-left">
+                                <view class="line1">
+                                    心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克
+                                </view>
+                                <view class="line2">
+                                    规格：500g/包
+                                </view>
+                            </view>
+                            <view class="d-right">
+                                <view class="line1">
+                                    ￥90.00
+                                </view>
+                                <view class="line2">x1</view>
+                                <view class="line3">
+                                    <view class="seven">七天退换</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="count">
+                    共 <view class="color">3</view>件商品 合计：
+                    <view class="color">￥5990.00</view>
+                </view>
+                <view class="buttons">
+                    <view class="order-button order-button1">申请售后</view>
+                    <view class="order-button order-button2">删除订单</view>
+<!--                    <view class="order-button order-button2">查看物流</view>-->
+<!--                    <view class="order-button order-button2">取消订单</view>-->
+                    <view class="order-button order-button3">评价</view>
+<!--                    <view class="order-button order-button4">退货中</view>-->
+                </view>
+            </view>
+        </view>
+        <view class="shop-list">
+            <view class="shop-title">
+                <view class="left">
+                    <van-checkbox
+                            icon-size="15px"
+                            value="{{ shopChecked }}"
+                            checked-color="#F26500"
+                            bind:change="onShopCheckedChange"
+                    >
+                        <image src="../../../static/images/shop-title.png"></image>
+                        <text>dji大疆官方旗舰店</text>
+                    </van-checkbox>
+                </view>
+                <view class="right">
+                    交易成功
+                </view>
+            </view>
+            <view class="goods-list">
+                <view class="goods-item">
+                    <view class="goods-info">
+                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <view class="goods-detail">
+                            <view class="d-left">
+                                <view class="line1">
+                                    心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克
+                                </view>
+                                <view class="line2">
+                                    规格：500g/包
+                                </view>
+                            </view>
+                            <view class="d-right">
+                                <view class="line1">
+                                    ￥90.00
+                                </view>
+                                <view class="line2">x1</view>
+                                <view class="line3">
+                                    <view class="seven">七天退换</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="count">
+                    共 <view class="color">3</view>件商品 合计：
+                    <view class="color">￥5990.00</view>
+                </view>
+                <view class="buttons">
+                    <view class="order-button order-button1">申请售后</view>
+                    <view class="order-button order-button2">删除订单</view>
+                    <!--                    <view class="order-button order-button2">查看物流</view>-->
+                    <!--                    <view class="order-button order-button2">取消订单</view>-->
+                    <view class="order-button order-button3">评价</view>
+                    <!--                    <view class="order-button order-button4">退货中</view>-->
+                </view>
+            </view>
+        </view>
+        <view class="shop-list">
+            <view class="shop-title">
+                <view class="left">
+                    <van-checkbox
+                            icon-size="15px"
+                            value="{{ shopChecked }}"
+                            checked-color="#F26500"
+                            bind:change="onShopCheckedChange"
+                    >
+                        <image src="../../../static/images/shop-title.png"></image>
+                        <text>dji大疆官方旗舰店</text>
+                    </van-checkbox>
+                </view>
+                <view class="right">
+                    交易成功
+                </view>
+            </view>
+            <view class="goods-list">
+                <view class="goods-item">
+                    <view class="goods-info">
+                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <view class="goods-detail">
+                            <view class="d-left">
+                                <view class="line1">
+                                    心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克
+                                </view>
+                                <view class="line2">
+                                    规格：500g/包
+                                </view>
+                            </view>
+                            <view class="d-right">
+                                <view class="line1">
+                                    ￥90.00
+                                </view>
+                                <view class="line2">x1</view>
+                                <view class="line3">
+                                    <view class="seven">七天退换</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <view class="goods-info">
+                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <view class="goods-detail">
+                            <view class="d-left">
+                                <view class="line1">
+                                    心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克
+                                </view>
+                                <view class="line2">
+                                    规格：500g/包
+                                </view>
+                            </view>
+                            <view class="d-right">
+                                <view class="line1">
+                                    ￥90.00
+                                </view>
+                                <view class="line2">x1</view>
+                                <view class="line3">
+                                    <view class="seven">七天退换</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <view class="goods-info">
+                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <view class="goods-detail">
+                            <view class="d-left">
+                                <view class="line1">
+                                    心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克
+                                </view>
+                                <view class="line2">
+                                    规格：500g/包
+                                </view>
+                            </view>
+                            <view class="d-right">
+                                <view class="line1">
+                                    ￥90.00
+                                </view>
+                                <view class="line2">x1</view>
+                                <view class="line3">
+                                    <view class="seven">七天退换</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="goods-item">
+                    <view class="goods-info">
+                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <view class="goods-detail">
+                            <view class="d-left">
+                                <view class="line1">
+                                    心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                    2P防水计步超轻仅15克
+                                </view>
+                                <view class="line2">
+                                    规格：500g/包
+                                </view>
+                            </view>
+                            <view class="d-right">
+                                <view class="line1">
+                                    ￥90.00
+                                </view>
+                                <view class="line2">x1</view>
+                                <view class="line3">
+                                    <view class="seven">七天退换</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="count">
+                    共 <view class="color">3</view>件商品 合计：
+                    <view class="color">￥5990.00</view>
+                </view>
+                <view class="buttons">
+                    <view class="order-button order-button1">申请售后</view>
+                    <view class="order-button order-button2">删除订单</view>
+                    <!--                    <view class="order-button order-button2">查看物流</view>-->
+                    <!--                    <view class="order-button order-button2">取消订单</view>-->
+                    <view class="order-button order-button3">评价</view>
+                    <!--                    <view class="order-button order-button4">退货中</view>-->
+                </view>
+            </view>
+        </view>
+
+
+        <view class="shop-none">
+            <image src="../../../static/images/order-none.png"></image>
+            <view class="text">还没有订单呢</view>
+            <view class="none-button">去逛逛</view>
+        </view>
+    </scroll-view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
