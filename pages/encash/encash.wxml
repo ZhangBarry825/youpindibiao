@@ -1,0 +1,42 @@
+<!--pages/encash/encash.wxml-->
+<view class="page">
+    <view class="card">
+        <view class="left">
+            <image mode="aspectFill" src="../../static/images/card-logo.png"></image>
+            <view class="info">
+                <view class="title">中信银行</view>
+                <view class="num">尾号3016储蓄卡</view>
+            </view>
+        </view>
+        <view class="right">
+            <image src="../../static/images/right.png"></image>
+        </view>
+    </view>
+
+    <view class="in-box">
+        <view class="title">提现金额</view>
+        <view class="num">
+            <view class="tip">￥</view>
+            <van-field
+                    custom-style="padding:0;width:calc(100% - 50rpx)"
+                    input-class="input-class"
+                    value="{{ count }}"
+                    placeholder=""
+                    border="{{ true }}"
+                    bind:change="onCountChange"
+            />
+        </view>
+        <view class="balance">
+            <view class="left">
+                可用余额：1000.00元
+            </view>
+            <view class="right">
+                全部提现
+            </view>
+        </view>
+    </view>
+
+    <view class="buttons">
+        <view class="button button1">确认提现</view>
+    </view>
+</view>

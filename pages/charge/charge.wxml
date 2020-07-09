@@ -1,0 +1,29 @@
+<!--pages/charge/charge.wxml-->
+<view class="page">
+    <view class="card">
+        <view class="left">
+            <image mode="aspectFill" src="../../static/images/card-logo.png"></image>
+            <view class="info">
+                <view class="title">中信银行</view>
+                <view class="num">尾号3016储蓄卡</view>
+            </view>
+        </view>
+        <view class="right">
+            <image src="../../static/images/right.png"></image>
+        </view>
+    </view>
+
+    <van-cell-group>
+        <van-field
+                value="{{ value }}"
+                label="充值金额"
+                placeholder="请输入充值金额"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+    </van-cell-group>
+
+    <view class="buttons">
+        <view class="button button1">下一步</view>
+    </view>
+</view>

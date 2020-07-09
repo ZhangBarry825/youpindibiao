@@ -1,0 +1,19 @@
+<!--pages/my-wallet/my-wallet.wxml-->
+<view class="page">
+    <view class="mine-back">
+        <image mode="aspectFill" class="back-img" src="../../static/images/mine-back.png"></image>
+        <view class="top">
+            <text>添加银行卡</text>
+            <text>佣金明细</text>
+        </view>
+        <view class="bottom">
+            <view class="line1">我的钱包</view>
+            <view class="line2">￥200.00</view>
+        </view>
+    </view>
+
+    <view class="buttons">
+        <view class="button button1">充值</view>
+        <view class="button button2">提现</view>
+    </view>
+</view>

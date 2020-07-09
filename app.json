@@ -3,7 +3,8 @@
 
 
 
-    "pages/setting-help/setting-help",
+
+    "pages/charge/charge",
 
     "pages/home/home",
     "pages/class/class",
@@ -20,6 +21,9 @@
     "pages/setting/setting",
     "pages/setting-about-us/setting-about-us",
     "pages/setting-feedback/setting-feedback",
+    "pages/setting-help/setting-help",
+    "pages/my-wallet/my-wallet",
+    "pages/encash/encash",
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
