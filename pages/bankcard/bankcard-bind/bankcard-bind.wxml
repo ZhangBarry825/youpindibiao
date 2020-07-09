@@ -1,0 +1,37 @@
+<!--pages/bankcard/bankcard-bind/bankcard-bind.wxml-->
+<view class="page">
+    <view class="tip">
+        请绑定持卡人本人的银行卡
+    </view>
+    <van-cell-group>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        title-width="50rpx"
+                        value="{{ name }}"
+                        label="持卡人"
+                        title-width="120rpx"
+                        placeholder="姓名"
+                        border="{{ false }}"
+                        bind:change="onNameChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        label="卡号"
+                        title-width="120rpx"
+                        type="password"
+                        value="{{ cardNum }}"
+                        placeholder="请输入卡号"
+                        border="{{ false }}"
+                        bind:change="onCardNumChange"
+                />
+            </view>
+        </van-cell>
+    </van-cell-group>
+    <view class="buttons">
+        <view class="button button1">下一步</view>
+    </view>
+</view>

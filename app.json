@@ -1,10 +1,9 @@
 {
   "pages":[
 
+    "pages/bankcard/bankcard-had/bankcard-had",
 
 
-
-    "pages/charge/charge",
 
     "pages/home/home",
     "pages/class/class",
@@ -24,6 +23,13 @@
     "pages/setting-help/setting-help",
     "pages/my-wallet/my-wallet",
     "pages/encash/encash",
+    "pages/charge/charge",
+    "pages/commission/commission",
+    "pages/bankcard/bankcard-menu/bankcard-menu",
+    "pages/bankcard/bankcard-bind/bankcard-bind",
+    "pages/bankcard/bankcard-bind2/bankcard-bind2",
+    "pages/bankcard/bankcard-bind3/bankcard-bind3",
+
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",

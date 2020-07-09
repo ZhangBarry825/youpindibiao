@@ -1,0 +1,13 @@
+<!--pages/bankcard/bankcard-bind3/bankcard-bind3.wxml-->
+<view class="page">
+
+    <view class="center">
+        <image src="../../../static/images/pay-success.png"></image>
+        <view class="tip">绑定成功</view>
+
+    </view>
+
+    <view class="buttons">
+        <view class="button button1">完成</view>
+    </view>
+</view>

@@ -1,0 +1,15 @@
+<!--pages/bankcard/bankcard-had/bankcard-had.wxml-->
+<view class="page">
+    <view class="items">
+        <view class="item">
+            <view class="left">
+                <image src="../../../static/images/bank-logo.png"></image>
+            </view>
+            <view class="right">
+                <view class="line1">中国工商银行</view>
+                <view class="line2">储蓄卡</view>
+                <view class="line3">**** **** **** 6548</view>
+            </view>
+        </view>
+    </view>
+</view>
