@@ -1,14 +1,21 @@
 {
   "pages":[
 
-
-
+    "pages/address-detail/address-detail",
 
     "pages/home/home",
     "pages/class/class",
     "pages/shop/shop",
     "pages/trolley/trolley",
     "pages/mine/mine",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/find-password/find-password",
+    "pages/edit-userInfo/edit-userInfo",
+    "pages/message/message",
+    "pages/address-list/address-list",
+
+
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
     "pages/goods-detail/goods-detail",
@@ -21,8 +28,10 @@
     "pages/order/order-list/order-list",
     "pages/order/order-status/order-status",
     "pages/order/order-appraise/order-appraise",
-
-
+    "pages/order/apply-refund/apply-refund",
+    "pages/order/refund-detail/refund-detail",
+    "pages/order/refund-list/refund-list",
+    "pages/order/express/express",
 
     "pages/index/index",
     "pages/logs/logs"

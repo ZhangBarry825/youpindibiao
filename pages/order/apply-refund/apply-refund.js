@@ -1,12 +1,12 @@
-// pages/order/order-appraise/order-appraise.js
+// pages/order/apply-refund/apply-refund.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    scoreValue: 3,
-    message:'',
+    refundCount:'',
+    refundReason:'',
     fileList: [
       { url: 'https://img.yzcdn.cn/vant/leaf.jpg', name: '图片1' },
       // Uploader 根据文件后缀来判断是否为图片文件
@@ -18,11 +18,7 @@ Page({
         deletable: true,
       },
     ],
-  },
-  onScoreChange(event) {
-    this.setData({
-      scoreValue: event.detail,
-    });
+
   },
   deleteImg(event){
     console.log(event.detail.index)

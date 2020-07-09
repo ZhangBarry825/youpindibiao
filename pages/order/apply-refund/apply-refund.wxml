@@ -1,0 +1,97 @@
+<!--pages/order/apply-refund/apply-refund.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class"
+                  value="">
+            <view slot="title">
+                <view class="van-cell-text">退货原因
+                    <text class="red">*</text>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="item-custom-class"
+                value-class="item-value-class"
+                label-class="item-label-class"
+                title-class="item-title-class"
+                is-link
+                value="">
+            <view slot="title">
+                <view class="van-cell-text">选择退货原因</view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class"
+                  value="">
+            <view slot="title">
+                <view class="van-cell-text">退款金额<text class="red">*</text><text class="gray">（最多129.00）</text></view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="item-custom-class input-cell"
+                value-class="item-value-class"
+                label-class="item-label-class"
+                title-class="item-title-class"
+                value="">
+            <view slot="title">
+                <van-field
+                        input-class="input-class"
+                        value="{{ refundCount }}"
+                        clearable
+                        label=""
+                        type="number"
+                        placeholder="请输入退款金额"
+                        border="{{ false }}"
+                />
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class"
+                  value="">
+            <view slot="title">
+                <view class="van-cell-text">退货说明<text class="gray">（非必填）</text></view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="item-custom-class textarea-cell"
+                value-class="item-value-class"
+                label-class="item-label-class"
+                title-class="item-title-class"
+                value="">
+            <view slot="title">
+                <van-field
+                        input-class="textarea-input-class"
+                        value="{{ refundReason }}"
+                        clearable
+                        label=""
+                        type="textarea"
+                        placeholder="请输入退货说明"
+                        border="{{ false }}"
+                />
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class"
+                  value="">
+            <view slot="title">
+                <view class="van-cell-text">上传凭证<text class="gray">（最多3张）</text></view>
+            </view>
+        </van-cell>
+        <van-cell
+                custom-class="item-custom-class upload-cell"
+                value-class="item-value-class"
+                label-class="item-label-class"
+                title-class="item-title-class"
+                value="">
+            <view slot="title">
+                <van-uploader
+                        bind:delete="deleteImg"
+                        max-count="3"
+                        file-list="{{ fileList }}"
+                        bind:after-read="afterRead"/>
+            </view>
+        </van-cell>
+    </van-cell-group>
+    <view class="submit-button">提交申请</view>
+</view>

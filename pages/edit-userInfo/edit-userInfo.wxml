@@ -1,0 +1,113 @@
+<!--pages/edit-userInfo/edit-userInfo.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="avatar-custom-class"
+                  title-class="title-class" >
+            <view slot="title">
+                <view class="title">
+                    头像
+                </view>
+                <view class="value">
+                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                </view>
+            </view>
+        </van-cell>
+
+        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
+                  title-class="title-class" >
+            <view slot="title" class="aaa">
+                <view class="title">
+                    姓名
+                </view>
+                <view class="input-value">
+                    <van-field
+                            input-align="right"
+                            value="{{ realname }}"
+                            placeholder="请输入用户名"
+                            border="{{ false }}"
+                            bind:change="onNameChange"
+                    />
+                </view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
+                  title-class="title-class" >
+            <view slot="title" class="aaa">
+                <view class="title">
+                    昵称
+                </view>
+                <view class="input-value">
+                    <van-field
+                            input-align="right"
+                            value="{{ nickname }}"
+                            placeholder="请输入用户名"
+                            border="{{ false }}"
+                            bind:change="onNameChange"
+                    />
+                </view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
+                  title-class="title-class" is-link>
+            <view slot="title" class="aaa">
+                <view class="title">
+                    二维码
+                </view>
+                <view class="input-value">
+                    <image style="width: 40rpx ;height: 40rpx" src="../../static/images/ewm.png"></image>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
+                  title-class="title-class" >
+            <view slot="title" class="aaa">
+                <view class="title">
+                    手机号
+                </view>
+                <view class="input-value">
+                    <van-field
+                            input-align="right"
+                            value="{{ phone }}"
+                            placeholder="请输入用户名"
+                            border="{{ false }}"
+                            bind:change="onPhoneChange"
+                    />
+                </view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
+                  title-class="title-class">
+            <view slot="title" class="aaa">
+                <view class="title">
+                    会员号
+                </view>
+                <view class="input-value">
+                    <van-field
+                            disabled
+                            input-align="right"
+                            value="513213215"
+                            border="{{ false }}"
+                    />
+                </view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
+                  title-class="title-class">
+            <view slot="title" class="aaa">
+                <view class="title">
+                    上级推荐人
+                </view>
+                <view class="input-value">
+                    <van-field
+                            disabled
+                            input-align="right"
+                            value="王羲之"
+                            border="{{ false }}"
+                    />
+                </view>
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <view class="submit-button">保存</view>
+</view>

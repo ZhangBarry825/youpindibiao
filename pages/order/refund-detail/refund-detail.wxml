@@ -1,0 +1,70 @@
+<!--pages/order/refund-detail/refund-detail.wxml-->
+<view class="page">
+    <view class="table">
+        <view class="line">
+            <view class="title">退换货订单：</view>
+            <view class="value">231648742313</view>
+        </view>
+        <view class="line">
+            <view class="title">处理状态：</view>
+            <view class="value">已审核处理中</view>
+        </view>
+    </view>
+
+    <view class="step">
+        <view class="item1">
+            <view class="line1">
+                <image src="../../../static/images/step1.png"></image>
+            </view>
+            <view class="line2">
+                <image wx:if="{{step==1||step==2||step==3}}" src="../../../static/images/step-checked.png"></image>
+            </view>
+            <view class="line3">
+                买家申请
+                2016-07-30
+                14:52:33
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="item2">
+            <view class="line1">
+                <image src="../../../static/images/step2.png"></image>
+            </view>
+            <view class="line2">
+                <image wx:if="{{step==2||step==3}}" src="../../../static/images/step-checked.png"></image>
+            </view>
+            <view class="line3" wx:if="{{step==2||step==3}}">
+                买家申请
+                2016-07-30
+                14:52:33
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="item3">
+            <view class="line1">
+                <image src="../../../static/images/step3.png"></image>
+            </view>
+            <view class="line2">
+                <image wx:if="{{step==3}}" src="../../../static/images/step-checked.png"></image>
+            </view>
+            <view class="line3"  wx:if="{{step==3}}">
+                买家申请
+                2016-07-30
+                14:52:33
+            </view>
+        </view>
+    </view>
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+

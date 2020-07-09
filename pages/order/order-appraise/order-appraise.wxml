@@ -26,6 +26,7 @@
             <van-cell custom-class="picture-custom-class" value="">
                 <view slot="title">
                     <van-uploader
+                            bind:delete="deleteImg"
                             max-count="3"
                             file-list="{{ fileList }}"
                             bind:after-read="afterRead"/>

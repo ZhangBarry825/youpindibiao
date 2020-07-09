@@ -1,0 +1,52 @@
+<!--pages/login/login.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        left-icon="phone-o"
+                        title-width="50rpx"
+                        value="{{ value }}"
+                        placeholder="请输入手机号码"
+                        border="{{ false }}"
+                        bind:change="onChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        left-icon="eye-o"
+                        title-width="50rpx"
+                        type="password"
+                        value="{{ value }}"
+                        placeholder="请输入密码"
+                        border="{{ false }}"
+                        bind:change="onChange"
+                />
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <view class="button-box">
+        <view class="button">登录</view>
+    </view>
+
+    <view class="problem">
+        <view class="center">
+            <text>立即注册</text>
+            <text>忘记密码？</text>
+        </view>
+
+    </view>
+
+    <view class="wechat">
+        <view class="top">
+            <view class="border"></view>
+            <view class="text">微信登录</view>
+            <view class="border"></view>
+        </view>
+
+        <image src="../../static/images/wechat1.png"></image>
+    </view>
+</view>

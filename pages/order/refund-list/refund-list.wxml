@@ -1,0 +1,85 @@
+<!--pages/order/refund-list/refund-list.wxml-->
+<view class="page">
+    <view class="shop-list">
+        <view class="shop-title">
+            <view class="left">
+                <van-checkbox
+                        icon-size="15px"
+                        value="{{ shopChecked }}"
+                        checked-color="#F26500"
+                        bind:change="onShopCheckedChange"
+                >
+                    <image src="../../../static/images/shop-title.png"></image>
+                    <text>dji大疆官方旗舰店</text>
+                </van-checkbox>
+            </view>
+            <view class="right">
+                退款中
+            </view>
+        </view>
+        <view class="goods-list">
+            <view class="goods-item">
+                <view class="goods-info">
+                    <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                    <view class="goods-detail">
+                        <view class="d-left">
+                            <view class="line1">
+                                心率智能手环 运动睡眠监测
+                                2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                2P防水计步超轻仅15克
+                            </view>
+                            <view class="line2">
+                                规格：500g/包
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="count">
+               交易金额：<view class="color">￥5990.00</view>
+               退款金额：<view class="color">￥5990.00</view>
+            </view>
+        </view>
+    </view>
+    <view class="shop-list">
+        <view class="shop-title">
+            <view class="left">
+                <van-checkbox
+                        icon-size="15px"
+                        value="{{ shopChecked }}"
+                        checked-color="#F26500"
+                        bind:change="onShopCheckedChange"
+                >
+                    <image src="../../../static/images/shop-title.png"></image>
+                    <text>dji大疆官方旗舰店</text>
+                </van-checkbox>
+            </view>
+            <view class="right">
+                退款成功
+            </view>
+        </view>
+        <view class="goods-list">
+            <view class="goods-item">
+                <view class="goods-info">
+                    <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                    <view class="goods-detail">
+                        <view class="d-left">
+                            <view class="line1">
+                                心率智能手环 运动睡眠监测
+                                2P防水计步超轻仅15克心率智能手环 运动睡眠监测
+                                2P防水计步超轻仅15克
+                            </view>
+                            <view class="line2">
+                                规格：500g/包
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="count">
+                交易金额：<view class="color">￥5990.00</view>
+                退款金额：<view class="color">￥5990.00</view>
+            </view>
+        </view>
+    </view>
+</view>

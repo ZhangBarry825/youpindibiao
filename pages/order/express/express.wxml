@@ -1,0 +1,39 @@
+<!--pages/order/express/express.wxml-->
+<view class="page">
+    <view class="goods">
+        <view class="left">
+            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            <text>1件商品</text>
+        </view>
+
+        <view class="right">
+            <view class="line1">
+                <view class="title">物流状态</view>
+                <view class="value">已签收</view>
+            </view>
+            <view class="line2">
+                <view class="title">承运公司：</view>
+                <view class="value">申通快递</view>
+            </view>
+            <view class="line3">
+                <view class="title">运单编号：</view>
+                <view class="value">4554642163486</view>
+            </view>
+            <view class="line4">
+                <view class="title">官方电话：</view>
+                <view class="value">95543</view>
+            </view>
+        </view>
+    </view>
+    <view class="express">
+        <view class="title">物流跟踪</view>
+        <view class="detail">
+            <van-steps
+                    steps="{{ steps }}"
+                    active="{{ active }}"
+                    direction="vertical"
+                    active-color="#25ae5f"
+            />
+        </view>
+    </view>
+</view>
