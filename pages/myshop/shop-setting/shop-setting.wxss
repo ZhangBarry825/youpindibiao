@@ -1,0 +1,74 @@
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #f2f2f2;
+}
+.page .title-class,
+.page .label-class {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+.page .value-class,
+.page .input-class {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.page .custom-class {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.page .custom-class .aaa {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.page .custom-class .aaa .left {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+.page .custom-class .aaa .middle .avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.page .custom-class .aaa .middle .back {
+  width: 259rpx;
+  height: 70rpx;
+}
+.page .custom-class .aaa .right .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 141rpx;
+  height: 53rpx;
+  background: #f26500;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.page .button-box {
+  width: 100%;
+  padding: 50rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.page .button-box .button {
+  width: 609rpx;
+  background: #f26500;
+  border-radius: 35rpx;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

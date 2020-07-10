@@ -1,8 +1,6 @@
 {
   "pages":[
 
-    "pages/bankcard/bankcard-had/bankcard-had",
-
 
 
     "pages/home/home",
@@ -29,7 +27,21 @@
     "pages/bankcard/bankcard-bind/bankcard-bind",
     "pages/bankcard/bankcard-bind2/bankcard-bind2",
     "pages/bankcard/bankcard-bind3/bankcard-bind3",
-
+    "pages/bankcard/bankcard-had/bankcard-had",
+    "pages/collect/collect",
+    "pages/share/share",
+    "pages/myshop/shop-index/shop-index",
+    "pages/myshop/shop-home/shop-home",
+    "pages/myshop/shop-setting/shop-setting",
+    "pages/myshop/shop-addition/shop-addition",
+    "pages/myshop/shop-selection/shop-selection",
+    "pages/myshop/shop-selection-detail/shop-selection-detail",
+    "pages/myshop/shop-encash/shop-encash",
+    "pages/myshop/shop-encash-record/shop-encash-record",
+    "pages/myshop/shop-receive-record/shop-receive-record",
+    "pages/myshop/shop-value/shop-value",
+    "pages/myshop/shop-bind-phone/shop-bind-phone",
+    "pages/myshop/shop-invite/shop-invite",
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",

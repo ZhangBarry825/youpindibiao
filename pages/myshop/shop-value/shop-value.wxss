@@ -1,0 +1,110 @@
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #f2f2f2;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+}
+.page .top-back {
+  width: 100%;
+  height: 188rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f26500;
+}
+.page .top-back .text1 {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.page .top-back .text2 {
+  margin: 10rpx 0;
+  font-size: 35rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.page .statistics {
+  width: 100%;
+  background-color: #ffffff;
+  margin: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+.page .statistics .line2 {
+  width: 100%;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.page .statistics .line2 .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page .statistics .line2 .item .title {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+.page .statistics .line2 .item .number {
+  font-size: 35rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+  margin: 10rpx 0;
+}
+.page .items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.page .items .item {
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page .items .item .left {
+  display: flex;
+  align-items: center;
+}
+.page .items .item .left image {
+  width: 40rpx;
+  height: 38rpx;
+  margin-right: 30rpx;
+}
+.page .items .item .left text {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+.page .items .item .right image {
+  width: 21rpx;
+  height: 40rpx;
+}
+.page .button-box {
+  width: 100%;
+  padding: 50rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.page .button-box .button {
+  width: 609rpx;
+  background: #f26500;
+  border-radius: 35rpx;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

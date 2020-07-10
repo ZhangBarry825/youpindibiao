@@ -1,0 +1,49 @@
+<!--pages/myshop/shop-encash-record/shop-encash-record.wxml-->
+<view class="page">
+    <view class="items">
+        <view class="item">
+            <view class="left">
+                <view class="line1">提现</view>
+                <view class="line2">2017-05-12</view>
+            </view>
+            <view class="right">
+                <!--                <view class="line1 add">+28.00</view>-->
+                <view class="line1 minus">-5000.00</view>
+                <view class="line2">29630.30</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <view class="line1">提现</view>
+                <view class="line2">2017-05-12</view>
+            </view>
+            <view class="right">
+                <!--                <view class="line1 add">+28.00</view>-->
+                <view class="line1 minus">-5000.00</view>
+                <view class="line2">29630.30</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <view class="line1">提现</view>
+                <view class="line2">2017-05-12</view>
+            </view>
+            <view class="right">
+                <!--                <view class="line1 add">+28.00</view>-->
+                <view class="line1 minus">-5000.00</view>
+                <view class="line2">29630.30</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <view class="line1">提现</view>
+                <view class="line2">2017-05-12</view>
+            </view>
+            <view class="right">
+                <!--                <view class="line1 add">+28.00</view>-->
+                <view class="line1 minus">-5000.00</view>
+                <view class="line2">29630.30</view>
+            </view>
+        </view>
+    </view>
+</view>

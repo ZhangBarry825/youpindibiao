@@ -1,0 +1,77 @@
+<!--pages/myshop/shop-setting/shop-setting.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-field
+                label-class="label-class"
+                input-class="input-class"
+                label="店铺名称"
+                value="{{ shopName }}"
+                placeholder="店铺名称"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+        <van-field
+                label-class="label-class"
+                input-class="input-class"
+                label="会员编号"
+                value="{{ VipNum }}"
+                placeholder="会员编号"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+        <van-field
+                label-class="label-class"
+                input-class="input-class"
+                label="店铺描述"
+                value="{{ VipNum }}"
+                placeholder="店铺描述"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+        <van-field
+                label-class="label-class"
+                input-class="input-class"
+                is-link
+                label="绑定手机"
+                value="{{ VipNum }}"
+                placeholder="绑定手机"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+
+        <van-cell
+                value-class="value-class"
+                label-class="label-class"
+                custom-class="custom-class"
+                title-class="title-class">
+            <view slot="title" class="aaa">
+                <view class="left">头像</view>
+                <view class="middle">
+                    <image class="avatar" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="button">选择文件</view>
+                </view>
+            </view>
+        </van-cell>
+        <van-cell
+                value-class="value-class"
+                label-class="label-class"
+                custom-class="custom-class"
+                title-class="title-class">
+            <view slot="title" class="aaa">
+                <view class="left">背景</view>
+                <view class="middle">
+                    <image class="back" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                </view>
+                <view class="right">
+                    <view class="button">选择文件</view>
+                </view>
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <view class="button-box">
+        <view class="button">保存修改</view>
+    </view>
+</view>

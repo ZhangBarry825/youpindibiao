@@ -1,0 +1,59 @@
+<!--pages/myshop/shop-addition/shop-addition.wxml-->
+<view class="page">
+    <view class="mine-back">
+        <image mode="aspectFill" class="back-img" src="../../../static/images/shop-back.png"></image>
+        <van-search
+                class="searchInput"
+                value="{{ searchKeyword }}"
+                bind:search="onSearchChange"
+                bind:cancel="onSearchCancel"
+                shape="round"
+                background="none"
+                placeholder="请输入搜索关键词"
+        />
+        <view class="info">
+            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            <text>举个栗子的店铺</text>
+        </view>
+    </view>
+
+    <van-cell-group>
+        <van-field
+                title-width="100rpx"
+                label-class="label-class"
+                input-class="input-class"
+                label="名称:"
+                value="{{ goodsName }}"
+                placeholder="店铺名称"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+        <van-field
+                title-width="100rpx"
+                label-class="label-class"
+                input-class="input-class"
+                label="价格:"
+                value="{{ price }}"
+                placeholder="价格"
+                border="{{ false }}"
+                bind:change="onChange"
+        />
+
+        <van-cell
+                value-class="value-class"
+                label-class="label-class"
+                custom-class="custom-class"
+                title-class="title-class">
+            <view slot="title" class="aaa">
+                <view class="left">图片:</view>
+                <view class="middle">
+                    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+                </view>
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <view class="button-box">
+        <view class="button">提交</view>
+    </view>
+</view>

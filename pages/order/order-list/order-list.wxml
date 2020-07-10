@@ -81,7 +81,7 @@
                     </van-checkbox>
                 </view>
                 <view class="right">
-                    交易成功
+                    卖家已发货
                 </view>
             </view>
             <view class="goods-list">
@@ -139,7 +139,7 @@
                     </van-checkbox>
                 </view>
                 <view class="right">
-                    交易成功
+                    等待买家付款
                 </view>
             </view>
             <view class="goods-list">
@@ -263,11 +263,11 @@
         </view>
 
 
-        <view class="shop-none">
-            <image src="../../../static/images/order-none.png"></image>
-            <view class="text">还没有订单呢</view>
-            <view class="none-button">去逛逛</view>
-        </view>
+<!--        <view class="shop-none">-->
+<!--            <image src="../../../static/images/order-none.png"></image>-->
+<!--            <view class="text">还没有订单呢</view>-->
+<!--            <view class="none-button">去逛逛</view>-->
+<!--        </view>-->
     </scroll-view>
 </view>
 

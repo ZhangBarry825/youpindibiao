@@ -1,0 +1,57 @@
+<!--pages/myshop/shop-bind-phone/shop-bind-phone.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        title-width="150rpx"
+                        label="姓名"
+                        value="{{ name }}"
+                        placeholder=""
+                        border="{{ false }}"
+                        bind:change="onNameChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        value="{{ phone }}"
+                        center
+                        clearable
+                        title-width="150rpx"
+                        label="手机号码"
+                        placeholder=""
+                        border="{{ false }}"
+                        use-button-slot
+                        bind:change="onPhoneChange"
+                >
+                    <van-button
+                            slot="button"
+                            size="small"
+                            type="primary"
+                            color="#f26500"
+                    >发送验证码</van-button
+                    >
+                </van-field>
+            </view>
+        </van-cell>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        label="验证码"
+                        title-width="150rpx"
+                        type="password"
+                        value="{{ sms }}"
+                        placeholder=""
+                        border="{{ false }}"
+                        bind:change="onSmsChange"
+                />
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <view class="button-box">
+        <view class="button">保存</view>
+    </view>
+</view>

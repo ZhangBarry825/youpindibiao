@@ -1,0 +1,71 @@
+<!--pages/mine-shop/mine-shop.wxml-->
+<view class="page">
+    <view class="mine-back">
+        <image mode="aspectFill" class="back-img" src="../../../static/images/mine-back.png"></image>
+        <view class="left">
+            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+        </view>
+        <view class="right">
+            <view class="line1">举个栗子的店铺</view>
+            <view class="line2">今日销售金额：0元</view>
+        </view>
+    </view>
+
+    <view class="statistics">
+        <view class="line1">
+            <view class="item">
+                <view class="title">累积奖金</view>
+                <view class="number">0</view>
+            </view>
+        </view>
+        <view class="line2">
+            <view class="item">
+                <view class="title">今日奖金</view>
+                <view class="number">0</view>
+            </view>
+            <view class="item">
+                <view class="title">今日订单</view>
+                <view class="number">0</view>
+            </view>
+            <view class="item">
+                <view class="title">累计访问</view>
+                <view class="number">0</view>
+            </view>
+        </view>
+    </view>
+
+    <van-grid column-num="4" class="menu-box">
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s1.png"/>
+            <text>我的店铺</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s2.png"/>
+            <text>选品上架</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s3.png"/>
+            <text>订单管理</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s4.png"/>
+            <text>我的财富</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s5.png"/>
+            <text>提现</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s6.png"/>
+            <text>邀请好友</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s7.png"/>
+            <text>我的会员</text>
+        </van-grid-item>
+        <van-grid-item use-slot >
+            <image src="../../../static/images/s8.png"/>
+            <text>设置</text>
+        </van-grid-item>
+    </van-grid>
+</view>

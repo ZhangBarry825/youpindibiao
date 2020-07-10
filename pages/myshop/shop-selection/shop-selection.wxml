@@ -1,0 +1,154 @@
+<!--pages/myshop/shop-selection/shop-selection.wxml-->
+<view class="page">
+    <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
+            <image src="{{item}}" class="slide-image" width="100%" height="200" />
+        </swiper-item>
+    </swiper>
+    <van-search
+            class="searchInput"
+            value="{{ searchKeyword }}"
+            bind:search="onSearchChange"
+            bind:cancel="onSearchCancel"
+            shape="round"
+            background="none"
+            placeholder="请输入搜索关键词"
+    />
+    <view class="menu-box">
+        <view class="top">
+            <view class="left">
+                <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">
+                    <van-tab title="精选"></van-tab>
+                    <van-tab title="国酒茅台"></van-tab>
+                    <van-tab title="美容护肤"></van-tab>
+                    <van-tab title="梦洁家纺"></van-tab>
+                </van-tabs>
+            </view>
+            <view class="right" bind:tap="toggleShow">
+                <image wx:if="{{!showMenus}}" mode="aspectFit" src="../../../static/images/top.png"></image>
+                <image wx:if="{{showMenus}}" mode="aspectFit" src="../../../static/images/down.png"></image>
+            </view>
+        </view>
+        <view class="items {{showMenus?'':'heightController'}}">
+            <view class="item">精选</view>
+            <view class="item">国酒茅台</view>
+            <view class="item">美容护肤</view>
+            <view class="item">梦洁家纺</view>
+            <view class="item">精选</view>
+            <view class="item">国酒茅台</view>
+            <view class="item">美容护肤</view>
+            <view class="item">梦洁家纺</view>
+            <view class="item">精选</view>
+            <view class="item">国酒茅台</view>
+            <view class="item">美容护肤</view>
+            <view class="item">梦洁家纺</view>
+        </view>
+    </view>
+
+    <view class="header">
+        <van-grid column-num="3" class="order-box">
+            <van-grid-item use-slot>
+                <text>新品排序</text>
+                <!--            <image src="../../../static/images/orderby.png"/>-->
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <text>价格排序</text>
+                <!--            <image src="../../../static/images/orderby.png"/>-->
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <text>奖金排序</text>
+                <!--            <image src="../../../static/images/orderby.png"/>-->
+            </van-grid-item>
+        </van-grid>
+    </view>
+
+    <view class="g-items">
+        <view class="item">
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">
+                    [300组]华美月饼中秋节礼盒720g
+                </view>
+                <view class="line2">
+                    <view class="line-left">
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">有<view class="red">17</view>人在卖
+                    </view>
+                </view>
+                <view class="line3">
+                    <view class="line-left">交易总额：
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">剩余5000件</view>
+                </view>
+                <view class="line4">
+                    <view class="button">
+                        <image src="../../../static/images/goods-up1.png"></image>
+                        上架
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">
+                    [300组]华美月饼中秋节礼盒720g
+                </view>
+                <view class="line2">
+                    <view class="line-left">
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">有<view class="red">17</view>人在卖
+                    </view>
+                </view>
+                <view class="line3">
+                    <view class="line-left">交易总额：
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">剩余5000件</view>
+                </view>
+                <view class="line4">
+                    <view class="button">
+                        <image src="../../../static/images/goods-up1.png"></image>
+                        上架
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">
+                    [300组]华美月饼中秋节礼盒720g
+                </view>
+                <view class="line2">
+                    <view class="line-left">
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">有<view class="red">17</view>人在卖
+                    </view>
+                </view>
+                <view class="line3">
+                    <view class="line-left">交易总额：
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">剩余5000件</view>
+                </view>
+                <view class="line4">
+                    <view class="button">
+                        <image src="../../../static/images/goods-up1.png"></image>
+                        上架
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

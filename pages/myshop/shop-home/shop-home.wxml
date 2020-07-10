@@ -1,0 +1,172 @@
+<!--pages/myshop/shop-home/shop-home.wxml-->
+<view class="page">
+    <view class="mine-back">
+        <image mode="aspectFill" class="back-img" src="../../../static/images/shop-back.png"></image>
+        <van-search
+                class="searchInput"
+                value="{{ searchKeyword }}"
+                bind:search="onSearchChange"
+                bind:cancel="onSearchCancel"
+                shape="round"
+                background="none"
+                placeholder="请输入搜索关键词"
+        />
+        <view class="info">
+            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            <text>举个栗子的店铺</text>
+        </view>
+    </view>
+
+    <van-grid column-num="4" class="menu-box">
+        <van-grid-item use-slot bind:tap="onEwmClickShow">
+            <image src="../../../static/images/h1.png"/>
+            <text>店铺二维码</text>
+        </van-grid-item>
+        <van-grid-item use-slot>
+            <image src="../../../static/images/h2.png"/>
+            <text>店铺预览</text>
+        </van-grid-item>
+        <van-grid-item use-slot>
+            <image src="../../../static/images/h3.png"/>
+            <text>选品上架</text>
+        </van-grid-item>
+        <van-grid-item use-slot>
+            <image src="../../../static/images/h4.png"/>
+            <text>添加商品</text>
+        </van-grid-item>
+    </van-grid>
+
+    <view class="header">
+        <van-grid column-num="3" class="order-box">
+            <van-grid-item use-slot>
+                <text>新品排序</text>
+                <!--            <image src="../../../static/images/orderby.png"/>-->
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <text>价格排序</text>
+                <!--            <image src="../../../static/images/orderby.png"/>-->
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <text>奖金排序</text>
+                <!--            <image src="../../../static/images/orderby.png"/>-->
+            </van-grid-item>
+        </van-grid>
+    </view>
+
+    <view class="items">
+        <view class="item">
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">
+                    [300组]华美月饼中秋节礼盒720g
+                </view>
+                <view class="line2">
+                    <view class="line-left">
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">有<view class="red">17</view>人在卖
+                    </view>
+                </view>
+                <view class="line3">
+                    <view class="line-left">交易总额：
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">剩余5000件</view>
+                </view>
+                <view class="line4">
+                    <view class="button">
+                        <image src="../../../static/images/down-goods.png"></image>
+                        下架
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">
+                    [300组]华美月饼中秋节礼盒720g
+                </view>
+                <view class="line2">
+                    <view class="line-left">
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">有<view class="red">17</view>人在卖
+                    </view>
+                </view>
+                <view class="line3">
+                    <view class="line-left">交易总额：
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">剩余5000件</view>
+                </view>
+                <view class="line4">
+                    <view class="button">
+                        <image src="../../../static/images/down-goods.png"></image>
+                        下架
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">
+                    [300组]华美月饼中秋节礼盒720g
+                </view>
+                <view class="line2">
+                    <view class="line-left">
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">有<view class="red">17</view>人在卖
+                    </view>
+                </view>
+                <view class="line3">
+                    <view class="line-left">交易总额：
+                        <view class="red">￥199</view>
+                    </view>
+                    <view class="line-right">剩余5000件</view>
+                </view>
+                <view class="line4">
+                    <view class="button">
+                        <image src="../../../static/images/down-goods.png"></image>
+                        下架
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <van-overlay show="{{ ewmShow }}" bind:click="onEwmClickHide" >
+        <view class="wrapper">
+            <view class="block" catch:tap="noop">
+                <view class="line1">
+                     <image bind:click="onEwmClickHide" src="../../../static/images/close1.png"/>
+                </view>
+                <view class="line2">
+                    举个栗子的店铺
+                </view>
+                <view class="line3">
+                    <image src="../../../static/images/avatar.gif"/>
+                </view>
+                <view class="line4">
+                    扫描或微信长按识别二维码
+                </view>
+            </view>
+        </view>
+    </van-overlay>
+
+</view>
+
+
+
+
+
+
+
+

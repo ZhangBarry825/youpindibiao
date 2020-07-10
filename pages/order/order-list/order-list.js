@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tagsActive: 1,
+    tagsActive: 0,
     height: wx.getSystemInfoSync().windowHeight - 50,
   },
   onTagChange(event){
