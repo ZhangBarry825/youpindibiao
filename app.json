@@ -8,6 +8,7 @@
     "pages/shop/shop",
     "pages/trolley/trolley",
     "pages/mine/mine",
+    "pages/permission/permission",
     "pages/login/login",
     "pages/register/register",
     "pages/find-password/find-password",
@@ -42,6 +43,8 @@
     "pages/myshop/shop-value/shop-value",
     "pages/myshop/shop-bind-phone/shop-bind-phone",
     "pages/myshop/shop-invite/shop-invite",
+    "pages/myshop/shop-membership/shop-membership",
+    "pages/myshop/shop-membership-detail/shop-membership-detail",
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",
@@ -68,6 +71,11 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "优品地标",
     "navigationBarTextStyle":"black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "tabBar": {
     "color": "#000000",

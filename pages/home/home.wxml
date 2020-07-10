@@ -1,23 +1,27 @@
 <!--pages/home/home.wxml-->
 <view class="page">
-    <view class="address">
+    <view class="address" wx:if="{{addressDetail.recommend!=''}}">
         <image src="../../static/images/location.png"></image>
-        <view class="text">建业五栋大楼</view>
+        <view class="text">{{addressDetail.recommend}}</view>
+    </view>
+    <view class="search-box">
+        <van-search
+                class="searchInput"
+                value="{{ searchKeyword }}"
+                bind:search="onSearchChange"
+                bind:cancel="onSearchCancel"
+                shape="round"
+                background="none"
+                placeholder="请输入搜索关键词"
+        />
     </view>
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
         <swiper-item wx:for="{{imgUrls}}" wx:key="item">
             <image src="{{item}}" class="slide-image" width="100%" height="200" />
         </swiper-item>
     </swiper>
-    <van-search
-            class="searchInput"
-            value="{{ searchKeyword }}"
-            bind:search="onSearchChange"
-            bind:cancel="onSearchCancel"
-            shape="round"
-            background="none"
-            placeholder="请输入搜索关键词"
-    />
+
+
     <view class="menu-box">
         <view class="top">
             <view class="left">
@@ -430,6 +434,7 @@
         </view>
     </view>
 
+
     <van-overlay show="{{ showRedPackage }}" bind:click="hideRedPackage">
         <view class="wrapper">
             <image mode="aspectFit" src="../../static/images/red-package.png"></image>
@@ -440,6 +445,8 @@
             <view class="count">￥10</view>
         </view>
     </van-overlay>
+
+    <van-dialog id="van-dialog" />
 </view>
 
 

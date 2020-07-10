@@ -1,4 +1,5 @@
 // pages/home/home.js
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -14,7 +15,22 @@ Page({
     searchKeyword:"",
     tagsActive:0,
     timeTagsActive:0,
-    showRedPackage:true
+    showRedPackage:true,
+    showGetAddress:true,
+
+    addressDetail:{
+      city: "",
+      district: "",
+      nation: "",
+      province: "",
+      recommend: "",
+      rough: "",
+      street: "",
+      street_number: "",
+    },
+    addressData:{
+
+    }
   },
 
   //领取红包
@@ -56,6 +72,71 @@ Page({
       })
     }
   },
+  hideAddress(){
+
+  },
+  getLocation(){
+    let that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy  //位置精确度
+        that.setData({
+          addressData:{
+            latitude:latitude,
+            longitude:longitude,
+          }
+        })
+        // 构建请求地址
+        let mapInfo = 'https://apis.map.qq.com/ws/geocoder/v1/' + "?location=" + latitude + ',' +
+            longitude + "&key=" + 'HT7BZ-3N4KG-BIVQS-IOMHU-3GWYO-VWBFS' + "&get_poi=1";
+        that.fetchAddress(mapInfo)
+      },
+      fail(){
+        Dialog.confirm({
+          title: '提示',
+          message: '请授权位置信息，以更好地使用本程序',
+        }).then(() => {
+          // wx.navigateTo({
+          //   url:'/pages/permission/permission'
+          // })
+          wx.openSetting()
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    })
+
+
+
+
+
+  },
+  /**
+   * 发送请求获取地图接口的返回值
+   */
+  fetchAddress(mapInfo) {
+    let that = this;
+    // 调用请求
+    wx.request({
+      url: mapInfo,
+      data: {},
+      method: 'GET',
+      success: (res) => {
+        if (res.statusCode == 200 && res.data.status == 0) {
+          // 从返回值中提取需要的业务地理信息数据
+          let add={
+            ...res.data.result.address_component,
+            ...res.data.result.formatted_addresses
+          }
+          that.setData({ addressDetail: add});
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -74,7 +155,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getLocation()
   },
 
   /**

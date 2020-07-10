@@ -1,0 +1,8 @@
+<!--pages/permission/permission.wxml-->
+<view class="page">
+
+
+    <view class="box">
+        <van-button bindtap="openSetting" custom-class="custom-class" type="warning">打开授权</van-button>
+    </view>
+</view>

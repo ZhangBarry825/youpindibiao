@@ -1,0 +1,33 @@
+<!--pages/myshop/shop-membership-detail/shop-membership-detail.wxml-->
+<view class="page">
+    <view class="info">
+        <view class="left">
+            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+        </view>
+        <view class="right">
+            <view class="line1">花开半夏(30125b9605)</view>
+            <view class="line2">推荐人：张浩南</view>
+            <view class="line3">推荐时间：2016.06.20 10:43
+            </view>
+        </view>
+    </view>
+
+    <view class="items">
+        <view class="title">
+            <text>订单号</text>
+            <text>我获得的佣金</text>
+        </view>
+        <view class="item">
+            <view class="order">2017031203220</view>
+            <view class="count">￥20.00</view>
+        </view>
+        <view class="item">
+            <view class="order">2017031203220</view>
+            <view class="count">￥20.00</view>
+        </view>
+        <view class="item">
+            <view class="order">2017031203220</view>
+            <view class="count">￥20.00</view>
+        </view>
+    </view>
+</view>
