@@ -7,7 +7,16 @@ Page({
   data: {
 
   },
-
+  goTo(e){
+    let path=e.currentTarget.dataset.path
+    if(e.currentTarget.dataset.type=='switch'){
+      wx.switchTab({
+        url: path
+      })
+    }else {
+      wx.navigateTo({url:path})
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

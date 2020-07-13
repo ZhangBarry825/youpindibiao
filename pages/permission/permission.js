@@ -1,5 +1,5 @@
 // pages/permission/permission.js
-import api from '../../utils/api'
+const api = require('../../utils/api.js');
 Page({
 
   /**

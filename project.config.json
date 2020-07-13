@@ -206,6 +206,12 @@
 					"pathName": "pages/permission/permission",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的钱包",
+					"pathName": "pages/my-wallet/my-wallet",
+					"scene": null
 				}
 			]
 		}

@@ -1,5 +1,6 @@
 // pages/home/home.js
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -52,7 +53,10 @@ Page({
   },
   onSearchChange(event){
     console.log(event.detail)
-    console.log(this.data.searchKeyword)
+    this.setData({searchKeyword:event.detail})
+    wx.navigateTo({
+      url:'/pages/search-result/search-result?searchKeyword='+event.detail
+    })
   },
   onSearchCancel(event){
     console.log(event.detail)
@@ -69,7 +73,6 @@ Page({
       icon: 'none',
     });
   },
-
   toggleShow(){
     if(this.data.showMenus){
       this.setData({
@@ -80,9 +83,6 @@ Page({
         showMenus:true
       })
     }
-  },
-  hideAddress(){
-
   },
   getLocation(){
     let that = this
@@ -101,7 +101,7 @@ Page({
         })
         // 构建请求地址
         let mapInfo = 'https://apis.map.qq.com/ws/geocoder/v1/' + "?location=" + latitude + ',' +
-            longitude + "&key=" + 'HT7BZ-3N4KG-BIVQS-IOMHU-3GWYO-VWBFS' + "&get_poi=1";
+            longitude + "&key=" + '2F2BZ-73GKU-ENKVJ-4RIAJ-GBNMJ-OHFD2' + "&get_poi=1";
         that.fetchAddress(mapInfo)
       },
       fail(){
@@ -144,6 +144,12 @@ Page({
           that.setData({ addressDetail: add});
         }
       }
+    })
+  },
+
+  async fetchData(){
+    await api.post({
+
     })
   },
   /**
