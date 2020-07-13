@@ -176,7 +176,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.fetchAddress()
 
+    console.log('下拉刷新')
+
+    setTimeout(()=>{
+      wx.stopPullDownRefresh()
+      console.log('停止下拉刷新')
+    },1000)
   },
 
   /**

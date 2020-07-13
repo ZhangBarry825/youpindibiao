@@ -94,7 +94,7 @@
         "selectedIconPath": "./static/images/menu2-selected.png"
       },
       {
-        "pagePath": "pages/shop/shop",
+        "pagePath": "pages/myshop/shop-index/shop-index",
         "text": "我的店铺",
         "iconPath": "./static/images/menu3.png",
         "selectedIconPath": "./static/images/menu3-selected.png"

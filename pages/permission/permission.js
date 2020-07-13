@@ -1,4 +1,5 @@
 // pages/permission/permission.js
+import api from '../../utils/api'
 Page({
 
   /**
@@ -7,7 +8,11 @@ Page({
   data: {
 
   },
-  openSetting() {  wx.openSetting()},
+  bindGetUserInfo(e) {
+    // wx.openSetting()
+    console.log(e.detail,'e')
+    api.login(e.detail)
+  },
   /**
    * 生命周期函数--监听页面加载
    */

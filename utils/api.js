@@ -1,21 +1,20 @@
+const AppID = 'wx0c8c674ce4c354d3'
+const AppSecret = '0c8c793e52092549f950fd666ca29850'
+const Host = 'https://www.xxxx.com'
 
-const AppID='wx0c8c674ce4c354d3'
-const AppSecret='0c8c793e52092549f950fd666ca29850'
-const Host='https://www.xxxx.com'
-
-module.exports={
-    Host:Host,
-    AppID:AppID,
-    AppSecret:AppSecret,
-    get(options){
-        options.method='GET'
+module.exports = {
+    Host: Host,
+    AppID: AppID,
+    AppSecret: AppSecret,
+    get(options) {
+        options.method = 'GET'
         this.request(options)
     },
-    post(options){
-        options.method='POST'
+    post(options) {
+        options.method = 'POST'
         this.request(options)
     },
-    request(options){
+    request(options) {
         let token = '';
         try {
             token = wx.getStorageSync('token');
@@ -23,15 +22,15 @@ module.exports={
             // Do something when catch error
         }
         wx.request({
-            url: Host+options.url,
+            url: Host + options.url,
             data: options.data,
-            method:options.method,
+            method: options.method,
             header: {
                 'Cache-Control': 'no-cache',
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'XX-Token': token,
             },
-            success (res) {
+            success(res) {
                 console.log(res.data)
             },
             fail: function (res) {
@@ -40,6 +39,26 @@ module.exports={
                 }
             },
             complete: options.complete ? options.complete : null
+        })
+    },
+    login(options) {
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    console.log(res)
+                    //发起网络请求
+                    // wx.request({
+                    //     url: 'https://test.com/onLogin',
+                    //     data: {
+                    //         code: res.code,
+                    //         avatarUrl: options.userInfo.avatarUrl,
+                    //         nickName: options.userInfo.nickName,
+                    //     }
+                    // })
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
         })
     }
 }
