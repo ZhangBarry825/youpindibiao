@@ -157,6 +157,13 @@
 }
 .page .shopping .time .red {
   color: #F16500;
+  padding-left: 10rpx;
+}
+.page .shopping .time .timeItem {
+  display: inline-block;
+  font-size: 25rpx;
+  text-align: center;
+  color: #F16500;
 }
 .page .shopping .goods {
   width: 100%;

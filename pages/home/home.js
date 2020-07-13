@@ -17,6 +17,8 @@ Page({
     timeTagsActive:0,
     showRedPackage:true,
     showGetAddress:true,
+    time: 0.5 * 60 * 60 * 1000,
+    timeData: {},
 
     addressDetail:{
       city: "",
@@ -32,7 +34,14 @@ Page({
 
     }
   },
-
+  onTimeOut(){
+    console.log('倒计时结束')
+  },
+  onTimeChange(e) {
+    this.setData({
+      timeData: e.detail,
+    });
+  },
   //领取红包
   catchRedPackage(){
     console.log('我领到红包了')
