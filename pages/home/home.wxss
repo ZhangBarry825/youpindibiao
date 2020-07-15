@@ -72,7 +72,7 @@
   height: 60%;
 }
 .page .menu-box .items {
-  height: 235rpx;
+  height: auto;
   transition: 1s;
   overflow: hidden;
   width: 100%;
@@ -154,6 +154,7 @@
   font-weight: 400;
   color: #4c4c4c;
   line-height: 35rpx;
+  flex-direction: row;
 }
 .page .shopping .time .red {
   color: #F16500;
@@ -243,6 +244,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.page .shopping .goods .good .right .detail .disabled {
+  background: #cccccc;
 }
 .page .shops {
   margin-top: 20rpx;

@@ -84,7 +84,7 @@
 
 
     .items {
-      height: 235rpx;
+      height: auto;
       transition:1s;
 
       overflow: hidden;
@@ -178,7 +178,7 @@
       font-weight: 400;
       color: rgba(76, 76, 76, 1);
       line-height: 35rpx;
-
+      flex-direction: row;
       .red {
         color: #F16500;
         padding-left: 10rpx;
@@ -281,6 +281,9 @@
               display: flex;
               justify-content: center;
               align-items: center;
+            }
+            .disabled{
+              background: rgba(204,204,204,1);
             }
           }
         }

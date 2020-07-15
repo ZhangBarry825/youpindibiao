@@ -1,5 +1,6 @@
 // pages/home/home.js
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import {formatTime, formatTimeTwo, saveOneDecimal, saveTwoDecimal} from "../../utils/util";
 const api = require('../../utils/api.js');
 Page({
 
@@ -7,18 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    ],
+    bannerList: [],
+    categoryList: [],
+    advertisementList: [],
+    hotGoodsList: [],
     showMenus:true,
     searchKeyword:"",
     tagsActive:0,
     timeTagsActive:0,
-    showRedPackage:true,
+    showRedPackage:false,
     showGetAddress:true,
-    time: 0.5 * 60 * 60 * 1000,
+    leftTime: 0,
+    grapStart:false,
+    nowScrapIndex:0,//选择的当前抢购时间下标
     timeData: {},
 
     addressDetail:{
@@ -68,10 +70,11 @@ Page({
     });
   },
   onTimeTagsChange(event) {
-    wx.showToast({
-      title: `切换到标签 ${event.detail.name}`,
-      icon: 'none',
-    });
+   let t=event.detail.name
+    this.setData({
+      nowScrapIndex:event.detail.name
+    })
+    this.getScrapGoods(event.detail.name)
   },
   toggleShow(){
     if(this.data.showMenus){
@@ -103,15 +106,13 @@ Page({
         let mapInfo = 'https://apis.map.qq.com/ws/geocoder/v1/' + "?location=" + latitude + ',' +
             longitude + "&key=" + '2F2BZ-73GKU-ENKVJ-4RIAJ-GBNMJ-OHFD2' + "&get_poi=1";
         that.fetchAddress(mapInfo)
+        that.getNearbyShop()
       },
       fail(){
         Dialog.confirm({
           title: '提示',
           message: '请授权位置信息，以更好地使用本程序',
         }).then(() => {
-          // wx.navigateTo({
-          //   url:'/pages/permission/permission'
-          // })
           wx.openSetting()
         }).catch(() => {
           // on cancel
@@ -146,16 +147,182 @@ Page({
       }
     })
   },
+  getNearbyShop(){
+    let that = this
+    //首页附近的店铺展示
+    api.post({
+      url:'/business/businessList',
+      noLogin:true,
+      data:{
+        pageSize:3,
+        pageNum:1,
+        lng:that.data.addressData.longitude,
+        lat:that.data.addressData.latitude
 
-  async fetchData(){
-    await api.post({
-
+      },
+      success:res=>{
+        for (const resKey in res.data.list) {
+          res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
+          res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
+          res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
+          res.data.list[resKey].distance=saveTwoDecimal(res.data.list[resKey].distance)
+          res.data.list[resKey].shopstar=saveOneDecimal(res.data.list[resKey].shopstar)
+        }
+        that.setData({
+          nearbyShopList:res.data.list
+        })
+      }
     })
+  },
+  getScrapGoods(timeLimitState = 0){
+    let that = this
+    //首页显示抢购
+    api.post({
+      url:'/timeLimit/tGoodsTimeLimitList',
+      noLogin:true,
+      data:{
+        timeLimitState:timeLimitState,
+        pageSize:2,
+      },
+      success:res=>{
+        console.log(res)
+        for (const resKey in res.data.data.list) {
+          res.data.data.list[resKey].thumbnail=api.Host+'/'+res.data.data.list[resKey].thumbnail
+        }
+        let serverTime=res.data.localtime
+        let startTime=0
+        let endTime=new Date(new Date().toLocaleDateString()).getTime()+24*60*60*1000
+        if(timeLimitState==0){
+          startTime=new Date(new Date().toLocaleDateString()).getTime()+10*60*60*1000
+        }else if(timeLimitState==1){
+          startTime=new Date(new Date().toLocaleDateString()).getTime()+16*60*60*1000
+        }else if(timeLimitState==2){
+          startTime=new Date(new Date().toLocaleDateString()).getTime()+20*60*60*1000
+        }
+        if(serverTime<startTime){
+          //未开始
+          that.setData({
+            leftTime:startTime-serverTime,
+            grapStart:false
+          })
+        }else {
+          //已开始
+          that.setData({
+            leftTime:endTime-serverTime,
+            grapStart:true
+          })
+        }
+        console.log(this.data.leftTime)
+        that.setData({
+          grabList:res.data.data.list
+        })
+        console.log(res.data.data.list,'首页显示抢购')
+      }
+    })
+  },
+  fetchData(){
+    let that = this
+    //首页显示抢购
+    this.getScrapGoods()
+    //轮播
+    api.get({
+      url:'/image/showAd',
+      noLogin:true,
+      data:{
+        pageSize:3
+      },
+      success:res=>{
+        for (const resKey in res.data.list) {
+          res.data.list[resKey].imageUrl=api.Host+'/'+res.data.list[resKey].imageUrl
+        }
+        that.setData({
+          bannerList:res.data.list
+        })
+      }
+    })
+    //首页精选类型
+    api.get({
+      url:'/goodsType/TypeList',
+      noLogin:true,
+      data:{},
+      success:res=>{
+        that.setData({
+          categoryList:res.data
+        })
+      }
+    })
+    //首页板块广告
+    api.get({
+      url:'/image/partsAd',
+      noLogin:true,
+      data:{
+        pageSize:4
+      },
+      success:res=>{
+        for (const resKey in res.data.list) {
+          res.data.list[resKey].imageUrl=api.Host+'/'+res.data.list[resKey].imageUrl
+        }
+        that.setData({
+          advertisementList:res.data.list
+        })
+      }
+    })
+    //首页热门商品
+    api.get({
+      url:'/hotGoods/hotGoodsList',
+      noLogin:true,
+      data:{
+        pageSize:6
+      },
+      success:res=>{
+        for (const resKey in res.data.list) {
+          res.data.list[resKey].thumbnail=api.Host+'/'+res.data.list[resKey].thumbnail
+        }
+        that.setData({
+          hotGoodsList:res.data.list
+        })
+      }
+    })
+    //首页最新上架
+    api.get({
+      url:'/newGoods/newGoodsList',
+      noLogin:true,
+      data:{
+        pageSize:6
+      },
+      success:res=>{
+        for (const resKey in res.data.list) {
+          res.data.list[resKey].thumbnail=api.Host+'/'+res.data.list[resKey].thumbnail
+        }
+        that.setData({
+          newGoodsList:res.data.list
+        })
+      }
+    })
+
+  },
+  goTo(e){
+    let path=e.currentTarget.dataset.path
+    let id=e.currentTarget.dataset.id
+    wx.navigateTo({
+      url:path,
+    })
+    console.log(path)
+    console.log(id)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.fetchData()
+    // wx.navigateTo({
+    //   url:'/pages/permission/permission',
+    //   events: {
+    //     refreshData(){
+    //       console.log('刷新数据啦')
+    //     }
+    //   }
+    // })
 
   },
 
@@ -192,12 +359,10 @@ Page({
    */
   onPullDownRefresh: function () {
     this.fetchAddress()
-
-    console.log('下拉刷新')
+    this.fetchData()
 
     setTimeout(()=>{
       wx.stopPullDownRefresh()
-      console.log('停止下拉刷新')
     },1000)
   },
 

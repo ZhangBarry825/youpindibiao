@@ -10,8 +10,26 @@ Page({
   },
   bindGetUserInfo(e) {
     // wx.openSetting()
-    console.log(e.detail,'e')
-    api.login(e.detail)
+    // console.log(e.detail,'e')
+    api.login({
+      ...e.detail,
+      success:res=>{
+        wx.showToast({
+          title: '登录成功!',
+          icon: 'success',
+          duration: 1000
+        });
+
+        setTimeout(()=>{
+          const eventChannel = this.getOpenerEventChannel()
+          eventChannel.emit('refreshData', {});
+          wx.navigateBack({
+            delta:-1
+          })
+        },1000)
+      }
+
+    })
   },
   /**
    * 生命周期函数--监听页面加载

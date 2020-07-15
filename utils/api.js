@@ -1,6 +1,6 @@
 const AppID = 'wx0c8c674ce4c354d3'
 const AppSecret = '0c8c793e52092549f950fd666ca29850'
-const Host = 'https://www.xxxx.com'
+const Host = 'http://192.168.1.12:8081'
 
 module.exports = {
     Host: Host,
@@ -21,40 +21,64 @@ module.exports = {
         } catch (e) {
             // Do something when catch error
         }
-        wx.request({
-            url: Host + options.url,
-            data: options.data,
-            method: options.method,
-            header: {
-                'Cache-Control': 'no-cache',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'XX-Token': token,
-            },
-            success(res) {
-                console.log(res.data)
-            },
-            fail: function (res) {
-                if (options.fail) {
-                    options.fail(res)
-                }
-            },
-            complete: options.complete ? options.complete : null
-        })
+        if(options.noLogin){
+            wx.request({
+                url: Host + options.url,
+                data: options.data,
+                method: options.method,
+                header: {
+                    'Cache-Control': 'no-cache',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'XX-Token': token,
+                },
+                success(res) {
+                    if(res.data){
+                        options.success(res.data);
+                    }else {
+                        options.success(res);
+                    }
+
+                },
+                fail: function (res) {
+                    if (options.fail) {
+                        options.fail(res)
+                    }
+                },
+                complete: options.complete ? options.complete : null
+            })
+        }else {
+            wx.navigateTo({url:'/pages/permission/permission'})
+        }
+
     },
-    login(options) {
+    login(data) {
+        let that = this
+
         wx.login({
             success(res) {
                 if (res.code) {
-                    console.log(res)
-                    //发起网络请求
-                    // wx.request({
-                    //     url: 'https://test.com/onLogin',
-                    //     data: {
-                    //         code: res.code,
-                    //         avatarUrl: options.userInfo.avatarUrl,
-                    //         nickName: options.userInfo.nickName,
-                    //     }
-                    // })
+                    // 发起网络请求s
+                    that.request({
+                        url:'/common/wxEntry',
+                        noLogin:true,
+                        method:'POST',
+                        data:{
+                            code: res.code,
+                            avatarUrl: data.userInfo.avatarUrl,
+                            nickName: data.userInfo.nickName,
+                        },
+                        success:res=>{
+                            console.log(res)
+                            if(res.data){
+                                wx.setStorageSync('token',res.data)
+                                data.success({
+                                    token:res.data
+                                })
+
+
+                            }
+                        }
+                    })
                 } else {
                     console.log('登录失败！' + res.errMsg)
                 }
