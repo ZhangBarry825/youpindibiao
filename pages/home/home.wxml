@@ -48,7 +48,7 @@
                 <image src="../../static/images/clock.png"></image>
                 限时抢购
             </view>
-            <view class="right">查看更多+</view>
+            <view class="right" bind:tap="goTo" data-path="/pages/panic-buying/panic-buying">查看更多+</view>
         </view>
         <van-tabs color="#F16500" active="{{ timeTagsActive }}" bind:change="onTimeTagsChange">
             <van-tab title="10:00"></van-tab>
@@ -56,8 +56,8 @@
             <van-tab title="20:00"></van-tab>
         </van-tabs>
         <view class="time">
-            <text wx:if="{{grapStart}}">正在进行中，离结束还有</text>
-            <text wx:if="{{!grapStart}}">未开始，离开始还有</text>
+            <text wx:if="{{scrapStart}}">正在进行中，离结束还有</text>
+            <text wx:if="{{!scrapStart}}">未开始，离开始还有</text>
             <view class="red">
                 <van-count-down bind:finish="onTimeOut" use-slot time="{{ leftTime }}" bind:change="onTimeChange">
                     <text class="timeItem">{{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{ timeData.seconds }}</text>
@@ -68,10 +68,10 @@
         <view class="goods">
             <view class="good" wx:for="{{grabList}}" wx:key="item">
                 <view class="left">
-                    <image mode="aspectFill" src="{{item.thumbnail}}"></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail"></image>
                 </view>
                 <view class="right">
-                    <view class="title">
+                    <view class="title" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">
                         {{item.name}}
                     </view>
                     <view class="detail">
@@ -85,7 +85,7 @@
                                 <view class="color">￥{{item.marketMoney}}</view>
                             </view>
                         </view>
-                        <view class="button {{grapStart?'':'disabled'}}">立即抢购</view>
+                        <view class="button {{scrapStart?'':'disabled'}}">立即抢购</view>
                     </view>
                 </view>
             </view>
@@ -154,14 +154,14 @@
                 <image src="../../static/images/goods.png"></image>
                 热门商品
             </view>
-            <view class="right">查看更多+</view>
+            <view class="right" bind:tap="goTo" data-type="hotGoods">查看更多+</view>
         </view>
         <view class="good-items">
             <view class="good-item" wx:for="{{hotGoodsList}}" wx:key="item">
                 <view class="good-pic">
-                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo" data-path="pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
                 </view>
-                <view class="title" bind:tap="goTo" data-path="pages/goods-detail/goods-detail" data-id="{{item.id}}">{{item.name}}</view>
+                <view class="title" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">{{item.name}}</view>
                 <view class="detail">
                     <view class="price">
                         <view class="text1">￥{{item.money}}</view>
@@ -185,14 +185,14 @@
                 <image src="../../static/images/goods-up.png"></image>
                 最新上架
             </view>
-            <view class="right">查看更多+</view>
+            <view class="right" bind:tap="goTo" data-type="newGoods">查看更多+</view>
         </view>
         <view class="good-items">
             <view class="good-item" wx:for="{{newGoodsList}}" wx:key="item">
                 <view class="good-pic">
-                    <image mode="aspectFill" src="{{item.thumbnail}}"></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}"  bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
                 </view>
-                <view class="title">{{item.name}}</view>
+                <view class="title"  bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">{{item.name}}</view>
                 <view class="detail">
                     <view class="price">
                         <view class="text1">￥{{item.money}}</view>

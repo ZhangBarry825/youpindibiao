@@ -1,6 +1,6 @@
 // pages/home/home.js
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
-import {formatTime, formatTimeTwo, saveOneDecimal, saveTwoDecimal} from "../../utils/util";
+import {formatTimeTwo, saveOneDecimal, saveTwoDecimal} from "../../utils/util";
 const api = require('../../utils/api.js');
 Page({
 
@@ -19,7 +19,7 @@ Page({
     showRedPackage:false,
     showGetAddress:true,
     leftTime: 0,
-    grapStart:false,
+    scrapStart:false,
     nowScrapIndex:0,//选择的当前抢购时间下标
     timeData: {},
 
@@ -39,6 +39,7 @@ Page({
   },
   onTimeOut(){
     console.log('倒计时结束')
+    this.getScrapGoods(this.data.nowScrapIndex)
   },
   onTimeChange(e) {
     this.setData({
@@ -203,20 +204,19 @@ Page({
           //未开始
           that.setData({
             leftTime:startTime-serverTime,
-            grapStart:false
+            scrapStart:false
           })
         }else {
           //已开始
           that.setData({
             leftTime:endTime-serverTime,
-            grapStart:true
+            scrapStart:true
           })
         }
         console.log(this.data.leftTime)
         that.setData({
           grabList:res.data.data.list
         })
-        console.log(res.data.data.list,'首页显示抢购')
       }
     })
   },
@@ -302,6 +302,13 @@ Page({
 
   },
   goTo(e){
+    let type=e.currentTarget.dataset.type
+    if(type && type=='newGoods'||type=='hotGoods'){
+      wx.navigateTo({
+        url:'/pages/goods-list/goods-list?type='+type,
+      })
+      return
+    }
     let path=e.currentTarget.dataset.path
     let id=e.currentTarget.dataset.id
     wx.navigateTo({

@@ -211,6 +211,14 @@
 					"id": -1,
 					"name": "我的钱包",
 					"pathName": "pages/my-wallet/my-wallet",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 22,
+					"name": "限时抢购",
+					"pathName": "pages/panic-buying/panic-buying",
+					"query": "",
 					"scene": null
 				}
 			]
