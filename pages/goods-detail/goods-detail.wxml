@@ -1,24 +1,25 @@
 <!--pages/goods-detail/goods-detail.wxml-->
+
 <view class="page">
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
-        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
-            <image src="{{item}}" class="slide-image"/>
+        <swiper-item wx:for="{{goodsDetail.lunbo}}" wx:key="item">
+            <image mode="aspectFill" src="{{item.imageUrl}}" class="slide-image"/>
         </swiper-item>
     </swiper>
     <view class="goods-info">
-        <view class="goods-title">Phantom 3 Standard 2.7K航拍器无人机</view>
+        <view class="goods-title">{{goodsDetail.list[0].name}}</view>
         <view class="goods-price">
             <view class="left">
                 <view class="line1">
                     <view class="text1">抢购价：
-                        <view class="num">￥5990.00</view>
+                        <view class="num">￥{{goodsDetail.list[0].money}}</view>
                     </view>
-                    <view class="text2">原价： <view class="num">￥6000.00</view></view>
+                    <view class="text2">原价： <view class="num">￥{{goodsDetail.list[0].marketMoney}}</view></view>
                 </view>
                 <view class="line2">
-                    <view class="text1">销量：1265</view>
-                    <view class="text2">库存：1999</view>
+                    <view class="text1">销量：{{goodsDetail.list[0].sales}}</view>
+                    <view class="text2">库存：{{goodsDetail.list[0].stock}}</view>
                 </view>
             </view>
             <view class="right" bind:tap="showShare">
@@ -37,21 +38,28 @@
             <view class="border"></view>
             热门评论
         </view>
-        <view class="item">
+        <view class="item" wx:for="{{goodsDetail.evaluate}}" wx:key="item">
             <view class="line1">
-                <view class="name">谭某某</view>
+                <view class="name">{{item.username}}</view>
                 <view class="stars">
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
+                    <van-rate
+                            value="{{item.star}}"
+                            size="{{ 18 }}"
+                            allow-half
+                            color="#ee0a24"
+                            void-color="#eee"
+                            void-icon="star"
+                            readonly
+                    />
                 </view>
             </view>
-            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
-            <view class="line3">2016-02-18 10:10:10</view>
-            <view class="button">查看更多评论</view>
+            <view class="line2">{{item.text}}</view>
+            <view class="line3">
+                <van-image wx:key="index" wx:for-item="itm" wx:for-index="idx" wx:for="{{item.image}}" bind:tap="previewImg" data-urls="{{item.image}}" data-url="{{itm.imageUrl}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{itm.imageUrl}}" />
+            </view>
+            <view class="line4">{{item.createtime}}</view>
         </view>
+        <view class="button" bind:tap="goTo" data-type="comment" data-id="{{goodsDetail.list[0].id}}">{{goodsDetail.evaluate.list.length}}查看更多评论</view>
     </view>
 
     <view class="goods-detail">
@@ -60,11 +68,8 @@
             商品详情
         </view>
         <view class="content">
-            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <import src="../../utils/wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
         </view>
     </view>
 

@@ -220,6 +220,13 @@
 					"pathName": "pages/panic-buying/panic-buying",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 23,
+					"name": "商品详情",
+					"pathName": "pages/goods-detail/goods-detail",
+					"query": "id=1514944678363931",
+					"scene": null
 				}
 			]
 		}

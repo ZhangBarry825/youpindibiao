@@ -1,4 +1,7 @@
 // pages/goods-detail/goods-detail.js
+import {formatTime} from "../../utils/util";
+
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -13,6 +16,32 @@ Page({
     showShare:false,
     showSpecification:false,
     number:1,
+    goodsDetail:{},
+    id:''
+  },
+  goTo(e){
+    let type=e.currentTarget.dataset.type
+    let id=e.currentTarget.dataset.id
+    console.log(type,id)
+    if(type =='comment'){
+      wx.navigateTo({
+        url:'/pages/goods-comment/goods-comment?id='+id,
+      })
+      return
+    }
+    // console.log(path)
+  },
+  previewImg(e){
+    let url=e.currentTarget.dataset.url
+    let urls=e.currentTarget.dataset.urls
+    let newUrls=[]
+    for (const urlsKey in urls) {
+      newUrls.push(urls[urlsKey].imageUrl)
+    }
+    wx.previewImage({
+      current: url, // 当前显示图片的http链接
+      urls: newUrls// 需要预览的图片http链接列表
+    })
   },
   minusNum(){
     if(this.data.number>1){
@@ -34,11 +63,58 @@ Page({
   onSpecificationClose(){
     this.setData({ showSpecification: false });
   },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/showGoods/showGood',
+      noLogin: true,
+      data:{
+        goodsId:that.data.id
+      },
+      success(res){
+        res.data.list[0].thumbnail=api.Host+'/'+res.data.list[0].thumbnail
+        for (const thatKey in res.data.lunbo) {
+          res.data.lunbo[thatKey].imageUrl=api.Host+'/'+res.data.lunbo[thatKey].imageUrl
+        }
+        for (const thatKey in res.data.evaluate) {
+          res.data.evaluate[thatKey].createtime=formatTime(res.data.evaluate[thatKey].createtime)
+          for (const argumentsKey in res.data.evaluate[thatKey].image) {
+            res.data.evaluate[thatKey].image[argumentsKey].imageUrl=api.Host+'/'+res.data.evaluate[thatKey].image[argumentsKey].imageUrl
+          }
+        }
+
+        let WxParse = require('../../utils/wxParse/wxParse.js');
+        // let article = res.data.list[0].detail
+        let article = res.data.list[0].detail
+        /**
+         * WxParse.wxParse(bindName , type, data, target,imagePadding)
+         * 1.bindName绑定的数据名(必填)
+         * 2.type可以为html或者md(必填)
+         * 3.data为传入的具体数据(必填)
+         * 4.target为Page对象,一般为this(必填)
+         * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+         */
+        WxParse.wxParse('article', 'html', article, that, 10);
+
+
+        that.setData({
+          goodsDetail:res.data,
+          // imgUrls:res.data.lunbo
+        })
+        console.log(that.data.goodsDetail)
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.id,990)
+    this.setData({
+      id:options.id
+    })
+    this.fetchData()
   },
 
   /**
@@ -73,7 +149,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.fetchData()
 
+    setTimeout(()=>{
+      wx.stopPullDownRefresh()
+    },1000)
   },
 
   /**
@@ -87,6 +167,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: this.data.goodsDetail.list[0].name,
+      path: '/pages/goods-detail/goods-detail?id='+this.data.goodsDetail.list[0].id
+    }
   }
 })

@@ -15,6 +15,9 @@ module.exports = {
         this.request(options)
     },
     request(options) {
+        wx.showLoading({
+            title: '加载中',
+        })
         let token = '';
         try {
             token = wx.getStorageSync('token');
@@ -44,7 +47,12 @@ module.exports = {
                         options.fail(res)
                     }
                 },
-                complete: options.complete ? options.complete : null
+                complete(){
+                    setTimeout(function () {
+                        wx.hideLoading()
+                    }, 300)
+                    options.complete ? options.complete : null
+                }
             })
         }else {
             wx.navigateTo({url:'/pages/permission/permission'})
