@@ -54,6 +54,11 @@ Page({
   hideRedPackage(){
     this.setData({ showRedPackage: false });
   },
+  onSearchFocus(){
+    // wx.navigateTo({
+    //   url:'/pages/search-result/search-result'
+    // })
+  },
   onSearchChange(event){
     console.log(event.detail)
     this.setData({searchKeyword:event.detail})

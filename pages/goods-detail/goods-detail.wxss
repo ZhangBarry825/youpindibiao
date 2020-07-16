@@ -186,6 +186,16 @@
   font-weight: 400;
   color: #e3353f;
 }
+.page .comment .no-comment {
+  width: 100%;
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #666666;
+}
 .page .goods-detail {
   padding-bottom: 97rpx;
   margin-top: 10rpx;

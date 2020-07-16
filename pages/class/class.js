@@ -73,8 +73,11 @@ Page({
       focus:false
     })
   },
-  onSearchClick(){
-    console.log(this.data.searchKeyword)
+  onSearchClick(event){
+    console.log(event.detail)
+    wx.navigateTo({
+      url:'/pages/search-result/search-result?searchKeyword='+event.detail
+    })
   },
   onSearchChange(e){
     this.setData({

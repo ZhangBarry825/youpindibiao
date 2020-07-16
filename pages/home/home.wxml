@@ -6,6 +6,7 @@
     </view>
     <view class="search-box">
         <van-search
+                bind:focus="onSearchFocus"
                 class="searchInput"
                 value="{{ searchKeyword }}"
                 bind:search="onSearchChange"

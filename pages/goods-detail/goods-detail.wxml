@@ -59,7 +59,8 @@
             </view>
             <view class="line4">{{item.createtime}}</view>
         </view>
-        <view class="button" bind:tap="goTo" data-type="comment" data-id="{{goodsDetail.list[0].id}}">{{goodsDetail.evaluate.list.length}}查看更多评论</view>
+        <view class="button" wx:if="{{goodsDetail.evaluate.length>0}}" bind:tap="goTo" data-type="comment" data-id="{{goodsDetail.list[0].id}}">查看更多评论</view>
+        <view wx:else class="no-comment" >暂无评论</view>
     </view>
 
     <view class="goods-detail">

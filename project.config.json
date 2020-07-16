@@ -227,6 +227,13 @@
 					"pathName": "pages/goods-detail/goods-detail",
 					"query": "id=1514944678363931",
 					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "搜索结果（水）",
+					"pathName": "pages/search-result/search-result",
+					"query": "searchKeyword=水",
+					"scene": null
 				}
 			]
 		}

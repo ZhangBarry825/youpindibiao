@@ -15,30 +15,30 @@
         <!--        <view slot="action" style="color: #fff" bind:tap="onSearchClick">搜索</view>-->
         <view slot="action" wx:if="{{focus}}" style="color: #fff" bind:tap="onSearchCancel">取消</view>
     </van-search>
-    <view class="history" wx:if="{{focus}}">
-        <view class="title">
-            <image src="../../static/images/search-input.png"></image>
-            最近搜索
-        </view>
-        <view class="items1">
-            <view class="item">苹果</view>
-            <view class="item">男装</view>
-            <view class="item">女款春装</view>
-            <view class="item">平板电脑</view>
-            <view class="item">手机</view>
-            <view class="item">母婴用品</view>
-        </view>
-        <view class="title">
-            <image src="../../static/images/hot-input.png"></image>
-            热门搜索
-        </view>
-        <view class="items2">
-            <view class="item">女款春装</view>
-            <view class="item">平板电脑</view>
-            <view class="item">母婴用品</view>
-            <view class="item">手机</view>
-        </view>
-    </view>
+<!--    <view class="history" wx:if="{{focus}}">-->
+<!--        <view class="title">-->
+<!--            <image src="../../static/images/search-input.png"></image>-->
+<!--            最近搜索-->
+<!--        </view>-->
+<!--        <view class="items1">-->
+<!--            <view class="item">苹果</view>-->
+<!--            <view class="item">男装</view>-->
+<!--            <view class="item">女款春装</view>-->
+<!--            <view class="item">平板电脑</view>-->
+<!--            <view class="item">手机</view>-->
+<!--            <view class="item">母婴用品</view>-->
+<!--        </view>-->
+<!--        <view class="title">-->
+<!--            <image src="../../static/images/hot-input.png"></image>-->
+<!--            热门搜索-->
+<!--        </view>-->
+<!--        <view class="items2">-->
+<!--            <view class="item">女款春装</view>-->
+<!--            <view class="item">平板电脑</view>-->
+<!--            <view class="item">母婴用品</view>-->
+<!--            <view class="item">手机</view>-->
+<!--        </view>-->
+<!--    </view>-->
     <view class="page-content"  style="height:{{height?height+'px':'auto'}}">
         <van-tree-select
                 class="nav-box"
