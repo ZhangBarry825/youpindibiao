@@ -53,25 +53,9 @@
         >
 <!--            <image src="https://img.yzcdn.cn/vant/apple-1.jpg" slot="content" />-->
             <view class="goods-items" slot="content">
-                <view class="goods-item">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                    <view class="text">华为</view>
-                </view>
-                <view class="goods-item">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                    <view class="text">samsung</view>
-                </view>
-                <view class="goods-item">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                    <view class="text">apple</view>
-                </view>
-                <view class="goods-item" wx:for="{{15}}">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                    <view class="text">华为华为华为</view>
-                </view>
-                <view class="goods-item">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                    <view class="text">华为华为华为华为华为华为华为华为华为华为华为华为</view>
+                <view class="goods-item" wx:for="{{classItems}}" wx:key="item">
+                    <image mode="aspectFill" src="{{item.img}}"></image>
+                    <view class="text">{{item.typeName}}</view>
                 </view>
             </view>
         </van-tree-select>

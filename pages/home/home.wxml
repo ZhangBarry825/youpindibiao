@@ -28,7 +28,7 @@
         <view class="top">
             <view class="left">
                 <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">
-                    <van-tab title="{{item.goodsname}}" wx:for="{{categoryList}}" wx:key="item"></van-tab>
+                    <van-tab title="{{item.typeName}}" wx:for="{{categoryList}}" wx:key="item"></van-tab>
 <!--                    <van-tab title="国酒茅台"></van-tab>-->
 <!--                    <van-tab title="美容护肤"></van-tab>-->
 <!--                    <van-tab title="梦洁家纺"></van-tab>-->
@@ -40,7 +40,7 @@
             </view>
         </view>
         <view class="items {{showMenus?'':'heightController'}}">
-            <view class="item" wx:if="{{idx<12}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.goodsname}}</view>
+            <view class="item" wx:if="{{idx<12}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
         </view>
     </view>
     <view class="shopping">

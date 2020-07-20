@@ -1,5 +1,5 @@
-const AppID = 'wx0c8c674ce4c354d3'
-const AppSecret = '0c8c793e52092549f950fd666ca29850'
+const AppID = 'wxb34aa6beac0ea28e'
+const AppSecret = '63f87f5d2131a99099a07ad91607b8a6'
 const Host = 'http://192.168.1.12:8081'
 
 module.exports = {
@@ -78,12 +78,10 @@ module.exports = {
                         success:res=>{
                             console.log(res)
                             if(res.data){
-                                wx.setStorageSync('token',res.data)
-                                data.success({
-                                    token:res.data
-                                })
-
-
+                                wx.setStorageSync('token',res.data.token)
+                                wx.setStorageSync('nickName',data.userInfo.nickName)
+                                wx.setStorageSync('avatarUrl',data.userInfo.avatarUrl)
+                                data.success(res.data)
                             }
                         }
                     })

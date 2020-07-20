@@ -20,6 +20,7 @@
   height: 133rpx;
   border-radius: 50%;
   overflow: hidden;
+  background-color: #ffffff;
 }
 .mine-page .mine-back .left image {
   width: 100%;
@@ -30,6 +31,9 @@
   display: flex;
   flex-direction: column;
   padding-left: 30rpx;
+}
+.mine-page .mine-back .right .login {
+  color: #333;
 }
 .mine-page .mine-back .right .line1 {
   font-size: 35rpx;

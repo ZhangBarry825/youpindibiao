@@ -9,7 +9,7 @@ Page({
     searchKeyword:"",
     toView: 'green',
     focus:false,
-    height: wx.getSystemInfoSync().windowHeight - 100,
+    height: wx.getSystemInfoSync().windowHeight - 20,
     searchType:0,
     pageNum:1,
     pageSize:12,
@@ -53,6 +53,7 @@ Page({
     this.setData({
       searchType:event.detail.name
     })
+    this.searchData(this.data.searchType)
   },
   searchData(type=0,pageNum=1,append=false){
     let that = this
@@ -63,7 +64,7 @@ Page({
         data:{
           pageNum:pageNum,
           pageSize:that.data.pageSize,
-          goodName:that.data.searchKeyword,
+          name:that.data.searchKeyword,
         },
         success(res){
           if(res.data.list.length>0){
@@ -91,7 +92,39 @@ Page({
         }
       })
     }else if(that.data.searchType==1){
+      api.post({
+        url:'/business/queryBusiness',
+        noLogin: true,
+        data:{
+          pageNum:pageNum,
+          pageSize:that.data.pageSize,
+          name:that.data.searchKeyword,
+        },
+        success(res){
+          if(res.data.list.length>0){
+            for (const Key in res.data.list) {
+              res.data.list[Key].thumbnail=api.Host+'/'+res.data.list[Key].thumbnail
+            }
+            if(append){
+              that.setData({
+                shopList:that.data.shopList.concat(res.data.list)
+              })
+            }else {
+              that.setData({
+                shopList:res.data.list
+              })
+            }
+          }else {
+            wx.showToast({
+              title: '暂无更多',
+              icon: 'none',
+              duration: 2000
+            })
+          }
 
+
+        }
+      })
     }
 
   },

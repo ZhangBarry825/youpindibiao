@@ -10,7 +10,7 @@ Page({
   },
   bindGetUserInfo(e) {
     // wx.openSetting()
-    // console.log(e.detail,'e')
+    console.log(e.detail,'e')
     api.login({
       ...e.detail,
       success:res=>{
@@ -19,9 +19,12 @@ Page({
           icon: 'success',
           duration: 1000
         });
-
+        wx.setStorageSync('token',res.token)
+        wx.setStorageSync('nickName',e.detail.userInfo.nickName)
+        wx.setStorageSync('avatarUrl',e.detail.userInfo.avatarUrl)
         setTimeout(()=>{
           const eventChannel = this.getOpenerEventChannel()
+          console.log(eventChannel)
           eventChannel.emit('refreshData', {});
           wx.navigateBack({
             delta:-1

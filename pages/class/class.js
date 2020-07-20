@@ -1,4 +1,5 @@
 // pages/class/class.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -9,45 +10,9 @@ Page({
     focus:false,
     height: wx.getSystemInfoSync().windowHeight - 55,
     mainActiveIndex: 0,
-    activeId: null,
-    navItems:[
-      {
-        id:0,
-        text:'手机平板',
-      },
-      {
-        id:1,
-        text:'童装、玩具',
-      },
-      {
-        id:2,
-        text:'户外运动',
-      },
-      {
-        id:0,
-        text:'手机平板',
-      },
-      {
-        id:1,
-        text:'童装、玩具',
-      },
-      {
-        id:2,
-        text:'户外运动',
-      },
-      {
-        id:0,
-        text:'手机平板',
-      },
-      {
-        id:1,
-        text:'童装、玩具',
-      },
-      {
-        id:2,
-        text:'户外运动',
-      }
-    ]
+    activeId: 0,
+    navItems:[],
+    classItems:[]
   },
 
   onClickNav({ detail = {} }) {
@@ -84,11 +49,54 @@ Page({
       searchKeyword:e.detail
     })
   },
+  fetchData(){
+    let that = this
+    //获取一级分类
+    api.get({
+      url:'/goodsType/TypeList',
+      noLogin:true,
+      data:{
+
+      },
+      success(res){
+
+        for (const Key in res.data) {
+          res.data[Key].img=api.Host+'/'+res.data[Key].img
+          res.data[Key].text=res.data[Key].typeName
+        }
+        that.setData({
+          navItems:res.data
+        })
+
+        console.log(that.data.navItems)
+        that.fetchItem()
+      }
+    })
+  },
+  fetchItem(index = 0){
+    let that = this
+    api.get({
+      url:'/goodsType/childTypeList',
+      data:{
+        typeId:that.data.navItems[index].id
+      },
+      noLogin:true,
+      success(res) {
+        for (const Key in res.data) {
+          res.data[Key].img=api.Host+'/'+res.data[Key].img
+        }
+        that.setData({
+          classItems:res.data
+        })
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

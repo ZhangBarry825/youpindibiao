@@ -3,17 +3,21 @@
     <view class="mine-back">
         <image mode="aspectFill" class="back-img" src="../../static/images/mine-back.png"></image>
         <view class="left">
-            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <image wx:if="{{isLogin}}" mode="aspectFill" src="{{avatarUrl}}"></image>
+            <image wx:if="{{!isLogin}}" bind:tap="goLogin"  mode="aspectFill" src="../../static/images/login.png"></image>
         </view>
         <view class="right">
-            <view class="line1">举个栗子</view>
-            <view class="line2">15023245869</view>
-            <view class="line3">V1会员</view>
+            <view wx:if="{{isLogin}}" class="line1">{{nickName}}</view>
+            <view wx:if="{{isLogin}}" class="line2">{{phone}}</view>
+            <view wx:if="{{isLogin}}" class="line3">V1会员</view>
+
+            <view wx:if="{{!isLogin}}" bind:tap="goLogin" class="login">登录</view>
         </view>
     </view>
 
     <view class="order-box">
         <van-cell value="" is-link>
+
             <view slot="title">
                 <view class="order">
                     <view class="left">
