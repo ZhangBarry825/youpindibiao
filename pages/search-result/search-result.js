@@ -27,12 +27,14 @@ Page({
     console.log(e)
   },
   onSearchFocus(){
+    console.log(this.data.searchType)
     this.setData({
       focus:true
     })
   },
   onSearchCancel(){
     console.log('onSearchCancel')
+    console.log(this.data.searchType)
     this.setData({
       focus:false
     })
@@ -126,6 +128,18 @@ Page({
         }
       })
     }
+
+    api.post({
+      url:'/showGoods/toQuery',
+      data: {
+
+      },
+      noLogin:true,
+      success(res){
+        console.log(res,'历史记录')
+      }
+
+    })
 
   },
   goTo(e){

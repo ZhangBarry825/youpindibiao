@@ -41,9 +41,9 @@
         </view>
     </view>
 
-    <van-tabs wx:if="{{!focus}}" color="#f26500" bind:click="onTabsClick" animated>
-        <van-tab title="商品">
-            <scroll-view bind:scrolltolower="onReachBottom" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+    <van-tabs wx:if="{{!focus}}" color="#f26500" bind:click="onTabsClick" active="{{searchType}}" animated>
+        <van-tab title="商品" name="{{0}}" >
+            <scroll-view  bind:scrolltolower="onReachBottom" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
                 <view class="goods-box">
                     <view class="goods-item" wx:for="{{goodsList}}" >
                         <image class="goods-image" mode="aspectFill" src="{{item.thumbnail}}" wx:key="item" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail"></image>
@@ -63,7 +63,7 @@
             </scroll-view>
         </van-tab>
 
-        <van-tab title="商家">
+        <van-tab title="商家" name="{{1}}" >
             <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
                 <view class="shop-box">
                     <view class="shop-item">

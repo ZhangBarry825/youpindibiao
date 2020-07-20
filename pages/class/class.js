@@ -19,6 +19,8 @@ Page({
     this.setData({
       mainActiveIndex: detail.index || 0,
     });
+    console.log()
+    this.fetchItem(this.data.mainActiveIndex)
   },
 
   onClickNavItem({ detail = {} }) {

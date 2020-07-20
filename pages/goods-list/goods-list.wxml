@@ -1,15 +1,15 @@
 <!--pages/goods-list/goods-list.wxml-->
 <view class="page">
     <view class="menus">
-        <view class="menu" bind:tap="changeMenu" data-index="{{0}}">
+        <view class="menu" bind:tap="orderBy" data-index="{{0}}">
             <view class="text">销量</view>
             <image src="../../static/images/orderby.png"></image>
         </view>
-        <view class="menu" bind:tap="changeMenu" data-index="{{0}}">
+        <view class="menu" bind:tap="orderBy" data-index="{{1}}">
             <view class="text">好评</view>
             <image src="../../static/images/orderby.png"></image>
         </view>
-        <view class="menu" bind:tap="changeMenu" data-index="{{0}}">
+        <view class="menu" bind:tap="orderBy" data-index="{{2}}">
             <view class="text">价格</view>
             <image src="../../static/images/orderby.png"></image>
         </view>
@@ -18,10 +18,10 @@
     <scroll-view bindscrolltolower="appendData" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
         <view class="good-items">
             <view class="good-item" wx:for="{{goodsList}}" wx:key="item">
-                <view class="good-pic">
+                <view class="good-pic" bind:tap="goTo" data-id="{{item.id}}">
                     <image mode="aspectFill" src="{{item.thumbnail}}"></image>
                 </view>
-                <view class="title">{{item.name}}</view>
+                <view class="title"  bind:tap="goTo" data-id="{{item.id}}">{{item.name}}</view>
                 <view class="detail">
                     <view class="price">
                         <view class="text1">￥{{item.money}}</view>
