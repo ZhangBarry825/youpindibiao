@@ -8,7 +8,7 @@ Page({
   data: {
     activeIndex:0,
     height: wx.getSystemInfoSync().windowHeight+35,
-    pageSize:6,
+    pageSize:10,
     pageNum:1,
     goodsType:'',
     goodsList:[],

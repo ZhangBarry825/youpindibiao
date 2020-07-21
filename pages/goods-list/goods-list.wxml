@@ -24,7 +24,7 @@
                 <view class="title"  bind:tap="goTo" data-id="{{item.id}}">{{item.name}}</view>
                 <view class="detail">
                     <view class="price">
-                        <view class="text1">￥{{item.star}}</view>
+                        <view class="text1">￥{{item.money}}</view>
                         <view class="text2">￥{{item.marketMoney}}</view>
                     </view>
                     <view class="trolley">
@@ -32,6 +32,10 @@
                     </view>
                 </view>
             </view>
+        </view>
+        <view class="shop-none" wx:if="{{goodsList.length==0}}">
+            <image src="../../static/images/order-none.png"></image>
+            <view class="text">暂无数据</view>
         </view>
     </scroll-view>
 </view>

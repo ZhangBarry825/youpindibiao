@@ -339,6 +339,20 @@ Page({
     // console.log(path)
     // console.log(id)
   },
+  addTrolley(e){
+    let item = e.currentTarget.dataset.item
+    console.log(item)
+
+    api.post({
+      url:'/tCar/addTCarByUser',
+      data:{
+        goodsid:item.id,
+      },
+      success(res){
+        console.log(res)
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
