@@ -148,6 +148,19 @@ Page({
       phoneNumber: this.data.shopDetail.sysUser.tel
     })
   },
+  collectShop(){
+    let that = this
+    api.post({
+      url:'/share/addShareByUser',
+      data:{
+        state:3,
+        goodsid:that.data.id
+      },
+      success(res){
+        console.log(res,999)
+      }
+    })
+  },
   previewImg(e){
     let url=e.currentTarget.dataset.url
     let urls=e.currentTarget.dataset.urls

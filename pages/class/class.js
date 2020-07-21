@@ -95,6 +95,13 @@ Page({
     })
 
   },
+  goToGoodsList(e){
+    let id=e.currentTarget.dataset.id
+    wx.navigateTo({
+      url:'/pages/goods-list/goods-list?type=classType&typeId='+id
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */

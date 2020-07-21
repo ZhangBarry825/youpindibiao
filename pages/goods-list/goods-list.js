@@ -68,17 +68,21 @@ Page({
   },
   fetchData(pageNum=1,append=false,bySales='',byStar='',byPrice=''){
     let that = this
-    let url=this.data.goodsType=='hotGoods'?'/hotGoods/moreHotGoodsList':this.data.goodsType=='newGoods'?'/newGoods/moreNewGoodsList':''
+    let url=this.data.goodsType=='hotGoods'?'/hotGoods/moreHotGoodsList':this.data.goodsType=='newGoods'?'/newGoods/moreNewGoodsList':this.data.goodsType=='classType'?'/showGoods/queryGoodByType':''
+    let formData={
+      pageNum: pageNum,
+      pageSize: that.data.pageSize,
+      bySales:bySales,
+      byStar:byStar,
+      byPrice:byPrice,
+    }
+    if(this.data.goodsType=='classType'){
+      formData.typeId=that.data.typeId
+    }
     api.post({
       url:url,
       noLogin:true,
-      data:{
-        pageNum: pageNum,
-        pageSize: that.data.pageSize,
-        bySales:bySales,
-        byStar:byStar,
-        byPrice:byPrice,
-      },
+      data:formData,
       success(res){
         console.log(res)
         if(res.data.list.length>0){
@@ -110,7 +114,6 @@ Page({
     let that = this
     console.log('触底啦')
     this.fetchData(that.data.pageNum+1,true,that.data.bySales,that.data.byStar,that.data.byPrice)
-
   },
   goTo(e){
     let id = e.currentTarget.dataset.id
@@ -129,6 +132,11 @@ Page({
     this.setData({
       goodsType:type
     })
+    if(options.typeId){
+      this.setData({
+        typeId:options.typeId
+      })
+    }
     console.log(type)
     this.fetchData()
   },

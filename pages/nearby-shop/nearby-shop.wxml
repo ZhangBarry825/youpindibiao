@@ -33,7 +33,7 @@
             </view>
         </view>
         <view class="right">
-            <view class="line1">
+            <view class="line1"  bind:tap="collectShop">
                 <image src="../../static/images/like.png"></image>
                 收藏
             </view>

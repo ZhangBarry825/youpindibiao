@@ -58,127 +58,21 @@
         </van-tab>
 
         <van-tab title="商家" name="{{1}}" >
-            <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+            <scroll-view bind:scrolltolower="onReachBottom" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
                 <view class="shop-box">
-                    <view class="shop-item">
+                    <view class="shop-item" wx:for="{{shopList}}" wx:key="item" bind:tap="goTo" data-path="/pages/nearby-shop/nearby-shop" data-id="{{item.user_id}}">
                         <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                            <image mode="aspectFill" src="{{item.nearby_img}}"></image>
                         </view>
                         <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
+                            <view class="line1">{{item.nearby_name}}</view>
+                            <view class="line2">{{item.nearby_info}}</view>
+                            <view class="line3">地址：{{item.address}}</view>
                         </view>
                     </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
-                    </view>
-                    <view class="shop-item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                            <view class="line2">蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货蔬菜、生鲜、百货</view>
-                            <view class="line3">地址：郑州市商都路十里铺街交叉口向北200米路西郑州市商都路十里铺街交叉口向北200米路西</view>
-                        </view>
+                    <view class="shop-none" wx:if="{{shopList.length==0}}">
+                        <image src="../../static/images/order-none.png"></image>
+                        <view class="text">暂无数据</view>
                     </view>
                 </view>
             </scroll-view>

@@ -77,11 +77,18 @@
   font-size: 26rpx;
   font-weight: 400;
   color: #4d4d4d;
+  background-color: #ffffff;
+  border: none;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: unset;
+  line-height: unset;
 }
 .page .goods-info .goods-price .right image {
   width: 32rpx;
   height: 39rpx;
+}
+.page .goods-info .goods-price .right::after {
+  border: none;
 }
 .page .specification {
   width: 100%;

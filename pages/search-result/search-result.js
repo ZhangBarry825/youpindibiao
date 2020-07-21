@@ -1,4 +1,6 @@
 // pages/search-result/search-result.js
+import {formatTimeTwo, saveOneDecimal, saveTwoDecimal} from "../../utils/util";
+
 const api = require('../../utils/api.js');
 Page({
 
@@ -9,7 +11,7 @@ Page({
     searchKeyword:"",
     toView: 'green',
     focus:false,
-    height: wx.getSystemInfoSync().windowHeight - 100,
+    height: wx.getSystemInfoSync().windowHeight - 20,
     searchType:0,
     pageNum:1,
     pageSize:10,
@@ -98,7 +100,11 @@ Page({
               })
             }
           }else {
-
+            if(!append){
+              that.setData({
+                goodsList:[]
+              })
+            }
             wx.showToast({
               title: '暂无更多',
               icon: 'none',
@@ -120,8 +126,10 @@ Page({
         },
         success(res){
           if(res.data.list.length>0){
-            for (const Key in res.data.list) {
-              res.data.list[Key].thumbnail=api.Host+'/'+res.data.list[Key].thumbnail
+            for (const resKey in res.data.list) {
+              res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
+              res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
+              res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
             }
             if(append){
               that.setData({
@@ -133,6 +141,11 @@ Page({
               })
             }
           }else {
+            if(!append){
+              that.setData({
+                shopList:[]
+              })
+            }
 
             wx.showToast({
               title: '暂无更多',

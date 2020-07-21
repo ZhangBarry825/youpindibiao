@@ -52,7 +52,19 @@ Page({
     this.setData({number:this.data.number+1})
   },
   showShare() {
-    this.setData({ showShare: true });
+    // this.setData({ showShare: true });//开启底部分享方式
+    let that = this
+    api.post({
+      url:'/share/addShareByUser',
+      data:{
+        state:0,
+        goodsid:that.data.id
+      },
+      noLogin:true,
+      success(res){
+
+      }
+    })
   },
   onShareClose(){
     this.setData({ showShare: false });

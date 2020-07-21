@@ -22,10 +22,10 @@
                     <view class="text2">库存：{{goodsDetail.list[0].stock}}</view>
                 </view>
             </view>
-            <view class="right" bind:tap="showShare">
+            <button open-type='share' class="right" bind:tap="showShare">
                 <image src="../../static/images/share.png"></image>
                 分享
-            </view>
+            </button>
         </view>
     </view>
 
