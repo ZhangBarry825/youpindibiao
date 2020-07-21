@@ -1,18 +1,32 @@
 // pages/share/share.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    height: wx.getSystemInfoSync().windowHeight - 50
+    height: wx.getSystemInfoSync().windowHeight - 50,
+    type:1  //0：分享商品 1：分享店铺
+  },
+  fetchData(type=1){
+    api.post({
+      url:'/share/selectShareListByUser',
+      data:{
+        state:type,
+        token:wx.getStorageSync('token')
+      },
+      success(res){
+        console.log(res)
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

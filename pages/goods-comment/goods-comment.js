@@ -8,16 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    urls: [
-        "https://img.yzcdn.cn/vant/cat.jpeg",
-        "https://img.yzcdn.cn/vant/cat.jpeg",
-        "https://img.yzcdn.cn/vant/cat.jpeg",
-        "https://img.yzcdn.cn/vant/cat.jpeg",
-        "https://img.yzcdn.cn/vant/cat.jpeg",
-    ], //
+    url:'',
     pageSize:10,
     pageNum:1,
-    commentList:[]
+    commentList:[],
+    type:'',//评价类型  goods or shop
   },
   previewImg(e){
     let url=e.currentTarget.dataset.url
@@ -33,21 +28,32 @@ Page({
   },
   fetchData(pageNum=1,append=false){
     let that = this
+    let id = {}
+    that.data.type=='goods'?id={goodId:that.data.id}:id={userId:that.data.id}
     api.post({
-      url:'/evaluate/showEvaluate',
+      url:that.data.url,
       noLogin: true,
       data:{
         pageNum: pageNum,
         pageSize: that.data.pageSize,
-        goodId: that.data.id,
+        ...id
       },
       success(res){
-        for (const thatKey in res.data.list) {
-          res.data.list[thatKey].createtime=formatTime(res.data.list[thatKey].createtime)
-          for (const argumentsKey in res.data.list[thatKey].image) {
-            res.data.list[thatKey].image[argumentsKey].imageUrl=api.Host+'/'+res.data.list[thatKey].image[argumentsKey].imageUrl
+        if(that.data.type=='goods'){
+          for (const thatKey in res.data.list) {
+            res.data.list[thatKey].createtime=formatTime(res.data.list[thatKey].createtime)
+            for (const argumentsKey in res.data.list[thatKey].image) {
+              res.data.list[thatKey].image[argumentsKey].imageUrl=api.Host+'/'+res.data.list[thatKey].image[argumentsKey].imageUrl
+            }
+          }
+        }else if(that.data.type=='shop'){
+          for (const thatKey in res.data.list) {
+            for (const argumentsKey in res.data.list[thatKey].images) {
+              res.data.list[thatKey].images[argumentsKey].imageUrl=api.Host+'/'+res.data.list[thatKey].images[argumentsKey].imageUrl
+            }
           }
         }
+
         if(append){
           if(res.data.list.length>0){
             that.setData({
@@ -78,9 +84,22 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.id)
-    this.setData({
-      id:options.id
-    })
+    console.log(options.type)
+    if(options.type=='goods'){
+      this.setData({
+        id:options.id,
+        url:'/evaluate/showEvaluate',
+        type:'goods'
+      })
+    }else if(options.type=='shop'){
+      this.setData({
+        id:options.id,
+        url:'/evaluate/selectMoreEvaluateList',
+        type:'shop'
+      })
+    }
+
+
     this.fetchData()
   },
 

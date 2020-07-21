@@ -9,12 +9,14 @@ Page({
     searchKeyword:"",
     toView: 'green',
     focus:false,
-    height: wx.getSystemInfoSync().windowHeight - 20,
+    height: wx.getSystemInfoSync().windowHeight - 100,
     searchType:0,
     pageNum:1,
-    pageSize:12,
+    pageSize:10,
     goodsList:[],
     shopList:[],
+    historyList:[],
+    hotList:[],
   },
   scrollToTop() {
     console.log('scrollToTop')
@@ -41,10 +43,13 @@ Page({
   },
   onSearchClick(){
     console.log(this.data.searchKeyword,'关键词')
-    this.setData({
-      focus:false
-    })
-    this.searchData()
+    if(this.data.searchKeyword!=''){
+      this.setData({
+        focus:false
+      })
+      this.searchData()
+    }
+
   },
   onSearchChange(e){
     this.setData({
@@ -56,6 +61,15 @@ Page({
       searchType:event.detail.name
     })
     this.searchData(this.data.searchType)
+  },
+  goHistory(e){
+    let key=e.currentTarget.dataset.key
+    console.log(key)
+    this.setData({
+      searchKeyword:key,
+      focus:false
+    })
+    this.searchData()
   },
   searchData(type=0,pageNum=1,append=false){
     let that = this
@@ -69,6 +83,7 @@ Page({
           name:that.data.searchKeyword,
         },
         success(res){
+          console.log(res,999)
           if(res.data.list.length>0){
             for (const Key in res.data.list) {
               res.data.list[Key].thumbnail=api.Host+'/'+res.data.list[Key].thumbnail
@@ -83,6 +98,7 @@ Page({
               })
             }
           }else {
+
             wx.showToast({
               title: '暂无更多',
               icon: 'none',
@@ -117,6 +133,7 @@ Page({
               })
             }
           }else {
+
             wx.showToast({
               title: '暂无更多',
               icon: 'none',
@@ -129,7 +146,7 @@ Page({
       })
     }
 
-    api.post({
+    api.get({
       url:'/showGoods/toQuery',
       data: {
 
@@ -137,6 +154,10 @@ Page({
       noLogin:true,
       success(res){
         console.log(res,'历史记录')
+        that.setData({
+          historyList:res.data.history,
+          hotList:res.data.hotList
+        })
       }
 
     })

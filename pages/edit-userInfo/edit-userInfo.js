@@ -1,4 +1,5 @@
 // pages/edit-userInfo/edit-userInfo.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -14,6 +15,17 @@ Page({
   },
   onNameChange(){
 
+  },
+  fetchData(){
+    api.post({
+      url:'/user/selectUserById',
+      data:{
+        token:wx.getStorageSync('token')
+      },
+      success(res){
+        console.log(res)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,7 +45,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.fetchData()
   },
 
   /**

@@ -8,62 +8,65 @@ Page({
   data: {
     activeIndex:0,
     height: wx.getSystemInfoSync().windowHeight+35,
-    pageSize:10,
+    pageSize:6,
     pageNum:1,
     goodsType:'',
     goodsList:[],
-    bySales:null,
-    byStar:null,
-    byPrice:null,
+    bySales:'',
+    byStar:'',
+    byPrice:'',
   },
   orderBy(e){
+    this.setData({
+      pageNum:1
+    })
     if(e.currentTarget.dataset.index==0){
-      if(this.data.bySales==null){
+      if(this.data.bySales==''||this.data.bySales=='n'){
         this.setData({
           bySales:'y',
-          byStar:null,
-          byPrice:null,
+          byStar:'',
+          byPrice:'',
         })
       }else {
         this.setData({
-          bySales:null,
-          byStar:null,
-          byPrice:null,
+          bySales:'n',
+          byStar:'',
+          byPrice:'',
         })
       }
     }else if(e.currentTarget.dataset.index==1){
-      if(this.data.byStar==null){
+      if(this.data.byStar==''||this.data.byStar=='n'){
         this.setData({
           byStar:'y',
-          bySales:null,
-          byPrice:null,
+          bySales:'',
+          byPrice:'',
         })
       }else {
         this.setData({
-          bySales:null,
-          byStar:null,
-          byPrice:null,
+          bySales:'',
+          byStar:'n',
+          byPrice:'',
         })
       }
-    }else if(e.currentTarget.dataset.index==1){
-      if(this.data.byPrice==null){
+    }else if(e.currentTarget.dataset.index==2){
+      if(this.data.byPrice==''||this.data.byPrice=='n'){
         this.setData({
           byPrice:'y',
-          bySales:null,
-          byStar:null,
+          bySales:'',
+          byStar:'',
         })
       }else {
         this.setData({
-          bySales:null,
-          byStar:null,
-          byPrice:null,
+          bySales:'',
+          byStar:'',
+          byPrice:'n',
         })
       }
     }
     this.fetchData(1,false,this.data.bySales,this.data.byStar,this.data.byPrice)
 
   },
-  fetchData(pageNum=1,append=false,bySales=null,byStar=null,byPrice=null){
+  fetchData(pageNum=1,append=false,bySales='',byStar='',byPrice=''){
     let that = this
     let url=this.data.goodsType=='hotGoods'?'/hotGoods/moreHotGoodsList':this.data.goodsType=='newGoods'?'/newGoods/moreNewGoodsList':''
     api.post({

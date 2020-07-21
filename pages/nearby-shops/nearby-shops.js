@@ -1,4 +1,7 @@
 // pages/nearby-shops/nearby-shops.js
+import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
+import {formatTimeTwo, saveOneDecimal, saveTwoDecimal} from "../../utils/util";
+const api = require('../../utils/api.js');
 Page({
 
   /**
@@ -8,7 +11,12 @@ Page({
     searchKeyword:"",
     focus:false,
     height: wx.getSystemInfoSync().windowHeight - 100,
-    activeIndex:0
+    activeIndex:0,
+    pageSize:10,
+    pageNum:1,
+    latitude:'',
+    longitude:'',
+    shopList:[]
   },
   changeMenu(e){
     this.setData({
@@ -35,10 +43,65 @@ Page({
       searchKeyword:e.detail
     })
   },
+  getLocation(){
+    let that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy  //位置精确度
+        that.setData({
+            latitude:latitude,
+            longitude:longitude,
+        })
+        that.fetchData()
+      },
+      fail(){
+        Dialog.confirm({
+          title: '提示',
+          message: '请授权位置信息，以更好地使用本程序',
+        }).then(() => {
+          wx.openSetting()
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    })
+
+  },
+  fetchData(pageNum=1,append=false){
+    let that = this
+    api.post({
+      url:'/business/moreBusinessList',
+      data:{
+        pageNum:pageNum,
+        pageSize:that.data.pageSize,
+        lat:that.data.latitude,
+        lng:that.data.longitude,
+      },
+      noLogin:true,
+      success(res){
+        for (const resKey in res.data.list) {
+          res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
+          res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
+          res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
+          res.data.list[resKey].distance=saveTwoDecimal(res.data.list[resKey].distance)
+          res.data.list[resKey].shopstar=saveOneDecimal(res.data.list[resKey].shopstar)
+        }
+
+        that.setData({
+          shopList:res.data.list
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
 
   },
 
@@ -53,7 +116,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getLocation()
   },
 
   /**

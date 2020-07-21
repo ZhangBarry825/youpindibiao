@@ -25,7 +25,7 @@ Page({
     console.log(type,id)
     if(type =='comment'){
       wx.navigateTo({
-        url:'/pages/goods-comment/goods-comment?id='+id,
+        url:'/pages/goods-comment/goods-comment?id='+id+'&type=goods',
       })
       return
     }

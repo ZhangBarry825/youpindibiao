@@ -12,7 +12,8 @@ Page({
     mainActiveIndex: 0,
     activeId: 0,
     navItems:[],
-    classItems:[]
+    classItems:[],
+    defaultIndex:0
   },
 
   onClickNav({ detail = {} }) {
@@ -51,7 +52,7 @@ Page({
       searchKeyword:e.detail
     })
   },
-  fetchData(){
+  fetchData(defaultIndex=0){
     let that = this
     //获取一级分类
     api.get({
@@ -67,11 +68,11 @@ Page({
           res.data[Key].text=res.data[Key].typeName
         }
         that.setData({
-          navItems:res.data
+          navItems:res.data,
+          mainActiveIndex:defaultIndex
         })
-
-        console.log(that.data.navItems)
-        that.fetchItem()
+        wx.setStorageSync('defaultIndex',0)
+        that.fetchItem(defaultIndex)
       }
     })
   },
@@ -98,6 +99,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     this.fetchData()
   },
 
@@ -112,7 +114,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log('onShow')
+    let index = wx.getStorageSync('defaultIndex')
+    console.log(index)
+    if(index != ''){
+      this.fetchData(index)
+    }
   },
 
   /**

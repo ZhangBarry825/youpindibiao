@@ -198,6 +198,15 @@
   line-height: 1.5;
 }
 .page .comment .item .line3 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.page .comment .item .line3 .image-class {
+  margin: 5px 10rpx;
+}
+.page .comment .item .line4 {
   align-self: flex-start;
   padding: 10rpx 0;
   box-sizing: border-box;
@@ -205,8 +214,8 @@
   font-weight: 400;
   color: #9b9b9b;
 }
-.page .comment .item .button {
-  margin: 20rpx 0;
+.page .comment .button {
+  margin: 20rpx auto;
   width: 309rpx;
   height: 60rpx;
   background: #ffffff;
@@ -219,9 +228,19 @@
   font-weight: 400;
   color: #e3353f;
 }
+.page .comment .no-comment {
+  width: 100%;
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #666666;
+}
 .page .all-goods {
-  margin-top: 10rpx;
-  background-color: #fff;
+  padding-top: 10rpx;
+  background-color: #f2f2f2;
 }
 .page .all-goods .title {
   display: flex;
@@ -234,6 +253,7 @@
   font-weight: 400;
   color: #333333;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 .page .all-goods .title .border {
   margin-right: 20rpx;

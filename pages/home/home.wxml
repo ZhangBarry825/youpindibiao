@@ -28,7 +28,7 @@
         <view class="top">
             <view class="left">
                 <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">
-                    <van-tab title="{{item.typeName}}" wx:for="{{categoryList}}" wx:key="item"></van-tab>
+                    <van-tab bind:tap="goToClass" data-index="{{idx}}" title="{{item.typeName}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item"></van-tab>
 <!--                    <van-tab title="国酒茅台"></van-tab>-->
 <!--                    <van-tab title="美容护肤"></van-tab>-->
 <!--                    <van-tab title="梦洁家纺"></van-tab>-->
@@ -40,7 +40,7 @@
             </view>
         </view>
         <view class="items {{showMenus?'':'heightController'}}">
-            <view class="item" wx:if="{{idx<12}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
+            <view class="item" bind:tap="goToClass" data-index="{{idx}}" wx:if="{{idx<12}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
         </view>
     </view>
     <view class="shopping">
@@ -98,10 +98,10 @@
                 <image src="../../static/images/shop.png"></image>
                 附近商家
             </view>
-            <view class="right">查看更多+</view>
+            <view class="right" bind:tap="goTo" data-type="nearbyShops">查看更多+</view>
         </view>
         <view class="items">
-            <view class="item" wx:for="{{nearbyShopList}}" wx:key="item">
+            <view class="item" wx:for="{{nearbyShopList}}" wx:key="item" bind:tap="goTo" data-path="/pages/nearby-shop/nearby-shop" data-id="{{item.user_id}}">
                 <view class="left">
                     <image mode="aspectFill" src="{{item.nearby_img}}"></image>
                 </view>
@@ -117,7 +117,7 @@
                         营业时间：{{item.start_time}}~{{item.end_time}}
                     </view>
                     <view class="line3">
-                        <view class="count">人均：26 月售{{item.shopsales}}单</view>
+                        <view class="count">人均：{{item.consume}} 月售{{item.shopsales}}单</view>
                         <view class="score">
 <!--                            <image src="../../static/images/star.png" wx:for="{{item.shopstar/1}}"></image>-->
 <!--                            <image src="../../static/images/star-half.png"></image>-->
@@ -126,7 +126,7 @@
                                     allow-half
                                     readonly
                                     value="{{item.shopstar}}"
-                                    :size="23"
+                                    :size="18"
                                     color="#ffd21e"
                                     void-icon="star"
                                     void-color="#eee"

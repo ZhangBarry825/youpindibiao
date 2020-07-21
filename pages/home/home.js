@@ -61,19 +61,30 @@ Page({
   },
   onSearchChange(event){
     console.log(event.detail)
-    this.setData({searchKeyword:event.detail})
-    wx.navigateTo({
-      url:'/pages/search-result/search-result?searchKeyword='+event.detail
-    })
+    if(event.detail!=''){
+      this.setData({searchKeyword:event.detail})
+      wx.navigateTo({
+        url:'/pages/search-result/search-result?searchKeyword='+event.detail
+      })
+    }
   },
   onSearchCancel(event){
     console.log(event.detail)
   },
   onTagsChange(event) {
-    wx.showToast({
-      title: `切换到标签 ${event.detail.name}`,
-      icon: 'none',
-    });
+    let index=event.detail.name
+    console.log(index)
+    wx.setStorageSync('defaultIndex',index)
+    wx.switchTab({
+      url:'/pages/class/class'
+    })
+  },
+  goToClass(e){
+    let index=e.currentTarget.dataset.index
+    wx.setStorageSync('defaultIndex',index)
+    wx.switchTab({
+      url:'/pages/class/class'
+    })
   },
   onTimeTagsChange(event) {
    let t=event.detail.name
@@ -314,6 +325,12 @@ Page({
       })
       return
     }
+    if(type && type=='nearbyShops'){
+      wx.navigateTo({
+        url:'/pages/nearby-shops/nearby-shops',
+      })
+      return
+    }
     let path=e.currentTarget.dataset.path
     let id=e.currentTarget.dataset.id
     wx.navigateTo({
@@ -322,6 +339,7 @@ Page({
     // console.log(path)
     // console.log(id)
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

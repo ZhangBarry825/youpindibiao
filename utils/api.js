@@ -24,7 +24,7 @@ module.exports = {
         } catch (e) {
             // Do something when catch error
         }
-        if(options.noLogin){
+        if(options.noLogin || token!=''){
             wx.request({
                 url: Host + options.url,
                 data: options.data,
@@ -35,6 +35,9 @@ module.exports = {
                     'XX-Token': token,
                 },
                 success(res) {
+                    if(res.cookies){
+                        res.data.cookies=res.cookies
+                    }
                     if(res.data){
                         options.success(res.data);
                     }else {

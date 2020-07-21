@@ -2,30 +2,34 @@
 <view class="page">
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
-        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
-            <image src="{{item}}" class="slide-image"/>
+        <swiper-item wx:for="{{shopDetail.imageList}}" wx:key="item">
+            <image src="{{item.imageUrl}}" class="slide-image"/>
         </swiper-item>
     </swiper>
     <view class="shop-info">
         <view class="left">
-            <image src="../../static/images/avatar.gif"></image>
+            <image src="{{shopDetail.sysUser.nearbyImg}}"></image>
         </view>
         <view class="middle">
             <view class="line1">
                 个个鲜朱雀门店
                 <view class="score">
-                    <image src="../../static/images/star.png"></image>
-                    <image src="../../static/images/star.png"></image>
-                    <image src="../../static/images/star.png"></image>
-                    <image src="../../static/images/star-half.png"></image>
-                    <image src="../../static/images/star-none.png"></image>
+                    <van-rate
+                            allow-half
+                            readonly
+                            value="{{shopDetail.shopstar}}"
+                            :size="18"
+                            color="#ffd21e"
+                            void-icon="star"
+                            void-color="#eee"
+                    />
                 </view>
             </view>
             <view class="line2">
-                营业时间：9:00~21:00
+                营业时间：{{shopDetail.startTime}}~{{shopDetail.endTime}}
             </view>
             <view class="line3">
-                <view class="count">人均：26 月售101单</view>
+                <view class="count">人均：{{shopDetail.sysUser.consume}} 月售{{shopDetail.shopsales}}单</view>
             </view>
         </view>
         <view class="right">
@@ -33,7 +37,7 @@
                 <image src="../../static/images/like.png"></image>
                 收藏
             </view>
-            <view class="line1">
+            <view class="line1" bind:tap="callShop">
                 <image src="../../static/images/call.png"></image>
                 电话
             </view>
@@ -46,13 +50,13 @@
         <view class="item">
             <view class="line">
                 <view class="name">地址：</view>
-                <view class="content">北京市亦庄经济技术开发区中和街16号北京市亦庄经济技术开发区中和街16号</view>
+                <view class="content">{{shopDetail.sysUser.address}}</view>
             </view>
         </view>
         <view class="item">
             <view class="line">
                 <view class="name">简介：</view>
-                <view class="content">主营业务食品生鲜，等等一些介绍信息可以在这里展示一些介绍信息可以在这里展示一些介绍信息可以在这里展示。</view>
+                <view class="content">{{shopDetail.sysUser.nearbyInfo}}</view>
             </view>
         </view>
     </view>
@@ -60,84 +64,49 @@
         <view class="title">
             用户评论
         </view>
-        <view class="item">
+        <view class="item" wx:for="{{commentList}}" wx:key="item">
             <view class="line1">
-                <view class="name">谭某某</view>
+                <view class="name">{{item.name}}</view>
                 <view class="stars">
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
-                    <image src="../../static/images/star-red.png"></image>
+                    <van-rate
+                            value="{{item.star}}"
+                            size="{{ 18 }}"
+                            allow-half
+                            color="#ee0a24"
+                            void-color="#eee"
+                            void-icon="star"
+                            readonly
+                    />
                 </view>
             </view>
-            <view class="line2">作为新手来说，这个机器很不错的，满足了大部分功能上的要求。</view>
-            <view class="line3">2016-02-18 10:10:10</view>
-            <view class="button">查看更多评论</view>
+            <view class="line2">{{item.text}}</view>
+            <view class="line3">
+                <van-image wx:key="index" wx:for-item="itm" wx:for-index="idx" wx:for="{{item.images}}" bind:tap="previewImg" data-urls="{{item.images}}" data-url="{{itm.imageUrl}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{itm.imageUrl}}" />
+            </view>
+            <view class="line4">{{item.createtime}}</view>
         </view>
+        <view class="button" wx:if="{{commentList.length>0}}" bind:tap="goComments" >查看更多评论</view>
+        <view wx:else class="no-comment" >暂无评论</view>
     </view>
     <view class="all-goods">
         <view class="title">
             全部商品
         </view>
         <view class="good-items">
-            <view class="good-item">
-                <view class="good-pic">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+            <view class="good-item" wx:for="{{goodsList}}" wx:key="item">
+                <view class="good-pic" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">
+                    <image mode="aspectFill" src="{{item.thumbnail}}"></image>
                 </view>
-                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
+                <view class="title1" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">{{item.name}}</view>
                 <view class="detail">
                     <view class="price">
-                        <view class="text1">￥168</view>
+                        <view class="text1">￥{{item.money}}</view>
                     </view>
                     <view class="trolley">
                         <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
                     </view>
                 </view>
             </view>
-            <view class="good-item">
-                <view class="good-pic">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                </view>
-                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
-                <view class="detail">
-                    <view class="price">
-                        <view class="text1">￥168</view>
-                    </view>
-                    <view class="trolley">
-                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
-                    </view>
-                </view>
-            </view>
-            <view class="good-item">
-                <view class="good-pic">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                </view>
-                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
-                <view class="detail">
-                    <view class="price">
-                        <view class="text1">￥168</view>
-                    </view>
-                    <view class="trolley">
-                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
-                    </view>
-                </view>
-            </view>
-            <view class="good-item">
-                <view class="good-pic">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                </view>
-                <view class="title1">韩版宽松显瘦短款T恤韩版宽松显瘦短款T恤</view>
-                <view class="detail">
-                    <view class="price">
-                        <view class="text1">￥168</view>
-                    </view>
-                    <view class="trolley">
-                        <image mode="aspectFill" src="../../static/images/goods-trolley2.png"></image>
-                    </view>
-                </view>
-            </view>
-
         </view>
     </view>
 </view>

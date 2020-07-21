@@ -3,7 +3,7 @@
     <view class="comment-box">
         <view class="item" wx:for="{{commentList}}" wx:key="item">
             <view class="line1">
-                <view class="name">{{item.username}}</view>
+                <view class="name">{{item.username||item.name}}</view>
                 <view class="stars">
                     <van-rate
                             value="{{item.star}}"
@@ -18,7 +18,7 @@
             </view>
             <view class="line2">{{item.text}}</view>
             <view class="line3">
-                <van-image wx:key="index" wx:for-item="itm" wx:for-index="idx" wx:for="{{item.image}}" bind:tap="previewImg" data-urls="{{item.image}}" data-url="{{itm.imageUrl}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{itm.imageUrl}}" />
+                <van-image wx:key="index" wx:for-item="itm" wx:for-index="idx" wx:for="{{item.image || item.images}}" bind:tap="previewImg" data-urls="{{item.image || item.images}}" data-url="{{itm.imageUrl}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{itm.imageUrl}}" />
             </view>
             <view class="line4">{{item.createtime}}</view>
         </view>

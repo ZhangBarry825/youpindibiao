@@ -1,18 +1,31 @@
 // pages/collect/collect.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    height: wx.getSystemInfoSync().windowHeight - 50
+    height: wx.getSystemInfoSync().windowHeight - 50,
+    type:2  // 2：收藏商品 3：收藏店铺
   },
-
+  fetchData(type=2){
+    api.post({
+      url:'/share/selectShareListByUser',
+      data:{
+        state:type,
+        token:wx.getStorageSync('token')
+      },
+      success(res){
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

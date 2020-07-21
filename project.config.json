@@ -243,6 +243,42 @@
 					"id": -1,
 					"name": "分类",
 					"pathName": "pages/class/class",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 26,
+					"name": "商家详情",
+					"pathName": "pages/nearby-shop/nearby-shop",
+					"query": "id=1513824945623187",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的分享",
+					"pathName": "pages/share/share",
+					"query": "id=1513913791307515",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/collect/collect",
+					"query": "id=1513913791307515",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息通知",
+					"pathName": "pages/message/message",
+					"query": "id=1513913791307515",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "附近商家列表",
+					"pathName": "pages/nearby-shops/nearby-shops",
+					"query": "id=1513913791307515",
 					"scene": null
 				}
 			]
