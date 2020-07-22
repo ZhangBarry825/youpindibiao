@@ -75,7 +75,7 @@
     </view>
 
     <view class="bottom-box">
-        <view class="like">
+        <view class="like" bind:tap="goCollect">
             <image src="../../static/images/like.png"></image>
             收藏
         </view>

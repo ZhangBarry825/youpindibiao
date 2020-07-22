@@ -1,36 +1,14 @@
 <!--pages/message/message.wxml-->
 <view class="page">
-    <view class="item">
+    <view class="item" wx:for="{{messageList}}" wx:key="item">
         <view class="time">
             <image src="../../static/images/mes.png"></image>
-            2016-02-20
+            {{item.createtime}}
         </view>
-        <view class="title">创客微信平台使用说明创客微信平台使用说明创客微信平台使用说明</view>
+        <view class="title">{{item.title}}</view>
         <view class="description">
-            打开微信--找到创客公众号打开--点击右下角【会员中心】--点击您微信头像下边的【激活会员卡】
-            在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号--点击验证码--输入创客发送到您手机的短信验证码后，即可激活会员。
+            {{item.text}}
         </view>
     </view>
-    <view class="item">
-        <view class="time">
-            <image src="../../static/images/mes.png"></image>
-            2016-02-20
-        </view>
-        <view class="title">创客微信平台使用说明创客微信平台使用说明创客微信平台使用说明</view>
-        <view class="description">
-            打开微信--找到创客公众号打开--点击右下角【会员中心】--点击您微信头像下边的【激活会员卡】
-            在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号--点击验证码--输入创客发送到您手机的短信验证码后，即可激活会员。
-        </view>
-    </view>
-    <view class="item">
-        <view class="time">
-            <image src="../../static/images/mes.png"></image>
-            2016-02-20
-        </view>
-        <view class="title">创客微信平台使用说明创客微信平台使用说明创客微信平台使用说明</view>
-        <view class="description">
-            打开微信--找到创客公众号打开--点击右下角【会员中心】--点击您微信头像下边的【激活会员卡】
-            在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号在弹出的窗口输入您的真实手机号--点击验证码--输入创客发送到您手机的短信验证码后，即可激活会员。
-        </view>
-    </view>
+
 </view>

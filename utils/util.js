@@ -62,10 +62,28 @@ const formatNumber = n => {
     n = n.toString()
     return n[1] ? n : '0' + n
 }
+function checkPhone(phone) {
+    if (!(/^1[3456789]\d{9}$/.test(phone))) {
+        return false;
+    }
+    return true
+}
+function checkEmail(email){
+    let reg = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/;
+    if(email === ""){
+        return false;
+    }else if(!reg.test(email)){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 module.exports = {
     formatTime: formatTime,
     formatTimeTwo: formatTimeTwo, //时分
     saveOneDecimal: saveOneDecimal,
     saveTwoDecimal: saveTwoDecimal,
+    checkPhone: checkPhone,
+    checkEmail: checkEmail,
 }

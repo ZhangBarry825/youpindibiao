@@ -1,18 +1,39 @@
 // pages/my-wallet/my-wallet.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    balance:0.00
   },
-
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/myMoney/selectPurse',
+      data:{},
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          that.setData({
+            balance:res.data
+          })
+        }
+      }
+    })
+  },
+  goTo(e){
+    let path = e.currentTarget.dataset.path
+    wx.navigateTo({
+      url:path
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

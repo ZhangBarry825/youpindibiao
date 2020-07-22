@@ -1,4 +1,6 @@
 // pages/message/message.js
+import {formatTime} from "../../utils/util";
+
 const api = require('../../utils/api.js');
 Page({
 
@@ -6,18 +8,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pageSize:10,
+    pageNum:1,
+    messageList:[]
   },
 
-  fetchData(){
+  fetchData(pageNum=1,append=false){
+    let that = this
     api.post({
-      url:'/note/selectNoteList',
+      url:'/note/selectNotePageList',
       data:{
-
+        pageSize:that.data.pageSize,
+        pageNum:pageNum,
       },
       noLogin:true,
       success(res){
         console.log(res)
+        if(res.data.list.length>0){
+          for (const appendKey in res.data.list) {
+            res.data.list[appendKey].createtime=formatTime(res.data.list[appendKey].createtime)
+          }
+          if(append){
+            that.setData({
+              messageList:that.data.messageList.concat(res.data.list),
+              pageNum:pageNum
+            })
+          }else {
+            that.setData({
+              messageList:res.data.list
+            })
+          }
+        }else {
+          wx.showToast({
+            title:'暂无更多',
+            icon:'none',
+            duration:1000
+          })
+        }
       }
     })
   },
@@ -67,7 +94,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.fetchData(this.data.pageNum+1,true)
   },
 
   /**

@@ -3,12 +3,12 @@
     <view class="mine-back">
         <image mode="aspectFill" class="back-img" src="../../static/images/mine-back.png"></image>
         <view class="top">
-            <text>添加银行卡</text>
+            <text bind:tap="goTo" data-path="/pages/bankcard/bankcard-menu/bankcard-menu">添加银行卡</text>
             <text>佣金明细</text>
         </view>
         <view class="bottom">
             <view class="line1">我的钱包</view>
-            <view class="line2">￥200.00</view>
+            <view class="line2">￥{{balance}}</view>
         </view>
     </view>
 

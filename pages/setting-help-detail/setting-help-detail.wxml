@@ -1,0 +1,11 @@
+<!--pages/setting-about-us/setting-help-detail.wxml-->
+<view class="page">
+
+    <view class="title">{{detail.title}}</view>
+
+    <view class="content">
+        <import src="../../utils/wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+
+</view>

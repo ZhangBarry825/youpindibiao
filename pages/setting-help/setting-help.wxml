@@ -2,25 +2,15 @@
 <view class="page">
     <van-cell-group>
         <van-cell
+                wx:for="{{helpList}}"
+                wx:key="item"
+                bind:tap="goDetail"
+                data-item="{{item}}"
                 custom-class="item-custom-class"
                 value-class="item-value-class"
                 label-class="item-label-class"
                 title-class="item-title-class"
-                title="申请提现后一直没能审核通过是什么原因？"
-                is-link />
-        <van-cell
-                custom-class="item-custom-class"
-                value-class="item-value-class"
-                label-class="item-label-class"
-                title-class="item-title-class"
-                title="无法提现？"
-                is-link />
-        <van-cell
-                custom-class="item-custom-class"
-                value-class="item-value-class"
-                label-class="item-label-class"
-                title-class="item-title-class"
-                title="申请提现后一直没能审核通过是什么原因？"
+                title="{{item.title}}"
                 is-link />
     </van-cell-group>
 </view>

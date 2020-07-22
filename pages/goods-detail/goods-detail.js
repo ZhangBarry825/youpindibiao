@@ -118,6 +118,23 @@ Page({
     })
 
   },
+  goCollect(){
+    let that = this
+    api.post({
+      url:'/share/addShareByUser',
+      data:{
+        state:2,
+        goodsid:that.data.id
+      },
+      success(res){
+        wx.showToast({
+          title:'收藏成功！',
+          icon:'success',
+          duration:1000
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -31,5 +31,5 @@
         请详细描述您遇到的问题，有助于我们快速定位并解决问题,
     </view>
 
-    <view class="submit-button">提交</view>
+    <view class="submit-button" bind:tap="submitForm">提交</view>
 </view>

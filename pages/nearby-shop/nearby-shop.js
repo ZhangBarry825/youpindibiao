@@ -158,6 +158,11 @@ Page({
       },
       success(res){
         console.log(res,999)
+        wx.showToast({
+          title:'收藏成功！',
+          icon:'success',
+          duration:1000
+        })
       }
     })
   },
@@ -234,6 +239,19 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    console.log('分享')
+    let that = this
+    api.post({
+      url:'/share/addShareByUser',
+      data:{
+        goodsid:that.data.id,
+        state:1
+      },
+      success(res){
+        if(res.code == 200){
 
+        }
+      }
+    })
   }
 })

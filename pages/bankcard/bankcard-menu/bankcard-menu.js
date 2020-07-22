@@ -7,7 +7,12 @@ Page({
   data: {
 
   },
-
+  goTo(e){
+    let path = e.currentTarget.dataset.path
+    wx.navigateTo({
+      url:path
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

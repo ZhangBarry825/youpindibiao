@@ -4,10 +4,10 @@
         请绑定持卡人本人的银行卡
     </view>
     <van-cell-group>
+
         <van-cell custom-class="custom-class" value="">
             <view slot="title">
                 <van-field
-                        title-width="50rpx"
                         value="{{ name }}"
                         label="持卡人"
                         title-width="120rpx"
@@ -22,16 +22,34 @@
                 <van-field
                         label="卡号"
                         title-width="120rpx"
-                        type="password"
+                        type="number"
                         value="{{ cardNum }}"
                         placeholder="请输入卡号"
                         border="{{ false }}"
                         bind:change="onCardNumChange"
+                        bind:blur="checkBankCard"
+                />
+            </view>
+        </van-cell>
+        <van-cell custom-class="custom-class" value="">
+            <view slot="title">
+                <van-field
+                        label="银行名称"
+                        title-width="120rpx"
+                        type="number"
+                        value="{{ bankName }}"
+                        placeholder=""
+                        readonly
+                        border="{{ false }}"
                 />
             </view>
         </van-cell>
     </van-cell-group>
     <view class="buttons">
-        <view class="button button1">下一步</view>
+        <view class="button button1" bind:tap="submitForm">下一步</view>
     </view>
+    <van-popup show="{{ showSelect }}" bind:close="onCloseSelect"  position="bottom" custom-style="width: 100%;">
+        <van-picker columns="{{ columns }}" bind:cancel="onCloseSelect" bind:confirm="selectCardName" show-toolbar />
+    </van-popup>
+
 </view>

@@ -280,6 +280,34 @@
 					"pathName": "pages/nearby-shops/nearby-shops",
 					"query": "id=1513913791307515",
 					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "设置",
+					"pathName": "pages/setting/setting",
+					"query": "id=1513824945623187",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收货地址",
+					"pathName": "pages/address-list/address-list",
+					"query": "id=1513824945623187",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增地址",
+					"pathName": "pages/address-detail/address-detail",
+					"query": "id=1513824945623187",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "绑定银行卡",
+					"pathName": "pages/bankcard/bankcard-bind/bankcard-bind",
+					"query": "id=1513824945623187",
+					"scene": null
 				}
 			]
 		}

@@ -1,18 +1,54 @@
 // pages/address-list/address-list.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addressList:[]
+  },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/user/selectAddressList',
+      data:{
+        token:wx.getStorageSync('token')
+      },
+      success(res){
+        console.log(res)
+        if(res.data.length>0){
+          for (const thatKey in res.data) {
+            if(res.data[thatKey].isdefault=='y'){
+              res.data[thatKey].isdefault=true
+            }else {
+              res.data[thatKey].isdefault=false
+            }
+          }
+          that.setData({
+            addressList:res.data
+          })
+        }
+      }
+    })
   },
 
+  goAdd(){
+    wx.navigateTo({
+      url:'/pages/address-detail/address-detail'
+    })
+  },
+  goDetail(e){
+    let id=e.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url:'/pages/address-detail/address-detail?id='+id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

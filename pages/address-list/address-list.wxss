@@ -27,6 +27,8 @@
   flex-direction: column;
 }
 .page .items .item .left .line1 {
+  padding: 0 10rpx;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   font-size: 33rpx;
@@ -42,8 +44,7 @@
   font-weight: 400;
   color: #f26500;
   flex-shrink: 0;
-  margin: 0 20rpx;
-  padding-top: 20rpx;
+  margin-right: 20rpx;
   box-sizing: border-box;
 }
 .page .items .item .left .line2 .detail {

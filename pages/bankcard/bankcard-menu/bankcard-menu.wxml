@@ -2,12 +2,16 @@
 <view class="page">
     <van-cell-group>
         <van-cell
+                bind:tap="goTo"
+                data-path="/pages/bankcard/bankcard-had/bankcard-had"
                 custom-class="item-custom-class"
                 value-class="item-value-class"
                 label-class="item-label-class"
                 title-class="item-title-class"
                 title="已绑定的银行卡" is-link />
         <van-cell
+                bind:tap="goTo"
+                data-path="/pages/bankcard/bankcard-bind/bankcard-bind"
                 custom-class="item-custom-class"
                 value-class="item-value-class"
                 label-class="item-label-class"

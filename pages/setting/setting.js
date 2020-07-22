@@ -1,18 +1,44 @@
 // pages/setting/setting.js
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tel:""
   },
-
+  goTo(e){
+    let path= e.currentTarget.dataset.path
+    wx.navigateTo({
+      url:path
+    })
+  },
+  callUs(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.tel
+    })
+  },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/user/selectLevelDetail',
+      data:{},
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          that.setData({
+            tel:res.data.tel
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

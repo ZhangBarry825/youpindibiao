@@ -2,33 +2,16 @@
 <view class="page">
 
     <view class="items">
-        <view class="item">
+        <view class="item" wx:for="{{addressList}}" wx:key="item" bind:tap="goDetail" data-item="{{item}}">
             <view class="left">
                 <view class="line1">
-                    <text>王小利</text>
-                    <text>15203524356</text>
+                    <text>{{item.name}}</text>
+                    <text>{{item.tel}}</text>
                 </view>
                 <view class="line2">
-                    <view class="default">[默认]</view>
+                    <view class="default" wx:if="{{item.isdefault}}">[默认]</view>
                     <view class="detail">
-                        郑州市金水区祭城路街道商都路与中州大道
-                        交叉口建业五栋大楼B座
-                    </view>
-                </view>
-            </view>
-            <view class="right">
-                <image src="../../static/images/right.png"></image>
-            </view>
-        </view>
-        <view class="item">
-            <view class="left">
-                <view class="line1">
-                    <text>王小利</text>
-                    <text>15203524356</text>
-                </view>
-                <view class="line2">
-                    <view class="detail">
-                        郑州市金水区祭城路街道商都路与中州大道交叉口建业五栋大楼B座郑州市金水区祭城路街道商都路与中州大道交叉口建业五栋大楼B座
+                        {{item.address}}{{item.xqaddress}}
                     </view>
                 </view>
             </view>
@@ -37,6 +20,5 @@
             </view>
         </view>
     </view>
-
-    <view class="submit-button">添加收货地址</view>
+    <view class="submit-button" bind:tap="goAdd">添加收货地址</view>
 </view>

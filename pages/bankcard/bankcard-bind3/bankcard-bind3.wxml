@@ -8,6 +8,6 @@
     </view>
 
     <view class="buttons">
-        <view class="button button1">完成</view>
+        <view class="button button1" bind:tap="finished">完成</view>
     </view>
 </view>

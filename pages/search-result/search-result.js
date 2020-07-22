@@ -73,8 +73,34 @@ Page({
     })
     this.searchData()
   },
+  setSearchRecord(keyword){
+    let that = this
+    let searchRecord=wx.getStorageSync('searchRecord')
+    if(searchRecord){
+      let items=searchRecord.split(',')
+      let has=items.indexOf(keyword)
+      console.log(has,'has')
+      if(has==-1){
+        wx.setStorageSync('searchRecord',searchRecord+','+keyword)
+        items.unshift(keyword)
+      }else {
+        items.splice(has,1)
+        items.unshift(keyword)
+      }
+      that.setData({
+        historyList:items.slice(0,10)
+      })
+      console.log(that.data.historyList,'historyList')
+    }else {
+      wx.setStorageSync('searchRecord',keyword)
+      that.setData({
+        historyList:[keyword]
+      })
+    }
+  },
   searchData(type=0,pageNum=1,append=false){
     let that = this
+    this.setSearchRecord(that.data.searchKeyword)
     if(that.data.searchType==0){
       api.post({
         url:'/showGoods/queryGood',
@@ -166,9 +192,7 @@ Page({
       },
       noLogin:true,
       success(res){
-        console.log(res,'历史记录')
         that.setData({
-          historyList:res.data.history,
           hotList:res.data.hotList
         })
       }

@@ -3,7 +3,7 @@
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
         <swiper-item wx:for="{{shopDetail.imageList}}" wx:key="item">
-            <image src="{{item.imageUrl}}" class="slide-image"/>
+            <image mode="aspectFill" src="{{item.imageUrl}}" class="slide-image"/>
         </swiper-item>
     </swiper>
     <view class="shop-info">

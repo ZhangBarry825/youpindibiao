@@ -1,18 +1,33 @@
 // pages/bankcard/bankcard-had/bankcard-had.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    bankcardList:[]
   },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/myMoney/selectBankCard',
+      data:{
+        bankid:''
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200){
 
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

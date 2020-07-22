@@ -20,6 +20,7 @@
     "pages/setting-about-us/setting-about-us",
     "pages/setting-feedback/setting-feedback",
     "pages/setting-help/setting-help",
+    "pages/setting-help-detail/setting-help-detail",
     "pages/my-wallet/my-wallet",
     "pages/encash/encash",
     "pages/charge/charge",

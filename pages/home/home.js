@@ -347,9 +347,18 @@ Page({
       url:'/tCar/addTCarByUser',
       data:{
         goodsid:item.id,
+        shopid:item.userId
       },
       success(res){
         console.log(res)
+        if(res.code == 200){
+          wx.showToast({
+            title:'添加成功！',
+            icon:'success',
+            duration:1000
+          })
+
+        }
       }
     })
   },

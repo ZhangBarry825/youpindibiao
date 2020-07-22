@@ -35,22 +35,6 @@ module.exports = {
                     'XX-Token': token,
                 },
                 success(res) {
-                    wx.request({
-                        url:Host+'/setSessionInfo',
-                        method: 'post',
-                        header: {
-                            'Cache-Control': 'no-cache',
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'XX-Token': token,
-                        },
-                        success(res){
-                            console.log('加入缓存成功')
-                            console.log(res)
-                        }
-                    })
-                    if(res.cookies){
-                        res.data.cookies=res.cookies
-                    }
                     if(res.data){
                         options.success(res.data);
                     }else {
@@ -71,6 +55,7 @@ module.exports = {
                 }
             })
         }else {
+            wx.hideLoading()
             wx.navigateTo({url:'/pages/permission/permission'})
         }
 

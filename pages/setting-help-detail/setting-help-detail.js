@@ -1,4 +1,4 @@
-// pages/collect/collect.js
+// pages/setting-about-us/setting-help-detail.js
 const api = require('../../utils/api.js');
 Page({
 
@@ -6,20 +6,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    height: wx.getSystemInfoSync().windowHeight - 50,
-    type:3  // 2：收藏商品 3：收藏店铺
+    id:'',
+    detail:''
   },
-  onTabsClick(e){
-    console.log(e.detail.name)
-  },
-  fetchData(type=3){
+  fetchData(){
+    let that = this
     api.post({
-      url:'/share/selectShareListByUser',
+      url:'/user/selectHelpTextById',
       data:{
-        state:type,
+        helpTextId:that.data.id
       },
       success(res){
         console.log(res)
+        if(res.code == 200){
+          that.setData({
+            detail:res.data
+          })
+
+
+          let WxParse = require('../../utils/wxParse/wxParse.js');
+          // let article = res.data.list[0].detail
+          let article = res.data.text
+          /**
+           * WxParse.wxParse(bindName , type, data, target,imagePadding)
+           * 1.bindName绑定的数据名(必填)
+           * 2.type可以为html或者md(必填)
+           * 3.data为传入的具体数据(必填)
+           * 4.target为Page对象,一般为this(必填)
+           * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+           */
+          WxParse.wxParse('article', 'html', article, that, 10);
+
+
+
+        }
       }
     })
   },
@@ -27,12 +47,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let id = options.id
+    this.setData({
+      id:id
+    })
     this.fetchData()
-    setTimeout(()=>{
-      this.setData({
-        height: wx.getSystemInfoSync().windowHeight - 50
-      })
-    },100)
+
   },
 
   /**

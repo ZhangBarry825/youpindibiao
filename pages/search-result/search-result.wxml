@@ -22,7 +22,7 @@
             最近搜索
         </view>
         <view class="items1">
-            <view class="item" bind:tap="goHistory" data-key="{{item.name}}" wx:for="{{historyList}}" wx:for-key="index">{{item.name}}</view>
+            <view class="item"  bind:tap="goHistory" data-key="{{item}}" wx:for="{{historyList}}" wx:for-key="item">{{item}}</view>
 
         </view>
         <view class="title">
@@ -30,7 +30,7 @@
             热门搜索
         </view>
         <view class="items2">
-            <view class="item" bind:tap="goHistory" data-key="{{item.name}}" wx:for="{{hotList}}" wx:for-key="index">
+            <view class="item" bind:tap="goHistory" data-key="{{item.name}}" wx:for="{{hotList}}" wx:for-key="item">
                 {{item.name}}</view>
         </view>
     </view>

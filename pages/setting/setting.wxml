@@ -2,6 +2,8 @@
 <view class="page">
     <van-cell-group>
         <van-cell
+                bind:tap="goTo"
+                data-path="/pages/setting-feedback/setting-feedback"
                 custom-class="custom-class"
                 value-class="value-class"
                 label-class="label-class"
@@ -15,6 +17,8 @@
             </view>
         </van-cell>
         <van-cell
+                bind:tap="goTo"
+                data-path="/pages/setting-help/setting-help"
                 custom-class="custom-class"
                 value-class="value-class"
                 label-class="label-class"
@@ -28,6 +32,8 @@
             </view>
         </van-cell>
         <van-cell
+                bind:tap="goTo"
+                data-path="/pages/setting-about-us/setting-about-us"
                 custom-class="custom-class"
                 value-class="value-class"
                 label-class="label-class"
@@ -41,11 +47,13 @@
             </view>
         </van-cell>
         <van-cell
+                bind:tap="callUs"
+                data-path="/pages/setting-help/setting-help"
                 custom-class="custom-class"
                 value-class="value-class"
                 label-class="label-class"
                 title-class="title-class"
-                value="400-7777-051"
+                value="{{tel}}"
                 is-link >
             <view slot="title">
                 <view class="left">

@@ -27,6 +27,11 @@ Page({
    */
   onLoad: function (options) {
     this.fetchData()
+    setTimeout(()=>{
+      this.setData({
+        height: wx.getSystemInfoSync().windowHeight - 50
+      })
+    },100)
   },
 
   /**
