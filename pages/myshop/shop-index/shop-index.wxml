@@ -1,71 +1,105 @@
 <!--pages/mine-shop/mine-shop.wxml-->
 <view class="page">
-    <view class="mine-back">
-        <image mode="aspectFill" class="back-img" src="../../../static/images/mine-back.png"></image>
-        <view class="left">
-            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+    <view class="shop-show" wx:if="{{status==1}}">
+        <view class="mine-back">
+            <image mode="aspectFill" class="back-img" src="../../../static/images/mine-back.png"></image>
+            <view class="left">
+                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            </view>
+            <view class="right">
+                <view class="line1">举个栗子的店铺</view>
+                <view class="line2">今日销售金额：0元</view>
+            </view>
         </view>
-        <view class="right">
-            <view class="line1">举个栗子的店铺</view>
-            <view class="line2">今日销售金额：0元</view>
+        <view class="statistics">
+            <view class="line1">
+                <view class="item">
+                    <view class="title">累积奖金</view>
+                    <view class="number">0</view>
+                </view>
+            </view>
+            <view class="line2">
+                <view class="item">
+                    <view class="title">今日奖金</view>
+                    <view class="number">0</view>
+                </view>
+                <view class="item">
+                    <view class="title">今日订单</view>
+                    <view class="number">0</view>
+                </view>
+                <view class="item">
+                    <view class="title">累计访问</view>
+                    <view class="number">0</view>
+                </view>
+            </view>
+        </view>
+        <van-grid column-num="4" class="menu-box">
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s1.png"/>
+                <text>我的店铺</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s2.png"/>
+                <text>选品上架</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s3.png"/>
+                <text>订单管理</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s4.png"/>
+                <text>我的财富</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s5.png"/>
+                <text>提现</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s6.png"/>
+                <text>邀请好友</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s7.png"/>
+                <text>我的会员</text>
+            </van-grid-item>
+            <van-grid-item use-slot>
+                <image src="../../../static/images/s8.png"/>
+                <text>设置</text>
+            </van-grid-item>
+        </van-grid>
+    </view>
+    <view class="shop-none" wx:if="{{status==0}}">
+
+        <view class="tips">
+            <image src="../../../static/images/shop-none.png"></image>
+            <view class="line1">暂未开通</view>
+            <view class="line2">点击下方按钮去开通商家入驻！</view>
+        </view>
+        <view class="buttons">
+            <view class="button button1" bind:tap="goApply">去开通</view>
         </view>
     </view>
+    <view class="shop-applying" wx:if="{{status==2}}">
 
-    <view class="statistics">
-        <view class="line1">
-            <view class="item">
-                <view class="title">累积奖金</view>
-                <view class="number">0</view>
-            </view>
+        <view class="tips">
+            <image src="../../../static/images/shop-applying.png"></image>
+            <view class="line1">正在审核</view>
+            <view class="line2">预计 2020-10-27 16:58 前审核完成！</view>
         </view>
-        <view class="line2">
-            <view class="item">
-                <view class="title">今日奖金</view>
-                <view class="number">0</view>
-            </view>
-            <view class="item">
-                <view class="title">今日订单</view>
-                <view class="number">0</view>
-            </view>
-            <view class="item">
-                <view class="title">累计访问</view>
-                <view class="number">0</view>
-            </view>
+        <view class="buttons">
         </view>
     </view>
+    <view class="shop-reject" wx:if="{{status==3}}">
 
-    <van-grid column-num="4" class="menu-box">
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s1.png"/>
-            <text>我的店铺</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s2.png"/>
-            <text>选品上架</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s3.png"/>
-            <text>订单管理</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s4.png"/>
-            <text>我的财富</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s5.png"/>
-            <text>提现</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s6.png"/>
-            <text>邀请好友</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s7.png"/>
-            <text>我的会员</text>
-        </van-grid-item>
-        <van-grid-item use-slot >
-            <image src="../../../static/images/s8.png"/>
-            <text>设置</text>
-        </van-grid-item>
-    </van-grid>
+        <view class="tips">
+            <image src="../../../static/images/shop-reject.png"></image>
+            <view class="line1">审核未通过</view>
+            <view class="line2">
+                <view class="left">未通过原因：</view>
+                <view class="right">1、地址未详细填写\n2、门店不符合规范</view>
+            </view>
+        </view>
+        <view class="buttons">
+        </view>
+    </view>
 </view>

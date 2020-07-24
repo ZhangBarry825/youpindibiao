@@ -5,7 +5,11 @@
   background-color: #f7f7f7;
   z-index: -2;
 }
-.page .mine-back {
+.page .shop-show {
+  height: 100%;
+  width: 100%;
+}
+.page .shop-show .mine-back {
   width: 100%;
   height: 315rpx;
   position: relative;
@@ -15,57 +19,57 @@
   flex-direction: row;
   align-items: center;
 }
-.page .mine-back .left {
+.page .shop-show .mine-back .left {
   width: 133rpx;
   height: 133rpx;
   border-radius: 50%;
   overflow: hidden;
 }
-.page .mine-back .left image {
+.page .shop-show .mine-back .left image {
   width: 100%;
   height: 100%;
 }
-.page .mine-back .right {
+.page .shop-show .mine-back .right {
   width: calc(100% - 133rpx);
   display: flex;
   flex-direction: column;
   padding-left: 30rpx;
 }
-.page .mine-back .right .line1 {
+.page .shop-show .mine-back .right .line1 {
   font-size: 35rpx;
   font-weight: 400;
   color: #ffffff;
 }
-.page .mine-back .right .line2 {
+.page .shop-show .mine-back .right .line2 {
   font-size: 28rpx;
   font-weight: 400;
   color: #ffffff;
   margin: 10rpx 0;
 }
-.page .mine-back .right .line3 {
+.page .shop-show .mine-back .right .line3 {
   font-size: 23rpx;
   font-weight: 400;
   color: #ffffff;
 }
-.page .mine-back .back-img {
+.page .shop-show .mine-back .back-img {
   z-index: -1;
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
 }
-.page .statistics {
+.page .shop-show .statistics {
   width: 100%;
   background-color: #ffffff;
   margin: 20rpx 0;
   display: flex;
   flex-direction: column;
 }
-.page .statistics .line1 {
+.page .shop-show .statistics .line1 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-.page .statistics .line1,
-.page .statistics .line2 {
+.page .shop-show .statistics .line1,
+.page .shop-show .statistics .line2 {
   width: 100%;
   padding: 20rpx 0;
   box-sizing: border-box;
@@ -73,32 +77,218 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.page .statistics .line1 .item,
-.page .statistics .line2 .item {
+.page .shop-show .statistics .line1 .item,
+.page .shop-show .statistics .line2 .item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.page .statistics .line1 .item .title,
-.page .statistics .line2 .item .title {
+.page .shop-show .statistics .line1 .item .title,
+.page .shop-show .statistics .line2 .item .title {
   font-size: 28rpx;
   font-weight: 400;
   color: #4d4d4d;
 }
-.page .statistics .line1 .item .number,
-.page .statistics .line2 .item .number {
+.page .shop-show .statistics .line1 .item .number,
+.page .shop-show .statistics .line2 .item .number {
   font-size: 35rpx;
   font-weight: 400;
   color: #f26500;
   margin: 10rpx 0;
 }
-.page .menu-box image {
+.page .shop-show .menu-box image {
   width: 57rpx;
   height: 57rpx;
 }
-.page .menu-box text {
+.page .shop-show .menu-box text {
   margin-top: 20rpx;
   font-size: 28rpx;
   font-weight: 400;
   color: #333333;
+}
+.page .shop-none {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page .shop-none .tips {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page .shop-none .tips image {
+  width: 204rpx;
+  height: 160rpx;
+}
+.page .shop-none .tips .line1 {
+  margin-top: 50rpx;
+  margin-bottom: 15rpx;
+  font-size: 36rpx;
+  font-weight: 400;
+  color: #222222;
+}
+.page .shop-none .tips .line2 {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.page .shop-none .buttons {
+  width: 100%;
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page .shop-none .buttons .button {
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  border-radius: 12rpx;
+}
+.page .shop-none .buttons .button1 {
+  color: #ffffff;
+  background: #f26500;
+}
+.page .shop-none .buttons .button2 {
+  background: #ebebeb;
+  color: #4d4d4d;
+}
+.page .shop-applying {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page .shop-applying .tips {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page .shop-applying .tips image {
+  width: 204rpx;
+  height: 160rpx;
+}
+.page .shop-applying .tips .line1 {
+  margin-top: 50rpx;
+  margin-bottom: 15rpx;
+  font-size: 36rpx;
+  font-weight: 400;
+  color: #222222;
+}
+.page .shop-applying .tips .line2 {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.page .shop-applying .buttons {
+  width: 100%;
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page .shop-applying .buttons .button {
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  border-radius: 12rpx;
+}
+.page .shop-applying .buttons .button1 {
+  color: #ffffff;
+  background: #f26500;
+}
+.page .shop-applying .buttons .button2 {
+  background: #ebebeb;
+  color: #4d4d4d;
+}
+.page .shop-reject {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page .shop-reject .tips {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page .shop-reject .tips image {
+  width: 204rpx;
+  height: 160rpx;
+}
+.page .shop-reject .tips .line1 {
+  margin-top: 50rpx;
+  margin-bottom: 15rpx;
+  font-size: 36rpx;
+  font-weight: 400;
+  color: #222222;
+}
+.page .shop-reject .tips .line2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.page .shop-reject .tips .line2 .left {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.page .shop-reject .tips .line2 .right {
+  white-space: pre-wrap;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #FF4C4C;
+}
+.page .shop-reject .buttons {
+  width: 100%;
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page .shop-reject .buttons .button {
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  border-radius: 12rpx;
+}
+.page .shop-reject .buttons .button1 {
+  color: #ffffff;
+  background: #f26500;
+}
+.page .shop-reject .buttons .button2 {
+  background: #ebebeb;
+  color: #4d4d4d;
 }

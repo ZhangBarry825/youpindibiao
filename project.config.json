@@ -308,6 +308,26 @@
 					"pathName": "pages/bankcard/bankcard-bind/bankcard-bind",
 					"query": "id=1513824945623187",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资料修改",
+					"pathName": "pages/edit-userInfo/edit-userInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "申请开店",
+					"pathName": "pages/myshop/shop-apply/shop-apply",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的店铺",
+					"pathName": "pages/myshop/shop-index/shop-index",
+					"scene": null
 				}
 			]
 		}

@@ -1,0 +1,73 @@
+<!--pages/myshop/shop-apply/shop-apply.wxml-->
+<view class="page">
+
+    <van-cell-group>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class" is-link>
+            <view slot="title">
+                <van-field
+                        title-width="150rpx"
+                        label="店铺名称"
+                        value="{{ userName }}"
+                        placeholder="请输入店铺名称"
+                        border="{{ false }}"
+                        bind:change="onUserNameChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class" is-link>
+            <view slot="title">
+                <van-field
+                        title-width="150rpx"
+                        label="联系方式"
+                        value="{{ phone }}"
+                        placeholder="请输入手机号码"
+                        border="{{ false }}"
+                        bind:change="onPhoneChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  bind:tap="openSelect"
+                  title-class="title-class" is-link>
+            <view slot="title">
+                <van-field
+                        disabled
+                        title-width="150rpx"
+                        label="所在地区"
+                        value="{{ addressArea }}"
+                        placeholder="请选择所在地区"
+                        border="{{ false }}"
+                        bind:change="onChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class" is-link>
+            <view slot="title">
+                <van-field
+                        title-width="150rpx"
+                        label="详细地址"
+                        value="{{ addressDetail }}"
+                        placeholder="请输入详细地址"
+                        border="{{ false }}"
+                        bind:change="onAddressDetailChange"
+                />
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+
+    <view class="submit-button" bind:tap="submitForm">提交审核</view>
+
+    <van-popup show="{{ showSelect }}" bind:close="onCloseSelect"  position="bottom"  custom-style="width: 100%;">
+        <van-area
+                area-list="{{ areaList }}"
+                bind:confirm="selectArea"
+                bind:cancel="onCloseSelect"
+        />
+    </van-popup>
+
+    <van-dialog id="van-dialog" />
+</view>

@@ -1,11 +1,31 @@
 // pages/mine-shop/mine-shop.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    status:0,//店铺状态  0 暂未开通 1正常 2审核中 3未通过申请
+  },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/businessApply/queryShopState',
+      data:{},
+      success(res){
+        if(res.code == 500){
+          that.setData({
+            status:0
+          })
+        }
+      }
+    })
+  },
+  goApply(){
+    wx.navigateTo({
+      url:'/pages/myshop/shop-apply/shop-apply'
+    })
   },
 
   /**
@@ -26,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.fetchData()
   },
 
   /**
