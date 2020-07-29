@@ -22,8 +22,8 @@
                 <view class="input-value">
                     <van-field
                             input-align="right"
-                            value="{{ realname }}"
-                            placeholder="请输入用户名"
+                            value="{{ userInfo.wxname }}"
+                            placeholder="请输入姓名"
                             border="{{ false }}"
                             bind:change="onNameChange"
                     />
@@ -39,11 +39,10 @@
                 <view class="input-value">
                     <van-field
                             input-align="right"
-                            value="{{ nickname }}"
-                            placeholder="请输入用户名"
+                            value="{{ userInfo.name }}"
+                            placeholder="请输入昵称"
                             border="{{ false }}"
-                            bind:change="onNameChange"
-                    />
+                            bind:change="onNameChange"/>
                 </view>
             </view>
         </van-cell>
@@ -67,8 +66,8 @@
                 <view class="input-value">
                     <van-field
                             input-align="right"
-                            value="{{ phone }}"
-                            placeholder="请输入用户名"
+                            value="{{ userInfo.tel }}"
+                            placeholder="请输入手机号"
                             border="{{ false }}"
                             bind:change="onPhoneChange"
                     />

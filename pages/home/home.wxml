@@ -19,11 +19,9 @@
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
         <swiper-item wx:for="{{bannerList}}" wx:key="item">
-            <image src="{{item.imageUrl}}" class="slide-image" width="100%" height="200"/>
+            <image mode="aspectFill" src="{{item.imageUrl}}" class="slide-image" width="100%" height="200"/>
         </swiper-item>
     </swiper>
-
-
     <view class="menu-box">
         <view class="top">
             <view class="left">
@@ -139,13 +137,13 @@
         </view>
     </view>
     <view class="banners">
-        <view class="banner">
+        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}">
             <image mode="aspectFill" src="{{advertisementList[0].imageUrl}}"></image>
         </view>
-        <view class="banner">
+        <view class="banner" wx:if="{{advertisementList[1].imageUrl}}">
             <image mode="aspectFill" src="{{advertisementList[1].imageUrl}}"></image>
         </view>
-        <view class="banner">
+        <view class="banner" wx:if="{{advertisementList[2].imageUrl}}">
             <image mode="aspectFill" src="{{advertisementList[2].imageUrl}}"></image>
         </view>
     </view>
@@ -175,7 +173,7 @@
             </view>
         </view>
     </view>
-    <view class="banners">
+    <view class="banners" wx:if="{{advertisementList[3].imageUrl}}">
         <view class="banner">
             <image mode="aspectFill" src="{{advertisementList[3].imageUrl}}"></image>
         </view>

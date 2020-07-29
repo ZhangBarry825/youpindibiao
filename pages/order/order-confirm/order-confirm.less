@@ -19,14 +19,13 @@
 
     .address-box {
       .van-cell__right-icon-wrap {
-        margin-top: 5%;
+        margin-top: 10rpx;
       }
 
       .line1 {
         font-size: 33rpx;
         font-weight: 400;
         color: rgba(51, 51, 51, 1);
-        margin: 10rpx 0;
       }
 
       .line2 {
@@ -39,6 +38,17 @@
         -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+      .line3{
+        margin-top: 8rpx;
+        font-size: 28rpx;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
       }
     }
   }
@@ -130,12 +140,29 @@
               justify-content: space-between;
 
               .line2-left {
+                font-size: 25rpx;
+                font-weight: 400;
+                color:  rgba(51, 51, 51, 1);
+              }
+
+              .line2-right {
+                font-size: 23rpx;
+                font-weight: 400;
+                color: rgba(51, 51, 51, 1);
+
+              }
+            }
+            .line3 {
+              display: flex;
+              justify-content: space-between;
+
+              .line3-left {
                 font-size: 28rpx;
                 font-weight: 400;
                 color: rgba(242, 101, 0, 1);
               }
 
-              .line2-right {
+              .line3-right {
                 font-size: 23rpx;
                 font-weight: 400;
                 color: rgba(51, 51, 51, 1);

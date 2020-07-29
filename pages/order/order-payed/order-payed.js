@@ -5,14 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    orderid:''
   },
-
+  goHome(){
+    wx.switchTab({
+      url:'/pages/home/home'
+    })
+  },
+  goDetail(){
+    wx.reLaunch({
+      url:'/pages/order/order-status/order-status?orderid='+this.data.orderid
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let orderid=options.orderid
+    this.setData({
+      orderid:orderid
+    })
   },
 
   /**

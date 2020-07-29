@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addressList:[]
+    addressList:[],
+    type:''//select 为选择地址  空 为编辑地址
   },
   fetchData(){
     let that = this
@@ -39,15 +40,36 @@ Page({
     })
   },
   goDetail(e){
-    let id=e.currentTarget.dataset.item.id
-    wx.navigateTo({
-      url:'/pages/address-detail/address-detail?id='+id
-    })
+    let that = this
+    if(that.data.type=='select'){
+      var pages = getCurrentPages();
+      var currPage = pages[pages.length - 1];   //当前页面
+      var prevPage = pages[pages.length - 2];  //上一个页面
+//直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+      prevPage.setData({
+        addressDetail:e.currentTarget.dataset.item,
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    }else {
+      let id=e.currentTarget.dataset.item.id
+      wx.navigateTo({
+        url:'/pages/address-detail/address-detail?id='+id
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let type=options.type
+    if(type=='select'){
+      this.setData({
+        type:type
+      })
+    }
     this.fetchData()
   },
 

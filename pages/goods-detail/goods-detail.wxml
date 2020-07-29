@@ -49,8 +49,7 @@
                             color="#ee0a24"
                             void-color="#eee"
                             void-icon="star"
-                            readonly
-                    />
+                            readonly/>
                 </view>
             </view>
             <view class="line2">{{item.text}}</view>
@@ -79,8 +78,8 @@
             <image src="../../static/images/like.png"></image>
             收藏
         </view>
-        <view class="add">加入购物车</view>
-        <view class="buy">立即购买</view>
+        <view class="add" bind:tap="showSpecification">加入购物车</view>
+        <view class="buy" bind:tap="showSpecification">立即购买</view>
     </view>
 
     <van-popup
@@ -122,43 +121,18 @@
         </view>
         <view class="spe-goods-info">
             <view class="left">
-                <image src="../../static/images/avatar.gif"></image>
+                <image mode="aspectFill" src="{{goodsDetail.list[0].thumbnail}}"></image>
             </view>
             <view class="right">
-                <view class="title">DJI大疆精灵Phantom 3 Standard 2.7K航拍器无人机 新手入门力荐</view>
-                <view class="price">￥ 5990.00</view>
+                <view class="title">{{goodsDetail.list[0].name}}</view>
+                <view class="price" wx:if="{{skuRes.goodsPrice}}">￥ {{skuRes.goodsPrice}}</view>
             </view>
         </view>
-        <view class="spe-goods-item">
-            <view class="title">版本</view>
-            <view class="item selected">PRO 儿童版
-                <image src="../../static/images/angle.png"></image>
-            </view>
-            <view class="item">PRO 5 成人版
-                <image src="../../static/images/angle.png"></image>
-            </view>
-        </view>
-        <view class="spe-goods-item">
-            <view class="title">颜色</view>
-            <view class="item selected">灰色
-                <image src="../../static/images/angle.png"></image>
-            </view>
-            <view class="item">银白
-                <image src="../../static/images/angle.png"></image>
-            </view>
-            <view class="item">金色
-                <image src="../../static/images/angle.png"></image>
-            </view>
-        </view>
-        <view class="spe-goods-item">
-            <view class="title">内存</view>
-            <view class="item">32GB
-                <image src="../../static/images/angle.png"></image>
-            </view>
-            <view class="item selected">64GB
-                <image src="../../static/images/angle.png"></image>
-            </view>
-            <view class="item">128GB
+        <view class="spe-goods-item" wx:for="{{attributeList}}" wx:key="item">
+            <view class="title">{{item.attributeName}}</view>
+            <view class="item {{selectItem[index]==itm.id?'selected':''}} " wx:for="{{item.attributeValueList}}" wx:for-index="indexa"
+                  bind:tap="selectSpe" data-value="{{itm.id}}" data-index="{{index}}" wx:for-item="itm" wx:key="itm">
+                {{itm.valueName}}
                 <image src="../../static/images/angle.png"></image>
             </view>
         </view>
@@ -167,6 +141,10 @@
             <view class="minus" catch:tap="minusNum">-</view>
             <view class="number">{{number}}</view>
             <view class="add" catch:tap="addNum">+</view>
+        </view>
+        <view class="spe-buttons">
+            <view class="spe-button trolley" bind:tap="addTrolley">加入购物车</view>
+            <view class="spe-button buy" bind:tap="goToBuy">立即购买</view>
         </view>
     </van-popup>
 </view>

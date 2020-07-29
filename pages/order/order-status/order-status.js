@@ -1,4 +1,5 @@
 // pages/order/order-status/order-status.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
@@ -6,14 +7,35 @@ Page({
    * orderStatus：1等待买家付款  2等待卖家发货  3卖家已发货  4交易成功
    */
   data: {
-    orderStatus:4
+    orderStatus:4,
+    orderid:'',
+    orderDetail:{}
   },
-
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/order/orderSelectById',
+      data:{
+        orderid:that.data.orderid
+      },
+      success(res){
+        if(res.code == 200){
+          that.setData({
+            orderDetail:res.data
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let orderid=options.orderid
+    this.setData({
+      orderid:orderid
+    })
+    this.fetchData()
   },
 
   /**

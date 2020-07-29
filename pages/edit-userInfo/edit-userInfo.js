@@ -9,6 +9,9 @@ Page({
     realname:'王小二',
     nickname:'珍妮',
     phone:'158****2135',
+    userInfo:{
+
+    }
   },
   onPhoneChange(){
 
@@ -17,6 +20,7 @@ Page({
 
   },
   fetchData(){
+    let that = this
     api.post({
       url:'/user/selectUserById',
       data:{
@@ -24,6 +28,9 @@ Page({
       },
       success(res){
         console.log(res)
+        that.setData({
+          userInfo:res.data
+        })
       }
     })
   },

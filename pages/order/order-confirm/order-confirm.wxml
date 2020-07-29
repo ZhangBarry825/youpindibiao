@@ -8,11 +8,12 @@
                 </view>
             </view>
         </van-cell>
-        <van-cell is-link class="address-box">
+        <van-cell is-link class="address-box" bind:tap="goAddressList">
             <view slot="title">
                 <view class="van-cell-text address-detail">
-                    <view class="line1">谭某某 132*******1234</view>
-                    <view class="line2">河南省郑州市中原区中州大道商都路交叉口建业五栋大楼B座701室</view>
+                    <view class="line1">{{addressDetail.name}} {{addressDetail.tel}}</view>
+                    <view class="line2">{{addressDetail.address}}{{addressDetail.xqaddress}}</view>
+                    <view class="line3" wx:if="{{!addressDetail}}">去添加</view>
                 </view>
             </view>
         </van-cell>
@@ -28,59 +29,27 @@
         </van-cell>
         <van-cell class="goods-box">
             <view slot="title" class="goods-box2">
-                <view class="goods-item">
+                <view class="goods-item" wx:for="{{goodsList}}">
                     <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                        <image class="goods-pic" mode="aspectFill" src="{{item.goods.thumbnail}}"></image>
                         <view class="goods-detail">
                             <view class="line1">
                                 <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
+                                    {{item.goods.name}}
                                 </view>
                             </view>
                             <view class="line2">
-                                <view class="line2-left">￥5990.00</view>
+                                <view class="line2-left">
+                                    黑色 8G
+                                </view>
                                 <view class="line2-right">
-                                    x2
+
                                 </view>
                             </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00</view>
-                                <view class="line2-right">
-                                    x2
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00</view>
-                                <view class="line2-right">
-                                    x2
+                            <view class="line3">
+                                <view class="line3-left">￥{{item.sku.goodsPrice}}</view>
+                                <view class="line3-right">
+                                    x{{item.number}}
                                 </view>
                             </view>
                         </view>
@@ -90,7 +59,7 @@
                 </view>
             </view>
         </van-cell>
-        <van-cell value="微信支付" is-link bind:tap="onPayShow">
+        <van-cell value="{{payTypeText}}" is-link bind:tap="onPayShow">
             <view slot="title">
                 <view class="van-cell-text">支付方式</view>
             </view>
@@ -102,9 +71,9 @@
                         购买数量
                     </view>
                     <view class="line2-right">
-                        <view class="num-minus">-</view>
-                        <view class="number">{{number}}</view>
-                        <view class="num-add">+</view>
+                        <view class="num-minus" catch:tap="minusNum">-</view>
+                        <view class="number">{{goodsList[0].number}}</view>
+                        <view class="num-add" catch:tap="addNum">+</view>
                     </view>
                 </view>
             </view>
@@ -114,8 +83,14 @@
                 <view class="van-cell-text">配送方式</view>
             </view>
         </van-cell>
+        <van-cell value="￥ {{goodsList[0].goods.freight}}" >
+            <view slot="title">
+                <view class="van-cell-text">配送费</view>
+            </view>
+        </van-cell>
         <van-cell-group>
             <van-field
+                    bind:change="messageChange"
                     value="{{ message }}"
                     label="留言"
                     type="textarea"
@@ -128,9 +103,9 @@
 
     <view class="bottom-count">
         <view class="count">
-            合计：<view class="color">￥5990.00</view>
+            合计：<view class="color">￥{{totalPrice}}</view>
         </view>
-        <view class="count-button">结算</view>
+        <view class="count-button" bind:tap="submitForm">结算</view>
     </view>
 
     <van-popup
@@ -142,11 +117,11 @@
         <view class="pay-title">支付方式</view>
         <van-radio-group value="{{ payType }}">
             <van-cell-group >
+                <van-cell title="余额支付" clickable data-type="0" bind:click="onPayChange">
+                    <van-radio shape="square" icon-size="25rpx" checked-color="#f26500" slot="right-icon" name="0" />
+                </van-cell>
                 <van-cell title="微信支付" clickable data-type="1" bind:click="onPayChange">
                     <van-radio shape="square" icon-size="25rpx" checked-color="#f26500" slot="right-icon" name="1" />
-                </van-cell>
-                <van-cell title="佣金支付" clickable data-type="2" bind:click="onPayChange">
-                    <van-radio shape="square" icon-size="25rpx" checked-color="#f26500" slot="right-icon" name="2" />
                 </van-cell>
             </van-cell-group>
         </van-radio-group>

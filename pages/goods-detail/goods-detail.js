@@ -15,9 +15,13 @@ Page({
     ],
     showShare:false,
     showSpecification:false,
-    number:1,
+    number:1,//购买数量
     goodsDetail:{},
-    id:''
+    id:'',
+    attributeList:[],
+    skuList:[],
+    selectItem:[],//匹配sku列表
+    skuRes: {},//匹配sku结果
   },
   goTo(e){
     let type=e.currentTarget.dataset.type
@@ -116,6 +120,19 @@ Page({
         console.log(that.data.goodsDetail)
       }
     })
+    api.post({
+      url:'/showGoods/goods_sku',
+      noLogin:true,
+      data:{
+        goodsid:that.data.id
+      },
+      success(res){
+        that.setData({
+          attributeList:res.data.attributeList,
+          skuList:res.data.skuList,
+        })
+      }
+    })
 
   },
   goCollect(){
@@ -134,6 +151,71 @@ Page({
         })
       }
     })
+  },
+  selectSpe(e){
+    let that = this
+    this.setData({
+      [`selectItem[${e.currentTarget.dataset.index}]`]:e.currentTarget.dataset.value
+    })
+    let selectItem=this.data.skuList.filter(item=>{
+        return this.data.selectItem.every((value,i)=> value==item.skuAttributeList[i].attributeValueId)
+    })
+    if(selectItem.length==1){
+      that.setData({
+        skuRes:selectItem[0]
+      })
+      console.log(selectItem)
+    }
+  },
+  addTrolley(){
+    let that = this
+    if(that.data.skuRes.id){
+      api.post({
+        url:'/tCar/addTCarByUser',
+        data:{
+          goodsid:that.data.goodsDetail.list[0].id,
+          shopid:that.data.goodsDetail.list[0].shopid,
+          skuid:that.data.skuRes.id
+        },
+        success(res){
+          wx.showToast({
+            title:'添加成功！',
+            icon:'success',
+            duration:1000
+          })
+          that.setData({
+            showSpecification:false
+          })
+        }
+      })
+    }else {
+      wx.showToast({
+        title:'请选择规格',
+        icon:'none',
+        duration:1000
+      })
+    }
+  },
+  goToBuy(){
+    let that = this
+    if(that.data.skuRes.id){
+      console.log(that.data.goodsDetail.list[0].id)
+      let goodsList=[{
+        goods:that.data.goodsDetail.list[0],
+        number:that.data.number,
+        sku:that.data.skuRes
+      }]
+      wx.navigateTo({
+        url:'/pages/order/order-confirm/order-confirm?goodsList='+JSON.stringify(goodsList)+'&type=goods'
+      })
+    }else {
+      wx.showToast({
+        title:'请选择规格',
+        icon:'none',
+        duration:1000
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载

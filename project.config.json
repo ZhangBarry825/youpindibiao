@@ -229,7 +229,7 @@
 					"id": 23,
 					"name": "商品详情",
 					"pathName": "pages/goods-detail/goods-detail",
-					"query": "id=1514944678363931",
+					"query": "id=1513824945624593",
 					"scene": null
 				},
 				{
@@ -327,6 +327,21 @@
 					"id": -1,
 					"name": "我的店铺",
 					"pathName": "pages/myshop/shop-index/shop-index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/order/order-confirm/order-confirm",
+					"query": "id=1513824945624593",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单状态",
+					"pathName": "pages/order/order-status/order-status",
+					"query": "orderid=1596015680854612",
 					"scene": null
 				}
 			]

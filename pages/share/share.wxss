@@ -172,3 +172,6 @@
   font-weight: 400;
   color: #f26500;
 }
+.page .rate-class {
+  margin-right: 20rpx;
+}

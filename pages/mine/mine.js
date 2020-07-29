@@ -9,7 +9,8 @@ Page({
     isLogin:false,
     avatarUrl:'',
     nickName:'',
-    phone:''
+    phone:'',
+    numberList:{}
   },
   goTo(e){
     let path=e.currentTarget.dataset.path
@@ -22,13 +23,14 @@ Page({
     }
   },
   fetchData(){
+    let that = this
     api.post({
-      url:'/user/selectUserById',
-      data:{
-        token:'123'
-      },
+      url:'/order/orderNum',
       success(res){
         console.log(res)
+        that.setData({
+          numberList:res.data
+        })
       }
     })
   },
@@ -45,6 +47,7 @@ Page({
               icon: 'success',
               duration: 1000
             });
+            that.fetchData()
             that.setData({
               isLogin:true,
               nickName:res.userInfo.nickName,
@@ -116,7 +119,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(wx.getStorageSync('token')){
+      this.fetchData()
+    }
   },
 
   /**

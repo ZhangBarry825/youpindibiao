@@ -32,19 +32,19 @@
             <view slot="title">
                 <view class="order-menu">
                     <view class="order-item">
-                        <van-icon name="cash-on-deliver" size="43rpx" info="9" />
+                        <van-icon name="cash-on-deliver" size="43rpx" info="{{numberList.wzfNum?numberList.wzfNum:''}}" />
                         <text>待付款</text>
                     </view>
                     <view class="order-item">
-                        <van-icon name="send-gift-o" size="43rpx" info="" />
+                        <van-icon name="send-gift-o" size="43rpx" info="{{numberList.dfhNum?numberList.dfhNum:''}}" />
                         <text>待发货</text>
                     </view>
                     <view class="order-item">
-                        <van-icon name="logistics" size="43rpx" info="" />
+                        <van-icon name="logistics" size="43rpx" info="{{numberList.dshNum?numberList.dshNum:''}}" />
                         <text>待收货</text>
                     </view>
                     <view class="order-item">
-                        <van-icon name="edit" size="43rpx" info="" />
+                        <van-icon name="edit" size="43rpx" info="{{numberList.dpjNum?numberList.dpjNum:''}}" />
                         <text>待评价</text>
                     </view>
                     <view class="order-item">

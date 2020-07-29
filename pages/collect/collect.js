@@ -7,19 +7,71 @@ Page({
    */
   data: {
     height: wx.getSystemInfoSync().windowHeight - 50,
-    type:3  // 2：收藏商品 3：收藏店铺
+    type:1,  //0：商品收藏 1：店铺收藏
+    pageNum:1,
+    pageSize:10,
+    itemList:[],
+  },
+  goTo(e){
+    let path=e.currentTarget.dataset.path
+    let id=e.currentTarget.dataset.id
+    wx.navigateTo({
+      url:path+'?id='+id,
+    })
   },
   onTabsClick(e){
     console.log(e.detail.name)
+    if(e.detail.name==1){
+      this.setData({
+        type:0
+      })
+      this.fetchData()
+    }else {
+      this.setData({
+        type:1
+      })
+      this.fetchData()
+    }
   },
-  fetchData(type=3){
+  fetchData(pageNum=1,append=false){
+    let that = this
     api.post({
-      url:'/share/selectShareListByUser',
+      url:'/share/selectCollectByUser',
       data:{
-        state:type,
+        state:that.data.type,
+        pageNum:pageNum,
+        pageSize:that.data.pageSize,
       },
       success(res){
         console.log(res)
+        if(res.data.list.length>0){
+
+          for (const apiKey in res.data.list) {
+            res.data.list[apiKey].nearby_img=api.Host+'/'+res.data.list[apiKey].nearby_img
+            res.data.list[apiKey].thumbnail=api.Host+'/'+res.data.list[apiKey].thumbnail
+          }
+          if(append){
+            that.setData({
+              itemList:that.data.itemList.concat(res.data.list)
+            })
+          }else {
+            that.setData({
+              itemList:res.data.list
+            })
+          }
+        }else {
+          wx.showToast({
+            title:'暂无更多',
+            icon:'none',
+            duration:1000
+          })
+          if(!append){
+            that.setData({
+              itemList:[]
+            })
+          }
+        }
+        console.log(that.data.itemList,'1')
       }
     })
   },
@@ -74,7 +126,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.fetchData(this.data.pageNum+1,true)
   },
 
   /**

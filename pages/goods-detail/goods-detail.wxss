@@ -414,6 +414,26 @@
   align-items: center;
   color: #888888;
 }
+.page .Spe-custom-class .spe-buttons {
+  width: 100%;
+  display: flex;
+}
+.page .Spe-custom-class .spe-buttons .spe-button {
+  width: 50%;
+  height: 97rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 33rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.page .Spe-custom-class .spe-buttons .trolley {
+  background: #f26500;
+}
+.page .Spe-custom-class .spe-buttons .buy {
+  background: #E41839;
+}
 .page .Spe-custom-class .spe-goods-num {
   margin-bottom: 30rpx;
 }

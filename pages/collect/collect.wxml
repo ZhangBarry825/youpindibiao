@@ -3,570 +3,71 @@
 
     <van-tabs color="#f26500" bind:click="onTabsClick" animated>
         <van-tab title="商家">
-            <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
-                <view class="shop-items">
-                    <view class="item">
+            <scroll-view bind:scrolltolower="onReachBottom" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+                <view class="shop-items" wx:if="{{itemList.length>0}}">
+                    <view class="item" wx:for="{{itemList}}" wx:key="item" bind:tap="goTo"
+                          data-path="/pages/nearby-shop/nearby-shop" data-id="{{item.goodsid}}">
                         <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                            <image mode="aspectFill" src="{{item.nearby_img}}"></image>
                         </view>
                         <view class="right">
                             <view class="line1">
-                                <view class="title">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
+                                <view class="title">{{item.nearby_name}}</view>
                                 <view class="location">
                                     <image mode="aspectFit" src="../../static/images/arround.png"></image>
                                     1.5km
                                 </view>
                             </view>
                             <view class="line2">
-                                营业时间：9:00~21:00
+                                营业时间：{{item.start_time}}~{{item.end_time}}
                             </view>
                             <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
+                                <view class="count">人均：{{item.consume}} 月售{{item.shopsales}}单</view>
                                 <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">
-                                <view class="title">个个鲜朱雀门店</view>
-                                <view class="location">
-                                    <image mode="aspectFit" src="../../static/images/arround.png"></image>
-                                    1.5km
-                                </view>
-                            </view>
-                            <view class="line2">
-                                营业时间：9:00~21:00
-                            </view>
-                            <view class="line3">
-                                <view class="count">人均：26 月售101单</view>
-                                <view class="score">
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star.png"></image>
-                                    <image src="../../static/images/star-half.png"></image>
-                                    <image src="../../static/images/star-none.png"></image>
-                                    4.8
+                                    <van-rate
+                                            custom-class="rate-class"
+                                            allow-half
+                                            readonly
+                                            value="{{item.shopstar}}"
+                                            :size="16"
+                                            color="#ffd21e"
+                                            void-icon="star"
+                                            void-color="#eee"
+                                    />
+                                    {{item.shopstar}}
                                 </view>
                             </view>
                         </view>
                     </view>
                 </view>
 
-<!--                <view class="shop-none">-->
-<!--                    <image src="../../static/images/collect-none.png"></image>-->
-<!--                    <view class="text">还没有收藏的店铺哦~</view>-->
-<!--                    <view class="none-button">去逛逛</view>-->
-<!--                </view>-->
+                <view class="shop-none" wx:if="{{itemList.length<1}}">
+                    <image src="../../static/images/collect-none.png"></image>
+                    <view class="text">还没有分享的店铺哦~</view>
+                    <view class="none-button">去逛逛</view>
+                </view>
             </scroll-view>
-
         </van-tab>
         <van-tab title="商品">
-            <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
-
-                <view class="goods-box">
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
+            <scroll-view bind:scrolltolower="onReachBottom" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
+                <view class="goods-box" wx:if="{{itemList.length>0}}">
+                    <view class="goods-item" wx:for="{{itemList}}" wx:key="item" bind:tap="goTo"
+                          data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">
+                        <image class="goods-image" mode="aspectFill" src="{{item.thumbnail}}"></image>
+                        <view class="title">{{item.name}}</view>
                         <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
-                            <view class="trolley">
-                                <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="goods-item">
-                        <image class="goods-image" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="title">vivo X6s全网通4G智能手机 八核双卡双待大屏指纹解锁手机vivox6s</view>
-                        <view class="bottom">
-                            <view class="price">￥1360</view>
+                            <view class="price">￥{{item.money}}</view>
                             <view class="trolley">
                                 <image mode="aspectFill" src="../../static/images/trolley2.png"></image>
                             </view>
                         </view>
                     </view>
                 </view>
-
-
-<!--                <view class="shop-none">-->
-<!--                    <image src="../../static/images/collect-none.png"></image>-->
-<!--                    <view class="text">还没有收藏的商品哦~</view>-->
-<!--                    <view class="none-button">去逛逛</view>-->
-<!--                </view>-->
+                <view class="shop-none" wx:if="{{itemList.length<1}}">
+                    <image src="../../static/images/collect-none.png"></image>
+                    <view class="text">还没有分享的商品哦~</view>
+                    <view class="none-button">去逛逛</view>
+                </view>
             </scroll-view>
         </van-tab>
     </van-tabs>
