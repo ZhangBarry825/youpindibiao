@@ -137,11 +137,12 @@ Page({
            for (const apiKey1 in res.data[apiKey].list) {
              res.data[apiKey].list[apiKey1].checked=false
            }
-           res.data[apiKey].countPrice=0
+           res.data[apiKey].countPrice=0.00
            res.data[apiKey].checked=false
          }
          that.setData({
            trolleyList:res.data,
+           totalPrice:0.00
          })
        }
 
