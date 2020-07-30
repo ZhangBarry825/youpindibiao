@@ -75,7 +75,7 @@
         </view>
     </view>
 
-    <view class="bottom-count">
+    <view class="bottom-count" wx:if="{{trolleyList.length>0}}">
         <view class="count">
             合计：<view class="color">￥{{totalPrice}}</view>
         </view>
