@@ -166,6 +166,22 @@
   text-align: center;
   color: #F16500;
 }
+.page .shopping .none-goods {
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  font-size: 25rpx;
+  font-weight: 400;
+  color: #4c4c4c;
+}
+.page .shopping .none-goods image {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 50rpx 0;
+}
 .page .shopping .goods {
   width: 100%;
   box-sizing: border-box;

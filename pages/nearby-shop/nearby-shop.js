@@ -134,9 +134,17 @@ Page({
   goTo(e){
     let id=e.currentTarget.dataset.id
     let path=e.currentTarget.dataset.path
-    wx.navigateTo({
-      url:path+'?id='+id
-    })
+    let item=e.currentTarget.dataset.item
+    if(item.shopid){
+      wx.navigateTo({
+        url:path+'?id='+id+'&shopid='+item.shopid
+      })
+    }else {
+      wx.navigateTo({
+        url:path+'?id='+id
+      })
+    }
+
   },
   goComments(){
     wx.navigateTo({

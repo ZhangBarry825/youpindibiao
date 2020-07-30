@@ -17,6 +17,10 @@ Page({
     phone: '',
     code: '',
     showSelect: false,
+    addressData:{
+      lat:0,
+      lng:0,
+    },
 
     areaList: {
       ...areaFile
@@ -64,6 +68,62 @@ Page({
     // 需要手动对 checked 状态进行更新
     this.setData({defaultChecked: detail});
   },
+  getLocation(){
+    let that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy  //位置精确度
+        that.setData({
+          addressData:{
+            lat:latitude,
+            lng:longitude,
+          }
+        })
+        api.post({
+          url: '/businessApply/toShopApply',
+          data: {
+            shopAddress: that.data.addressArea + that.data.addressDetail,
+            shopName: that.data.userName,
+            shopTel: that.data.phone,
+            ...that.data.addressData
+          },
+          success(res) {
+            console.log(res)
+            if (res.code == 200) {
+              wx.showToast({
+                title: '提交成功！',
+                icon: 'success',
+                duration: 1000
+              })
+              var pages = getCurrentPages();
+              var currPage = pages[pages.length - 1];   //当前页面
+              var prevPage = pages[pages.length - 2];  //上一个页面
+              setTimeout(() => {
+                prevPage.fetchData()
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000)
+            }
+          }
+        })
+      },
+      fail(){
+        Dialog.confirm({
+          title: '提示',
+          message: '请授权位置信息，以便申请店铺地理位置',
+        }).then(() => {
+          wx.openSetting()
+        }).catch(() => {
+          // on cancel
+        });
+      }
+    })
+  },
   submitForm() {
     let that = this
     console.log(this.data.addressArea)
@@ -95,33 +155,7 @@ Page({
          duration: 1000
        })
      } else {
-      api.post({
-        url: '/businessApply/toShopApply',
-        data: {
-          shopAddress: that.data.addressArea + that.data.addressDetail,
-          shopName: that.data.userName,
-          shopTel: that.data.phone,
-        },
-        success(res) {
-          console.log(res)
-          if (res.code == 200) {
-            wx.showToast({
-              title: '提交成功！',
-              icon: 'success',
-              duration: 1000
-            })
-            var pages = getCurrentPages();
-            var currPage = pages[pages.length - 1];   //当前页面
-            var prevPage = pages[pages.length - 2];  //上一个页面
-            setTimeout(() => {
-              prevPage.fetchData()
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 1000)
-          }
-        }
-      })
+       that.getLocation()
     }
   },
 

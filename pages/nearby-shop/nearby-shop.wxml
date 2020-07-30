@@ -12,13 +12,13 @@
         </view>
         <view class="middle">
             <view class="line1">
-                个个鲜朱雀门店
+                <view class="name">{{shopDetail.sysUser.nearbyName}}</view>
                 <view class="score">
                     <van-rate
                             allow-half
                             readonly
                             value="{{shopDetail.shopstar}}"
-                            :size="18"
+                            :size="12"
                             color="#ffd21e"
                             void-icon="star"
                             void-color="#eee"
@@ -94,7 +94,7 @@
         </view>
         <view class="good-items">
             <view class="good-item" wx:for="{{goodsList}}" wx:key="item">
-                <view class="good-pic" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">
+                <view class="good-pic" bind:tap="goTo" data-item="{{item}}" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">
                     <image mode="aspectFill" src="{{item.thumbnail}}"></image>
                 </view>
                 <view class="title1" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">{{item.name}}</view>

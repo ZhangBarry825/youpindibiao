@@ -1,12 +1,12 @@
 <!--pages/trolley/trolley.wxml-->
 <view class="page">
-    <view class="nothing" wx:if="{{nothing}}">
+    <view class="nothing" wx:if="{{trolleyList.length<1}}">
         <image src="../../static/images/trolley_none.png"></image>
         <view class="nothing-tip">您还没有挑选任何商品哦~</view>
-        <view class="nothing-button">马上去逛逛</view>
+        <view class="nothing-button" bind:tap="goHome">马上去逛逛</view>
     </view>
     <view class="list-box">
-        <view class="shop-list">
+        <view class="shop-list" wx:for="{{trolleyList}}" wx:key="item" wx:for-index="index">
             <view class="shop-title">
                 <view class="left">
                     <van-checkbox
@@ -16,7 +16,7 @@
                             bind:change="onShopCheckedChange"
                     >
                         <image src="../../static/images/shop-title.png"></image>
-                        <text>dji大疆官方旗舰店</text>
+                        <text>{{item.name}}</text>
                     </van-checkbox>
                 </view>
                 <view class="right">
@@ -24,7 +24,7 @@
                 </view>
             </view>
             <view class="goods-list">
-                <view class="goods-item">
+                <view class="goods-item" wx:for="{{item.list}}" wx:key="item2" wx:for-item="item2" wx:for-index="index2">
                     <view class="check">
                         <van-checkbox
                                 icon-size="15px"
@@ -35,22 +35,29 @@
                         </van-checkbox>
                     </view>
                     <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                        <image class="goods-pic" mode="aspectFill" src="{{baseUrl+item2.reserved1}}"></image>
                         <view class="goods-detail">
                             <view class="line1">
                                 <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
+                                    {{item2.goodsName}}
                                 </view>
-                                <view class="goods-del">
+                                <view class="goods-del" data-item="{{item2}}"  bind:tap="updateData" data-action="del" data-index="{{index}}" data-index2="{{index2}}">
                                     <image src="../../static/images/goods-del.png"></image>
                                 </view>
                             </view>
                             <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
+                                <view class="line2-left">
+                                    {{item2.goodsParam}}
+                                </view>
                                 <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
+                                </view>
+                            </view>
+                            <view class="line3">
+                                <view class="line3-left">￥{{item2.payNum}}</view>
+                                <view class="line3-right">
+                                    <view class="num-minus" data-item="{{item2}}"  bind:tap="updateData" data-action="minus" data-index="{{index}}" data-index2="{{index2}}">-</view>
+                                    <view class="number">{{item2.goodsnum}}</view>
+                                    <view class="num-add" data-item="{{item2}}" bind:tap="updateData" data-action="add" data-index="{{index}}" data-index2="{{index2}}">+</view>
                                 </view>
                             </view>
                         </view>
@@ -59,496 +66,7 @@
 
                 </view>
                 <view class="count">
-                    小计：<view class="color">￥5990.00</view>
-                </view>
-            </view>
-        </view>
-        <view class="shop-list">
-            <view class="shop-title">
-                <view class="left">
-                    <van-checkbox
-                            icon-size="15px"
-                            value="{{ shopChecked }}"
-                            checked-color="#F26500"
-                            bind:change="onShopCheckedChange"
-                    >
-                        <image src="../../static/images/shop-title.png"></image>
-                        <text>dji大疆官方旗舰店</text>
-                    </van-checkbox>
-                </view>
-                <view class="right">
-<!--                    编辑-->
-                </view>
-            </view>
-            <view class="goods-list">
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="count">
-                    小计：<view class="color">￥5990.00</view>
-                </view>
-            </view>
-        </view>
-        <view class="shop-list">
-            <view class="shop-title">
-                <view class="left">
-                    <van-checkbox
-                            icon-size="15px"
-                            value="{{ shopChecked }}"
-                            checked-color="#F26500"
-                            bind:change="onShopCheckedChange"
-                    >
-                        <image src="../../static/images/shop-title.png"></image>
-                        <text>dji大疆官方旗舰店</text>
-                    </van-checkbox>
-                </view>
-                <view class="right">
-                    <!--                    编辑-->
-                </view>
-            </view>
-            <view class="goods-list">
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="count">
-                    小计：<view class="color">￥5990.00</view>
-                </view>
-            </view>
-        </view>
-        <view class="shop-list">
-            <view class="shop-title">
-                <view class="left">
-                    <van-checkbox
-                            icon-size="15px"
-                            value="{{ shopChecked }}"
-                            checked-color="#F26500"
-                            bind:change="onShopCheckedChange"
-                    >
-                        <image src="../../static/images/shop-title.png"></image>
-                        <text>dji大疆官方旗舰店</text>
-                    </van-checkbox>
-                </view>
-                <view class="right">
-                    <!--                    编辑-->
-                </view>
-            </view>
-            <view class="goods-list">
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="count">
-                    小计：<view class="color">￥5990.00</view>
-                </view>
-            </view>
-        </view>
-        <view class="shop-list">
-            <view class="shop-title">
-                <view class="left">
-                    <van-checkbox
-                            icon-size="15px"
-                            value="{{ shopChecked }}"
-                            checked-color="#F26500"
-                            bind:change="onShopCheckedChange"
-                    >
-                        <image src="../../static/images/shop-title.png"></image>
-                        <text>dji大疆官方旗舰店</text>
-                    </van-checkbox>
-                </view>
-                <view class="right">
-                    <!--                    编辑-->
-                </view>
-            </view>
-            <view class="goods-list">
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="count">
-                    小计：<view class="color">￥5990.00</view>
-                </view>
-            </view>
-        </view>
-        <view class="shop-list">
-            <view class="shop-title">
-                <view class="left">
-                    <van-checkbox
-                            icon-size="15px"
-                            value="{{ shopChecked }}"
-                            checked-color="#F26500"
-                            bind:change="onShopCheckedChange"
-                    >
-                        <image src="../../static/images/shop-title.png"></image>
-                        <text>dji大疆官方旗舰店</text>
-                    </van-checkbox>
-                </view>
-                <view class="right">
-                    <!--                    编辑-->
-                </view>
-            </view>
-            <view class="goods-list">
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="goods-item">
-                    <view class="check">
-                        <van-checkbox
-                                icon-size="15px"
-                                value="{{ goodsChecked }}"
-                                checked-color="#F26500"
-                                bind:change="onGoodsCheckedChange"
-                        >
-                        </van-checkbox>
-                    </view>
-                    <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="../../static/images/avatar.gif"></image>
-                        <view class="goods-detail">
-                            <view class="line1">
-                                <view class="goods-title">
-                                    Phantom 3 Standard 2.7K航拍器无人机
-                                </view>
-                                <view class="goods-del">
-                                    <image src="../../static/images/goods-del.png"></image>
-                                </view>
-                            </view>
-                            <view class="line2">
-                                <view class="line2-left">￥5990.00 </view>
-                                <view class="line2-right">
-                                    <view class="num-minus">-</view>
-                                    <view class="number">1</view>
-                                    <view class="num-add">+</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                </view>
-                <view class="count">
-                    小计：<view class="color">￥5990.00</view>
+                    小计：<view class="color">￥{{item.countPrice}}</view>
                 </view>
             </view>
         </view>
@@ -556,7 +74,7 @@
 
     <view class="bottom-count">
         <view class="count">
-            合计：<view class="color">￥5990.00</view>
+            合计：<view class="color">￥{{totalPrice}}</view>
         </view>
         <view class="count-button">结算</view>
     </view>

@@ -18,6 +18,7 @@ Page({
     number:1,//购买数量
     goodsDetail:{},
     id:'',
+    shopid:'',//附近商家的商品会有shopid
     attributeList:[],
     skuList:[],
     selectItem:[],//匹配sku列表
@@ -85,7 +86,8 @@ Page({
       url:'/showGoods/showGood',
       noLogin: true,
       data:{
-        goodsId:that.data.id
+        goodsId:that.data.id,
+        shopid:that.data.shopid
       },
       success(res){
         res.data.list[0].thumbnail=api.Host+'/'+res.data.list[0].thumbnail
@@ -141,7 +143,8 @@ Page({
       url:'/share/addShareByUser',
       data:{
         state:2,
-        goodsid:that.data.id
+        goodsid:that.data.id,
+        shopid:that.data.shopid
       },
       success(res){
         wx.showToast({
@@ -174,8 +177,9 @@ Page({
         url:'/tCar/addTCarByUser',
         data:{
           goodsid:that.data.goodsDetail.list[0].id,
-          shopid:that.data.goodsDetail.list[0].shopid,
-          skuid:that.data.skuRes.id
+          // shopid:that.data.goodsDetail.list[0].shopid,
+          skuid:that.data.skuRes.id,
+          shopid:that.data.shopid
         },
         success(res){
           wx.showToast({
@@ -205,8 +209,9 @@ Page({
         number:that.data.number,
         sku:that.data.skuRes
       }]
+      goodsList[0].goods.detail=''
       wx.navigateTo({
-        url:'/pages/order/order-confirm/order-confirm?goodsList='+JSON.stringify(goodsList)+'&type=goods'
+        url:'/pages/order/order-confirm/order-confirm?goodsList='+JSON.stringify(goodsList)+'&type=goods'+'&shopid='+that.data.shopid
       })
     }else {
       wx.showToast({
@@ -221,10 +226,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id,990)
+    console.log(options,990)
+
     this.setData({
       id:options.id
     })
+    if(options.shopid){
+      this.setData({
+        shopid:options.shopid
+      })
+    }
     this.fetchData()
   },
 

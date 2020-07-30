@@ -3,5 +3,7 @@
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   },
-  "navigationBarTitleText": "购物车"
+  "navigationBarTitleText": "购物车",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark"
 }

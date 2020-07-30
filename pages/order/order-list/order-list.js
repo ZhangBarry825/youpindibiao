@@ -1,4 +1,5 @@
 // pages/order/order-list/order-list.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
@@ -14,11 +15,31 @@ Page({
       icon: 'none',
     });
   },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/order/orderlist',
+      data:{
+
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    setTimeout(()=>{
+      this.setData({
+        height: wx.getSystemInfoSync().windowHeight - 50
+      })
+    },100)
+    this.fetchData()
   },
 
   /**

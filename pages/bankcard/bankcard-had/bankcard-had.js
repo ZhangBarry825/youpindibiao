@@ -18,7 +18,9 @@ Page({
       success(res){
         console.log(res)
         if(res.code == 200){
-
+          that.setData({
+            bankcardList:res.data
+          })
         }
       }
     })

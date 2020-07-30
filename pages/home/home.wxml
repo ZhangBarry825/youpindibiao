@@ -54,7 +54,7 @@
             <van-tab title="16:00"></van-tab>
             <van-tab title="20:00"></van-tab>
         </van-tabs>
-        <view class="time">
+        <view class="time" wx:if="{{grabList.length>0}}">
             <text wx:if="{{scrapStart}}">正在进行中，离结束还有</text>
             <text wx:if="{{!scrapStart}}">未开始，离开始还有</text>
             <view class="red">
@@ -62,6 +62,10 @@
                     <text class="timeItem">{{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{ timeData.seconds }}</text>
                 </van-count-down>
             </view>
+        </view>
+        <view class="none-goods" wx:else>
+            <image src="../../static/images/goods1.png"></image>
+            <view class="text">暂无抢购商品</view>
         </view>
 
         <view class="goods">

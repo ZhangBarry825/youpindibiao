@@ -27,51 +27,23 @@
             <view class="left-info">订单号：{{orderDetail.ordernum}}</view>
             <view class="right-info">{{orderStatus==1?'等待买家付款':orderStatus==2?'等待卖家发货':orderStatus==3?'卖家已发货':orderStatus==4?'交易成功':''}}</view>
         </view>
-        <view class="goods-item">
+        <view class="goods-item" wx:for="{{orderDetail.goodsList}}" wx:key="item">
             <view class="goods-info">
                 <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
                 <view class="goods-detail">
                     <view class="d-left">
                         <view class="line1">
-                            心率智能手环 运动睡眠监测
-                            2P防水计步超轻仅15克心率智能手环 运动睡眠监测
-                            2P防水计步超轻仅15克
+                            {{item.name}}
                         </view>
                         <view class="line2">
-                            规格：500g/包
+                            规格：{{item.reserved1}}
                         </view>
                     </view>
                     <view class="d-right">
                         <view class="line1">
-                            ￥90.00
+                            ￥{{item.money}}
                         </view>
-                        <view class="line2">x1</view>
-                        <view class="line3">
-                            <view class="seven">七天退换</view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="goods-item">
-            <view class="goods-info">
-                <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                <view class="goods-detail">
-                    <view class="d-left">
-                        <view class="line1">
-                            心率智能手环 运动睡眠监测
-                            2P防水计步超轻仅15克心率智能手环 运动睡眠监测
-                            2P防水计步超轻仅15克
-                        </view>
-                        <view class="line2">
-                            规格：500g/包
-                        </view>
-                    </view>
-                    <view class="d-right">
-                        <view class="line1">
-                            ￥90.00
-                        </view>
-                        <view class="line2">x1</view>
+                        <view class="line2">x{{item.shuliang}}</view>
                         <view class="line3">
                             <view class="seven">七天退换</view>
                         </view>

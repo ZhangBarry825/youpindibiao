@@ -338,10 +338,24 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 39,
 					"name": "订单状态",
 					"pathName": "pages/order/order-status/order-status",
-					"query": "orderid=1596015680854612",
+					"query": "orderid=1596072594293706",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "店铺详情",
+					"pathName": "pages/nearby-shop/nearby-shop",
+					"query": "id=1513824945623187",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/trolley/trolley",
+					"query": "",
 					"scene": null
 				}
 			]

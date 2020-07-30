@@ -16,7 +16,7 @@
     </view>
 
     <view class="order-box">
-        <van-cell value="" is-link>
+        <van-cell value="" is-link bind:tap="goToOrderList">
 
             <view slot="title">
                 <view class="order">

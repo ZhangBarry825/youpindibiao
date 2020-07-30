@@ -56,7 +56,7 @@ module.exports = {
             })
         }else {
             wx.hideLoading()
-            wx.navigateTo({url:'/pages/permission/permission'})
+            wx.reLaunch({url:'/pages/permission/permission'})
         }
 
     },

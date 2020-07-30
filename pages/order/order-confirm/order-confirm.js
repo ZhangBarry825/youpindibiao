@@ -12,7 +12,8 @@ Page({
     payTypeText:'余额支付',
     goodsList:[],
     addressDetail: '',
-    totalPrice:0.00
+    totalPrice:0.00,
+    shopid:'',//附近商家的商品会有shopid
   },
   minusNum(){
     let that = this
@@ -87,7 +88,7 @@ Page({
       addressid:that.data.addressDetail.id||'',
       paytype:that.data.payType,
       shuliang:that.data.goodsList[0].number,
-      shopid:that.data.goodsList[0].shopid,
+      shopid:that.data.shopid,
       notes:that.data.message,
       skuid:that.data.goodsList[0].sku.id,
     }
@@ -141,6 +142,14 @@ Page({
   onLoad: function (options) {
     let that = this
     let type=options.type
+    let shopid=options.shopid
+    if(shopid){
+      this.setData({
+        shopid:shopid
+      })
+    }
+    console.log(options,'options')
+    console.log(options.goodsList,'options.goodsList')
     let goodsList=JSON.parse(options.goodsList)
     if(type=='goods'){
       let totalPrice=parseFloat(goodsList[0].goods.freight)
