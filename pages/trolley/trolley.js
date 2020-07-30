@@ -19,14 +19,27 @@ Page({
     })
   },
   onShopCheckedChange(event){
+    let index=event.currentTarget.dataset.index
+    let trolleyList=this.data.trolleyList
+    for (const Key in trolleyList) {
+      trolleyList[Key].checked=event.detail
+      for (const Key2 in trolleyList[Key].list) {
+        trolleyList[Key].list[Key2].checked=event.detail
+      }
+    }
     this.setData({
-      shopChecked: event.detail,
+      trolleyList: trolleyList,
     });
+    this.countPrice()
   },
   onGoodsCheckedChange(event){
+    let index=event.currentTarget.dataset.index
+    let index2=event.currentTarget.dataset.index2
+    let trolleyList=this.data.trolleyList
     this.setData({
-      goodsChecked: event.detail,
+      ['trolleyList['+index+'].list['+index2+'].checked']: event.detail,
     });
+    this.countPrice()
   },
   updateData(e){
     let action=e.currentTarget.dataset.action
@@ -101,7 +114,9 @@ Page({
     for (const apiKey in trolleyList) {
       let total=0
       for (const apiKey1 in trolleyList[apiKey].list) {
-        total=total+trolleyList[apiKey].list[apiKey1].goodsnum*trolleyList[apiKey].list[apiKey1].payNum
+        if(trolleyList[apiKey].list[apiKey1].checked){
+          total=total+trolleyList[apiKey].list[apiKey1].goodsnum*trolleyList[apiKey].list[apiKey1].payNum
+        }
       }
       trolleyList[apiKey].countPrice=total
       totalPrice+=total
@@ -118,18 +133,15 @@ Page({
       data:{},
       success(res){
        if(res.code == 200){
-         let totalPrice=0
          for (const apiKey in res.data) {
-           let total=0
            for (const apiKey1 in res.data[apiKey].list) {
-             total=total+res.data[apiKey].list[apiKey1].goodsnum*res.data[apiKey].list[apiKey1].payNum
+             res.data[apiKey].list[apiKey1].checked=false
            }
-           res.data[apiKey].countPrice=total
-           totalPrice+=total
+           res.data[apiKey].countPrice=0
+           res.data[apiKey].checked=false
          }
          that.setData({
            trolleyList:res.data,
-           totalPrice:totalPrice
          })
        }
 

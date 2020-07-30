@@ -11,9 +11,10 @@
                 <view class="left">
                     <van-checkbox
                             icon-size="15px"
-                            value="{{ shopChecked }}"
+                            value="{{ item.checked }}"
                             checked-color="#F26500"
                             bind:change="onShopCheckedChange"
+                            data-index="{{index}}"
                     >
                         <image src="../../static/images/shop-title.png"></image>
                         <text>{{item.name}}</text>
@@ -28,9 +29,11 @@
                     <view class="check">
                         <van-checkbox
                                 icon-size="15px"
-                                value="{{ goodsChecked }}"
+                                value="{{ item2.checked }}"
                                 checked-color="#F26500"
                                 bind:change="onGoodsCheckedChange"
+                                data-index="{{index}}"
+                                data-index2="{{index2}}"
                         >
                         </van-checkbox>
                     </view>
