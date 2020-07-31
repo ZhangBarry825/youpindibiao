@@ -31,23 +31,23 @@
         <van-cell value="">
             <view slot="title">
                 <view class="order-menu">
-                    <view class="order-item">
+                    <view class="order-item" bind:tap="goList" data-index="{{0}}">
                         <van-icon name="cash-on-deliver" size="43rpx" info="{{numberList.wzfNum?numberList.wzfNum:''}}" />
                         <text>待付款</text>
                     </view>
-                    <view class="order-item">
+                    <view class="order-item" bind:tap="goList" data-index="{{1}}">
                         <van-icon name="send-gift-o" size="43rpx" info="{{numberList.dfhNum?numberList.dfhNum:''}}" />
                         <text>待发货</text>
                     </view>
-                    <view class="order-item">
+                    <view class="order-item" bind:tap="goList" data-index="{{2}}">
                         <van-icon name="logistics" size="43rpx" info="{{numberList.dshNum?numberList.dshNum:''}}" />
                         <text>待收货</text>
                     </view>
-                    <view class="order-item">
+                    <view class="order-item" bind:tap="goList" data-index="{{3}}">
                         <van-icon name="edit" size="43rpx" info="{{numberList.dpjNum?numberList.dpjNum:''}}" />
                         <text>待评价</text>
                     </view>
-                    <view class="order-item">
+                    <view class="order-item" bind:tap="goList" data-index="{{5}}">
                         <van-icon name="after-sale" size="43rpx" info="" />
                         <text>退款售后</text>
                     </view>

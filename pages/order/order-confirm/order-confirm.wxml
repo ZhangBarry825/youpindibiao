@@ -40,7 +40,7 @@
                             </view>
                             <view class="line2">
                                 <view class="line2-left">
-                                    {{item.goods.goodsParam}}
+                                    {{item.sku.goodsParam}}
                                 </view>
                                 <view class="line2-right">
 

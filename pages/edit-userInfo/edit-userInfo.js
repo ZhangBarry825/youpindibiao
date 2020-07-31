@@ -10,14 +10,52 @@ Page({
     nickname:'珍妮',
     phone:'158****2135',
     userInfo:{
-
+      headimg:'',
+      wxname:'',
+      name:'',
+      tel:'',
     }
   },
-  onPhoneChange(){
-
+  submitForm(){
+    let that = this
+    console.log(that.data.userInfo)
+    let {headimg,wxname,name,tel}=that.data.userInfo
+    if(!that.data.userInfo.headimg||!that.data.userInfo.wxname||!that.data.userInfo.name||!that.data.userInfo.tel){
+      wx.showToast({
+        title:'请检查姓名、昵称和手机号',
+        icon:'none',
+        duration:1000
+      })
+    }else {
+      api.post({
+        url:'/user/updateUserById',
+        data: {headimg,wxname,name,tel},
+        success(res){
+          if(res.code == 200){
+            wx.showToast({
+              title:'保存成功！',
+              icon:'success',
+              duration:1000
+            })
+          }
+        }
+      })
+    }
   },
-  onNameChange(){
-
+  onPhoneChange(e){
+    this.setData({
+      ['userInfo.tel']:e.detail
+    })
+  },
+  onNameChange(e){
+    this.setData({
+      ['userInfo.wxname']:e.detail
+    })
+  },
+  onNameChange2(e){
+    this.setData({
+      ['userInfo.name']:e.detail
+    })
   },
   fetchData(){
     let that = this

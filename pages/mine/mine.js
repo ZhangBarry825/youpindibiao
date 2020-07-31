@@ -12,6 +12,13 @@ Page({
     phone:'',
     numberList:{}
   },
+  goList(e){
+    let index = e.currentTarget.dataset.index
+    wx.navigateTo({
+      url:'/pages/order/order-list/order-list?tagsActive='+index
+    })
+
+  },
   goTo(e){
     let path=e.currentTarget.dataset.path
     if(e.currentTarget.dataset.type=='switch'){

@@ -11,6 +11,7 @@
             </view>
         </van-cell>
         <van-cell
+                bind:tap="showReason"
                 custom-class="item-custom-class"
                 value-class="item-value-class"
                 label-class="item-label-class"
@@ -18,14 +19,14 @@
                 is-link
                 value="">
             <view slot="title">
-                <view class="van-cell-text">选择退货原因</view>
+                <view class="van-cell-text">{{reasonText}}</view>
             </view>
         </van-cell>
         <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
                   title-class="title-class"
                   value="">
             <view slot="title">
-                <view class="van-cell-text">退款金额<text class="red">*</text><text class="gray">（最多129.00）</text></view>
+                <view class="van-cell-text">退款金额<text class="red">*</text><text class="gray">（最多￥{{payNum}}）</text></view>
             </view>
         </van-cell>
         <van-cell
@@ -36,6 +37,7 @@
                 value="">
             <view slot="title">
                 <van-field
+                        bind:change="refundCountChange"
                         input-class="input-class"
                         value="{{ refundCount }}"
                         clearable
@@ -61,6 +63,7 @@
                 value="">
             <view slot="title">
                 <van-field
+                        bind:change="refundReasonChange"
                         input-class="textarea-input-class"
                         value="{{ refundReason }}"
                         clearable
@@ -86,6 +89,7 @@
                 value="">
             <view slot="title">
                 <van-uploader
+                        accept="image"
                         bind:delete="deleteImg"
                         max-count="3"
                         file-list="{{ fileList }}"
@@ -93,5 +97,9 @@
             </view>
         </van-cell>
     </van-cell-group>
-    <view class="submit-button">提交申请</view>
+    <view class="submit-button" bind:tap="submitForm">提交申请</view>
+
+    <van-popup show="{{ showReason }}"  bind:close="hideReason"   position="bottom" custom-style="height: 40%;">
+        <van-picker columns="{{ columns }}" show-toolbar bind:change="onReasonChange" bind:confirm="onReasonConfirm" />
+    </van-popup>
 </view>

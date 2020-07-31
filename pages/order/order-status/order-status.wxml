@@ -86,22 +86,22 @@
         <van-cell title="创建时间" value="{{orderDetail.createtime}}" value-class="cell-item-value"
                   label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
-        <van-cell wx:if="{{orderStatus==2||orderStatus==3||orderStatus==4}}" title="付款时间"
+        <van-cell wx:if="{{orderStatus==1||orderStatus==2||orderStatus==3||orderStatus==4}}" title="付款时间"
                   value="{{orderDetail.paytime}}" value-class="cell-item-value" label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
-        <van-cell wx:if="{{orderStatus==3||orderStatus==4}}" title="发货时间" value="{{orderDetail.sendtime}}"
+        <van-cell wx:if="{{orderStatus==2||orderStatus==3}}" title="发货时间" value="{{orderDetail.sendtime}}"
                   value-class="cell-item-value" label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
-        <van-cell wx:if="{{orderStatus==4}}" title="收货时间" value="{{orderDetail.receivetime}}"
+        <van-cell wx:if="{{orderStatus==3}}" title="收货时间" value="{{orderDetail.receivetime}}"
                   value-class="cell-item-value" label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
     </van-cell-group>
-
     <view class="buttons">
-        <view wx:if="{{orderStatus==0}}" class="order-button order-button2">取消订单</view>
+        <view wx:if="{{orderStatus==0}}" class="order-button order-button2" bind:tap="cancelOrder">取消订单</view>
         <view wx:if="{{orderStatus==0}}" class="order-button order-button3">付款</view>
-        <view wx:if="{{orderStatus==1||orderStatus==2||orderStatus==3||orderStatus==4}}" class="order-button order-button1">申请售后</view>
-        <view wx:if="{{orderStatus==2}}" class="order-button order-button3">确认收货</view>
+        <view wx:if="{{orderStatus==1||orderStatus==2||orderStatus==3||orderStatus==4}}"
+              class="order-button order-button1">申请售后</view>
+        <view wx:if="{{orderStatus==2}}" bind:tap="confirmReceive" class="order-button order-button3">确认收货</view>
         <view wx:if="{{orderStatus==3||orderStatus==4}}" class="order-button order-button2">删除订单</view>
         <view wx:if="{{orderStatus==3}}" class="order-button order-button3">评价</view>
         <view wx:if="{{orderStatus==5}}" class="order-button order-button5">退货中</view>

@@ -8,7 +8,7 @@
                     头像
                 </view>
                 <view class="value">
-                    <image mode="aspectFill" src="../../static/images/avatar.gif"></image>
+                    <image mode="aspectFill" src="{{userInfo.headimg}}"></image>
                 </view>
             </view>
         </van-cell>
@@ -42,7 +42,7 @@
                             value="{{ userInfo.name }}"
                             placeholder="请输入昵称"
                             border="{{ false }}"
-                            bind:change="onNameChange"/>
+                            bind:change="onNameChange2"/>
                 </view>
             </view>
         </van-cell>
@@ -108,5 +108,5 @@
         </van-cell>
     </van-cell-group>
 
-    <view class="submit-button">保存</view>
+    <view class="submit-button" bind:tap="submitForm">保存</view>
 </view>

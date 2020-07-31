@@ -170,7 +170,7 @@
                         <view class="text1">￥{{item.money}}</view>
                         <view class="text2">￥{{item.marketMoney}}</view>
                     </view>
-                    <view class="trolley" bind:tap="addTrolley" data-item="{{item}}">
+                    <view class="trolley">
                         <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
                     </view>
                 </view>

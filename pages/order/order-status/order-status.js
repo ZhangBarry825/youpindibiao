@@ -1,6 +1,5 @@
 // pages/order/order-status/order-status.js
 import {formatTime} from "../../../utils/util";
-
 const api = require('../../../utils/api.js');
 Page({
 
@@ -9,10 +8,56 @@ Page({
    * orderStatus：0等待买家付款  1等待卖家发货  2卖家已发货  3待评价 4交易成功 5退货/退款中  6退款成功
    */
   data: {
-    baseUrl:api.Host,
+    baseUrl:api.Host+'/',
     orderStatus:0,
     orderid:'',
     orderDetail:{}
+  },
+  cancelOrder(){
+    let that = this
+    api.post({
+      url:'/order/orderlistDel',
+      data:{
+        orderid:that.data.orderid
+      },
+      success(res){
+        if(res.code == 200){
+
+        }
+      }
+    })
+  },
+  confirmReceive(){
+    let that = this
+    Dialog.confirm({
+      title: '提示',
+      message: '确认收货吗？',
+    })
+        .then(() => {
+          api.post({
+            url:'/order/orderReceiving',
+            data:{
+              orderid:that.data.orderid
+            },
+            success(res){
+              if(res.code == 200){
+                wx.showToast({
+                  title:'确认收货成功！',
+                  icon:'success',
+                  duration:1000
+                })
+                setTimeout(()=>{
+                  that.fetchData()
+                },1000)
+              }
+            }
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+
+
   },
   fetchData(){
     let that = this
@@ -28,7 +73,7 @@ Page({
           res.data.sendtime=formatTime(res.data.sendtime)
           res.data.receivetime=formatTime(res.data.receivetime)
           that.setData({
-            orderStatus:res.data.state,
+            orderStatus:res.data.status,
             orderDetail:res.data
           })
         }
