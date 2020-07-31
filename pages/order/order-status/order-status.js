@@ -1,13 +1,16 @@
 // pages/order/order-status/order-status.js
+import {formatTime} from "../../../utils/util";
+
 const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
-   * orderStatus：1等待买家付款  2等待卖家发货  3卖家已发货  4交易成功
+   * orderStatus：0等待买家付款  1等待卖家发货  2卖家已发货  3待评价 4交易成功 5退货/退款中  6退款成功
    */
   data: {
-    orderStatus:4,
+    baseUrl:api.Host,
+    orderStatus:0,
     orderid:'',
     orderDetail:{}
   },
@@ -20,7 +23,12 @@ Page({
       },
       success(res){
         if(res.code == 200){
+          res.data.createtime=formatTime(res.data.createtime)
+          res.data.paytime=formatTime(res.data.paytime)
+          res.data.sendtime=formatTime(res.data.sendtime)
+          res.data.receivetime=formatTime(res.data.receivetime)
           that.setData({
+            orderStatus:res.data.state,
             orderDetail:res.data
           })
         }
@@ -70,7 +78,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.fetchData()
 
+    setTimeout(()=>{
+      wx.stopPullDownRefresh()
+    },1000)
   },
 
   /**

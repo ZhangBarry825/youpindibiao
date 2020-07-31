@@ -28,6 +28,7 @@
 }
 .page .shop-list .shop-title .left {
   display: flex;
+  align-items: center;
 }
 .page .shop-list .shop-title .left image {
   width: 26rpx;

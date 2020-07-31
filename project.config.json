@@ -341,7 +341,7 @@
 					"id": 39,
 					"name": "订单状态",
 					"pathName": "pages/order/order-status/order-status",
-					"query": "orderid=1596072594293706",
+					"query": "orderid=1596163681244900",
 					"scene": null
 				},
 				{
@@ -355,6 +355,13 @@
 					"id": -1,
 					"name": "购物车",
 					"pathName": "pages/trolley/trolley",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/order/order-list/order-list",
 					"query": "",
 					"scene": null
 				}

@@ -23,11 +23,11 @@ Page({
         wx.setStorageSync('nickName',e.detail.userInfo.nickName)
         wx.setStorageSync('avatarUrl',e.detail.userInfo.avatarUrl)
         setTimeout(()=>{
-          const eventChannel = this.getOpenerEventChannel()
-          console.log(eventChannel)
-          eventChannel.emit('refreshData', {});
-          wx.navigateBack({
-            delta:-1
+          // const eventChannel = this.getOpenerEventChannel()
+          // console.log(eventChannel)
+          // eventChannel.emit('refreshData', {});
+          wx.switchTab({
+            url:'/pages/home/home'
           })
         },1000)
       }

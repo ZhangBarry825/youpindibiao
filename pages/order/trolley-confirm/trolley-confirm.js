@@ -13,6 +13,7 @@ Page({
     goodsList:[],
     addressDetail: '',
     totalPrice:0.00,
+    expressPrice:0.00,
     shopid:'',//附近商家的商品会有shopid
   },
   minusNum(){
@@ -83,15 +84,15 @@ Page({
   },
   submitForm(){
     let that = this
+    let caridsarr=[]  //购物车id数组
+    for (const Key in that.data.goodsList) {
+      caridsarr.push(that.data.goodsList[Key].id)
+    }
     let formData={
-      goodsid:that.data.goodsList[0].goods.id,
+      caridsarr:caridsarr,
       addressid:that.data.addressDetail.id||'',
       paytype:that.data.payType,
-      shuliang:that.data.goodsList[0].number,
-      shopid:that.data.shopid,
-      notes:that.data.message,
-      skuid:that.data.goodsList[0].sku.id,
-      goodsParam:that.data.goodsList[0].goodsParam,
+      notes:that.data.message
     }
     console.log(formData)
     if(!formData.addressid){
@@ -101,16 +102,23 @@ Page({
         duration:1000
       })
     }else {
-      console.log(formData)
       api.post({
-        url:'/order/addOrderByGoods',
+        url:'/order/addOrderByCars',
         data:{...formData},
         success(res){
           if(res.code == 200){
             if(that.data.payType==0){
-              wx.navigateTo({
-                url:'/pages/order/order-payed/order-payed?orderid='+res.data
-              })
+              if(that.data.msg=='余额不足'){
+                wx.showToast({
+                  title:'您的余额不足!',
+                  icon:'none',
+                  duration:1000
+                })
+              }else {
+                wx.navigateTo({
+                  url:'/pages/order/order-payed/order-payed?orderid='+res.data
+                })
+              }
             }else{
               wx.requestPayment({
                 timeStamp: res.data.timeStamp,
@@ -142,31 +150,27 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    let type=options.type
-    let shopid=options.shopid
-    if(shopid){
-      this.setData({
-        shopid:shopid
-      })
-    }
-    console.log(options,'options')
-    console.log(options.goodsList,'options.goodsList')
-    let goodsList=JSON.parse(options.goodsList)
-    if(type=='goods'){
-      let totalPrice=parseFloat(goodsList[0].goods.freight)
-      for (const apiKey in goodsList) {
-        totalPrice+=goodsList[apiKey].number*goodsList[apiKey].sku.goodsPrice
+    let buyList=JSON.parse(wx.getStorageSync('buyList')).buyList
+    let totalPrice=JSON.parse(wx.getStorageSync('buyList')).totalPrice
+    let goodList=[]
+    let expressPrice=0
+    for (const Key1 in buyList) {
+      for (const Key2 in  buyList[Key1].list) {
+        buyList[Key1].list[Key2].reserved1=api.Host+'/'+buyList[Key1].list[Key2].reserved1
+        expressPrice+=parseFloat(buyList[Key1].list[Key2].reserved3)
+        goodList.push(buyList[Key1].list[Key2])
       }
-      that.setData({
-        goodsList:goodsList,
-        totalPrice:totalPrice
-      })
-    }else if(type=='trolley'){
-
     }
+    totalPrice+=expressPrice
+    console.log(goodList,'goodList')
+    console.log(totalPrice,'totalPrice')
+    that.setData({
+      expressPrice:expressPrice,
+      goodsList:goodList,
+      totalPrice:totalPrice
+    })
     that.fetchData()
 
-    console.log(goodsList)
     // that.fetchData()
   },
 

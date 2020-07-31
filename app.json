@@ -56,6 +56,7 @@
     "pages/goods-list/goods-list",
     "pages/goods-comment/goods-comment",
     "pages/order/order-confirm/order-confirm",
+    "pages/order/trolley-confirm/trolley-confirm",
     "pages/order/order-payed/order-payed",
     "pages/order/order-list/order-list",
     "pages/order/order-status/order-status",

@@ -13,6 +13,47 @@ Page({
     trolleyList:[],
     totalPrice:0.00,//合计
   },
+  goPay(){
+    let that = this
+    let buyList=[]
+    let trolleyList=JSON.parse(JSON.stringify(that.data.trolleyList))
+    // for (const listKey1 in trolleyList) {
+    //   for (const listKey2 in trolleyList[listKey1].list) {
+    //     delete trolleyList[listKey1].list[listKey2].createtime
+    //     delete trolleyList[listKey1].list[listKey2].shopName
+    //     delete trolleyList[listKey1].list[listKey2].state
+    //     delete trolleyList[listKey1].list[listKey2].sysUsers
+    //     delete trolleyList[listKey1].list[listKey2].userid
+    //     delete trolleyList[listKey1].list[listKey2].reserved2
+    //     delete trolleyList[listKey1].list[listKey2].reserved3
+    //   }
+    // }
+    for (const apiKey in trolleyList) {
+      for (const apiKey1 in trolleyList[apiKey].list) {
+        if(trolleyList[apiKey].list[apiKey1].checked){
+          let shopList=trolleyList[apiKey]
+          let newList=[]
+          for (const apiKey2 in shopList.list) {
+            if(shopList.list[apiKey2].checked){
+              newList.push(shopList.list[apiKey2])
+            }
+          }
+          shopList.list=newList
+          buyList.push(shopList)
+          break;
+        }
+      }
+    }
+    let setBuyList={
+      totalPrice:that.data.totalPrice,
+      buyList:buyList
+    }
+    wx.setStorageSync('buyList',JSON.stringify(setBuyList))
+    console.log(setBuyList,'setBuyList')
+    wx.navigateTo({
+      url:'/pages/order/trolley-confirm/trolley-confirm'
+    })
+  },
   goHome(){
     wx.switchTab({
       url:'/pages/home/home'
@@ -22,9 +63,11 @@ Page({
     let index=event.currentTarget.dataset.index
     let trolleyList=this.data.trolleyList
     for (const Key in trolleyList) {
-      trolleyList[Key].checked=event.detail
-      for (const Key2 in trolleyList[Key].list) {
-        trolleyList[Key].list[Key2].checked=event.detail
+      if(index==Key){
+        trolleyList[Key].checked=event.detail
+        for (const Key2 in trolleyList[Key].list) {
+          trolleyList[Key].list[Key2].checked=event.detail
+        }
       }
     }
     this.setData({
@@ -168,6 +211,10 @@ Page({
    */
   onShow: function () {
     this.fetchData()
+
+    setTimeout(()=>{
+      wx.stopPullDownRefresh()
+    },1000)
   },
 
   /**

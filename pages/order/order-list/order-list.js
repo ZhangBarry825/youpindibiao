@@ -8,6 +8,8 @@ Page({
   data: {
     tagsActive: 0,
     height: wx.getSystemInfoSync().windowHeight - 50,
+    state:0,
+    orderList:[]
   },
   onTagChange(event){
     wx.showToast({
@@ -15,17 +17,19 @@ Page({
       icon: 'none',
     });
   },
-  fetchData(){
+  fetchData(state=0){
     let that = this
     api.post({
       url:'/order/orderlist',
       data:{
-
+        state:state
       },
       success(res){
         console.log(res)
         if(res.code == 200){
-
+          that.setData({
+            orderList:res.data
+          })
         }
       }
     })

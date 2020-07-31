@@ -29,27 +29,27 @@
         </van-cell>
         <van-cell class="goods-box">
             <view slot="title" class="goods-box2">
-                <view class="goods-item" wx:for="{{goodsList}}">
+                <view class="goods-item" wx:for="{{goodsList}}" wx:key="item">
                     <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="{{item.goods.thumbnail}}"></image>
+                        <image class="goods-pic" mode="aspectFill" src="{{item.reserved1}}"></image>
                         <view class="goods-detail">
                             <view class="line1">
                                 <view class="goods-title">
-                                    {{item.goods.name}}
+                                    {{item.goodsName}}
                                 </view>
                             </view>
                             <view class="line2">
                                 <view class="line2-left">
-                                    {{item.goods.goodsParam}}
+                                    {{item.goodsParam}}
                                 </view>
                                 <view class="line2-right">
 
                                 </view>
                             </view>
                             <view class="line3">
-                                <view class="line3-left">￥{{item.sku.goodsPrice}}</view>
+                                <view class="line3-left">￥{{item.payNum}}</view>
                                 <view class="line3-right">
-                                    x{{item.number}}
+                                    x{{item.goodsnum}}
                                 </view>
                             </view>
                         </view>
@@ -64,26 +64,12 @@
                 <view class="van-cell-text">支付方式</view>
             </view>
         </van-cell>
-        <van-cell value="" class="number-box">
-            <view slot="title">
-                <view class="van-cell-text">
-                    <view class="line2-left">
-                        购买数量
-                    </view>
-                    <view class="line2-right">
-                        <view class="num-minus" catch:tap="minusNum">-</view>
-                        <view class="number">{{goodsList[0].number}}</view>
-                        <view class="num-add" catch:tap="addNum">+</view>
-                    </view>
-                </view>
-            </view>
-        </van-cell>
         <van-cell value="快递" >
             <view slot="title">
                 <view class="van-cell-text">配送方式</view>
             </view>
         </van-cell>
-        <van-cell value="￥ {{goodsList[0].goods.freight}}" >
+        <van-cell value="￥ {{expressPrice}}" >
             <view slot="title">
                 <view class="van-cell-text">配送费</view>
             </view>

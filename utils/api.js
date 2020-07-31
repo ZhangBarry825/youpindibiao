@@ -1,6 +1,6 @@
 const AppID = 'wxb34aa6beac0ea28e'
 const AppSecret = '63f87f5d2131a99099a07ad91607b8a6'
-const Host = 'http://192.168.1.12:8081'
+const Host = 'http://121.89.185.99:8081'
 
 module.exports = {
     Host: Host,
