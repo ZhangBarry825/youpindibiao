@@ -84,7 +84,7 @@
                     <van-field
                             disabled
                             input-align="right"
-                            value="513213215"
+                            value="{{userInfo.id}}"
                             border="{{ false }}"
                     />
                 </view>
@@ -100,7 +100,7 @@
                     <van-field
                             disabled
                             input-align="right"
-                            value="王羲之"
+                            value="{{userInfo.upUserName||'无'}}"
                             border="{{ false }}"
                     />
                 </view>

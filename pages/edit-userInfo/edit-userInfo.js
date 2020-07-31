@@ -1,4 +1,6 @@
 // pages/edit-userInfo/edit-userInfo.js
+import {checkPhone} from "../../utils/util";
+
 const api = require('../../utils/api.js');
 Page({
 
@@ -20,7 +22,7 @@ Page({
     let that = this
     console.log(that.data.userInfo)
     let {headimg,wxname,name,tel}=that.data.userInfo
-    if(!that.data.userInfo.headimg||!that.data.userInfo.wxname||!that.data.userInfo.name||!that.data.userInfo.tel){
+    if(!that.data.userInfo.headimg||!that.data.userInfo.wxname||!that.data.userInfo.name||!that.data.userInfo.tel||!checkPhone(that.data.userInfo.tel)){
       wx.showToast({
         title:'请检查姓名、昵称和手机号',
         icon:'none',

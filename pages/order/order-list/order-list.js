@@ -76,18 +76,24 @@ Page({
       success(res){
         console.log(res)
         if(res.code == 200){
-          if(res.data.length>0){
+          if(res.data.list.length>0){
             if(append){
               that.setData({
-                orderList:that.data.orderList.concat(res.data),
+                orderList:that.data.orderList.concat(res.data.list),
                 pageNum:pageNum
               })
             }else {
               that.setData({
-                orderList:res.data
+                orderList:res.data.list
               })
             }
           }else {
+            if(!append){
+              that.setData({
+                orderList:[],
+                pageNum:1
+              })
+            }
             wx.showToast({
               title:'暂无更多',
               icon:'none',
