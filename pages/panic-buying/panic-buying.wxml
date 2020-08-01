@@ -7,7 +7,7 @@
         </van-tab>
         <van-tab title="20:00 {{startThree?'正在进行':'即将开始'}}">
         </van-tab>
-        <view class="timing">
+        <view class="timing" wx:if="{{grabList.length>0}}">
             <text wx:if="{{scrapStart}}">正在进行中，离结束还有</text>
             <text wx:if="{{!scrapStart}}">未开始，离开始还有</text>
             <van-count-down bind:finish="onTimeOut" use-slot time="{{ leftTime }}" bind:change="onTimeChange">
@@ -15,6 +15,10 @@
                     timeData.seconds }}
                 </text>
             </van-count-down>
+        </view>
+        <view class="none-goods" wx:else>
+            <image src="../../static/images/goods1.png"></image>
+            <view class="text">暂无抢购商品</view>
         </view>
         <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
             <view class="goods">
@@ -43,6 +47,7 @@
                 </view>
             </view>
         </scroll-view>
+
 
     </van-tabs>
 </view>
