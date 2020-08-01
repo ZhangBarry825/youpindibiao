@@ -49,19 +49,19 @@
 
             </view>
             <view class="count" bind:tap="goOrderDetail" data-id="{{item.id}}">
-                共 <view class="color">{{item.goodsNum}}</view>件商品 合计：
+                共 <view class="color">{{item.goodsnum}}</view>件商品 合计：
                 <view class="color">￥{{item.actualpayment}}</view>
             </view>
             <view class="buttons">
-                <view wx:if="{{item.state==3||item.state==4||item.state==6}}" class="order-button order-button2">删除订单</view>
-                <view wx:if="{{item.state==1||item.state==4}}" bind:tap="applyRefund" data-item="{{item}}" class="order-button order-button1">申请售后</view>
-                <view wx:if="{{item.state==2}}" class="order-button order-button2">查看物流</view>
+                <view wx:if="{{item.state==3||item.state==4||item.state==6}}" bind:tap="deleteOrder" data-orderid="{{item.id}}" class="order-button order-button2">删除订单</view>
+                <view wx:if="{{item.state==1||item.state==2||item.state==4}}" bind:tap="applyRefund" data-item="{{item}}" class="order-button order-button1">申请售后</view>
+                <view wx:if="{{item.state==2}}" class="order-button order-button2" bind:tap="goExpress" data-item="{{item}}">查看物流</view>
                 <view wx:if="{{item.state==0}}" class="order-button order-button2">取消订单</view>
-                <view wx:if="{{item.state==3}}" class="order-button order-button3">评价</view>
+                <view wx:if="{{item.state==3}}" class="order-button order-button3" bind:tap="commentOrder" data-item="{{item}}">评价</view>
                 <view wx:if="{{item.state==0}}" class="order-button order-button3">付款</view>
-                <view wx:if="{{item.state==2}}" class="order-button order-button3" bind:tap="confirmReceive" data-orderid="{{item.orderid}}">确认收货</view>
-                <view wx:if="{{item.state==5}}" class="order-button order-button1" style="color:gray">退货/退款中</view>
-                <view wx:if="{{item.state==6}}" class="order-button order-button1" style="color:gray">退款成功</view>
+                <view wx:if="{{item.state==2}}" class="order-button order-button3" bind:tap="confirmReceive" data-orderid="{{item.id}}">确认收货</view>
+                <view wx:if="{{item.state==5}}" class="order-button order-button1" style="color:gray"  bind:tap="goRefundDetail" data-item="{{item}}">退货/退款中</view>
+                <view wx:if="{{item.state==6}}" class="order-button order-button1" style="color:gray"  bind:tap="goRefundDetail" data-item="{{item}}">退款成功</view>
             </view>
         </view>
 
@@ -71,6 +71,7 @@
             <view class="none-button" bind:tap="goHome">去逛逛</view>
         </view>
     </scroll-view>
+    <van-dialog id="van-dialog" />
 </view>
 
 

@@ -1,5 +1,7 @@
 // pages/order/order-list/order-list.js
 const api = require('../../../utils/api.js');
+import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
+
 Page({
 
   /**
@@ -8,20 +10,66 @@ Page({
   data: {
     tagsActive: 'all',
     height: wx.getSystemInfoSync().windowHeight - 50,
-    state:0,
+    state:'',
     orderList:[],
     baseUrl:api.Host+'/',
     pageSize:10,
     pageNum:1
+  },
+  deleteOrder(e){
+    let that = this
+    let orderid=e.currentTarget.dataset.orderid
+    Dialog.confirm({
+      title: '提示',
+      context:that,
+      selector:'#van-dialog',
+      message: '确认删除吗？',
+    }).then(() => {
+      api.post({
+        url:'/order/orderDel',
+        data:{
+          orderid:orderid
+        },
+        success(res){
+          if(res.code == 200){
+            if(res.message=='当前订单状态无法删除'){
+              wx.showToast({
+                title:'请先评价订单后进行操作',
+                icon:'none',
+                duration:1000
+              })
+            }else {
+              wx.showToast({
+                title:'删除成功！',
+                icon:'success',
+                duration:1000
+              })
+              setTimeout(()=>{
+                that.setData({
+                  pageNum:1
+                })
+                this.fetchData(that.data.state,that.data.pageNum)
+              },1000)
+            }
+
+          }
+        }
+      })
+    })
+        .catch(() => {
+          // on cancel
+        });
+
   },
   confirmReceive(e){
     let that = this
     let orderid=e.currentTarget.dataset.orderid
     Dialog.confirm({
       title: '提示',
+      context:that,
+      selector:'#van-dialog',
       message: '确认收货吗？',
-    })
-        .then(() => {
+    }).then(() => {
           api.post({
             url:'/order/orderReceiving',
             data:{
@@ -35,7 +83,10 @@ Page({
                   duration:1000
                 })
                 setTimeout(()=>{
-                  that.fetchData()
+                  that.setData({
+                    pageNum:1
+                  })
+                  this.fetchData(that.data.state,that.data.pageNum)
                 },1000)
               }
             }
@@ -46,6 +97,14 @@ Page({
         });
 
 
+  },
+  commentOrder(e){
+    let item=e.currentTarget.dataset.item
+    console.log(item)
+    wx.setStorageSync('commentOrder',JSON.stringify(item))
+    wx.navigateTo({
+      url:'/pages/order/order-appraise/order-appraise'
+    })
   },
   goOrderDetail(e){
     let orderid=e.currentTarget.dataset.id
@@ -106,16 +165,23 @@ Page({
       }
     })
   },
+  goRefundDetail(e){
+    let orderid=e.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url:'/pages/order/refund-detail/refund-detail?orderid='+orderid
+    })
+  },
+  goExpress(e){
+    let orderid=e.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url:'/pages/order/express/express?orderid='+orderid
+    })
+  },
   applyRefund(e){
     let item=e.currentTarget.dataset.item
-    console.log(item)
-
-    let orderid=e.currentTarget.dataset.item.id
-    let payNum=e.currentTarget.dataset.item.payment
-    console.log(orderid)
-    console.log(payNum)
+    wx.setStorageSync('refundItem',JSON.stringify(item))
     wx.navigateTo({
-      url:'/pages/order/apply-refund/apply-refund?orderid='+orderid+'&payNum='+payNum
+      url:'/pages/order/apply-refund/apply-refund'
     })
   },
   goHome(){

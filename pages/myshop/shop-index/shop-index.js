@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status:0,//店铺状态  0 暂未开通 1正常 2审核中 3未通过申请
+    status:0,//店铺状态  -1未申请 0审核中 1已通过 2未通过
   },
   fetchData(){
     let that = this

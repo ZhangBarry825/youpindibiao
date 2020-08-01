@@ -1,6 +1,7 @@
 // pages/order/order-status/order-status.js
 import {formatTime} from "../../../utils/util";
 const api = require('../../../utils/api.js');
+import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -27,11 +28,72 @@ Page({
       }
     })
   },
+  goRefundDetail(e){
+    let orderid=e.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url:'/pages/order/refund-detail/refund-detail?orderid='+orderid
+    })
+  },
+  goExpress(e){
+    let orderid=e.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url:'/pages/order/express/express?orderid='+orderid
+    })
+  },
+  applyRefund(e){
+    let item=e.currentTarget.dataset.item
+    console.log(item)
+
+    let orderid=e.currentTarget.dataset.item.id
+    let payNum=e.currentTarget.dataset.item.payment
+    console.log(orderid)
+    console.log(payNum)
+    wx.navigateTo({
+      url:'/pages/order/apply-refund/apply-refund?orderid='+orderid+'&payNum='+payNum
+    })
+  },
+  deleteOrder(e){
+    let that = this
+    let orderid=that.data.orderid
+    Dialog.confirm({
+      title: '提示',
+      context:that,
+      selector:'#van-dialog',
+      message: '确认删除吗？',
+    }).then(() => {
+      api.post({
+        url:'/order/orderDel',
+        data:{
+          orderid:orderid
+        },
+        success(res){
+          if(res.code == 200){
+            wx.showToast({
+              title:'删除成功！',
+              icon:'success',
+              duration:1000
+            })
+            setTimeout(()=>{
+              wx.navigateBack({
+                delta:1
+              })
+            },1000)
+          }
+        }
+      })
+    })
+        .catch(() => {
+          // on cancel
+        });
+
+  },
   confirmReceive(){
     let that = this
     Dialog.confirm({
       title: '提示',
       message: '确认收货吗？',
+      context:that,
+      selector:'#van-dialog',
     })
         .then(() => {
           api.post({

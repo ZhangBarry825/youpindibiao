@@ -16,6 +16,7 @@
   padding: 10rpx 0;
   box-sizing: border-box;
   position: relative;
+  flex-shrink: 0;
 }
 .page .goods .left image {
   width: 100%;
@@ -48,6 +49,7 @@
   display: flex;
   align-items: center;
   margin: 5rpx 0;
+  white-space: pre-wrap;
 }
 .page .goods .right .line1 .title {
   font-size: 28rpx;

@@ -14,9 +14,16 @@ Page({
   },
   goList(e){
     let index = e.currentTarget.dataset.index
-    wx.navigateTo({
-      url:'/pages/order/order-list/order-list?tagsActive='+index
-    })
+    if(index!=5){
+      wx.navigateTo({
+        url:'/pages/order/order-list/order-list?tagsActive='+index
+      })
+    }else{
+      wx.navigateTo({
+        url:'/pages/order/refund-list/refund-list'
+      })
+    }
+
 
   },
   goTo(e){

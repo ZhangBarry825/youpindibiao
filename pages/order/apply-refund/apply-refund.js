@@ -13,13 +13,27 @@ Page({
     fileList: [],
     imgList:[],
     reasonList:[],//原因列表
+    goodsList:[],//商品列表
     showReason:false,
+    showGoods:false,
     columns: [],
+    goodsColumns: [],
     reasonValue:'',
     reasonText:'选择退货原因',
+    orderDetail:{},
+    orderDetailId:'', //订单详情下商品对应id
+    orderDetailName:'选择退货商品' //订单详情下商品名称
   },
-  onReasonChange(event) {
-
+  onGoodsConfirm(event){
+    let that = this
+    const { picker, value, index } = event.detail;
+    console.log(index)
+    that.setData({
+      orderDetailId:that.data.goodsList[index].id,
+      orderDetailName:that.data.goodsList[index].goodsname,
+      showGoods:false,
+      refundCount:parseFloat(that.data.goodsList[index].goodsmoney)*that.data.goodsList[index].goodsnum
+    })
   },
   onReasonConfirm(event){
     let that = this
@@ -42,8 +56,31 @@ Page({
       showReason:false
     })
   },
+  showGoods(){
+    console.log(this.data.goodsColumns)
+    console.log(this.data.goodsList)
+    this.setData({
+      showGoods:true
+    })
+  },
+  hideGoods(){
+    this.setData({
+      showGoods:false
+    })
+  },
   deleteImg(event){
+    let that = this
     console.log(event.detail.index)
+    let fileList=that.data.fileList
+    let imgList=that.data.imgList
+    console.log(fileList,imgList,1)
+    fileList.splice(event.detail.index,1)
+    imgList.splice(event.detail.index,1)
+    console.log(fileList,imgList,2)
+    that.setData({
+      fileList:fileList,
+      imgList:imgList
+    })
   },
   afterRead(event) {
     let that = this
@@ -74,6 +111,8 @@ Page({
           fileList:fileList,
           imgList:imgList
         });
+        console.log(that.data.fileList)
+        console.log(that.data.imgList)
       },
     });
   },
@@ -90,23 +129,17 @@ Page({
   submitForm(){
     let that = this
     let formData={
-      orderid:that.data.orderid,
+      orderid:that.data.orderDetail.id,
       reasonid:that.data.reasonValue,
-      goodsMoney:that.data.refundCount,
+      // goodsMoney:that.data.refundCount,
       remarks:that.data.refundReason,
-      imageList:that.data.imgList
+      imageList:that.data.imgList,
+      orderDetailId:that.data.orderDetailId
     }
-    console.log(formData.goodsMoney,typeof formData.goodsMoney)
-    console.log(that.data.payNum,typeof that.data.payNum)
-    if(formData.orderid==''||formData.reasonid==''||formData.goodsMoney==''){
+    console.log(formData)
+    if(formData.orderid==''||formData.reasonid==''){
       wx.showToast({
-        title:'请检查填写退货原因和退款金额',
-        icon:'none',
-        duration:1000
-      })
-    }else if(parseFloat(formData.goodsMoney)>parseFloat(that.data.payNum)){
-      wx.showToast({
-        title:'退款金额不能大于'+that.data.payNum+'元',
+        title:'请选择退货原因',
         icon:'none',
         duration:1000
       })
@@ -115,7 +148,7 @@ Page({
         url:'/returnGoods/addReturnGoods',
         data:formData,
         success(res){
-          if(res.code == 200&&res.message=='申请售后成功'){
+          if(res.code == 200&&res.message=='申请退货成功'||res.message=='申请售后成功'){
             wx.showToast({
               title:'提交成功！',
               icon:'success',
@@ -125,7 +158,7 @@ Page({
               wx.navigateBack({
                 delta:1
               })
-            },1000)
+            },1500)
           }else {
             wx.showToast({
               title:'提交异常或已提交过退货申请',
@@ -163,12 +196,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let orderid=options.orderid
-    let payNum=options.payNum
+    let that = this
+    let orderDetail=JSON.parse(wx.getStorageSync('refundItem'))
     this.setData({
-      orderid:orderid,
-      payNum:payNum
+      orderDetail:orderDetail
     })
+    console.log(orderDetail,998)
+    let goodsColumns=[]
+    for (const Key in orderDetail.orderDetailslist) {
+      goodsColumns.push(orderDetail.orderDetailslist[Key].goodsname)
+    }
+    console.log(goodsColumns,'goodsColumns')
+    that.setData({
+      goodsColumns:goodsColumns,
+      goodsList:orderDetail.orderDetailslist,
+    })
+    console.log(that.data.goodsList,'---------')
+    console.log(that.data.goodsColumns,'---------')
+
+
     this.fetchData()
   },
 

@@ -15,6 +15,7 @@ module.exports = {
         this.request(options)
     },
     request(options) {
+        wx.hideLoading()
         wx.showLoading({
             title: '加载中',
         })

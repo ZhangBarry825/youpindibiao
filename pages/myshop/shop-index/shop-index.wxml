@@ -68,7 +68,7 @@
             </van-grid-item>
         </van-grid>
     </view>
-    <view class="shop-none" wx:if="{{status==0}}">
+    <view class="shop-none" wx:if="{{status==-1}}">
 
         <view class="tips">
             <image src="../../../static/images/shop-none.png"></image>
@@ -79,7 +79,7 @@
             <view class="button button1" bind:tap="goApply">去开通</view>
         </view>
     </view>
-    <view class="shop-applying" wx:if="{{status==2}}">
+    <view class="shop-applying" wx:if="{{status==0}}">
 
         <view class="tips">
             <image src="../../../static/images/shop-applying.png"></image>
@@ -89,7 +89,7 @@
         <view class="buttons">
         </view>
     </view>
-    <view class="shop-reject" wx:if="{{status==3}}">
+    <view class="shop-reject" wx:if="{{status==2}}">
 
         <view class="tips">
             <image src="../../../static/images/shop-reject.png"></image>

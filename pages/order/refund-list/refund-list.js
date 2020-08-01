@@ -1,18 +1,67 @@
 // pages/order/refund-list/refund-list.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    pageNum:1,
+    pageSize:10,
+    itemList:[],
+    baseUrl:api.Host+'/'
   },
+  goOrderDetail(e){
+    let orderid=e.currentTarget.dataset.id
+    wx.navigateTo({
+      url:'/pages/order/order-status/order-status?orderid='+orderid
+    })
+  },
+  fetchData(pageNum=1,append=false){
+    let that = this
+    api.post({
+      url:'/returnGoods/selectReturnGoods',
+      data:{
+        pageSize:that.data.pageSize,
+        pageNum:pageNum,
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          if(res.data.list.length>0){
+            if(append){
+              that.setData({
+                itemList:that.data.itemList.concat(res.data.list)
+              })
+            }else {
+              that.setData({
+                itemList:res.data.list
+              })
+            }
 
+          }else {
+            if(!append){
+              that.setData({
+                itemList:[]
+              })
+            }
+            wx.showToast({
+              title:'暂无更多',
+              icon:'none',
+              duration:1000
+            })
+          }
+
+
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**
@@ -54,7 +103,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.fetchData(this.data.pageNum+1,true)
   },
 
   /**

@@ -22,6 +22,7 @@
 }
 .page .shop-list .shop-title .left {
   display: flex;
+  align-items: center;
 }
 .page .shop-list .shop-title .left image {
   width: 26rpx;
@@ -97,6 +98,10 @@
   font-size: 28rpx;
   font-weight: 400;
   color: #999999;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .page .shop-list .goods-list .count {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);

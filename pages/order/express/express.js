@@ -1,35 +1,47 @@
 // pages/order/express/express.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    steps: [
-      {
-        text: '【郑州市】已签收',
-        desc: '2016-06-20 12:51:42',
-      },
-      {
-        text: '【郑州市】已收入',
-        desc: '2016-06-20 12:51:42',
-      },
-      {
-        text: '【郑州市】快件已到达 河南郑州郑东新区',
-        desc: '2016-06-20 12:51:42',
-      },
-      {
-        text: '【郑州市】已发货',
-        desc: '2016-06-20 12:51:42',
-      },
-    ],
+    orderid:'',
+    expressDetail:{},
+    steps: [],
   },
-
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/order/queryWuliu',
+      data:{
+        orderid:that.data.orderid
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          res.data.thumbnail=api.Host+'/'+res.data.thumbnail
+          res.data.mapList.reverse()
+          for (const thatKey in res.data.mapList) {
+            res.data.mapList[thatKey].text=res.data.mapList[thatKey].context
+            res.data.mapList[thatKey].desc=res.data.mapList[thatKey].time
+          }
+          that.setData({
+            expressDetail:res.data,
+            steps:res.data.mapList
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      orderid:options.orderid
+    })
+    this.fetchData()
   },
 
   /**

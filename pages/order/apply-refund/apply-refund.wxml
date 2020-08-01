@@ -5,6 +5,27 @@
                   title-class="title-class"
                   value="">
             <view slot="title">
+                <view class="van-cell-text">退货商品
+<!--                    <text class="red">*</text>-->
+                </view>
+            </view>
+        </van-cell>
+        <van-cell
+                bind:tap="showGoods"
+                custom-class="item-custom-class"
+                value-class="item-value-class"
+                label-class="item-label-class"
+                title-class="item-title-class"
+                is-link
+                value="">
+            <view slot="title">
+                <view class="van-cell-text">{{orderDetailName}}</view>
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class"
+                  value="">
+            <view slot="title">
                 <view class="van-cell-text">退货原因
                     <text class="red">*</text>
                 </view>
@@ -26,7 +47,8 @@
                   title-class="title-class"
                   value="">
             <view slot="title">
-                <view class="van-cell-text">退款金额<text class="red">*</text><text class="gray">（最多￥{{payNum}}）</text></view>
+<!--                （最多￥{{payNum}}）-->
+                <view class="van-cell-text">退款金额<text class="red">*</text><text class="gray"></text></view>
             </view>
         </van-cell>
         <van-cell
@@ -37,13 +59,14 @@
                 value="">
             <view slot="title">
                 <van-field
+                        disabled
                         bind:change="refundCountChange"
                         input-class="input-class"
                         value="{{ refundCount }}"
                         clearable
                         label=""
                         type="number"
-                        placeholder="请输入退款金额"
+                        placeholder="退款金额"
                         border="{{ false }}"
                 />
             </view>
@@ -101,5 +124,8 @@
 
     <van-popup show="{{ showReason }}"  bind:close="hideReason"   position="bottom" custom-style="height: 40%;">
         <van-picker columns="{{ columns }}" show-toolbar bind:change="onReasonChange" bind:confirm="onReasonConfirm" />
+    </van-popup>
+    <van-popup show="{{ showGoods }}"  bind:close="hideGoods"   position="bottom" custom-style="height: 40%;">
+        <van-picker columns="{{ goodsColumns }}" show-toolbar bind:change="onGoodsChange" bind:confirm="onGoodsConfirm" />
     </van-popup>
 </view>

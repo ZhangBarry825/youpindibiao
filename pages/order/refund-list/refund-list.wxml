@@ -1,84 +1,35 @@
 <!--pages/order/refund-list/refund-list.wxml-->
 <view class="page">
-    <view class="shop-list">
+    <view class="shop-list" wx:for="{{itemList}}" wx:for-item="item" wx:key="item" bind:tap="goOrderDetail" data-id="{{item.odid}}">
         <view class="shop-title">
             <view class="left">
-                <van-checkbox
-                        icon-size="15px"
-                        value="{{ shopChecked }}"
-                        checked-color="#F26500"
-                        bind:change="onShopCheckedChange"
-                >
-                    <image src="../../../static/images/shop-title.png"></image>
-                    <text>dji大疆官方旗舰店</text>
-                </van-checkbox>
+                <image src="../../../static/images/shop-title.png"></image>
+                <text>{{item.reserved3}}</text>
             </view>
             <view class="right">
-                退款中
+                {{item.status==0?'待审核':item.status==1?'退货/退款中':item.status==2?'已退货/退款':item.status==3?'拒绝退款':item.status==4?'已取消':'异常'}}
             </view>
         </view>
         <view class="goods-list">
-            <view class="goods-item">
+            <view class="goods-item" wx:for="{{item.orderDetails}}" wx:for-item="item2" wx:key="item2">
                 <view class="goods-info">
-                    <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                    <image class="goods-pic" mode="aspectFill" src="{{baseUrl+item2.thumbnail}}"></image>
                     <view class="goods-detail">
                         <view class="d-left">
                             <view class="line1">
-                                心率智能手环 运动睡眠监测
-                                2P防水计步超轻仅15克心率智能手环 运动睡眠监测
-                                2P防水计步超轻仅15克
+                                {{item2.goodsname}}
                             </view>
                             <view class="line2">
-                                规格：500g/包
+                                <view class="left">规格：{{item2.goodsParam}}</view>
+                                <view class="right">x{{item2.goodsnum}}</view>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
             <view class="count">
-               交易金额：<view class="color">￥5990.00</view>
-               退款金额：<view class="color">￥5990.00</view>
-            </view>
-        </view>
-    </view>
-    <view class="shop-list">
-        <view class="shop-title">
-            <view class="left">
-                <van-checkbox
-                        icon-size="15px"
-                        value="{{ shopChecked }}"
-                        checked-color="#F26500"
-                        bind:change="onShopCheckedChange"
-                >
-                    <image src="../../../static/images/shop-title.png"></image>
-                    <text>dji大疆官方旗舰店</text>
-                </van-checkbox>
-            </view>
-            <view class="right">
-                退款成功
-            </view>
-        </view>
-        <view class="goods-list">
-            <view class="goods-item">
-                <view class="goods-info">
-                    <image class="goods-pic" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                    <view class="goods-detail">
-                        <view class="d-left">
-                            <view class="line1">
-                                心率智能手环 运动睡眠监测
-                                2P防水计步超轻仅15克心率智能手环 运动睡眠监测
-                                2P防水计步超轻仅15克
-                            </view>
-                            <view class="line2">
-                                规格：500g/包
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <view class="count">
-                交易金额：<view class="color">￥5990.00</view>
-                退款金额：<view class="color">￥5990.00</view>
+               交易金额：<view class="color">￥{{item.reserved2}}</view>
+               退款金额：<view class="color">￥{{item.money}}</view>
             </view>
         </view>
     </view>

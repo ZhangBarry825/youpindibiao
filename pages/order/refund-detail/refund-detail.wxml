@@ -3,7 +3,7 @@
     <view class="table">
         <view class="line">
             <view class="title">退换货订单：</view>
-            <view class="value">231648742313</view>
+            <view class="value">{{orderid}}</view>
         </view>
         <view class="line">
             <view class="title">处理状态：</view>
@@ -17,7 +17,7 @@
                 <image src="../../../static/images/step1.png"></image>
             </view>
             <view class="line2">
-                <image wx:if="{{step==1||step==2||step==3}}" src="../../../static/images/step-checked.png"></image>
+                <image src="../../../static/images/step-checked.png"></image>
             </view>
             <view class="line3">
                 买家申请
@@ -31,10 +31,10 @@
                 <image src="../../../static/images/step2.png"></image>
             </view>
             <view class="line2">
-                <image wx:if="{{step==2||step==3}}" src="../../../static/images/step-checked.png"></image>
+                <image wx:if="{{status==1||status==2}}" src="../../../static/images/step-checked.png"></image>
             </view>
-            <view class="line3" wx:if="{{step==2||step==3}}">
-                买家申请
+            <view class="line3" wx:if="{{status==1||status==2}}">
+                卖家同意
                 2016-07-30
                 14:52:33
             </view>
@@ -45,10 +45,10 @@
                 <image src="../../../static/images/step3.png"></image>
             </view>
             <view class="line2">
-                <image wx:if="{{step==3}}" src="../../../static/images/step-checked.png"></image>
+                <image wx:if="{{status==2||status==3||status==4}}" src="../../../static/images/step-checked.png"></image>
             </view>
-            <view class="line3"  wx:if="{{step==3}}">
-                买家申请
+            <view class="line3"  wx:if="{{status==2||status==3||status==4}}">
+                退款成功
                 2016-07-30
                 14:52:33
             </view>

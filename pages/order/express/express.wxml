@@ -2,27 +2,27 @@
 <view class="page">
     <view class="goods">
         <view class="left">
-            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-            <text>1件商品</text>
+            <image mode="aspectFill" src="{{expressDetail.thumbnail}}"></image>
+            <text>{{expressDetail.goodsTotal}}件商品</text>
         </view>
 
         <view class="right">
             <view class="line1">
                 <view class="title">物流状态</view>
-                <view class="value">已签收</view>
+                <view class="value">  {{expressDetail.state==0?'暂无轨迹信息':expressDetail.state==1?'已揽收':expressDetail.state==2?'在途中':expressDetail.state==3?'已签收':expressDetail.state==4?'问题件':''}}</view>
             </view>
             <view class="line2">
                 <view class="title">承运公司：</view>
-                <view class="value">申通快递</view>
+                <view class="value">{{expressDetail.express}}</view>
             </view>
             <view class="line3">
                 <view class="title">运单编号：</view>
-                <view class="value">4554642163486</view>
+                <view class="value">{{expressDetail.yundanhao}}</view>
             </view>
-            <view class="line4">
-                <view class="title">官方电话：</view>
-                <view class="value">95543</view>
-            </view>
+<!--            <view class="line4">-->
+<!--                <view class="title">官方电话：</view>-->
+<!--                <view class="value">95543</view>-->
+<!--            </view>-->
         </view>
     </view>
     <view class="express">
