@@ -86,7 +86,7 @@ Page({
                   that.setData({
                     pageNum:1
                   })
-                  this.fetchData(that.data.state,that.data.pageNum)
+                  that.fetchData(that.data.state,that.data.pageNum)
                 },1000)
               }
             }
@@ -101,7 +101,7 @@ Page({
   commentOrder(e){
     let item=e.currentTarget.dataset.item
     console.log(item)
-    wx.setStorageSync('commentOrder',JSON.stringify(item))
+    wx.setStorageSync('commentItem',JSON.stringify(item))
     wx.navigateTo({
       url:'/pages/order/order-appraise/order-appraise'
     })

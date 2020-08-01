@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status:0,//店铺状态  -1未申请 0审核中 1已通过 2未通过
+    status:-1,//店铺状态  -1未申请 0审核中 1已通过 2未通过
+    reason:'',
+    shopInfo:{}
   },
   fetchData(){
     let that = this
@@ -14,9 +16,27 @@ Page({
       url:'/businessApply/queryShopState',
       data:{},
       success(res){
-        if(res.code == 500){
+        if(res.code == 200){
           that.setData({
-            status:0
+            status:res.data.state
+          })
+          if(res.data.weisha){
+            that.setData({
+              status:res.data.state,
+              reason:res.data.weisha
+            })
+          }
+        }
+      }
+    })
+
+    api.post({
+      url:'/myShop/toIndex',
+      data:{},
+      success(res){
+        if(res.code == 200){
+          that.setData({
+            shopInfo:res.data
           })
         }
       }
@@ -27,7 +47,12 @@ Page({
       url:'/pages/myshop/shop-apply/shop-apply'
     })
   },
-
+  goTo(e){
+    let path=e.currentTarget.dataset.path
+    wx.navigateTo({
+      url:path
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

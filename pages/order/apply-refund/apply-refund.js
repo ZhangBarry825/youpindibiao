@@ -204,7 +204,7 @@ Page({
     console.log(orderDetail,998)
     let goodsColumns=[]
     for (const Key in orderDetail.orderDetailslist) {
-      goodsColumns.push(orderDetail.orderDetailslist[Key].goodsname)
+      goodsColumns.push(orderDetail.orderDetailslist[Key].goodsname+' '+orderDetail.orderDetailslist[Key].goodsParam)
     }
     console.log(goodsColumns,'goodsColumns')
     that.setData({

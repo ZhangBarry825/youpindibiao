@@ -1,11 +1,11 @@
 <!--pages/order/order-appraise/order-appraise.wxml-->
 <view class="page">
-    <view class="item">
+    <view class="item" wx:for="{{itemDetail.goodsList}}" wx:key="item" wx:for-item="item" wx:for-index="index">
         <view class="goods">
-            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            <image mode="aspectFill" src="{{baseUrl+item.thumbnail}}"></image>
             <view class="goods-info">
-                <view class="title">正宗广西荔浦芋头新鲜槟榔香芋农家产品有机5斤疯抢</view>
-                <view class="price">￥36.00</view>
+                <view class="title">{{item.goodsname}}</view>
+                <view class="price">￥{{item.goodsmoney}}</view>
             </view>
         </view>
         <van-cell-group>
@@ -14,8 +14,10 @@
             <van-cell custom-class="textarea-custom-class" value="">
                 <view slot="title">
                     <van-field
+                            data-index="{{index}}"
+                            bind:change="onTextChange"
                             input-class="input-class"
-                            value="{{ message }}"
+                            value="{{ item.text }}"
                             label=""
                             type="textarea"
                             placeholder="请输入评语"
@@ -26,9 +28,10 @@
             <van-cell custom-class="picture-custom-class" value="">
                 <view slot="title">
                     <van-uploader
+                            data-index="{{index}}"
                             bind:delete="deleteImg"
                             max-count="3"
-                            file-list="{{ fileList }}"
+                            file-list="{{ item.fileList }}"
                             bind:after-read="afterRead"/>
                 </view>
             </van-cell>
@@ -36,8 +39,9 @@
                 <view slot="title">
                     商品评分
                     <van-rate
-                            value="{{ scoreValue }}"
-                            size="{{ 20 }}"
+                            data-index="{{index}}"
+                            value="{{ item.star }}"
+                            size="{{ 22 }}"
                             color="#ffb820"
                             void-color="#eee"
                             void-icon="star"
@@ -46,7 +50,6 @@
                 </view>
             </van-cell>
         </van-cell-group>
-
-        <view class="submit-button">提交评价</view>
     </view>
+    <view class="submit-button" bind:tap="submitForm">提交评价</view>
 </view>

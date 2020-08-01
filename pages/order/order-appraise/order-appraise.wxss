@@ -67,7 +67,7 @@
   font-size: 28rpx;
   color: #333333;
 }
-.page .item .submit-button {
+.page .submit-button {
   margin-top: 40rpx;
   width: 100%;
   padding: 30rpx 0;

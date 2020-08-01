@@ -38,7 +38,6 @@ Page({
                 itemList:res.data.list
               })
             }
-
           }else {
             if(!append){
               that.setData({
@@ -51,7 +50,7 @@ Page({
               duration:1000
             })
           }
-
+          console.log(that.data.itemList,'itemList')
 
         }
       }

@@ -1,55 +1,104 @@
 // pages/order/order-appraise/order-appraise.js
+const api = require('../../../utils/api.js');
+import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    scoreValue: 3,
+    baseUrl:api.Host+'/',
     message:'',
-    fileList: [
-      { url: 'https://img.yzcdn.cn/vant/leaf.jpg', name: '图片1' },
-      // Uploader 根据文件后缀来判断是否为图片文件
-      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      {
-        url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-        name: '图片2',
-        isImage: true,
-        deletable: true,
-      },
-    ],
+    itemDetail:{},
   },
-  onScoreChange(event) {
+  onScoreChange(e) {
+    let that = this
+    let index = e.currentTarget.dataset.index
     this.setData({
-      scoreValue: event.detail,
+      ['itemDetail.goodsList['+index+'].star']: e.detail,
     });
+    console.log(that.data.itemDetail)
   },
   deleteImg(event){
-    console.log(event.detail.index)
+    let itemIndex=event.currentTarget.dataset.index
+    let picIndex=event.detail.index
+
+    let itemDetail=that.data.itemDetail
+    itemDetail.goodsList[itemIndex].fileList.splice(picIndex,1)
+    itemDetail.goodsList[itemIndex].fileList.splice(picIndex,1)
+    that.setData({
+      itemDetail:itemDetail
+    })
+    console.log(that.data.itemDetail.goodsList[itemIndex])
   },
   afterRead(event) {
+    let that = this
+    let index = event.currentTarget.dataset.index
     const { file } = event.detail;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
+      url: api.Host+'/imageUpload/upEvaluateImage', // 仅为示例，非真实的接口地址
       filePath: file.path,
       name: 'file',
       formData: { user: 'test' },
       success(res) {
-        // 上传完成需要更新 fileList
-        const { fileList = [] } = this.data;
-        fileList.push({ ...file, url: res.data });
-        this.setData({ fileList });
-      },
+        res.data=JSON.parse(res.data)
+        console.log(res.data)
+        that.setData({
+          ['itemDetail.goodsList['+index+'].imageList']:that.data.itemDetail.goodsList[index].imageList.concat(res.data.data)
+        })
+        let newList=that.data.itemDetail.goodsList[index].fileList
+        for (const fileKey in res.data.data) {
+          newList.push({
+            name:'',
+            url:that.data.baseUrl+res.data.data[fileKey],
+            isImage: true,
+            deletable: true,
+          })
+        }
+        that.setData({
+          ['itemDetail.goodsList['+index+'].fileList']:newList
+        })
+        console.log(that.data.itemDetail.goodsList[index])
+      }
+
+    });
+  },
+  onTextChange(e){
+    let index = e.currentTarget.dataset.index
+    this.setData({
+      ['itemDetail.goodsList['+index+'].text']: e.detail,
     });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let commentItem=JSON.parse(wx.getStorageSync('commentItem'))
+    let itemDetail={
+      id:commentItem.id,
+      goodsList:commentItem.orderDetailslist,
+    }
+    for (const apiKey in itemDetail.goodsList) {
+      itemDetail.goodsList[apiKey].text=''
+      itemDetail.goodsList[apiKey].imageList=[]
+      itemDetail.goodsList[apiKey].fileList=[]
+      itemDetail.goodsList[apiKey].star=5
+    }
+    this.setData({
+      itemDetail:itemDetail
+    })
+    console.log(this.data.itemDetail)
   },
-
+  submitForm(){
+    console.log(this.data.itemDetail)
+    let formData={
+      orderID:this.data.itemDetail.id,
+      evaluateList:[
+      //TODO
+      ]
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

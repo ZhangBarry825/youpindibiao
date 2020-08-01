@@ -6,7 +6,7 @@ Page({
    */
   data: {
     tagsActive: 0,
-    height: wx.getSystemInfoSync().windowHeight - 50,
+
   },
   onTagChange(event){
     wx.showToast({
@@ -18,7 +18,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    setTimeout(()=>{
+      this.setData({
+        height: wx.getSystemInfoSync().windowHeight - 50,
+      })
+    },100)
   },
 
   /**

@@ -5,38 +5,39 @@
                 label-class="label-class"
                 input-class="input-class"
                 label="店铺名称"
-                value="{{ shopName }}"
+                value="{{ shopInfo.shopname }}"
                 placeholder="店铺名称"
                 border="{{ false }}"
-                bind:change="onChange"
+                bind:change="onShopNameChange"
         />
         <van-field
                 label-class="label-class"
                 input-class="input-class"
                 label="会员编号"
-                value="{{ VipNum }}"
+                value="{{ shopInfo.usercode }}"
                 placeholder="会员编号"
                 border="{{ false }}"
                 bind:change="onChange"
+                disabled
         />
         <van-field
                 label-class="label-class"
                 input-class="input-class"
                 label="店铺描述"
-                value="{{ VipNum }}"
+                value="{{ shopInfo.text }}"
                 placeholder="店铺描述"
                 border="{{ false }}"
-                bind:change="onChange"
+                bind:change="onTextChange"
         />
         <van-field
                 label-class="label-class"
                 input-class="input-class"
                 is-link
                 label="绑定手机"
-                value="{{ VipNum }}"
+                value="{{ shopInfo.tel }}"
                 placeholder="绑定手机"
                 border="{{ false }}"
-                bind:change="onChange"
+                bind:change="onTelChange"
         />
 
         <van-cell
@@ -47,10 +48,10 @@
             <view slot="title" class="aaa">
                 <view class="left">头像</view>
                 <view class="middle">
-                    <image class="avatar" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                    <image class="avatar" mode="aspectFill" src="{{shopInfo.headimg}}"></image>
                 </view>
                 <view class="right">
-                    <view class="button">选择文件</view>
+                    <view class="button" bind:tap="uploadImg" data-type="avatar">选择文件</view>
                 </view>
             </view>
         </van-cell>
@@ -62,16 +63,16 @@
             <view slot="title" class="aaa">
                 <view class="left">背景</view>
                 <view class="middle">
-                    <image class="back" mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                    <image class="back" mode="aspectFill" src="{{shopInfo.bgimg}}"></image>
                 </view>
                 <view class="right">
-                    <view class="button">选择文件</view>
+                    <view class="button"  bind:tap="uploadImg" data-type="background">选择文件</view>
                 </view>
             </view>
         </van-cell>
     </van-cell-group>
 
     <view class="button-box">
-        <view class="button">保存修改</view>
+        <view class="button" bind:tap="submitForm">保存修改</view>
     </view>
 </view>
