@@ -121,7 +121,9 @@ Page({
       state:state,
       orderList:[]
     })
-    this.fetchData(state)
+    setTimeout(()=>{
+      this.fetchData(state)
+    },100)
   },
   fetchData(state='',pageNum=1,append=false){
     let that = this

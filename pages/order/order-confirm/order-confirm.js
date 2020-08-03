@@ -106,7 +106,7 @@ Page({
         url:'/order/addOrderByGoods',
         data:{...formData},
         success(res){
-          if(res.code == 200){
+          if(res.code == 200 && res.message!='余额不足'){
             if(that.data.payType==0){
               wx.navigateTo({
                 url:'/pages/order/order-payed/order-payed?orderid='+res.data
@@ -126,6 +126,12 @@ Page({
                 }
               })
             }
+          } else if(res.message!='余额不足'){
+            wx.showToast({
+              title:'您的余额不足！',
+              icon:'none',
+              duration:1000
+            })
           }
         }
       })

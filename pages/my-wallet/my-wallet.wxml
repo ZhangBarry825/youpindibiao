@@ -13,7 +13,7 @@
     </view>
 
     <view class="buttons">
-        <view class="button button1">充值</view>
-        <view class="button button2">提现</view>
+        <view class="button button1" bind:tap="goTo" data-path="/pages/charge/charge">充值</view>
+        <view class="button button2" bind:tap="goTo" data-path="/pages/encash/encash">提现</view>
     </view>
 </view>

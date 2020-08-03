@@ -12,11 +12,12 @@ Page({
     categoryList: [],
     advertisementList: [],
     hotGoodsList: [],
+    nearbyShopList: [],
     showMenus:true,
     searchKeyword:"",
     tagsActive:0,
     timeTagsActive:0,
-    showRedPackage:false,
+    showRedPackage:true,
     showGetAddress:true,
     leftTime: 0,
     scrapStart:false,
@@ -178,16 +179,18 @@ Page({
 
       },
       success:res=>{
-        for (const resKey in res.data.list) {
-          res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
-          res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
-          res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
-          res.data.list[resKey].distance=saveTwoDecimal(res.data.list[resKey].distance)
-          res.data.list[resKey].shopstar=saveOneDecimal(res.data.list[resKey].shopstar)
+        if(res.data.list){
+          for (const resKey in res.data.list) {
+            res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
+            res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
+            res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
+            res.data.list[resKey].distance=saveTwoDecimal(res.data.list[resKey].distance)
+            res.data.list[resKey].shopstar=saveOneDecimal(res.data.list[resKey].shopstar)
+          }
+          that.setData({
+            nearbyShopList:res.data.list
+          })
         }
-        that.setData({
-          nearbyShopList:res.data.list
-        })
       }
     })
   },

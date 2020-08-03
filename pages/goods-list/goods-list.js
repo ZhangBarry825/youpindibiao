@@ -7,7 +7,7 @@ Page({
    */
   data: {
     activeIndex:0,
-    height: wx.getSystemInfoSync().windowHeight+35,
+    height: wx.getSystemInfoSync().windowHeight-30,
     pageSize:10,
     pageNum:1,
     goodsType:'',
@@ -128,6 +128,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    setTimeout(()=>{
+      this.setData({
+        height: wx.getSystemInfoSync().windowHeight-40,
+      })
+    })
     let type=options.type
     this.setData({
       goodsType:type

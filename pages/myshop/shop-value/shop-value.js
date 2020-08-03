@@ -1,18 +1,36 @@
 // pages/myshop/shop-value/shop-value.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataDetail:{}
   },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/myShop/toMyMoney',
+      data:{},
+      success(res){
+        console.log(res)
+        if(res.code == 200){
 
+        }
+      }
+    })
+  },
+  goApply(){
+    wx.navigateTo({
+      url:'/pages/myshop/shop-encash/shop-encash'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

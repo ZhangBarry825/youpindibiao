@@ -7,7 +7,9 @@
         </view>
         <view class="line">
             <view class="title">处理状态：</view>
-            <view class="value">已审核处理中</view>
+            <view class="value">
+                {{status==0?'待审核':status==1?'退货/退款中':status==2?'已退货/已退款':status==3?'拒绝退款':status==4?'已取消':'异常'}}
+            </view>
         </view>
     </view>
 
@@ -21,8 +23,7 @@
             </view>
             <view class="line3">
                 买家申请
-                2016-07-30
-                14:52:33
+                {{refundDetail.applyTime}}
             </view>
         </view>
         <view class="line"></view>
@@ -35,8 +36,7 @@
             </view>
             <view class="line3" wx:if="{{status==1||status==2}}">
                 卖家同意
-                2016-07-30
-                14:52:33
+                {{refundDetail.examineTime}}
             </view>
         </view>
         <view class="line"></view>
@@ -45,12 +45,11 @@
                 <image src="../../../static/images/step3.png"></image>
             </view>
             <view class="line2">
-                <image wx:if="{{status==2||status==3||status==4}}" src="../../../static/images/step-checked.png"></image>
+                <image wx:if="{{status==2}}" src="../../../static/images/step-checked.png"></image>
             </view>
-            <view class="line3"  wx:if="{{status==2||status==3||status==4}}">
+            <view class="line3"  wx:if="{{status==2}}">
                 退款成功
-                2016-07-30
-                14:52:33
+                {{refundDetail.successTime}}
             </view>
         </view>
     </view>

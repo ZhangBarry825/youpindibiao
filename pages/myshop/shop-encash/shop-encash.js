@@ -1,4 +1,5 @@
 // pages/myshop/shop-encash/shop-encash.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
   data: {
     nickName:'',
     count:'',
+    availableCommission:0
   },
   onNickNameChange(event){
     this.setData({nickName:event.detail})
@@ -14,11 +16,49 @@ Page({
   onCountChange(event){
     this.setData({count:event.detail})
   },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/myShop/toMyMoney',
+      data:{},
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          that.setData({
+            availableCommission:res.data.commission
+          })
+
+        }
+      }
+    })
+  },
+  submitForm() {
+    let that = this
+    if (parseInt(that.data.count) > 0 && parseInt(that.data.count)<that.data.availableCommission) {
+      api.post({
+        url:'/myMoney/withdrawToCard',
+        data:{
+          money:that.data.count
+        },
+        success(res){
+          if(res.code == 200){
+            //TODO
+          }
+        }
+      })
+    }else {
+      wx.showToast({
+        title:'请输入正确的金额！',
+        icon:'none',
+        duration:1000
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

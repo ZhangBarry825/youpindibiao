@@ -13,7 +13,7 @@
                 <view class="van-cell-text address-detail">
                     <view class="line1">{{addressDetail.name}} {{addressDetail.tel}}</view>
                     <view class="line2">{{addressDetail.address}}{{addressDetail.xqaddress}}</view>
-                    <view class="line3" wx:if="{{!addressDetail}}">去添加</view>
+                    <view class="line3" wx:if="{{!addressDetail}}" style="color: gray">去添加</view>
                 </view>
             </view>
         </van-cell>

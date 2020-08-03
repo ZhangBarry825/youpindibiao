@@ -5,7 +5,7 @@
                 label-class="label-class"
                 input-class="input-class"
                 label="店铺名称"
-                value="{{ shopInfo.shopname }}"
+                value="{{shopInfo.shopname=='undefined'?'':shopInfo.shopname }}"
                 placeholder="店铺名称"
                 border="{{ false }}"
                 bind:change="onShopNameChange"
@@ -17,14 +17,13 @@
                 value="{{ shopInfo.usercode }}"
                 placeholder="会员编号"
                 border="{{ false }}"
-                bind:change="onChange"
                 disabled
         />
         <van-field
                 label-class="label-class"
                 input-class="input-class"
                 label="店铺描述"
-                value="{{ shopInfo.text }}"
+                value="{{ shopInfo.text=='undefined'?'':shopInfo.text }}"
                 placeholder="店铺描述"
                 border="{{ false }}"
                 bind:change="onTextChange"
@@ -34,7 +33,7 @@
                 input-class="input-class"
                 is-link
                 label="绑定手机"
-                value="{{ shopInfo.tel }}"
+                value="{{ shopInfo.tel=='undefined'?'':shopInfo.tel }}"
                 placeholder="绑定手机"
                 border="{{ false }}"
                 bind:change="onTelChange"
@@ -48,10 +47,10 @@
             <view slot="title" class="aaa">
                 <view class="left">头像</view>
                 <view class="middle">
-                    <image class="avatar" mode="aspectFill" src="{{shopInfo.headimg}}"></image>
+                    <image class="avatar" mode="aspectFill" src="{{baseUrl+shopInfo.headimg}}"></image>
                 </view>
                 <view class="right">
-                    <view class="button" bind:tap="uploadImg" data-type="avatar">选择文件</view>
+                    <view class="button" bind:tap="uploadImg" data-type="headimg">选择文件</view>
                 </view>
             </view>
         </van-cell>
@@ -63,10 +62,10 @@
             <view slot="title" class="aaa">
                 <view class="left">背景</view>
                 <view class="middle">
-                    <image class="back" mode="aspectFill" src="{{shopInfo.bgimg}}"></image>
+                    <image class="back" mode="aspectFill" src="{{baseUrl+shopInfo.bgimg}}"></image>
                 </view>
                 <view class="right">
-                    <view class="button"  bind:tap="uploadImg" data-type="background">选择文件</view>
+                    <view class="button"  bind:tap="uploadImg" data-type="bgimg">选择文件</view>
                 </view>
             </view>
         </van-cell>

@@ -1,4 +1,6 @@
 // pages/mine-shop/mine-shop.js
+import {formatTime} from "../../../utils/util";
+
 const api = require('../../../utils/api.js');
 Page({
 
@@ -6,9 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baseUrl:api.Host+'/',
     status:-1,//店铺状态  -1未申请 0审核中 1已通过 2未通过
     reason:'',
-    shopInfo:{}
+    shopInfo:{},
+    confirmTime:''
   },
   fetchData(){
     let that = this
@@ -17,15 +21,22 @@ Page({
       data:{},
       success(res){
         if(res.code == 200){
+          res.data.state=parseInt(res.data.state)
           that.setData({
             status:res.data.state
           })
+          if(res.data.yujiTime){
+            that.setData({
+              confirmTime:formatTime(res.data.yujiTime)
+            })
+          }
           if(res.data.weisha){
             that.setData({
               status:res.data.state,
-              reason:res.data.weisha
+              reason:res.data.weisha,
             })
           }
+        console.log(that.data.status,'status')
         }
       }
     })

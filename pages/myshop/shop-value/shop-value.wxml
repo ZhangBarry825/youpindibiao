@@ -43,7 +43,7 @@
         </view>
     </view>
 
-    <view class="button-box">
-        <view class="button">申请提现</view>
-    </view>
+<!--    <view class="button-box">-->
+<!--        <view class="button" bind:tap="goApply">申请提现</view>-->
+<!--    </view>-->
 </view>

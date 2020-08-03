@@ -376,6 +376,20 @@
 					"id": -1,
 					"name": "店铺设置",
 					"pathName": "pages/myshop/shop-setting/shop-setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的店铺",
+					"pathName": "pages/myshop/shop-index/shop-index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的店铺Home",
+					"pathName": "pages/myshop/shop-home/shop-home",
 					"scene": null
 				}
 			]

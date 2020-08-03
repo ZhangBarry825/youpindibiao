@@ -1,4 +1,6 @@
 // pages/order/refund-detail/refund-detail.js
+import {formatTime} from "../../../utils/util";
+
 const api = require('../../../utils/api.js');
 Page({
 
@@ -8,7 +10,7 @@ Page({
   data: {
     step:3,
     orderid:'',
-    status:0
+    refundDetail:0
   },
   fetchData(){
     let that = this
@@ -20,8 +22,12 @@ Page({
       success(res){
         console.log(res)
         if(res.code == 200){
+          res.data.applyTime=formatTime(res.data.applyTime)
+          res.data.examineTime=formatTime(res.data.examineTime)
+          res.data.successTime=formatTime(res.data.successTime)
           that.setData({
-            status:res.data
+            refundDetail:res.data,
+            status:res.data.status
           })
         }
       }

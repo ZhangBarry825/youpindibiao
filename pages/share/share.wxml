@@ -66,7 +66,7 @@
                 <view class="shop-none" wx:if="{{itemList.length<1}}">
                     <image src="../../static/images/collect-none.png"></image>
                     <view class="text">还没有分享的商品哦~</view>
-                    <view class="none-button">去逛逛</view>
+                    <view class="none-button" bind:tap="goHome">去逛逛</view>
                 </view>
             </scroll-view>
         </van-tab>

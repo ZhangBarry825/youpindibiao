@@ -1,6 +1,6 @@
 <!--pages/order/refund-list/refund-list.wxml-->
 <view class="page">
-    <view class="shop-list" wx:for="{{itemList}}" wx:for-item="item" wx:key="item" bind:tap="goOrderDetail" data-id="{{item.odid}}">
+    <view class="shop-list" wx:for="{{itemList}}" wx:for-item="item" wx:key="item" bind:tap="goOrderDetail" data-id="{{item.id}}">
         <view class="shop-title">
             <view class="left">
                 <image src="../../../static/images/shop-title.png"></image>

@@ -60,7 +60,8 @@
                 <view wx:if="{{item.state==3}}" class="order-button order-button3" bind:tap="commentOrder" data-item="{{item}}">评价</view>
                 <view wx:if="{{item.state==0}}" class="order-button order-button3">付款</view>
                 <view wx:if="{{item.state==2}}" class="order-button order-button3" bind:tap="confirmReceive" data-orderid="{{item.id}}">确认收货</view>
-                <view wx:if="{{item.state==5}}" class="order-button order-button1" style="color:gray"  bind:tap="goRefundDetail" data-item="{{item}}">退货/退款中</view>
+<!--                <view wx:if="{{item.state==5}}" class="order-button order-button1" style="color:gray"  bind:tap="goRefundDetail" data-item="{{item}}">退货/退款中</view>-->
+                <view wx:if="{{item.state==5}}" class="order-button order-button1" style="color:gray">退货/退款中</view>
                 <view wx:if="{{item.state==6}}" class="order-button order-button1" style="color:gray"  bind:tap="goRefundDetail" data-item="{{item}}">退款成功</view>
             </view>
         </view>

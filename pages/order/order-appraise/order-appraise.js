@@ -91,13 +91,23 @@ Page({
     console.log(this.data.itemDetail)
   },
   submitForm(){
-    console.log(this.data.itemDetail)
     let formData={
-      orderID:this.data.itemDetail.id,
-      evaluateList:[
-      //TODO
-      ]
+      orderid:this.data.itemDetail.id,
+      evaluateList:this.data.itemDetail.goodsList
     }
+    api.post({
+      url:'/pingjia/addPingjia',
+      data:{
+        orderid:formData.orderid,
+        evaluateList:JSON.stringify(formData.evaluateList)
+      },
+      success(res){
+        if(res.code == 200){
+
+        }
+      }
+    })
+    console.log(formData)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

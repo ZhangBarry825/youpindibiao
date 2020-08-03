@@ -12,6 +12,11 @@ Page({
     pageSize:10,
     itemList:[],
   },
+  goHome(){
+    wx.switchTab({
+      url:'/pages/home/home'
+    })
+  },
   goTo(e){
     let path=e.currentTarget.dataset.path
     let id=e.currentTarget.dataset.id

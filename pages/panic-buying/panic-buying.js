@@ -20,7 +20,7 @@ Page({
     let path=e.currentTarget.dataset.path
     let id=e.currentTarget.dataset.id
     wx.navigateTo({
-      url:path,
+      url:path+'?id='+id,
     })
     console.log(path)
     console.log(id)

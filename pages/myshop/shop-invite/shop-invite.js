@@ -1,11 +1,16 @@
 // pages/myshop/shop-invite/shop-invite.js
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    url:'http://600s.baidu.com/s/1kUMNzEJ'
+    url:'http://600s.baidu.com/s/1kUMNzEJ',
+    dataDetail:{
+
+    }
+
   },
   textPaste(){
     let that = this
@@ -23,11 +28,26 @@ Page({
       }
     })
   },
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/myShop/getInviteInfo',
+      data:{},
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          that.setData({
+            dataDetail:res.data
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**

@@ -14,7 +14,7 @@ Page({
   goOrderDetail(e){
     let orderid=e.currentTarget.dataset.id
     wx.navigateTo({
-      url:'/pages/order/order-status/order-status?orderid='+orderid
+      url:'/pages/order/refund-detail/refund-detail?orderid='+orderid
     })
   },
   fetchData(pageNum=1,append=false){

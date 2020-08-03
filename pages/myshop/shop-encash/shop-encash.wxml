@@ -6,18 +6,18 @@
     </view>
 
     <van-cell-group>
+<!--        <van-field-->
+<!--                title-width="140rpx"-->
+<!--                label-class="label-class"-->
+<!--                input-class="input-class"-->
+<!--                label="微信昵称:"-->
+<!--                value="{{ nickName }}"-->
+<!--                placeholder=""-->
+<!--                border="{{ false }}"-->
+<!--                bind:change="onNickNameChange"-->
+<!--        />-->
         <van-field
-                title-width="120rpx"
-                label-class="label-class"
-                input-class="input-class"
-                label="微信昵称:"
-                value="{{ nickName }}"
-                placeholder=""
-                border="{{ false }}"
-                bind:change="onNickNameChange"
-        />
-        <van-field
-                title-width="120rpx"
+                title-width="140rpx"
                 label-class="label-class"
                 input-class="input-class"
                 label="提现金额:"
@@ -38,6 +38,6 @@
         </view>
     </view>
     <view class="button-box">
-        <view class="button">提交申请</view>
+        <view class="button" bind:tap="submitForm">提交申请</view>
     </view>
 </view>

@@ -2,11 +2,11 @@
 <view class="page">
     <view class="mine-back">
         <view class="left">
-            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+            <image mode="aspectFill" src="{{dataDetail.user.headimg}}"></image>
         </view>
         <view class="right">
-            <view class="line1">举个栗子</view>
-            <view class="line2">15820123654</view>
+            <view class="line1">{{dataDetail.user.name}}</view>
+            <view class="line2">{{dataDetail.user.tel}}</view>
         </view>
     </view>
 
@@ -17,9 +17,9 @@
         <text>扫一扫二维码，加入我们</text>
     </view>
 
-    <view class="tip-box">
-        <text>{{url}}</text>
-        <view class="button" bind:tap="textPaste">复制链接，邀请好友</view>
-    </view>
+<!--    <view class="tip-box">-->
+<!--        <text>{{url}}</text>-->
+<!--        <view class="button" bind:tap="textPaste">复制链接，邀请好友</view>-->
+<!--    </view>-->
 
 </view>

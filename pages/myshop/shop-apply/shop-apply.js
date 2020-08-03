@@ -108,6 +108,18 @@ Page({
                   delta: 1
                 })
               }, 1000)
+            }else if(res.code == 500 && res.message=='店铺名重复，请重新输入'){
+              wx.showToast({
+                title: '店铺名已存在，请更改后重试！',
+                icon: 'none',
+                duration: 1000
+              })
+            }else {
+              wx.showToast({
+                title: '提交失败，请检查后刷新重试！',
+                icon: 'none',
+                duration: 1000
+              })
             }
           }
         })

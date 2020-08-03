@@ -15,11 +15,11 @@
         <view class="mine-back">
             <image mode="aspectFill" class="back-img" src="../../../static/images/mine-back.png"></image>
             <view class="left">
-                <image mode="aspectFill" src="{{shopInfo.user.headimg}}"></image>
+                <image mode="aspectFill" src="{{baseUrl+shopInfo.sysUser.nearbyImg}}"></image>
             </view>
             <view class="right">
-                <view class="line1">{{shopInfo.user.shopname}}</view>
-                <view class="line2">今日销售金额：**元</view>
+                <view class="line1">{{shopInfo.sysUser.nearbyName}}</view>
+                <view class="line2">今日销售金额：{{shopInfo.earnToday}}元</view>
             </view>
         </view>
         <view class="statistics">
@@ -84,7 +84,7 @@
         <view class="tips">
             <image src="../../../static/images/shop-applying.png"></image>
             <view class="line1">正在审核</view>
-            <view class="line2">预计 2020-10-27 16:58 前审核完成！</view>
+            <view class="line2">预计 {{confirmTime}} 前审核完成！</view>
         </view>
         <view class="buttons">
         </view>
