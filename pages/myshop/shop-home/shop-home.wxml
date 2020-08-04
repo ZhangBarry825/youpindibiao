@@ -26,7 +26,7 @@
             <image src="../../../static/images/h2.png"/>
             <text>店铺预览</text>
         </van-grid-item>
-        <van-grid-item use-slot>
+        <van-grid-item use-slot bind:tap="goUp">
             <image src="../../../static/images/h3.png"/>
             <text>选品上架</text>
         </van-grid-item>
@@ -54,7 +54,7 @@
     </view>
 
     <view class="items">
-        <view class="item" wx:for="{{goodsList}}" wx:key="item">
+        <view class="item" wx:for="{{goodsList}}" wx:key="item" bind:tap="goGoodsDetail" data-id="{{item.id}}">
             <view class="left">
                 <image mode="aspectFill" src="{{baseUrl+item.thumbnail}}"></image>
             </view>
@@ -66,7 +66,7 @@
                     <view class="line-left">
                         <view class="red">￥{{item.money}}</view>
                     </view>
-                    <view class="line-right">有<view class="red">**</view>人在卖
+                    <view class="line-right">有<view class="red">{{item.mai}}</view>人在卖
                     </view>
                 </view>
                 <view class="line3">
@@ -76,7 +76,7 @@
                     <view class="line-right">剩余{{item.stock}}件</view>
                 </view>
                 <view class="line4">
-                    <view class="button">
+                    <view class="button" catch:tap="downGoods" data-item="{{item}}">
                         <image src="../../../static/images/down-goods.png"></image>
                         下架
                     </view>
@@ -86,7 +86,7 @@
     </view>
     <van-overlay show="{{ ewmShow }}" bind:click="onEwmClickHide" >
         <view class="wrapper">
-            <view class="block" catch:tap="noop">
+            <view class="block" catch:tap="onEwmClickHide">
                 <view class="line1">
                      <image bind:click="onEwmClickHide" src="../../../static/images/close1.png"/>
                 </view>

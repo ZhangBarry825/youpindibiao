@@ -390,6 +390,28 @@
 					"id": -1,
 					"name": "我的店铺Home",
 					"pathName": "pages/myshop/shop-home/shop-home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选品上架",
+					"pathName": "pages/myshop/shop-selection/shop-selection",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选品下架",
+					"pathName": "pages/myshop/shop-home/shop-home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 49,
+					"name": "上架商品详情",
+					"pathName": "pages/myshop/goods-detail/goods-detail",
+					"query": "id=1596087730152098",
 					"scene": null
 				}
 			]

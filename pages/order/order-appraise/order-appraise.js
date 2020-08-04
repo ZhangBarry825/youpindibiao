@@ -103,7 +103,16 @@ Page({
       },
       success(res){
         if(res.code == 200){
-
+          wx.showToast({
+            title:'保存成功！',
+            icon:'success',
+            duration:1000
+          })
+          setTimeout(()=>{
+            wx.navigateBack({
+              delta:1
+            })
+          },1000)
         }
       }
     })

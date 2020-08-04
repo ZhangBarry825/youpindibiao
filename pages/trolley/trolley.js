@@ -17,17 +17,7 @@ Page({
     let that = this
     let buyList=[]
     let trolleyList=JSON.parse(JSON.stringify(that.data.trolleyList))
-    // for (const listKey1 in trolleyList) {
-    //   for (const listKey2 in trolleyList[listKey1].list) {
-    //     delete trolleyList[listKey1].list[listKey2].createtime
-    //     delete trolleyList[listKey1].list[listKey2].shopName
-    //     delete trolleyList[listKey1].list[listKey2].state
-    //     delete trolleyList[listKey1].list[listKey2].sysUsers
-    //     delete trolleyList[listKey1].list[listKey2].userid
-    //     delete trolleyList[listKey1].list[listKey2].reserved2
-    //     delete trolleyList[listKey1].list[listKey2].reserved3
-    //   }
-    // }
+
     for (const apiKey in trolleyList) {
       for (const apiKey1 in trolleyList[apiKey].list) {
         if(trolleyList[apiKey].list[apiKey1].checked){
@@ -48,11 +38,20 @@ Page({
       totalPrice:that.data.totalPrice,
       buyList:buyList
     }
-    wx.setStorageSync('buyList',JSON.stringify(setBuyList))
-    console.log(setBuyList,'setBuyList')
-    wx.navigateTo({
-      url:'/pages/order/trolley-confirm/trolley-confirm'
-    })
+    if(buyList.length>0){
+      wx.setStorageSync('buyList',JSON.stringify(setBuyList))
+      console.log(setBuyList,'setBuyList')
+      wx.navigateTo({
+        url:'/pages/order/trolley-confirm/trolley-confirm'
+      })
+    }else {
+      wx.showToast({
+        title:'请先选择商品！',
+        icon:'none',
+        duration:1000
+      })
+    }
+
   },
   goHome(){
     wx.switchTab({
@@ -66,7 +65,16 @@ Page({
       if(index==Key){
         trolleyList[Key].checked=event.detail
         for (const Key2 in trolleyList[Key].list) {
-          trolleyList[Key].list[Key2].checked=event.detail
+          let item = trolleyList[Key].list[Key2]
+          if(item.goodsnum>parseInt(item.reserved2)){
+            wx.showToast({
+              title:'部分商品库存不足',
+              icon:'none',
+              duration:1000
+            })
+          }else {
+            trolleyList[Key].list[Key2].checked=event.detail
+          }
         }
       }
     }
@@ -76,13 +84,25 @@ Page({
     this.countPrice()
   },
   onGoodsCheckedChange(event){
+    let that = this
     let index=event.currentTarget.dataset.index
     let index2=event.currentTarget.dataset.index2
     let trolleyList=this.data.trolleyList
-    this.setData({
-      ['trolleyList['+index+'].list['+index2+'].checked']: event.detail,
-    });
-    this.countPrice()
+    console.log(that.data.trolleyList[index].list[index2])
+    let item=that.data.trolleyList[index].list[index2]
+    console.log(that.data.trolleyList)
+    if(item.goodsnum>parseInt(item.reserved2)){
+      wx.showToast({
+        title:'库存不足，库存为'+parseInt(item.reserved2),
+        icon:'none',
+        duration:1000
+      })
+    }else {
+      this.setData({
+        ['trolleyList['+index+'].list['+index2+'].checked']: event.detail,
+      });
+      this.countPrice()
+    }
   },
   updateData(e){
     let action=e.currentTarget.dataset.action
@@ -98,14 +118,24 @@ Page({
           carid:item.id,
           goodsid:item.goodsid,
           shopid:item.shopid,
-          goodsnum:item.goodsnum+1
+          goodsnum:item.goodsnum+1,
+          skuid:item.skuid
         },
         success(res){
           console.log(res)
-          that.setData({
-            ['trolleyList['+index+'].list['+index2+'].goodsnum']:item.goodsnum+1
-          })
-          that.countPrice()
+          if(res.message!='库存不足'){
+            that.setData({
+              ['trolleyList['+index+'].list['+index2+'].goodsnum']:item.goodsnum+1
+            })
+            that.countPrice()
+          }else{
+            wx.showToast({
+              title:'库存不足！',
+              icon:'none',
+              duration:1000
+            })
+          }
+
         }
       })
     }else if(action=='minus'){
@@ -116,7 +146,8 @@ Page({
             carid:item.id,
             goodsid:item.goodsid,
             shopid:item.shopid,
-            goodsnum:item.goodsnum-1
+            goodsnum:item.goodsnum-1,
+            skuid:item.skuid
           },
           success(res){
             console.log(res)
@@ -134,7 +165,8 @@ Page({
           carid:item.id,
           goodsid:item.goodsid,
           shopid:item.shopid,
-          goodsnum:0
+          goodsnum:0,
+          skuid:item.skuid
         },
         success(res){
           console.log(res)
@@ -149,6 +181,14 @@ Page({
         }
       })
     }
+  },
+  goGoodsDetail(e){
+    let item = e.currentTarget.dataset.item
+    console.log(item,'item')
+    wx.navigateTo({
+      url:'/pages/goods-detail/goods-detail?id='+item.goodsid
+    })
+
   },
   countPrice(){
     let that = this

@@ -25,7 +25,8 @@
                 </view>
             </view>
             <view class="goods-list">
-                <view class="goods-item" wx:for="{{item.list}}" wx:key="item2" wx:for-item="item2" wx:for-index="index2">
+                <view class="goods-item" wx:for="{{item.list}}"
+                      wx:key="item2" wx:for-item="item2" wx:for-index="index2">
                     <view class="check">
                         <van-checkbox
                                 icon-size="15px"
@@ -38,13 +39,13 @@
                         </van-checkbox>
                     </view>
                     <view class="goods-info">
-                        <image class="goods-pic" mode="aspectFill" src="{{baseUrl+item2.reserved1}}"></image>
+                        <image class="goods-pic"  bind:tap="goGoodsDetail" data-item="{{item2}}" mode="aspectFill" src="{{baseUrl+item2.reserved1}}"></image>
                         <view class="goods-detail">
                             <view class="line1">
-                                <view class="goods-title">
+                                <view class="goods-title"  bind:tap="goGoodsDetail" data-item="{{item2}}">
                                     {{item2.goodsName}}
                                 </view>
-                                <view class="goods-del" data-item="{{item2}}"  bind:tap="updateData" data-action="del" data-index="{{index}}" data-index2="{{index2}}">
+                                <view class="goods-del" data-item="{{item2}}"  catch:tap="updateData" data-action="del" data-index="{{index}}" data-index2="{{index2}}">
                                     <image src="../../static/images/goods-del.png"></image>
                                 </view>
                             </view>
@@ -58,9 +59,9 @@
                             <view class="line3">
                                 <view class="line3-left">￥{{item2.payNum}}</view>
                                 <view class="line3-right">
-                                    <view class="num-minus" data-item="{{item2}}"  bind:tap="updateData" data-action="minus" data-index="{{index}}" data-index2="{{index2}}">-</view>
+                                    <view class="num-minus" data-item="{{item2}}"  catch:tap="updateData" data-action="minus" data-index="{{index}}" data-index2="{{index2}}">-</view>
                                     <view class="number">{{item2.goodsnum}}</view>
-                                    <view class="num-add" data-item="{{item2}}" bind:tap="updateData" data-action="add" data-index="{{index}}" data-index2="{{index2}}">+</view>
+                                    <view class="num-add" data-item="{{item2}}" catch:tap="updateData" data-action="add" data-index="{{index}}" data-index2="{{index2}}">+</view>
                                 </view>
                             </view>
                         </view>

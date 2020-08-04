@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-rate": "@vant/weapp/rate/index",
+    "van-image": "@vant/weapp/image/index"
+  },
+  "navigationBarTitleText": "商品详情",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark"
+}

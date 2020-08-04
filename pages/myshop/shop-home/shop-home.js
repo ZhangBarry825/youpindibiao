@@ -17,6 +17,44 @@ Page({
     money:'',//按照价格查询 "asc":升序 "desc"降序
     commission:'',//按佣金查询 "asc":升序 "desc"降序
   },
+  goGoodsDetail(e){
+    let id=e.currentTarget.dataset.id
+    console.log(id)
+    wx.navigateTo({
+      url:'/pages/myshop/goods-detail/goods-detail?id='+id
+    })
+
+  },
+  goUp(){
+    wx.navigateTo({
+      url:'/pages/myshop/shop-selection/shop-selection'
+    })
+  },
+  downGoods(e){
+    let that = this
+    let item = e.currentTarget.dataset.item
+    console.log(item)
+    api.post({
+      url:'/myShop/delGoods',
+      data:{
+        goodsid:item.id
+      },
+      success(res){
+        if(res.code == 200){
+          wx.showToast({
+            title:'下架成功！',
+            icon:'success',
+            duration:2000
+          })
+          setTimeout(()=>{
+            that.fetchGoods()
+          },1000)
+
+        }
+      }
+    })
+
+  },
     onEwmClickShow() {
         this.setData({ ewmShow: true });
     },
@@ -50,22 +88,22 @@ Page({
   fetchGoods(pageNum=1,append=false){
     let that = this
     api.post({
-      url:'/myShop/xpgoodsdate',
+      url:'/myShop/toMyShop',
       data:{
         pageNum:pageNum,
         pageSize:that.data.pageSize,
       },
       success(res){
         if(res.code == 200){
-          if(res.data.list.length>0){
+          if(res.data.pageInfo.list.length>0){
             if(append){
               that.setData({
                 pageNum:pageNum,
-                goodsList:that.data.goodsList.concat(res.data.list)
+                goodsList:that.data.goodsList.concat(res.data.pageInfo.list)
               })
             }else {
               that.setData({
-                goodsList:res.data.list
+                goodsList:res.data.pageInfo.list
               })
             }
           }else {
@@ -77,7 +115,7 @@ Page({
             wx.showToast({
               title:'暂无更多',
               icon:'none',
-              duration:1000
+              duration:1500
             })
           }
         }
@@ -88,8 +126,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchData()
-    this.fetchGoods()
+
   },
 
   /**
@@ -103,7 +140,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.fetchData()
+    this.fetchGoods()
   },
 
   /**
@@ -124,7 +162,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.fetchGoods()
+    setTimeout(()=>{
+      wx.stopPullDownRefresh()
+    },1000)
   },
 
   /**

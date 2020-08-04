@@ -17,7 +17,7 @@ Page({
     searchKeyword:"",
     tagsActive:0,
     timeTagsActive:0,
-    showRedPackage:true,
+    showRedPackage:false,
     showGetAddress:true,
     leftTime: 0,
     scrapStart:false,

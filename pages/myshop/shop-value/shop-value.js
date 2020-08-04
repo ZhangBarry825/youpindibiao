@@ -8,6 +8,12 @@ Page({
   data: {
     dataDetail:{}
   },
+  goRecord(e){
+    let type=e.currentTarget.dataset.type
+    wx.navigateTo({
+      url:'/pages/myshop/shop-receive-record/shop-receive-record?type='+type
+    })
+  },
   fetchData(){
     let that = this
     api.post({

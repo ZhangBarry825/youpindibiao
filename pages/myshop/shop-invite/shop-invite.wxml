@@ -5,8 +5,8 @@
             <image mode="aspectFill" src="{{dataDetail.user.headimg}}"></image>
         </view>
         <view class="right">
-            <view class="line1">{{dataDetail.user.name}}</view>
-            <view class="line2">{{dataDetail.user.tel}}</view>
+            <view class="line1" wx:if="{{dataDetail.user.name}}">{{dataDetail.user.name}}</view>
+            <view class="line2" wx:if="{{dataDetail.user.tel}}">{{dataDetail.user.tel}}</view>
         </view>
     </view>
 

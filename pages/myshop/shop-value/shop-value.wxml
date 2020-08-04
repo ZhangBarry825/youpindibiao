@@ -23,7 +23,7 @@
     </view>
 
     <view class="items">
-        <view class="item">
+        <view class="item" bind:tap="goRecord" data-type="receive">
             <view class="left">
                 <image src="../../../static/images/v1.png"></image>
                 <text>累计收入</text>
@@ -32,7 +32,7 @@
                 <image src="../../../static/images/right.png"></image>
             </view>
         </view>
-        <view class="item">
+        <view class="item"  bind:tap="goRecord" data-type="encash">
             <view class="left">
                 <image src="../../../static/images/v2.png"></image>
                 <text>提现记录</text>

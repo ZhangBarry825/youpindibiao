@@ -1,8 +1,8 @@
 <!--pages/myshop/shop-selection/shop-selection.wxml-->
 <view class="page">
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
-        <swiper-item wx:for="{{imgUrls}}" wx:key="item">
-            <image src="{{item}}" class="slide-image" width="100%" height="200" />
+        <swiper-item wx:for="{{bannerList}}" wx:key="item">
+            <image mode="aspectFill"  src="{{item.imageUrl}}" class="slide-image" width="100%" height="200" />
         </swiper-item>
     </swiper>
     <van-search
@@ -47,15 +47,15 @@
 
     <view class="header">
         <van-grid column-num="3" class="order-box">
-            <van-grid-item use-slot>
+            <van-grid-item use-slot class="{{creatTime=='asc'?'color':''}}" bind:tap="orderBy" data-type="creatTime">
                 <text>新品排序</text>
                 <!--            <image src="../../../static/images/orderby.png"/>-->
             </van-grid-item>
-            <van-grid-item use-slot>
+            <van-grid-item use-slot class="{{money=='asc'?'color':''}}" bind:tap="orderBy" data-type="money">
                 <text>价格排序</text>
                 <!--            <image src="../../../static/images/orderby.png"/>-->
             </van-grid-item>
-            <van-grid-item use-slot>
+            <van-grid-item use-slot class="{{commission=='asc'?'color':''}}" bind:tap="orderBy" data-type="commission">
                 <text>奖金排序</text>
                 <!--            <image src="../../../static/images/orderby.png"/>-->
             </van-grid-item>
@@ -63,87 +63,29 @@
     </view>
 
     <view class="g-items">
-        <view class="item">
+        <view class="item" wx:for="{{goodsList}}" wx:key="item" bind:tap="goGoodsDetail" data-id="{{item.id}}">
             <view class="left">
-                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                <image mode="aspectFill" src="{{baseUrl+item.thumbnail}}"></image>
             </view>
             <view class="right">
                 <view class="line1">
-                    [300组]华美月饼中秋节礼盒720g
+                    {{item.name}}
                 </view>
                 <view class="line2">
                     <view class="line-left">
-                        <view class="red">￥199</view>
+                        <view class="red">￥{{item.money}}</view>
                     </view>
-                    <view class="line-right">有<view class="red">17</view>人在卖
+                    <view class="line-right">有<view class="red">{{item.mai}}</view>人在卖
                     </view>
                 </view>
                 <view class="line3">
                     <view class="line-left">交易总额：
-                        <view class="red">￥199</view>
+                        <view class="red">￥***</view>
                     </view>
-                    <view class="line-right">剩余5000件</view>
+                    <view class="line-right">剩余{{item.stock}}件</view>
                 </view>
                 <view class="line4">
-                    <view class="button">
-                        <image src="../../../static/images/goods-up1.png"></image>
-                        上架
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="item">
-            <view class="left">
-                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-            </view>
-            <view class="right">
-                <view class="line1">
-                    [300组]华美月饼中秋节礼盒720g
-                </view>
-                <view class="line2">
-                    <view class="line-left">
-                        <view class="red">￥199</view>
-                    </view>
-                    <view class="line-right">有<view class="red">17</view>人在卖
-                    </view>
-                </view>
-                <view class="line3">
-                    <view class="line-left">交易总额：
-                        <view class="red">￥199</view>
-                    </view>
-                    <view class="line-right">剩余5000件</view>
-                </view>
-                <view class="line4">
-                    <view class="button">
-                        <image src="../../../static/images/goods-up1.png"></image>
-                        上架
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="item">
-            <view class="left">
-                <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-            </view>
-            <view class="right">
-                <view class="line1">
-                    [300组]华美月饼中秋节礼盒720g
-                </view>
-                <view class="line2">
-                    <view class="line-left">
-                        <view class="red">￥199</view>
-                    </view>
-                    <view class="line-right">有<view class="red">17</view>人在卖
-                    </view>
-                </view>
-                <view class="line3">
-                    <view class="line-left">交易总额：
-                        <view class="red">￥199</view>
-                    </view>
-                    <view class="line-right">剩余5000件</view>
-                </view>
-                <view class="line4">
-                    <view class="button">
+                    <view class="button" bind:tap="upGoods" data-item="{{item}}">
                         <image src="../../../static/images/goods-up1.png"></image>
                         上架
                     </view>

@@ -8,5 +8,7 @@
     "van-overlay": "@vant/weapp/overlay/index",
     "van-button": "@vant/weapp/button/index"
   },
-  "navigationBarTitleText": "我的店铺"
+  "navigationBarTitleText": "我的店铺",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark"
 }

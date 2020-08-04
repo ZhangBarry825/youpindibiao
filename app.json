@@ -47,6 +47,7 @@
     "pages/myshop/shop-invite/shop-invite",
     "pages/myshop/shop-membership/shop-membership",
     "pages/myshop/shop-membership-detail/shop-membership-detail",
+    "pages/myshop/goods-detail/goods-detail",
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",

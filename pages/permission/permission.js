@@ -20,8 +20,10 @@ Page({
           duration: 1000
         });
         wx.setStorageSync('token',res.token)
-        wx.setStorageSync('nickName',e.detail.userInfo.nickName)
-        wx.setStorageSync('avatarUrl',e.detail.userInfo.avatarUrl)
+        // wx.setStorageSync('nickName',e.detail.userInfo.nickName)
+        // wx.setStorageSync('avatarUrl',e.detail.userInfo.avatarUrl)
+        wx.setStorageSync('nickName',res.name)
+        wx.setStorageSync('avatarUrl',res.headimg)
         setTimeout(()=>{
           // const eventChannel = this.getOpenerEventChannel()
           // console.log(eventChannel)

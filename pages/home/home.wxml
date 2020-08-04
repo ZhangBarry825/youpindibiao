@@ -71,10 +71,10 @@
         <view class="goods">
             <view class="good" wx:for="{{grabList}}" wx:key="item" >
                 <view class="left">
-                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail"></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}" ></image>
                 </view>
                 <view class="right">
-                    <view class="title" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">
+                    <view class="title" >
                         {{item.name}}
                     </view>
                     <view class="detail">
@@ -88,7 +88,8 @@
                                 <view class="color">￥{{item.marketMoney}}</view>
                             </view>
                         </view>
-                        <view class="button {{scrapStart?'':'disabled'}}" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">立即抢购</view>
+                        <view wx:if="{{scrapStart}}" class="button" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">立即抢购</view>
+                        <view wx:if="{{!scrapStart}}" class="button disabled" bind:tap="goTo" >立即抢购</view>
                     </view>
                 </view>
             </view>

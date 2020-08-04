@@ -1,4 +1,4 @@
-<!--pages/goods-detail/goods-detail.wxml-->
+<!--pages/myshop/goods-detail/goods-detail.wxml-->
 
 <view class="page">
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
@@ -12,54 +12,21 @@
         <view class="goods-price">
             <view class="left">
                 <view class="line1">
-                    <view class="text1">价格：
+                    <view class="text1">抢购价：
                         <view class="num">￥{{goodsDetail.list[0].money}}</view>
                     </view>
-                    <view class="text2">原价： <view class="num">￥{{goodsDetail.list[0].marketMoney}}</view></view>
+                    <view class="text2">市场价： <view class="num">￥{{goodsDetail.list[0].marketMoney}}</view></view>
                 </view>
                 <view class="line2">
-                    <view class="text1">销量：{{goodsDetail.list[0].sales}}</view>
-                    <view class="text2">库存：{{goodsDetail.list[0].stock}}</view>
+                    <view class="text1">奖金总额：￥{{goodsDetail.list[0].commission}}</view>
+                    <view class="text2">有 {{goodsDetail.list[0].sales}} 人在卖</view>
                 </view>
             </view>
             <button open-type='share' class="right" bind:tap="showShare">
-                <image src="../../static/images/share.png"></image>
+                <image src="../../../static/images/share.png"></image>
                 分享
             </button>
         </view>
-    </view>
-
-    <view class="specification" bind:tap="showSpecification">
-        可选型号和规格
-        <image src="../../static/images/right.png"></image>
-    </view>
-    <view class="comment">
-        <view class="title">
-            <view class="border"></view>
-            热门评论
-        </view>
-        <view class="item" wx:for="{{goodsDetail.evaluate}}" wx:key="item">
-            <view class="line1">
-                <view class="name">{{item.username}}</view>
-                <view class="stars">
-                    <van-rate
-                            value="{{item.star}}"
-                            size="{{ 18 }}"
-                            allow-half
-                            color="#ee0a24"
-                            void-color="#eee"
-                            void-icon="star"
-                            readonly/>
-                </view>
-            </view>
-            <view class="line2">{{item.text}}</view>
-            <view class="line3">
-                <van-image wx:key="index" wx:for-item="itm" wx:for-index="idx" wx:for="{{item.image}}" bind:tap="previewImg" data-urls="{{item.image}}" data-url="{{itm.imageUrl}}" custom-class="image-class" fit="cover" width="90" height="90" src="{{itm.imageUrl}}" />
-            </view>
-            <view class="line4">{{item.createtime}}</view>
-        </view>
-        <view class="button" wx:if="{{goodsDetail.evaluate.length>0}}" bind:tap="goTo" data-type="comment" data-id="{{goodsDetail.list[0].id}}">查看更多评论</view>
-        <view wx:else class="no-comment" >暂无评论</view>
     </view>
 
     <view class="goods-detail">
@@ -68,18 +35,22 @@
             商品详情
         </view>
         <view class="content">
-            <import src="../../utils/wxParse/wxParse.wxml"/>
+            <import src="../../../utils/wxParse/wxParse.wxml"/>
             <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
         </view>
     </view>
 
     <view class="bottom-box">
+        <view class="shop" bind:tap="goShop">
+            <image src="../../../static/images/shop3.png"></image>
+            进入店铺
+        </view>
         <view class="like" bind:tap="goCollect">
-            <image src="../../static/images/like.png"></image>
+            <image src="../../../static/images/like.png"></image>
             收藏
         </view>
-        <view class="add" bind:tap="showSpecification">加入购物车</view>
-        <view class="buy" bind:tap="showSpecification">立即购买</view>
+        <view class="add" bind:tap="goBuy" >马上买</view>
+        <view class="buy" bind:tap="goSale">马上卖</view>
     </view>
 
     <van-popup
@@ -89,19 +60,19 @@
     >
         <view class="icons">
             <view class="icon">
-                <image src="../../static/images/wechat.png"></image>
+                <image src="../../../static/images/wechat.png"></image>
                 微信
             </view>
             <view class="icon">
-                <image src="../../static/images/souhu.png"></image>
+                <image src="../../../static/images/souhu.png"></image>
                 新浪微博
             </view>
             <view class="icon">
-                <image src="../../static/images/weibo.png"></image>
+                <image src="../../../static/images/weibo.png"></image>
                 腾讯微博
             </view>
             <view class="icon">
-                <image src="../../static/images/qq-zone.png"></image>
+                <image src="../../../static/images/qq-zone.png"></image>
                 QQ空间
             </view>
         </view>
@@ -116,7 +87,7 @@
     >
         <view class="close-spe-box">
             <view class="image-box" catch:tap="onSpecificationClose">
-                <image src="../../static/images/cancel.png"></image>
+                <image src="../../../static/images/cancel.png"></image>
             </view>
         </view>
         <view class="spe-goods-info">
@@ -133,7 +104,7 @@
             <view class="item {{selectItem[index]==itm.id?'selected':''}} " wx:for="{{item.attributeValueList}}" wx:for-index="indexa"
                   bind:tap="selectSpe" data-value="{{itm.id}}" data-index="{{index}}" wx:for-item="itm" wx:key="itm">
                 {{itm.valueName}}
-                <image src="../../static/images/angle.png"></image>
+                <image src="../../../static/images/angle.png"></image>
             </view>
         </view>
         <view class="spe-goods-item spe-goods-num">
@@ -143,8 +114,8 @@
             <view class="add" catch:tap="addNum">+</view>
         </view>
         <view class="spe-buttons">
-            <view class="spe-button trolley" bind:tap="addTrolley">加入购物车</view>
-            <view class="spe-button buy" bind:tap="goToBuy">立即购买</view>
+            <view class="spe-button trolley" bind:tap="goBuy">马上买</view>
+            <view class="spe-button buy" bind:tap="goSale">马上卖</view>
         </view>
     </van-popup>
 </view>

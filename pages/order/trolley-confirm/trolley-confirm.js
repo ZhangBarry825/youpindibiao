@@ -108,7 +108,7 @@ Page({
         success(res){
           if(res.code == 200){
             if(that.data.payType==0){
-              if(that.data.message=='余额不足'){
+              if(res.message=='余额不足'){
                 wx.showToast({
                   title:'您的余额不足!',
                   icon:'none',
@@ -134,6 +134,18 @@ Page({
                 }
               })
             }
+          }else if(res.code == 205 ){
+            wx.showToast({
+              title:res.message,
+              icon:'none',
+              duration:2000
+            })
+          }else{
+            wx.showToast({
+              title:'数据异常',
+              icon:'none',
+              duration:1000
+            })
           }
         }
       })
