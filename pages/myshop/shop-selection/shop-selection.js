@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tagsActive:0,
     baseUrl:api.Host+'/',
     showMenus:true,
     searchKeyword:"",
@@ -13,9 +14,12 @@ Page({
     pageNum:1,
     goodsList:[],
     bannerList:[],
+    categoryList:[],
+    categoryTwoList:[],//二级分类
     creatTime:'',
     money:'',
     commission:'',
+    fk_id:''
   },
   orderBy(e){
     let that = this
@@ -79,15 +83,45 @@ Page({
   onSearchChange(event){
     console.log(event.detail)
     console.log(this.data.searchKeyword)
+    this.setData({
+      searchKeyword:event.detail
+    })
+    this.setData({
+      pageNum:1,
+      goodsList:[]
+    })
+    this.fetchData()
+  },
+  selectByCat(e){
+    let item=e.currentTarget.dataset.item
+    this.setData({
+      fk_id:item.fk_id.id,
+      pageNum:1,
+      goodsList:[]
+    })
+    this.fetchData()
   },
   onSearchCancel(event){
     console.log(event.detail)
+    this.setData({
+      searchKeyword:''
+    })
   },
   onTagsChange(event) {
-    wx.showToast({
-      title: `切换到标签 ${event.detail.name}`,
-      icon: 'none',
-    });
+    let that = this
+    api.get({
+      url:'/goodsType/childTypeList',
+      data:{
+        typeId:that.data.categoryList[event.detail.name].id
+      },
+      success(res){
+        if(res.code == 200){
+          that.setData({
+            categoryTwoList:res.data
+          })
+        }
+      }
+    })
   },
   toggleShow(){
     if(this.data.showMenus){
@@ -101,6 +135,7 @@ Page({
     }
   },
   upGoods(e){
+    let that = this
     let item = e.currentTarget.dataset.item
     console.log(item)
     api.post({
@@ -115,6 +150,9 @@ Page({
             icon:'success',
             duration:2000
           })
+          setTimeout(()=>{
+            that.fetchData()
+          },1000)
         }
       }
     })
@@ -145,6 +183,31 @@ Page({
         })
       }
     })
+
+    //首页精选类型
+    api.get({
+      url:'/goodsType/TypeList',
+      noLogin:true,
+      data:{},
+      success:res=>{
+        that.setData({
+          categoryList:res.data
+        })
+        api.get({
+          url:'/goodsType/childTypeList',
+          data:{
+            typeId:res.data[0].id
+          },
+          success(res){
+            if(res.code == 200){
+              that.setData({
+                categoryTwoList:res.data
+              })
+            }
+          }
+        })
+      }
+    })
   },
   fetchData(pageNum=1,append=false){
     let that = this
@@ -156,6 +219,8 @@ Page({
         creat_time:that.data.creatTime,
         money:that.data.money,
         commission:that.data.commission,
+        name:that.data.searchKeyword,
+        fk_id:that.data.fk_id
       },
       success(res){
         console.log(res)
@@ -187,6 +252,7 @@ Page({
         }
       }
     })
+
   },
   /**
    * 生命周期函数--监听页面加载

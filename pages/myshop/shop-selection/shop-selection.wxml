@@ -18,10 +18,7 @@
         <view class="top">
             <view class="left">
                 <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">
-                    <van-tab title="精选"></van-tab>
-                    <van-tab title="国酒茅台"></van-tab>
-                    <van-tab title="美容护肤"></van-tab>
-                    <van-tab title="梦洁家纺"></van-tab>
+                    <van-tab title="{{item.typeName}}" wx:for="{{categoryList}}"></van-tab>
                 </van-tabs>
             </view>
             <view class="right" bind:tap="toggleShow">
@@ -30,18 +27,7 @@
             </view>
         </view>
         <view class="items {{showMenus?'':'heightController'}}">
-            <view class="item">精选</view>
-            <view class="item">国酒茅台</view>
-            <view class="item">美容护肤</view>
-            <view class="item">梦洁家纺</view>
-            <view class="item">精选</view>
-            <view class="item">国酒茅台</view>
-            <view class="item">美容护肤</view>
-            <view class="item">梦洁家纺</view>
-            <view class="item">精选</view>
-            <view class="item">国酒茅台</view>
-            <view class="item">美容护肤</view>
-            <view class="item">梦洁家纺</view>
+            <view class="item" wx:for="{{categoryTwoList}}" catch:tap="selectByCat" data-item="{{item}}">{{item.typeName}}</view>
         </view>
     </view>
 
@@ -85,7 +71,7 @@
                     <view class="line-right">剩余{{item.stock}}件</view>
                 </view>
                 <view class="line4">
-                    <view class="button" bind:tap="upGoods" data-item="{{item}}">
+                    <view class="button" catch:tap="upGoods" data-item="{{item}}">
                         <image src="../../../static/images/goods-up1.png"></image>
                         上架
                     </view>

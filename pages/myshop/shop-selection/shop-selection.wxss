@@ -51,7 +51,7 @@
   height: 60%;
 }
 .page .menu-box .items {
-  height: 235rpx;
+  height: auto;
   transition: 1s;
   overflow: hidden;
   width: 100%;
