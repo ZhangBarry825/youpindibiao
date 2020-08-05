@@ -1,18 +1,46 @@
 // pages/myshop/shop-membership-detail/shop-membership-detail.js
+import {formatTime} from "../../../utils/util";
+
+const api = require('../../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id:'',
+    userInfo: {},
+    orderList:[],
+    upName:'',
   },
-
+  fetchData(){
+    let that = this
+    api.post({
+      url:'/member/getMemberInfo',
+      data:{
+        beiuserid:that.data.id
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          res.data.user.createtime=formatTime(res.data.user.createtime)
+          that.setData({
+            userInfo:res.data.user,
+            orderList:res.data.turnoverList,
+            upName:res.data.upName,
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id:options.id
+    })
+    this.fetchData()
   },
 
   /**

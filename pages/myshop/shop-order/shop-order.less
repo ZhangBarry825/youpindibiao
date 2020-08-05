@@ -3,6 +3,14 @@
   width: 100%;
   position: absolute;
   background-color: #f4f4f4;
+  .tab-class{
+    flex-basis: 20% !important;
+
+  }
+  .tab-active-class{
+    color: #F26500;
+  }
+
   .shop-list {
     margin-top: 10rpx;
     width: 100%;
@@ -36,9 +44,9 @@
       }
 
       .right {
-        font-size: 26rpx;
-        font-weight: normal;
-        color: #F26500;
+        font-size:26rpx;
+        font-weight:400;
+        color:rgba(29,147,208,1);
       }
     }
 
@@ -80,7 +88,7 @@
             box-sizing: border-box;
             padding-left: 20rpx;
             .d-left{
-              width: 100%;
+              width: calc(100% - 130rpx);
               display: flex;
               flex-direction: column;
               justify-content: space-around;
@@ -101,31 +109,89 @@
                 font-size:28rpx;
                 font-weight:400;
                 color:rgba(153,153,153,1);
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
+              }
+            }
+            .d-right{
+              width: 130rpx;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              justify-content: space-around;
+              .line1{
+                font-size:26rpx;
+                font-weight:400;
+                color:rgba(242,101,0,1);
+              }
+              .line2{
+                font-size:26rpx;
+                font-weight:400;
+                color:#999999;
+              }
+              .line3{
+                .seven{
+                  width:118rpx;
+                  height:47rpx;
+                  background:rgba(252,200,21,1);
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size:26rpx;
+                  font-weight:400;
+                  color:rgba(255,255,255,1);
+                }
               }
             }
           }
         }
       }
-      .count {
-        border-bottom: 1px solid rgba(0,0,0,.1);
-        width:100%;
-        background-color: #ffffff;
-        padding: 20rpx;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: flex-end;
+    }
+    .count {
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      width:100%;
+      background-color: #ffffff;
+      padding: 20rpx;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: flex-end;
 
+      font-size:28rpx;
+      font-weight:400;
+      color:rgba(19,19,19,1);
+      .color{
+        color:#F26500;
+      }
+    }
+    .buttons{
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      width:100%;
+      background-color: #ffffff;
+      padding: 20rpx;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      .order-button{
+        padding: 10rpx 30rpx;
+        border-radius:6rpx;
+        margin: 10rpx;
         font-size:28rpx;
         font-weight:400;
-        color:rgba(19,19,19,1);
-        .color{
-          color:#F26500;
-          margin-right: 20rpx;
-        }
+      }
+      .order-button1{
+        background:rgba(232,232,232,1);
+        color:rgba(51,51,51,1);
+      }
+      .order-button2{
+        background:#ffffff;
+        border:1px solid rgba(191,191,191,.5);
+        color:rgba(51,51,51,1);
+      }
+      .order-button3{
+        background:#F26500;
+        color:#ffffff;
+      }
+      .order-button4{
+        color:rgba(242,101,0,1);
       }
     }
   }
@@ -161,3 +227,18 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

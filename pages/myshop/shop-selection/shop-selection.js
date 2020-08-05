@@ -94,8 +94,9 @@ Page({
   },
   selectByCat(e){
     let item=e.currentTarget.dataset.item
+    console.log(item)
     this.setData({
-      fk_id:item.fk_id.id,
+      fk_id:item.fkId,
       pageNum:1,
       goodsList:[]
     })

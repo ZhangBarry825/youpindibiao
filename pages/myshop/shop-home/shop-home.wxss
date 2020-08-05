@@ -65,10 +65,24 @@
   width: 100%;
   margin: 10rpx 0;
 }
+.page .header .order-box .color text {
+  color: #f26500;
+}
 .page .header .order-box text {
   font-size: 28rpx;
   font-weight: 400;
   color: #4d4d4d;
+}
+.page .header .order-box .van-grid-item__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.page .header .order-box .van-grid-item__content image {
+  margin-left: 10rpx;
+  height: 20rpx;
+  width: 10rpx;
 }
 .page .items {
   width: 100%;

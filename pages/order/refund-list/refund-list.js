@@ -17,6 +17,11 @@ Page({
       url:'/pages/order/refund-detail/refund-detail?orderid='+orderid
     })
   },
+  goHome(){
+    wx.switchTab({
+      url:'/pages/home/home'
+    })
+  },
   fetchData(pageNum=1,append=false){
     let that = this
     api.post({

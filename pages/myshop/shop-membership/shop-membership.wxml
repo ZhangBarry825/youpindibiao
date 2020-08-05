@@ -2,241 +2,68 @@
 <view class="page">
     <van-tabs animated tab-active-class="tab-active-class" color="#F26500" tab-class="tab-class" active="{{ tagsActive }}"
               bind:change="onTagChange">
-        <van-tab title="一级会员">
+        <van-tab title="一级会员" name ='{{1}}'>
             <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
                 <view class="tip">
                     我的推荐成员
-                    <view class="red">152</view>
+                    <view class="red">{{totalNum}}</view>
                     人，一级会员
-                    <view class="red">20</view>
+                    <view class="red">{{levelNum1}}</view>
                     人
                 </view>
                 <view class="items">
-                    <view class="item">
+                    <view class="item" wx:for="{{itemList}}" bind:tap="goDetail" data-id="{{item.id}}">
                         <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                            <image mode="aspectFill" src="{{item.headimg}}"></image>
                         </view>
                         <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
+                            <view class="line1">{{item.name}}({{item.id}})</view>
+                            <view class="line2">推荐人：{{item.upname||'***'}}</view>
+                            <view class="line3">推荐时间：{{item.createtime}}
                             </view>
-                            <view class="line4">
+                            <view class="line4" wx:if="{{item.tel}}">
                                 <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
+                                <text>{{item.tel}}</text>
                             </view>
                         </view>
                     </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-
+                </view>
+                <view class="shop-none" wx:if="{{itemList.length<1}}">
+                    <image src="../../../static/images/people.png"></image>
+                    <view class="text">暂无数据</view>
                 </view>
             </scroll-view>
         </van-tab>
-        <van-tab title="二级会员">
+        <van-tab title="二级会员" name ='{{2}}'>
             <scroll-view scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
                 <view class="tip">
                     我的推荐成员
-                    <view class="red">152</view>
-                    人，一级会员
-                    <view class="red">20</view>
+                    <view class="red">{{totalNum}}</view>
+                    人，二级会员
+                    <view class="red">{{levelNum2}}</view>
                     人
                 </view>
                 <view class="items">
-                    <view class="item">
+                    <view class="item" wx:for="{{itemList}}" bind:tap="goDetail" data-id="{{item.id}}">
                         <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
+                            <image mode="aspectFill" src="{{item.headimg}}"></image>
                         </view>
                         <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
+                            <view class="line1">{{item.name}}({{item.id}})</view>
+                            <view class="line2">推荐人：{{item.upname||'***'}}</view>
+                            <view class="line3">推荐时间：{{item.createtime}}
                             </view>
-                            <view class="line4">
+                            <view class="line4" wx:if="{{item.tel}}">
                                 <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
+                                <text>{{item.tel}}</text>
                             </view>
                         </view>
                     </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="item">
-                        <view class="left">
-                            <image mode="aspectFill" src="../../../static/images/avatar.gif"></image>
-                        </view>
-                        <view class="right">
-                            <view class="line1">花开半夏(30125b9605)</view>
-                            <view class="line2">推荐人：张浩南</view>
-                            <view class="line3">推荐时间：2016.06.20 10:43
-                            </view>
-                            <view class="line4">
-                                <image src="../../../static/images/call-logo.png"></image>
-                                <text>15865231458</text>
-                            </view>
-                        </view>
-                    </view>
+                </view>
 
+                <view class="shop-none" wx:if="{{itemList.length<1}}">
+                    <image src="../../../static/images/people.png"></image>
+                    <view class="text">暂无数据</view>
                 </view>
             </scroll-view>
         </van-tab>

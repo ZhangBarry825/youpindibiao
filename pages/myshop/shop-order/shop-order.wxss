@@ -4,6 +4,12 @@
   position: absolute;
   background-color: #f4f4f4;
 }
+.page .tab-class {
+  flex-basis: 20% !important;
+}
+.page .tab-active-class {
+  color: #F26500;
+}
 .page .shop-list {
   margin-top: 10rpx;
   width: 100%;
@@ -36,8 +42,8 @@
 }
 .page .shop-list .shop-title .right {
   font-size: 26rpx;
-  font-weight: normal;
-  color: #F26500;
+  font-weight: 400;
+  color: #1d93d0;
 }
 .page .shop-list .goods-list {
   width: 100%;
@@ -77,7 +83,7 @@
   padding-left: 20rpx;
 }
 .page .shop-list .goods-list .goods-item .goods-info .goods-detail .d-left {
-  width: 100%;
+  width: calc(100% - 130rpx);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -98,12 +104,36 @@
   font-size: 28rpx;
   font-weight: 400;
   color: #999999;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
-.page .shop-list .goods-list .count {
+.page .shop-list .goods-list .goods-item .goods-info .goods-detail .d-right {
+  width: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.page .shop-list .goods-list .goods-item .goods-info .goods-detail .d-right .line1 {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #f26500;
+}
+.page .shop-list .goods-list .goods-item .goods-info .goods-detail .d-right .line2 {
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.page .shop-list .goods-list .goods-item .goods-info .goods-detail .d-right .line3 .seven {
+  width: 118rpx;
+  height: 47rpx;
+  background: #fcc815;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #ffffff;
+}
+.page .shop-list .count {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   background-color: #ffffff;
@@ -115,9 +145,41 @@
   font-weight: 400;
   color: #131313;
 }
-.page .shop-list .goods-list .count .color {
+.page .shop-list .count .color {
   color: #F26500;
-  margin-right: 20rpx;
+}
+.page .shop-list .buttons {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.page .shop-list .buttons .order-button {
+  padding: 10rpx 30rpx;
+  border-radius: 6rpx;
+  margin: 10rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.page .shop-list .buttons .order-button1 {
+  background: #e8e8e8;
+  color: #333333;
+}
+.page .shop-list .buttons .order-button2 {
+  background: #ffffff;
+  border: 1px solid rgba(191, 191, 191, 0.5);
+  color: #333333;
+}
+.page .shop-list .buttons .order-button3 {
+  background: #F26500;
+  color: #ffffff;
+}
+.page .shop-list .buttons .order-button4 {
+  color: #f26500;
 }
 .page .shop-none {
   width: 100%;

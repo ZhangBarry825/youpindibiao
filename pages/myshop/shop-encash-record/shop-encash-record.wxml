@@ -1,49 +1,21 @@
 <!--pages/myshop/shop-encash-record/shop-encash-record.wxml-->
 <view class="page">
     <view class="items">
-        <view class="item">
+        <view class="item" wx:for="{{itemList}}">
             <view class="left">
-                <view class="line1">提现</view>
-                <view class="line2">2017-05-12</view>
+                <view class="line1">{{item.title}}</view>
+                <view class="line2">{{item.createtime}}</view>
             </view>
             <view class="right">
                 <!--                <view class="line1 add">+28.00</view>-->
-                <view class="line1 minus">-5000.00</view>
-                <view class="line2">29630.30</view>
+                <view class="line1 minus">-{{item.change_money}}</view>
+                <view class="line2">*****</view>
             </view>
         </view>
-        <view class="item">
-            <view class="left">
-                <view class="line1">提现</view>
-                <view class="line2">2017-05-12</view>
-            </view>
-            <view class="right">
-                <!--                <view class="line1 add">+28.00</view>-->
-                <view class="line1 minus">-5000.00</view>
-                <view class="line2">29630.30</view>
-            </view>
-        </view>
-        <view class="item">
-            <view class="left">
-                <view class="line1">提现</view>
-                <view class="line2">2017-05-12</view>
-            </view>
-            <view class="right">
-                <!--                <view class="line1 add">+28.00</view>-->
-                <view class="line1 minus">-5000.00</view>
-                <view class="line2">29630.30</view>
-            </view>
-        </view>
-        <view class="item">
-            <view class="left">
-                <view class="line1">提现</view>
-                <view class="line2">2017-05-12</view>
-            </view>
-            <view class="right">
-                <!--                <view class="line1 add">+28.00</view>-->
-                <view class="line1 minus">-5000.00</view>
-                <view class="line2">29630.30</view>
-            </view>
-        </view>
+
+    </view>
+    <view class="shop-none" wx:if="{{itemList.length==0}}">
+        <image src="../../../static/images/money.png"></image>
+        <view class="text">暂无数据</view>
     </view>
 </view>

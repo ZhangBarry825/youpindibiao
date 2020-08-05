@@ -8,6 +8,19 @@
                 <van-field
                         title-width="150rpx"
                         label="店铺名称"
+                        value="{{ shopName }}"
+                        placeholder="请输入店铺名称"
+                        border="{{ false }}"
+                        bind:change="onShopNameChange"
+                />
+            </view>
+        </van-cell>
+        <van-cell value-class="value-class" label-class="label-class" custom-class="custom-class"
+                  title-class="title-class" is-link>
+            <view slot="title">
+                <van-field
+                        title-width="150rpx"
+                        label="后台账号"
                         value="{{ userName }}"
                         placeholder="请输入店铺名称"
                         border="{{ false }}"

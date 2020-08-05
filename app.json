@@ -5,7 +5,6 @@
 
     "pages/home/home",
     "pages/class/class",
-    "pages/shop/shop",
     "pages/trolley/trolley",
     "pages/mine/mine",
     "pages/permission/permission",
@@ -48,6 +47,8 @@
     "pages/myshop/shop-membership/shop-membership",
     "pages/myshop/shop-membership-detail/shop-membership-detail",
     "pages/myshop/goods-detail/goods-detail",
+    "pages/myshop/shop-order/shop-order",
+    "pages/myshop/order-status/order-status",
 
     "pages/panic-buying/panic-buying",
     "pages/search-result/search-result",

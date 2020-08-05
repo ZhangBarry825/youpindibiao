@@ -1,0 +1,65 @@
+<!--pages/order/order-list/order-list.wxml-->
+<view class="page">
+    <view class="shop-list" wx:for="{{orderList}}" wx:key="item">
+        <view class="shop-title" bind:tap="goOrderDetail" data-id="{{item.id}}">
+            <view class="left">
+                <image src="../../../static/images/shop-title.png"></image>
+                <text>{{item.shopName}}</text>
+            </view>
+            <view class="right">
+                {{item.state==0?'等待买家付款':item.state==1?'等待卖家发货':
+                item.state==2?'卖家已发货':item.state==3?'待评价':item.state==4?'交易成功':item.state==5?'退货/退款中':item.state==6?'退款成功':'订单异常'}}
+            </view>
+        </view>
+        <view class="goods-list" wx:for="{{item.orderDetailslist}}" wx:for-item="item2" wx:key="item2">
+            <view class="goods-item" bind:tap="goOrderDetail" data-id="{{item.id}}">
+                <view class="goods-info">
+                    <image class="goods-pic" mode="aspectFill" src="{{baseUrl+item2.thumbnail}}"></image>
+                    <view class="goods-detail">
+                        <view class="d-left">
+                            <view class="line1">
+                                {{item2.goodsname}}
+                            </view>
+                            <view class="line2">
+                                规格：{{item2.goodsParam}}
+                            </view>
+                        </view>
+                        <view class="d-right">
+                            <view class="line1">
+                                ￥{{item2.goodsmoney}}
+                            </view>
+                            <view class="line2">x{{item2.goodsnum}}</view>
+                            <view class="line3">
+                                <view class="seven">七天退换</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+        <view class="count" bind:tap="goOrderDetail" data-id="{{item.id}}">
+            共 <view class="color">{{item.goodsnum}}</view>件商品 合计：
+            <view class="color">￥{{item.actualpayment}}</view>
+        </view>
+    </view>
+
+    <view class="shop-none" wx:if="{{orderList.length<1}}">
+        <image src="../../../static/images/order-none.png"></image>
+        <view class="text">还没有订单呢</view>
+        <view class="none-button" bind:tap="goHome">去逛逛</view>
+    </view>
+    <van-dialog id="van-dialog" />
+</view>
+
+
+
+
+
+
+
+
+
+
+
+

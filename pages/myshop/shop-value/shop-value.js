@@ -6,13 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataDetail:{}
+    dataDetail:{
+      commission:0,
+      forozen:0,
+      commissionOut:0,
+    }
   },
   goRecord(e){
     let type=e.currentTarget.dataset.type
-    wx.navigateTo({
-      url:'/pages/myshop/shop-receive-record/shop-receive-record?type='+type
-    })
+    if(type=='receive'){
+      wx.navigateTo({
+        url:'/pages/myshop/shop-receive-record/shop-receive-record'
+      })
+    }else if(type=='encash'){
+      wx.navigateTo({
+        url:'/pages/myshop/shop-encash-record/shop-encash-record'
+      })
+    }
+
   },
   fetchData(){
     let that = this
@@ -22,7 +33,9 @@ Page({
       success(res){
         console.log(res)
         if(res.code == 200){
-
+          that.setData({
+            detaDetail:res.data
+          })
         }
       }
     })

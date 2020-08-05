@@ -27,15 +27,23 @@
             </view>
         </view>
         <view class="line"></view>
-        <view class="item2">
+        <view class="item2" >
             <view class="line1">
                 <image src="../../../static/images/step2.png"></image>
             </view>
-            <view class="line2">
-                <image wx:if="{{status==1||status==2}}" src="../../../static/images/step-checked.png"></image>
+            <view class="line2" wx:if="{{status==1||status==2}}">
+                <image src="../../../static/images/step-checked.png"></image>
             </view>
             <view class="line3" wx:if="{{status==1||status==2}}">
                 卖家同意
+                {{refundDetail.examineTime}}
+            </view>
+
+            <view class="line2">
+                <image wx:if="{{status==3}}" src="../../../static/images/step-checked.png"></image>
+            </view>
+            <view class="line3" wx:if="{{status==3}}">
+                卖家拒绝
                 {{refundDetail.examineTime}}
             </view>
         </view>

@@ -13,6 +13,7 @@ Page({
   data: {
     addressArea: '',
     addressDetail: '',
+    shopName: '',
     userName: '',
     phone: '',
     code: '',
@@ -29,6 +30,11 @@ Page({
   onAddressDetailChange(e) {
     this.setData({
       addressDetail: e.detail
+    })
+  },
+  onShopNameChange(e) {
+    this.setData({
+      shopName: e.detail
     })
   },
   onUserNameChange(e) {
@@ -87,7 +93,8 @@ Page({
           url: '/businessApply/toShopApply',
           data: {
             shopAddress: that.data.addressArea + that.data.addressDetail,
-            shopName: that.data.userName,
+            shopName: that.data.shopName,
+            userName: that.data.userName,
             shopTel: that.data.phone,
             ...that.data.addressData
           },
@@ -140,15 +147,22 @@ Page({
     let that = this
     console.log(this.data.addressArea)
     console.log(this.data.addressDetail)
+    console.log(this.data.shopName)
     console.log(this.data.userName)
     console.log(this.data.phone)
-     if (this.data.userName == '') {
+     if (this.data.shopName == '') {
       wx.showToast({
         title: '请输入店铺名称',
         icon: 'none',
         duration: 1000
       })
-    } else if (this.data.phone == '' || !checkPhone(this.data.phone)) {
+    } else if (this.data.userName == '') {
+       wx.showToast({
+         title: '请输入后台账号',
+         icon: 'none',
+         duration: 1000
+       })
+     } else if (this.data.phone == '' || !checkPhone(this.data.phone)) {
       wx.showToast({
         title: '请输入正确手机号码',
         icon: 'none',

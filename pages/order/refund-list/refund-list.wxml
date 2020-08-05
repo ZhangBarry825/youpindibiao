@@ -33,4 +33,9 @@
             </view>
         </view>
     </view>
+    <view class="shop-none" wx:if="{{itemList.length<1}}">
+        <image src="../../../static/images/order-none.png"></image>
+        <view class="text">暂无退货/退款订单</view>
+        <view class="none-button" bind:tap="goHome">去逛逛</view>
+    </view>
 </view>

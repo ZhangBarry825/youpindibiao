@@ -35,15 +35,15 @@
         <van-grid column-num="3" class="order-box">
             <van-grid-item use-slot class="{{creatTime=='asc'?'color':''}}" bind:tap="orderBy" data-type="creatTime">
                 <text>新品排序</text>
-                <!--            <image src="../../../static/images/orderby.png"/>-->
+                            <image src="../../../static/images/orderby.png"/>
             </van-grid-item>
             <van-grid-item use-slot class="{{money=='asc'?'color':''}}" bind:tap="orderBy" data-type="money">
                 <text>价格排序</text>
-                <!--            <image src="../../../static/images/orderby.png"/>-->
+                            <image src="../../../static/images/orderby.png"/>
             </van-grid-item>
             <van-grid-item use-slot class="{{commission=='asc'?'color':''}}" bind:tap="orderBy" data-type="commission">
                 <text>奖金排序</text>
-                <!--            <image src="../../../static/images/orderby.png"/>-->
+                            <image src="../../../static/images/orderby.png"/>
             </van-grid-item>
         </van-grid>
     </view>

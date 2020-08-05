@@ -6,6 +6,7 @@
                 class="searchInput"
                 value="{{ searchKeyword }}"
                 bind:search="onSearchChange"
+                bind:focus="onSearchFocus"
                 bind:cancel="onSearchCancel"
                 shape="round"
                 background="none"
@@ -22,7 +23,7 @@
             <image src="../../../static/images/h1.png"/>
             <text>店铺二维码</text>
         </van-grid-item>
-        <van-grid-item use-slot>
+        <van-grid-item use-slot bind:tap="goShop">
             <image src="../../../static/images/h2.png"/>
             <text>店铺预览</text>
         </van-grid-item>
@@ -30,7 +31,7 @@
             <image src="../../../static/images/h3.png"/>
             <text>选品上架</text>
         </van-grid-item>
-        <van-grid-item use-slot>
+        <van-grid-item use-slot bind:tap="onSearchFocus">
             <image src="../../../static/images/h4.png"/>
             <text>添加商品</text>
         </van-grid-item>
@@ -38,17 +39,17 @@
 
     <view class="header">
         <van-grid column-num="3" class="order-box">
-            <van-grid-item use-slot>
+            <van-grid-item use-slot class="{{creatTime=='asc'?'color':''}}" bind:tap="orderBy" data-type="creatTime">
                 <text>新品排序</text>
-                <!--            <image src="../../../static/images/orderby.png"/>-->
+                            <image src="../../../static/images/orderby.png"/>
             </van-grid-item>
-            <van-grid-item use-slot>
+            <van-grid-item use-slot class="{{money=='asc'?'color':''}}" bind:tap="orderBy" data-type="money">
                 <text>价格排序</text>
-                <!--            <image src="../../../static/images/orderby.png"/>-->
+                            <image src="../../../static/images/orderby.png"/>
             </van-grid-item>
-            <van-grid-item use-slot>
+            <van-grid-item use-slot class="{{commission=='asc'?'color':''}}" bind:tap="orderBy" data-type="commission">
                 <text>奖金排序</text>
-                <!--            <image src="../../../static/images/orderby.png"/>-->
+                            <image src="../../../static/images/orderby.png"/>
             </van-grid-item>
         </van-grid>
     </view>
@@ -94,7 +95,7 @@
                     举个栗子的店铺
                 </view>
                 <view class="line3">
-                    <image src="../../../static/images/avatar.gif"/>
+                    <image src="../../../static/images/ewm.jpg"/>
                 </view>
                 <view class="line4">
                     扫描或微信长按识别二维码

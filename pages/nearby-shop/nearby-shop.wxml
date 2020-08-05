@@ -1,11 +1,6 @@
 <!--pages/goods-detail/goods-detail.wxml-->
 <view class="page">
-    <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
-            autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
-        <swiper-item wx:for="{{shopDetail.imageList}}" wx:key="item">
-            <image mode="aspectFill" src="{{item.imageUrl}}" class="slide-image"/>
-        </swiper-item>
-    </swiper>
+    <image class="backgroundImg" mode="aspectFill" src="{{baseUrl+shopDetail.bgimg}}"/>
     <view class="shop-info">
         <view class="left">
             <image src="{{shopDetail.sysUser.nearbyImg}}"></image>
@@ -56,7 +51,7 @@
         <view class="item">
             <view class="line">
                 <view class="name">简介：</view>
-                <view class="content">{{shopDetail.sysUser.nearbyInfo}}</view>
+                <view class="content">{{shopDetail.text}}</view>
             </view>
         </view>
     </view>

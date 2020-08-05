@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baseUrl:api.Host+'/',
     showShare:false,
     showSpecification:false,
     number:1,

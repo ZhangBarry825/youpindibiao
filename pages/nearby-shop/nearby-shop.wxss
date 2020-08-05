@@ -4,14 +4,9 @@
   position: absolute;
   background-color: #f2f2f2;
 }
-.page .swiper-box {
+.page .backgroundImg {
   width: 100%;
   height: 435rpx;
-  position: relative;
-}
-.page .swiper-box .slide-image {
-  width: 100%;
-  height: 100%;
 }
 .page .shop-info {
   width: 100%;

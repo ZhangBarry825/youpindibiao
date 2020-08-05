@@ -85,6 +85,17 @@
   font-weight: 400;
   color: #4d4d4d;
 }
+.page .header .order-box .van-grid-item__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.page .header .order-box .van-grid-item__content image {
+  margin-left: 10rpx;
+  height: 20rpx;
+  width: 10rpx;
+}
 .page .g-items {
   width: 100%;
   display: flex;
