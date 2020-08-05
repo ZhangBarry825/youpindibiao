@@ -46,17 +46,17 @@
                 </view>
             </view>
         </van-cell>
-        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
-                  title-class="title-class" is-link>
-            <view slot="title" class="aaa">
-                <view class="title">
-                    二维码
-                </view>
-                <view class="input-value">
-                    <image style="width: 40rpx ;height: 40rpx" src="../../static/images/ewm.png"></image>
-                </view>
-            </view>
-        </van-cell>
+<!--        <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"-->
+<!--                  title-class="title-class" is-link>-->
+<!--            <view slot="title" class="aaa">-->
+<!--                <view class="title">-->
+<!--                    二维码-->
+<!--                </view>-->
+<!--                <view class="input-value">-->
+<!--                    <image style="width: 40rpx ;height: 40rpx" src="../../static/images/ewm.png"></image>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </van-cell>-->
         <van-cell value-class="value-class" label-class="label-class" custom-class="item-custom-class"
                   title-class="title-class" >
             <view slot="title" class="aaa">

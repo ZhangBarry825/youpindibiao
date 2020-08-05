@@ -1,5 +1,6 @@
 // pages/order/order-confirm/order-confirm.js
 const api = require('../../../utils/api.js');
+import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -102,45 +103,94 @@ Page({
       })
     }else {
       console.log(formData)
-      api.post({
-        url:'/order/addOrderByGoods',
-        data:{...formData},
-        success(res){
-          if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
-            if(that.data.payType==0){
-              wx.navigateTo({
-                url:'/pages/order/order-payed/order-payed?orderid='+res.data
-              })
-            }else{
-              wx.requestPayment({
-                timeStamp: res.data.timeStamp,
-                nonceStr: res.data.nonceStr,
-                package: 'prepay_id=123123',
-                signType: 'MD5',
-                paySign: res.data.paySign,
-                success (res) {
-                  console.log(res,'success')
-                },
-                fail (res) {
-                  console.log(res,'fail')
+      if(that.data.payType==0){
+        Dialog.confirm({
+          title: '提示',
+          message: '确认余额支付？',
+        }).then(() => {
+              api.post({
+                url:'/order/addOrderByGoods',
+                data:{...formData},
+                success(res){
+                  if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
+                    if(that.data.payType==0){
+                      wx.navigateTo({
+                        url:'/pages/order/order-payed/order-payed?orderid='+res.data
+                      })
+                    }else{
+                      wx.requestPayment({
+                        timeStamp: res.data.timeStamp,
+                        nonceStr: res.data.nonceStr,
+                        package: 'prepay_id=123123',
+                        signType: 'MD5',
+                        paySign: res.data.paySign,
+                        success (res) {
+                          console.log(res,'success')
+                        },
+                        fail (res) {
+                          console.log(res,'fail')
+                        }
+                      })
+                    }
+                  } else if(res.message=='余额不足'){
+                    wx.showToast({
+                      title:'您的余额不足！',
+                      icon:'none',
+                      duration:1000
+                    })
+                  } else if(res.message=='商品库存不足'){
+                    wx.showToast({
+                      title:'商品库存不足',
+                      icon:'none',
+                      duration:1000
+                    })
+                  }
                 }
               })
+            }).catch(() => {
+              // on cancel
+            });
+      }else {
+        api.post({
+          url:'/order/addOrderByGoods',
+          data:{...formData},
+          success(res){
+            if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
+              if(that.data.payType==0){
+                wx.navigateTo({
+                  url:'/pages/order/order-payed/order-payed?orderid='+res.data
+                })
+              }else{
+                wx.requestPayment({
+                  timeStamp: res.data.timeStamp,
+                  nonceStr: res.data.nonceStr,
+                  package: 'prepay_id=123123',
+                  signType: 'MD5',
+                  paySign: res.data.paySign,
+                  success (res) {
+                    console.log(res,'success')
+                  },
+                  fail (res) {
+                    console.log(res,'fail')
+                  }
+                })
+              }
+            } else if(res.message=='余额不足'){
+              wx.showToast({
+                title:'您的余额不足！',
+                icon:'none',
+                duration:1000
+              })
+            } else if(res.message=='商品库存不足'){
+              wx.showToast({
+                title:'商品库存不足',
+                icon:'none',
+                duration:1000
+              })
             }
-          } else if(res.message=='余额不足'){
-            wx.showToast({
-              title:'您的余额不足！',
-              icon:'none',
-              duration:1000
-            })
-          } else if(res.message=='商品库存不足'){
-            wx.showToast({
-              title:'商品库存不足',
-              icon:'none',
-              duration:1000
-            })
           }
-        }
-      })
+        })
+      }
     }
 
   },

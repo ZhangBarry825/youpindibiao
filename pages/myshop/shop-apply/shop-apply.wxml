@@ -22,7 +22,7 @@
                         title-width="150rpx"
                         label="后台账号"
                         value="{{ userName }}"
-                        placeholder="请输入店铺名称"
+                        placeholder="请输入后台账号"
                         border="{{ false }}"
                         bind:change="onUserNameChange"
                 />

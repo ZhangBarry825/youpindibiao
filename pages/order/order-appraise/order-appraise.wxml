@@ -41,7 +41,7 @@
                     <van-rate
                             data-index="{{index}}"
                             value="{{ item.star }}"
-                            size="{{ 22 }}"
+                            size="{{ 25 }}"
                             color="#ffb820"
                             void-color="#eee"
                             void-icon="star"

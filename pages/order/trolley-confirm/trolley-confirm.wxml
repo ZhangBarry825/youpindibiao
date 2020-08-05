@@ -113,4 +113,5 @@
         </van-radio-group>
         <view class="pay-button" catch:tap="onPayClose">关闭</view>
     </van-popup>
+    <van-dialog id="van-dialog" />
 </view>

@@ -1,5 +1,6 @@
 // pages/order/order-confirm/order-confirm.js
 const api = require('../../../utils/api.js');
+import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -102,53 +103,111 @@ Page({
         duration:1000
       })
     }else {
-      api.post({
-        url:'/order/addOrderByCars',
-        data:{...formData},
-        success(res){
-          if(res.code == 200){
-            if(that.data.payType==0){
-              if(res.message=='余额不足'){
+      if(that.data.payType==0){
+        Dialog.confirm({
+          title: '提示',
+          message: '确认余额支付？',
+        }).then(() => {
+          api.post({
+            url:'/order/addOrderByCars',
+            data:{...formData},
+            success(res){
+              if(res.code == 200){
+                if(that.data.payType==0){
+                  if(res.message=='余额不足'){
+                    wx.showToast({
+                      title:'您的余额不足!',
+                      icon:'none',
+                      duration:1000
+                    })
+                  }else {
+                    wx.navigateTo({
+                      url:'/pages/order/order-payed/order-payed?orderid='+res.data
+                    })
+                  }
+                }else{
+                  wx.requestPayment({
+                    timeStamp: res.data.timeStamp,
+                    nonceStr: res.data.nonceStr,
+                    package: 'prepay_id=123123',
+                    signType: 'MD5',
+                    paySign: res.data.paySign,
+                    success (res) {
+                      console.log(res,'success')
+                    },
+                    fail (res) {
+                      console.log(res,'fail')
+                    }
+                  })
+                }
+              }else if(res.code == 205 ){
                 wx.showToast({
-                  title:'您的余额不足!',
+                  title:res.message,
+                  icon:'none',
+                  duration:2000
+                })
+              }else{
+                wx.showToast({
+                  title:'数据异常',
                   icon:'none',
                   duration:1000
                 })
-              }else {
-                wx.navigateTo({
-                  url:'/pages/order/order-payed/order-payed?orderid='+res.data
+              }
+            }
+          })
+        }).catch(() => {
+          // on cancel
+        });
+      }else {
+        api.post({
+          url:'/order/addOrderByCars',
+          data:{...formData},
+          success(res){
+            if(res.code == 200){
+              if(that.data.payType==0){
+                if(res.message=='余额不足'){
+                  wx.showToast({
+                    title:'您的余额不足!',
+                    icon:'none',
+                    duration:1000
+                  })
+                }else {
+                  wx.navigateTo({
+                    url:'/pages/order/order-payed/order-payed?orderid='+res.data
+                  })
+                }
+              }else{
+                wx.requestPayment({
+                  timeStamp: res.data.timeStamp,
+                  nonceStr: res.data.nonceStr,
+                  package: 'prepay_id=123123',
+                  signType: 'MD5',
+                  paySign: res.data.paySign,
+                  success (res) {
+                    console.log(res,'success')
+                  },
+                  fail (res) {
+                    console.log(res,'fail')
+                  }
                 })
               }
+            }else if(res.code == 205 ){
+              wx.showToast({
+                title:res.message,
+                icon:'none',
+                duration:2000
+              })
             }else{
-              wx.requestPayment({
-                timeStamp: res.data.timeStamp,
-                nonceStr: res.data.nonceStr,
-                package: 'prepay_id=123123',
-                signType: 'MD5',
-                paySign: res.data.paySign,
-                success (res) {
-                  console.log(res,'success')
-                },
-                fail (res) {
-                  console.log(res,'fail')
-                }
+              wx.showToast({
+                title:'数据异常',
+                icon:'none',
+                duration:1000
               })
             }
-          }else if(res.code == 205 ){
-            wx.showToast({
-              title:res.message,
-              icon:'none',
-              duration:2000
-            })
-          }else{
-            wx.showToast({
-              title:'数据异常',
-              icon:'none',
-              duration:1000
-            })
           }
-        }
-      })
+        })
+      }
+
     }
 
   },
