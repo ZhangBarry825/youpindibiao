@@ -51,7 +51,7 @@
         <view class="item">
             <view class="line">
                 <view class="name">简介：</view>
-                <view class="content">{{shopDetail.text}}</view>
+                <view class="content">{{shopDetail.text||'暂无'}}</view>
             </view>
         </view>
     </view>
