@@ -425,6 +425,13 @@
 					"id": -1,
 					"name": "附近商家",
 					"pathName": "pages/nearby-shops/nearby-shops",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收入记录",
+					"pathName": "pages/myshop/shop-receive-record/shop-receive-record",
 					"scene": null
 				}
 			]

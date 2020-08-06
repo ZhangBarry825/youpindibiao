@@ -75,6 +75,15 @@ Page({
       focus:false
     })
   },
+  goDetail(e){
+    let item = e.currentTarget.dataset.item
+    console.log(item)
+
+    wx.navigateTo({
+      url:'/pages/nearby-shop/nearby-shop?id='+item.user_id
+    })
+
+  },
   onSearchClick(){
     console.log(this.data.searchKeyword)
     if(this.data.searchKeyword!=''){

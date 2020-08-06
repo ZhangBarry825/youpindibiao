@@ -36,7 +36,7 @@
 
     <scroll-view bindscrolltolower="onReachBottom" scroll-y="true" class="scroll-box" style="height:{{height?height+'px':'auto'}}">
         <view class="shop-items">
-            <view class="item" wx:for="{{shopList}}" wx:key="item">
+            <view class="item" wx:for="{{shopList}}" wx:key="item" bind:tap="goDetail" data-item="{{item}}">
                 <view class="left">
                     <image mode="aspectFill" src="{{item.nearby_img}}"></image>
                 </view>

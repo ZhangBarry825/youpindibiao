@@ -23,20 +23,21 @@
   flex-direction: column;
 }
 .page .items .item .left .line1 {
-  font-size: 24rpx;
+  font-size: 26rpx;
   font-weight: 400;
   color: #4d4d4d;
 }
 .page .items .item .left .line2 {
   margin-top: 10rpx;
-  font-size: 18rpx;
+  font-size: 22rpx;
   font-weight: 400;
   color: #4d4d4d;
   opacity: 0.93;
 }
 .page .items .item .right .line1 {
-  font-size: 24rpx;
+  font-size: 26rpx;
   font-weight: 400;
+  text-align: right;
 }
 .page .items .item .right .add {
   color: #F26500;
@@ -46,9 +47,10 @@
 }
 .page .items .item .right .line2 {
   margin-top: 10rpx;
-  font-size: 20rpx;
+  font-size: 22rpx;
   font-weight: 400;
   color: #999999;
+  text-align: right;
 }
 .page .shop-none {
   width: 100%;
