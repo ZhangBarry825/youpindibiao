@@ -92,13 +92,13 @@
                      <image bind:click="onEwmClickHide" src="../../../static/images/close1.png"/>
                 </view>
                 <view class="line2">
-                    举个栗子的店铺
+                    {{shopInfo.sysUser.nearbyName}}
                 </view>
                 <view class="line3">
                     <image src="../../../static/images/ewm.jpg"/>
                 </view>
                 <view class="line4">
-                    扫描或微信长按识别二维码
+                    扫描识别二维码
                 </view>
             </view>
         </view>

@@ -118,6 +118,11 @@ Page({
                         icon:'success',
                         duration:2000
                     })
+                  setTimeout(()=>{
+                      wx.navigateBack({
+                          delta:1
+                      })
+                  },1500)
 
                 }
             }
