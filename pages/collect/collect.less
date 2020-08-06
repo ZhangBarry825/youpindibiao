@@ -21,7 +21,23 @@
       display: flex;
       flex-direction: row;
       border-bottom: 1px solid rgba(0,0,0,.1);
-
+      position: relative;
+      .delete{
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(12,12,12,0.63);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image{
+          width: 60rpx;
+          height: 60rpx;
+        }
+      }
       .left {
         width: 146rpx;
         height: 146rpx;
@@ -121,6 +137,24 @@
       margin-top: 15rpx;
       background-color: #ffffff;
       width: 369rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      .delete{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(12,12,12,0.63);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image{
+          width: 100rpx;
+          height: 100rpx;
+        }
+      }
+
       .goods-image{
         width: 369rpx;
         height: 369rpx;

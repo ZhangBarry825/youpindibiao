@@ -20,12 +20,13 @@ Page({
     console.log(that.data.itemDetail)
   },
   deleteImg(event){
+    let that = this
     let itemIndex=event.currentTarget.dataset.index
     let picIndex=event.detail.index
 
     let itemDetail=that.data.itemDetail
     itemDetail.goodsList[itemIndex].fileList.splice(picIndex,1)
-    itemDetail.goodsList[itemIndex].fileList.splice(picIndex,1)
+    itemDetail.goodsList[itemIndex].imageList.splice(picIndex,1)
     that.setData({
       itemDetail:itemDetail
     })
@@ -83,7 +84,7 @@ Page({
       itemDetail.goodsList[apiKey].text=''
       itemDetail.goodsList[apiKey].imageList=[]
       itemDetail.goodsList[apiKey].fileList=[]
-      itemDetail.goodsList[apiKey].star=5
+      itemDetail.goodsList[apiKey].star=4
     }
     this.setData({
       itemDetail:itemDetail
@@ -95,6 +96,7 @@ Page({
       orderid:this.data.itemDetail.id,
       evaluateList:this.data.itemDetail.goodsList
     }
+    console.log(formData)
     api.post({
       url:'/pingjia/addPingjia',
       data:{
@@ -102,7 +104,7 @@ Page({
         evaluateList:JSON.stringify(formData.evaluateList)
       },
       success(res){
-        if(res.code == 200){
+        if(res.code == 200 && res.message=='评价保存成功'){
           wx.showToast({
             title:'保存成功！',
             icon:'success',
@@ -113,10 +115,15 @@ Page({
               delta:1
             })
           },1000)
+        }else {
+          wx.showToast({
+            title:'保存失败,请勿重复提交！',
+            icon:'none',
+            duration:1000
+          })
         }
       }
     })
-    console.log(formData)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

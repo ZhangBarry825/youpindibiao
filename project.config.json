@@ -420,6 +420,12 @@
 					"pathName": "pages/myshop/shop-invite/shop-invite",
 					"query": "id=1596087730152098",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "附近商家",
+					"pathName": "pages/nearby-shops/nearby-shops",
+					"scene": null
 				}
 			]
 		}

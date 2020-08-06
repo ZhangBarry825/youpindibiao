@@ -35,21 +35,26 @@
                             bind:after-read="afterRead"/>
                 </view>
             </van-cell>
-            <van-cell custom-class="score-custom-class" value="">
+            <van-cell value="">
                 <view slot="title">
-                    商品评分
-                    <van-rate
-                            data-index="{{index}}"
-                            value="{{ item.star }}"
-                            size="{{ 25 }}"
-                            color="#ffb820"
-                            void-color="#eee"
-                            void-icon="star"
-                            bind:change="onScoreChange"
-                    />
+                    <view class="van-cell-text" style="display: flex;align-items: center">
+                        <view class="text" style="margin-right: 10rpx">商品评分</view>
+                        <van-rate
+                                style="display: flex;align-items: center;"
+                                data-index="{{index}}"
+                                value="{{ item.star }}"
+                                size="{{ 20 }}"
+                                color="#ffb820"
+                                void-color="#eee"
+                                void-icon="star"
+                                bind:change="onScoreChange"
+                        />
+                    </view>
+
                 </view>
             </van-cell>
         </van-cell-group>
     </view>
+
     <view class="submit-button" bind:tap="submitForm">提交评价</view>
 </view>

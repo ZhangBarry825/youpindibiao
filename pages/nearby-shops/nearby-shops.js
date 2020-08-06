@@ -11,17 +11,57 @@ Page({
     searchKeyword:"",
     focus:false,
     height: wx.getSystemInfoSync().windowHeight - 100,
-    activeIndex:0,
+    activeIndex:'none',
     pageSize:10,
     pageNum:1,
     latitude:'',
     longitude:'',
-    shopList:[]
+    shopList:[],
+
+    juli:'',
+    renjun:'',
+    counts:'',
+    shopstar:'',
+
+    name:'',
   },
   changeMenu(e){
     this.setData({
       activeIndex:e.currentTarget.dataset.index
     })
+    if(this.data.activeIndex==0){
+      this.setData({
+        juli:'y',
+        renjun:'',
+        counts:'',
+        shopstar:'',
+      })
+    }
+    if(this.data.activeIndex==1){
+      this.setData({
+        juli:'',
+        renjun:'y',
+        counts:'',
+        shopstar:'',
+      })
+    }
+    if(this.data.activeIndex==2){
+      this.setData({
+        juli:'',
+        renjun:'',
+        counts:'y',
+        shopstar:'',
+      })
+    }
+    if(this.data.activeIndex==3){
+      this.setData({
+        juli:'',
+        renjun:'',
+        counts:'',
+        shopstar:'y',
+      })
+    }
+    this.getLocation()
   },
   onSearchFocus(){
     this.setData({
@@ -37,11 +77,16 @@ Page({
   },
   onSearchClick(){
     console.log(this.data.searchKeyword)
+    if(this.data.searchKeyword!=''){
+      this.getLocation()
+    }
+
   },
   onSearchChange(e){
     this.setData({
       searchKeyword:e.detail
     })
+
   },
   getLocation(){
     let that = this
@@ -80,20 +125,51 @@ Page({
         pageSize:that.data.pageSize,
         lat:that.data.latitude,
         lng:that.data.longitude,
+        juli:that.data.juli,
+        renjun:that.data.renjun,
+        counts:that.data.counts,
+        shopstar:that.data.shopstar,
+        name:that.data.searchKeyword
       },
       noLogin:true,
       success(res){
-        for (const resKey in res.data.list) {
-          res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
-          res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
-          res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
-          res.data.list[resKey].distance=saveTwoDecimal(res.data.list[resKey].distance)
-          res.data.list[resKey].shopstar=saveOneDecimal(res.data.list[resKey].shopstar)
+        if(res.code == 200){
+          if(res.data.list.length>0){
+            for (const resKey in res.data.list) {
+              res.data.list[resKey].nearby_img=api.Host+'/'+res.data.list[resKey].nearby_img
+              res.data.list[resKey].end_time=formatTimeTwo(res.data.list[resKey].end_time)
+              res.data.list[resKey].start_time=formatTimeTwo(res.data.list[resKey].start_time)
+              res.data.list[resKey].distance=saveTwoDecimal(res.data.list[resKey].distance)
+              res.data.list[resKey].shopstar=saveOneDecimal(res.data.list[resKey].shopstar)
+            }
+
+            if(append){
+              that.setData({
+                pageNum:pageNum,
+                shopList:that.data.shopList.concat(res.data.list)
+              })
+            }else {
+              that.setData({
+                shopList:res.data.list
+              })
+            }
+
+          }else {
+            if(!append){
+              that.setData({
+                shopList:[]
+              })
+            }
+            wx.showToast({
+              title:'暂无更多',
+              icon:'none',
+              duration:1000
+            })
+          }
+
+
         }
 
-        that.setData({
-          shopList:res.data.list
-        })
       }
     })
   },
@@ -106,6 +182,7 @@ Page({
         height: wx.getSystemInfoSync().windowHeight - 100,
       })
     })
+    this.getLocation()
   },
 
   /**
@@ -119,7 +196,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getLocation()
+
   },
 
   /**
@@ -147,7 +224,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getLocation(this.pageNum+1,true)
   },
 
   /**

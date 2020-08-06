@@ -12,6 +12,40 @@ Page({
     pageSize:10,
     itemList:[],
   },
+  deleteItem(e){
+    let that = this
+    let id=e.currentTarget.dataset.id
+    api.post({
+      url:'/share/delShareByUser',
+      data:{
+        goodsid:id
+      },
+      success(res){
+        if(res.code == 200){
+          that.setData({
+            itemList:[],
+            pageNum:1
+          })
+          that.fetchData(1)
+        }
+      }
+    })
+  },
+  goodsPress(e){
+    let index=e.currentTarget.dataset.index
+    console.log(index)
+    console.log(this.data.itemList)
+    let newArr=this.data.itemList
+    for (const Key in newArr) {
+      newArr[Key].del=false
+      if(Key==index){
+        newArr[Key].del=true
+      }
+    }
+    this.setData({
+      itemList:newArr
+    })
+  },
   goHome(){
     wx.switchTab({
       url:'/pages/home/home'
@@ -54,6 +88,7 @@ Page({
           for (const apiKey in res.data.list) {
             res.data.list[apiKey].nearby_img=api.Host+'/'+res.data.list[apiKey].nearby_img
             res.data.list[apiKey].thumbnail=api.Host+'/'+res.data.list[apiKey].thumbnail
+            res.data.list[apiKey].del=false
           }
           if(append){
             that.setData({

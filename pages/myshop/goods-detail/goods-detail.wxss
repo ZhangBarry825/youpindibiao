@@ -229,6 +229,9 @@
 .page .goods-detail .content {
   width: 100%;
 }
+.page .goods-detail .content image {
+  width: 100% !important;
+}
 .page .bottom-box {
   width: 100%;
   height: 97rpx;

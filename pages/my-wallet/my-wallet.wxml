@@ -2,10 +2,10 @@
 <view class="page">
     <view class="mine-back">
         <image mode="aspectFill" class="back-img" src="../../static/images/mine-back.png"></image>
-<!--        <view class="top">-->
+        <view class="top">
 <!--            <text bind:tap="goTo" data-path="/pages/bankcard/bankcard-menu/bankcard-menu">添加银行卡</text>-->
-<!--            <text>佣金明细</text>-->
-<!--        </view>-->
+            <text bind:tap="goTo" data-path="/pages/commission/commission">余额明细</text>
+        </view>
         <view class="bottom">
             <view class="line1">我的钱包</view>
             <view class="line2">￥{{balance}}</view>

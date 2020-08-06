@@ -1,18 +1,65 @@
 // pages/commission/commission.js
+import {formatTime} from "../../utils/util";
+
+const api = require('../../utils/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    pageSize:10,
+    pageNum:1,
+    itemList:[]
   },
+  fetchData(pageNum=1,append=false){
+    let that = this
+    api.post({
+      url:'/myMoney/selectPurseDetail',
+      data:{
+        pageNum:pageNum,
+        pageSize:that.data.pageSize
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200){
+          if(res.data.list.length>0){
+            for (const Key in res.data.list) {
+              res.data.list[Key].createtime=formatTime(res.data.list[Key].createtime)
+            }
+            if(append){
+              that.setData({
+                pageNum:pageNum,
+                itemList:that.data.itemList.concat(res.data.list)
+              })
+            }else {
+              that.setData({
+                itemList:res.data.list
+              })
+            }
 
+          }else {
+            if(!append){
+              that.setData({
+                itemList:[]
+              })
+            }
+            wx.showToast({
+              title:'暂无更多',
+              icon:'none',
+              duration:1000
+            })
+          }
+
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.fetchData()
   },
 
   /**
@@ -54,7 +101,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.fetchData(this.data.pageNum+1,true)
   },
 
   /**

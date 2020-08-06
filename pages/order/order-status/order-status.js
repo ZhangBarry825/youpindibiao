@@ -14,6 +14,19 @@ Page({
     orderid:'',
     orderDetail:{}
   },
+  commentOrder(e){
+    let item=e.currentTarget.dataset.item
+    console.log(item)
+    wx.showToast({
+      title:'TODO',
+      icon:'none',
+      duration:1000
+    })
+    wx.setStorageSync('commentItem',JSON.stringify(item))
+    wx.navigateTo({
+      url:'/pages/order/order-appraise/order-appraise'
+    })
+  },
   cancelOrder(){
     let that = this
     api.post({
@@ -23,7 +36,7 @@ Page({
       },
       success(res){
         if(res.code == 200){
-
+          //TODO
         }
       }
     })
@@ -67,7 +80,7 @@ Page({
           orderid:orderid
         },
         success(res){
-          if(res.code == 200){
+          if(res.code == 200 && res.message=='订单删除成功'){
             wx.showToast({
               title:'删除成功！',
               icon:'success',
@@ -78,6 +91,12 @@ Page({
                 delta:1
               })
             },1000)
+          }else if(res.message=='当前订单状态无法删除'){
+            wx.showToast({
+              title:'请先评价订单后进行操作',
+              icon:'none',
+              duration:1500
+            })
           }
         }
       })

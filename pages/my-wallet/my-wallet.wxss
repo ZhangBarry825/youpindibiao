@@ -18,7 +18,7 @@
 .page .mine-back .top {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .page .mine-back .top text {
   margin: 20rpx 0;
