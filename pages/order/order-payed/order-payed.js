@@ -13,15 +13,24 @@ Page({
     })
   },
   goDetail(){
-    wx.reLaunch({
-      url:'/pages/order/order-status/order-status?orderid='+this.data.orderid
-    })
+    let that = this
+    console.log(that.data.orderid,'----------------------------')
+    if(that.data.orderid.length > 1){
+      wx.reLaunch({
+        url:'/pages/order-list/order-list'
+      })
+    }else {
+      wx.reLaunch({
+        url:'/pages/order/order-status/order-status?orderid='+that.data.orderid[0]
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let orderid=options.orderid
+    let orderid=JSON.parse(options.orderid)
     this.setData({
       orderid:orderid
     })

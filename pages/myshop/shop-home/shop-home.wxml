@@ -18,7 +18,7 @@
         </view>
     </view>
 
-    <van-grid column-num="3" class="menu-box">
+    <van-grid column-num="4" class="menu-box">
         <van-grid-item use-slot bind:tap="onEwmClickShow">
             <image src="../../../static/images/h1.png"/>
             <text>店铺二维码</text>
@@ -31,10 +31,10 @@
             <image src="../../../static/images/h3.png"/>
             <text>选品上架</text>
         </van-grid-item>
-<!--        <van-grid-item use-slot bind:tap="onSearchFocus">-->
-<!--            <image src="../../../static/images/h4.png"/>-->
-<!--            <text>添加商品</text>-->
-<!--        </van-grid-item>-->
+        <van-grid-item use-slot bind:tap="goLivePage">
+            <image src="../../../static/images/zb.png"/>
+            <text>直播</text>
+        </van-grid-item>
     </van-grid>
 
     <view class="header">

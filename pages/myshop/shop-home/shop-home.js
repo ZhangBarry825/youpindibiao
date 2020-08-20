@@ -132,6 +132,9 @@ Page({
         console.log(event.detail)
         console.log(this.data.searchKeyword)
     },
+    goLivePage(){
+
+    },
     onSearchFocus() {
         wx.navigateTo({
             url: '/pages/myshop/shop-selection/shop-selection'

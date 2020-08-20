@@ -113,25 +113,9 @@ Page({
                 data:{...formData},
                 success(res){
                   if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
-                    if(that.data.payType==0){
-                      wx.navigateTo({
-                        url:'/pages/order/order-payed/order-payed?orderid='+res.data
-                      })
-                    }else{
-                      wx.requestPayment({
-                        timeStamp: res.data.timeStamp,
-                        nonceStr: res.data.nonceStr,
-                        package: 'prepay_id=123123',
-                        signType: 'MD5',
-                        paySign: res.data.paySign,
-                        success (res) {
-                          console.log(res,'success')
-                        },
-                        fail (res) {
-                          console.log(res,'fail')
-                        }
-                      })
-                    }
+                    wx.navigateTo({
+                      url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.ordernum)
+                    })
                   } else if(res.message=='余额不足'){
                     wx.showToast({
                       title:'您的余额不足！',
@@ -156,25 +140,26 @@ Page({
           data:{...formData},
           success(res){
             if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
-              if(that.data.payType==0){
-                wx.navigateTo({
-                  url:'/pages/order/order-payed/order-payed?orderid='+res.data
-                })
-              }else{
-                wx.requestPayment({
-                  timeStamp: res.data.timeStamp,
-                  nonceStr: res.data.nonceStr,
-                  package: 'prepay_id=123123',
-                  signType: 'MD5',
-                  paySign: res.data.paySign,
-                  success (res) {
-                    console.log(res,'success')
-                  },
-                  fail (res) {
-                    console.log(res,'fail')
-                  }
-                })
-              }
+              wx.requestPayment({
+                timeStamp: res.data.timeStamp,
+                nonceStr: res.data.nonceStr,
+                package: res.data.package,
+                signType: res.data.signType,
+                paySign: res.data.paySign,
+                total_fee: res.data.total_fee,
+                success (res1) {
+                  wx.navigateTo({
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.ordernum)
+                  })
+                },
+                fail (res) {
+                  wx.showToast({
+                    title:'支付失败！',
+                    icon:'none',
+                    duration:1000
+                  })
+                }
+              })
             } else if(res.message=='余额不足'){
               wx.showToast({
                 title:'您的余额不足！',

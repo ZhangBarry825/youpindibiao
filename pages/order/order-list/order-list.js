@@ -202,7 +202,7 @@ Page({
       this.setData({
         tagsActive:options.tagsActive||'all'
       })
-    },100)
+    },300)
   },
 
   /**
