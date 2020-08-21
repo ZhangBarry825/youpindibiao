@@ -17,7 +17,7 @@ Page({
     console.log(that.data.orderid,'----------------------------')
     if(that.data.orderid.length > 1){
       wx.reLaunch({
-        url:'/pages/order-list/order-list'
+        url:'/pages/order/order-list/order-list'
       })
     }else {
       wx.reLaunch({

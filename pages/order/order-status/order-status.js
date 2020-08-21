@@ -27,19 +27,41 @@ Page({
       url:'/pages/order/order-appraise/order-appraise'
     })
   },
+  pay(){
+    console.log(this.data.orderDetail,'orderDetail')
+    console.log(this.data.orderid,'orderid')
+  },
   cancelOrder(){
     let that = this
-    api.post({
-      url:'/order/orderlistDel',
-      data:{
-        orderid:that.data.orderid
-      },
-      success(res){
-        if(res.code == 200){
-          //TODO
+    Dialog.confirm({
+      title: '提示',
+      context:that,
+      selector:'#van-dialog',
+      message: '确认取消吗？',
+    }).then(() => {
+      api.post({
+        url:'/order/orderlistDel',
+        data:{
+          orderid:that.data.orderid
+        },
+        success(res){
+          if(res.code == 200){
+            wx.showToast({
+              title:'取消成功！',
+              icon:'success',
+              duration:1000
+            })
+            setTimeout(()=>{
+              wx.switchTab({
+                url:'/pages/mine/mine'
+              })
+            },1000)
+          }
         }
-      }
-    })
+      })
+    }) .catch(() => {
+      // on cancel
+    });
   },
   goRefundDetail(e){
     let orderid=e.currentTarget.dataset.item.id

@@ -15,6 +15,7 @@ Page({
     addressDetail: '',
     totalPrice:0.00,
     shopid:'',//附近商家的商品会有shopid
+    canSubmit:true,
   },
   minusNum(){
     let that = this
@@ -83,6 +84,10 @@ Page({
     })
   },
   submitForm(){
+    if(!this.data.canSubmit){
+      console.log('稍安勿躁')
+      return
+    }
     let that = this
     let formData={
       goodsid:that.data.goodsList[0].goods.id,
@@ -135,10 +140,16 @@ Page({
               // on cancel
             });
       }else {
+        that.setData({
+          canSubmit:false
+        })
         api.post({
           url:'/order/addOrderByGoods',
           data:{...formData},
           success(res){
+            let orderids=res.data.orderids
+            console.log(res.data,'res.data')
+            console.log(orderids,'orderids')
             if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
               wx.requestPayment({
                 timeStamp: res.data.timeStamp,
@@ -149,7 +160,7 @@ Page({
                 total_fee: res.data.total_fee,
                 success (res1) {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(orderids)
                   })
                 },
                 fail (res) {
@@ -158,6 +169,11 @@ Page({
                     icon:'none',
                     duration:1000
                   })
+                  setTimeout(()=>{
+                    wx.navigateTo({
+                      url:'/pages/order/order-status/order-status?orderid='+orderids[0]
+                    })
+                  },1000)
                 }
               })
             } else if(res.message=='余额不足'){

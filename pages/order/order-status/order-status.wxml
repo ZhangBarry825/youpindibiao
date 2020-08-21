@@ -98,7 +98,7 @@
     </van-cell-group>
     <view class="buttons">
         <view wx:if="{{orderStatus==0}}" class="order-button order-button2" bind:tap="cancelOrder">取消订单</view>
-        <view wx:if="{{orderStatus==0}}" class="order-button order-button3">付款</view>
+        <view wx:if="{{orderStatus==0}}" class="order-button order-button3" bind:tap="pay">付款</view>
         <view wx:if="{{orderStatus==1||orderStatus==2||orderStatus==3||orderStatus==4}}"
               class="order-button order-button1" bind:tap="applyRefund" data-item="{{orderDetail}}">申请售后</view>
         <view wx:if="{{orderStatus==2}}" class="order-button order-button2" bind:tap="goExpress" data-item="{{orderDetail}}">查看物流</view>

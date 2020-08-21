@@ -191,6 +191,41 @@ Page({
       url:'/pages/home/home'
     })
   },
+  cancelOrder(e){
+    let that = this
+    let orderid=e.currentTarget.dataset.orderid
+    Dialog.confirm({
+      title: '提示',
+      context:that,
+      selector:'#van-dialog',
+      message: '确认取消吗？',
+    }).then(() => {
+      api.post({
+        url:'/order/orderlistDel',
+        data:{
+          orderid:orderid
+        },
+        success(res){
+          if(res.code == 200){
+            wx.showToast({
+              title:'取消成功！',
+              icon:'success',
+              duration:1000
+            })
+            setTimeout(()=>{
+              that.setData({
+                orderList:[],
+                pageNum:1
+              })
+             that.fetchData(that.data.state)
+            },1000)
+          }
+        }
+      })
+    }) .catch(() => {
+      // on cancel
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -199,10 +234,10 @@ Page({
       this.setData({
         height: wx.getSystemInfoSync().windowHeight - 50
       })
-      this.setData({
-        tagsActive:options.tagsActive||'all'
-      })
-    },300)
+    },100)
+    this.setData({
+      tagsActive:options.tagsActive||'all'
+    })
   },
 
   /**
@@ -216,12 +251,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      orderList:[],
-      pageNum:1,
-      tagsActive:'all'
-    })
-    this.fetchData('',1,false)
+    if(this.data.tagsActive=='all'){
+      this.setData({
+        orderList:[],
+        pageNum:1,
+        tagsActive:'all'
+      })
+      this.fetchData('',1,false)
+    }
+
   },
 
   /**
