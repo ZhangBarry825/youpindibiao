@@ -114,7 +114,7 @@ Page({
                 success(res){
                   if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
                     wx.navigateTo({
-                      url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.ordernum)
+                      url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
                     })
                   } else if(res.message=='余额不足'){
                     wx.showToast({
@@ -149,7 +149,7 @@ Page({
                 total_fee: res.data.total_fee,
                 success (res1) {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.ordernum)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
                   })
                 },
                 fail (res) {

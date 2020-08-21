@@ -121,7 +121,7 @@ Page({
                   })
                 }else {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.ordernum)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
                   })
                 }
               }else if(res.code == 205 ){
@@ -157,7 +157,7 @@ Page({
                 total_fee: res.data.total_fee,
                 success (res1) {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.ordernum)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
                   })
                 },
                 fail (res) {
