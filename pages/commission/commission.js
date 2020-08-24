@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageSize:10,
+    pageSize:20,
     pageNum:1,
     itemList:[]
   },

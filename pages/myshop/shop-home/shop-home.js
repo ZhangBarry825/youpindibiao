@@ -133,7 +133,11 @@ Page({
         console.log(this.data.searchKeyword)
     },
     goLivePage(){
-
+        wx.showToast({
+            title:'敬请期待！',
+            icon:'info',
+            duration:1000
+        })
     },
     onSearchFocus() {
         wx.navigateTo({

@@ -1,13 +1,20 @@
 <!--pages/order/order-status/order-status.wxml-->
 <view class="page">
     <view class="top-status">
-        <image wx:if="{{orderStatus==0}}" src="../../../static/images/topay.png"></image>
-        <image wx:if="{{orderStatus==1}}" src="../../../static/images/to-deliver.png"></image>
-        <image wx:if="{{orderStatus==2}}" src="../../../static/images/delivered.png"></image>
-        <image wx:if="{{orderStatus>2}}" src="../../../static/images/order-finished.png"></image>
-        <view class="status-text">
-            {{orderStatus==0?'等待买家付款':orderStatus==1?'等待卖家发货':
-            orderStatus==2?'卖家已发货':orderStatus==3?'待评价':orderStatus==4?'交易成功':orderStatus==5?'退货/退款中':orderStatus==6?'退款成功':'订单异常'}}
+        <view class="line1">
+            <image wx:if="{{orderStatus==0}}" src="../../../static/images/topay.png"></image>
+            <image wx:if="{{orderStatus==1}}" src="../../../static/images/to-deliver.png"></image>
+            <image wx:if="{{orderStatus==2}}" src="../../../static/images/delivered.png"></image>
+            <image wx:if="{{orderStatus>2}}" src="../../../static/images/order-finished.png"></image>
+            <view class="status-text">
+                {{orderStatus==0?'等待买家付款':orderStatus==1?'等待卖家发货':
+                orderStatus==2?'卖家已发货':orderStatus==3?'待评价':orderStatus==4?'交易成功':orderStatus==5?'退货/退款中':orderStatus==6?'退款成功':'订单异常'}}
+            </view>
+        </view>
+        <view class="line2" wx:if="{{orderStatus==0}}">
+            <van-count-down bind:finish="onTimeOut" use-slot time="{{ orderDetail.leftDate }}" bind:change="onTimeChange">
+               <text class="timeItem"> 请在 {{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{ timeData.seconds }} 内完成支付</text>
+            </van-count-down>
         </view>
     </view>
     <view class="receiver">
@@ -64,6 +71,9 @@
     <van-cell-group>
         <van-cell title="支付信息" value-class="value-class" label-class="label-class" custom-class="custom-class"
                   title-class="title-class" value=""/>
+        <van-cell title="支付方式" value="{{orderDetail.paytype==0?'余额支付':'微信支付'}}" value-class="cell-item-value"
+                  label-class="cell-item-label"
+                  title-class="cell-item-title" custom-class="cell-item-custom"/>
         <van-cell title="支付金额" value="￥{{orderDetail.payment}}" value-class="cell-item-value"
                   label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>

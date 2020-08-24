@@ -12,7 +12,8 @@ Page({
     baseUrl:api.Host+'/',
     orderStatus:0,
     orderid:'',
-    orderDetail:{}
+    orderDetail:{},
+    timeData: {},
   },
   commentOrder(e){
     let item=e.currentTarget.dataset.item
@@ -28,8 +29,49 @@ Page({
     })
   },
   pay(){
-    console.log(this.data.orderDetail,'orderDetail')
-    console.log(this.data.orderid,'orderid')
+    let that = this
+    api.post({
+      url:'/order/waitPay',
+      data:{
+        orderid:that.data.orderid
+      },
+      success(res){
+        if(res.code == 200){
+          wx.requestPayment({
+            timeStamp: res.data.timeStamp,
+            nonceStr: res.data.nonceStr,
+            package: res.data.package,
+            signType: res.data.signType,
+            paySign: res.data.paySign,
+            total_fee: res.data.total_fee,
+            success (res1) {
+              wx.navigateTo({
+                url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
+              })
+            },
+            fail (res) {
+              wx.showToast({
+                title:'支付失败！',
+                icon:'none',
+                duration:1000
+              })
+            }
+          })
+        }else if(res.code == 205 ){
+          wx.showToast({
+            title:res.message,
+            icon:'none',
+            duration:2000
+          })
+        }else{
+          wx.showToast({
+            title:'数据异常',
+            icon:'none',
+            duration:1000
+          })
+        }
+      }
+    })
   },
   cancelOrder(){
     let that = this
@@ -162,6 +204,23 @@ Page({
 
 
   },
+  onTimeOut(){
+    wx.showToast({
+      title:'当前订单已失效，请重新下单！',
+      icon:'none',
+      duration:2000
+    })
+    setTimeout(()=>{
+      wx.navigateBack({
+        delta:1
+      })
+    },2000)
+  },
+  onTimeChange(e) {
+    this.setData({
+      timeData: e.detail,
+    });
+  },
   fetchData(){
     let that = this
     api.post({
@@ -175,6 +234,8 @@ Page({
           res.data.paytime=formatTime(res.data.paytime)
           res.data.sendtime=formatTime(res.data.sendtime)
           res.data.receivetime=formatTime(res.data.receivetime)
+          res.data.paytype=parseInt(res.data.paytype)
+          res.data.leftDate=res.data.endDate-res.data.nowDate
           that.setData({
             orderStatus:res.data.status,
             orderDetail:res.data
