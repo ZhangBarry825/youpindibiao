@@ -163,7 +163,7 @@ Page({
                 total_fee: res.data.total_fee,
                 success (res1) {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
                   })
                 },
                 fail (res) {
