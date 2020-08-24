@@ -15,7 +15,7 @@ Page({
   },
   submitForm(){
     let that = this
-    if(parseInt(that.data.value)>0){
+    if(parseFloat(that.data.value)>0){
       api.post({
         url:'/myMoney/orderpay',
         data:{
@@ -27,14 +27,30 @@ Page({
             wx.requestPayment({
               timeStamp: res.data.timeStamp,
               nonceStr: res.data.nonceStr,
-              package: 'prepay_id=123123',
-              signType: 'MD5',
+              package: res.data.package,
+              signType: res.data.signType,
               paySign: res.data.paySign,
+              total_fee: res.data.total_fee,
               success (res) {
                 console.log(res,'success')
+                wx.showToast({
+                  title:'支付成功！',
+                  icon:'success',
+                  duration:2000
+                })
+                setTimeout(()=>{
+                  wx.navigateBack({
+                    delta:1
+                  })
+                },2000)
               },
               fail (res) {
                 console.log(res,'fail')
+                wx.showToast({
+                  title:'支付失败！',
+                  icon:'none',
+                  duration:1000
+                })
               }
             })
           }

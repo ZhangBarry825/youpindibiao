@@ -14,7 +14,7 @@ Page({
     },
     submitForm() {
         let that = this
-        if (parseInt(that.data.count) > 0) {
+        if (parseFloat(that.data.count) > 0) {
 
             api.post({
                 url:'/myMoney/withdrawToCard',
@@ -24,6 +24,12 @@ Page({
                 success(res){
                     if(res.code == 200){
                         //TODO
+                    }else {
+                        wx.showToast({
+                            title:res.message,
+                            icon:'none',
+                            duration:2000
+                        })
                     }
                 }
             })

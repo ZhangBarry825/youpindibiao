@@ -432,6 +432,14 @@
 					"id": -1,
 					"name": "收入记录",
 					"pathName": "pages/myshop/shop-receive-record/shop-receive-record",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "余额明细",
+					"pathName": "pages/commission/commission",
+					"query": "",
 					"scene": null
 				}
 			]

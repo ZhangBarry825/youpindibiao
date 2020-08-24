@@ -11,11 +11,11 @@
                 orderStatus==2?'卖家已发货':orderStatus==3?'待评价':orderStatus==4?'交易成功':orderStatus==5?'退货/退款中':orderStatus==6?'退款成功':'订单异常'}}
             </view>
         </view>
-        <view class="line2" wx:if="{{orderStatus==0}}">
-            <van-count-down bind:finish="onTimeOut" use-slot time="{{ orderDetail.leftDate }}" bind:change="onTimeChange">
-               <text class="timeItem"> 请在 {{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{ timeData.seconds }} 内完成支付</text>
-            </van-count-down>
-        </view>
+<!--        <view class="line2" wx:if="{{orderStatus==0}}">-->
+<!--            <van-count-down bind:finish="onTimeOut" use-slot time="{{ orderDetail.leftDate }}" bind:change="onTimeChange">-->
+<!--               <text class="timeItem"> 请在 {{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{ timeData.seconds }} 内完成支付</text>-->
+<!--            </van-count-down>-->
+<!--        </view>-->
     </view>
     <view class="receiver">
         <image src="../../../static/images/rec-address.png"></image>

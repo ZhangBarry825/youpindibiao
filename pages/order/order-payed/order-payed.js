@@ -21,7 +21,7 @@ Page({
       })
     }else {
       wx.reLaunch({
-        url:'/pages/order/order-status/order-status?orderid='+that.data[0]
+        url:'/pages/order/order-status/order-status?orderid='+that.data.orderid[0]
       })
     }
 
