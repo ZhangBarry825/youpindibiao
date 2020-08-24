@@ -119,9 +119,15 @@ Page({
                     icon:'none',
                     duration:1000
                   })
+                }else if(res.message=='商品库存不足'){
+                  wx.showToast({
+                    title:'商品库存不足!',
+                    icon:'none',
+                    duration:1000
+                  })
                 }else {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data)
                   })
                 }
               }else if(res.code == 205 ){
@@ -147,7 +153,7 @@ Page({
           url:'/order/addOrderByCars',
           data:{...formData},
           success(res){
-            if(res.code == 200){
+            if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
               wx.requestPayment({
                 timeStamp: res.data.timeStamp,
                 nonceStr: res.data.nonceStr,
@@ -157,7 +163,7 @@ Page({
                 total_fee: res.data.total_fee,
                 success (res1) {
                   wx.navigateTo({
-                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
+                    url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data)
                   })
                 },
                 fail (res) {
@@ -167,6 +173,18 @@ Page({
                     duration:1000
                   })
                 }
+              })
+            }else if(res.message=='余额不足'){
+              wx.showToast({
+                title:'您的余额不足！',
+                icon:'none',
+                duration:1000
+              })
+            } else if(res.message=='商品库存不足'){
+              wx.showToast({
+                title:'商品库存不足',
+                icon:'none',
+                duration:1000
               })
             }else if(res.code == 205 ){
               wx.showToast({

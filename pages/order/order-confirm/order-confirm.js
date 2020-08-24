@@ -119,7 +119,7 @@ Page({
                 success(res){
                   if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
                     wx.navigateTo({
-                      url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data.orderids)
+                      url:'/pages/order/order-payed/order-payed?orderid='+JSON.stringify(res.data)
                     })
                   } else if(res.message=='余额不足'){
                     wx.showToast({

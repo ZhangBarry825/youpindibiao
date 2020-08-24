@@ -21,7 +21,7 @@ Page({
         console.log(res)
         if(res.code == 200){
           res.data.thumbnail=api.Host+'/'+res.data.thumbnail
-          res.data.mapList.reverse()
+          // res.data.mapList.reverse()
           for (const thatKey in res.data.mapList) {
             res.data.mapList[thatKey].text=res.data.mapList[thatKey].context
             res.data.mapList[thatKey].desc=res.data.mapList[thatKey].time

@@ -258,6 +258,12 @@ Page({
         tagsActive:'all'
       })
       this.fetchData('',1,false)
+    }else {
+      this.setData({
+        orderList:[],
+        pageNum:1,
+      })
+      this.fetchData(that.data.state,1,false)
     }
 
   },
