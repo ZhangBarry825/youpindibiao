@@ -1,8 +1,6 @@
 {
   "pages":[
 
-
-
     "pages/home/home",
     "pages/class/class",
     "pages/trolley/trolley",
@@ -67,6 +65,8 @@
     "pages/order/refund-detail/refund-detail",
     "pages/order/refund-list/refund-list",
     "pages/order/express/express",
+    "pages/live-room/live-room/live-room",
+    "pages/live-room/create-room/create-room",
 
     "pages/index/index",
     "pages/logs/logs"
@@ -118,5 +118,11 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "live-player-plugin": {
+      "version": "1.1.7",
+      "provider": "wx2b03c6e691cd7370"
+    }
+  }
 }

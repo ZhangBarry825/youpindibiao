@@ -441,6 +441,20 @@
 					"pathName": "pages/commission/commission",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "直播",
+					"pathName": "pages/live-room/live-room/live-room",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "创建直播间",
+					"pathName": "pages/live-room/create-room/create-room",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

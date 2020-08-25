@@ -1,0 +1,121 @@
+.page {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  background-color: #f5f5f5;
+}
+.page .roomList {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.page .roomList .roomItem {
+  background-color: #ffffff;
+  margin-bottom: 15rpx;
+  width: 100%;
+  height: 258rpx;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.page .roomList .roomItem .left {
+  width: 212rpx;
+  height: 212rpx;
+  position: relative;
+}
+.page .roomList .roomItem .left .cover {
+  width: 212rpx;
+  height: 212rpx;
+}
+.page .roomList .roomItem .left .roomStatus {
+  position: absolute;
+  left: 10rpx;
+  top: 10rpx;
+  font-size: 22rpx;
+  color: #ffffff;
+  padding: 5rpx 10rpx;
+  border-radius: 15rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+}
+.page .roomList .roomItem .left .roomStatus .dot {
+  margin-right: 10rpx;
+  border-radius: 50%;
+  width: 10rpx;
+  height: 10rpx;
+  background-color: red;
+}
+.page .roomList .roomItem .left .roomStatus .living {
+  background-color: green;
+}
+.page .roomList .roomItem .right {
+  height: 100%;
+  width: calc(100% - 212rpx);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30rpx;
+}
+.page .roomList .roomItem .right .roomTitle {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.page .roomList .roomItem .right .roomAuthor {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #666666;
+  padding-top: 15rpx;
+  padding-bottom: 20rpx;
+}
+.page .roomList .roomItem .right .roomGoods {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.page .roomList .roomItem .right .roomGoods .goods {
+  width: 86rpx;
+  height: 87rpx;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page .roomList .roomItem .right .roomGoods .goods .goodsCover {
+  width: 86rpx;
+  height: 87rpx;
+}
+.page .roomList .roomItem .right .roomGoods .goods .text {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+}
+.page .createRoom {
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: fixed;
+  right: 20rpx;
+  bottom: 50rpx;
+  background-color: #ffffff;
+  border: 3px solid gainsboro;
+}
+.page .createRoom image {
+  width: 80rpx;
+  height: 80rpx;
+}

@@ -1,0 +1,55 @@
+<!--pages/live-room/create-room/create-room.wxml-->
+<view class="page">
+    <van-cell-group>
+        <van-field
+                model:value="{{ name }}"
+                clearable
+                label="房间名字"
+                placeholder="请输入房间名字"
+        />
+        <van-cell title="背景图" is-link value="" bind:tap="uploadImg"/>
+        <van-cell title="分享图片" is-link value="" />
+        <van-cell title="频道封面" is-link value="" />
+
+        <van-cell title="开始时间" is-link value="{{startTime1}}" bind:tap="showStartTime" />
+        <van-cell title="结束时间" is-link value="{{endTime1}}" bind:tap="showEndTime" />
+        <van-field
+                model:value="{{ anchorName }}"
+                clearable
+                label="主播昵称"
+                placeholder="请输入主播昵称"
+        />
+        <van-field
+                model:value="{{ anchorWechat }}"
+                clearable
+                label="主播微信号"
+                placeholder="请输入主播微信号"
+        />
+<!--        <van-cell title="开启官方收录">-->
+<!--            <van-switch size="30rpx" checked="{{ isFeedsPublic==1?true:false }}" active-color="#F16500" bind:change="onFeedsPublicChange" />-->
+<!--        </van-cell>-->
+    </van-cell-group>
+    <view class="btn-box">
+        <van-button custom-class="btn" color="#F16500" bind:tap="submitForm">提交</van-button>
+    </view>
+    <van-popup show="{{ showStartTime }}" bind:close="hiddenStartTime"  position="bottom">
+        <van-datetime-picker
+                title="请选择完整时间"
+                type="datetime"
+                value="{{ currentDate }}"
+                min-date="{{ minDate }}"
+                max-date="{{ maxDate }}"
+                bind:confirm="onStartTimeConfirm"
+        />
+    </van-popup>
+    <van-popup show="{{ showEndTime }}" bind:close="hiddenEndTime"  position="bottom">
+        <van-datetime-picker
+                title="请选择完整时间"
+                type="datetime"
+                value="{{ currentDate }}"
+                min-date="{{ minDate }}"
+                max-date="{{ maxDate }}"
+                bind:confirm="onEndTimeConfirm"
+        />
+    </van-popup>
+</view>
