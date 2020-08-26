@@ -109,21 +109,37 @@ Page({
         formData.closeShare=this.data.closeShare
         formData.closeKf=this.data.closeKf
         console.log(formData)
-        wx.request({
-            url:"https://api.weixin.qq.com/wxaapi/broadcast/room/create?access_token="+that.data.accessToken,
-            method:'POST',
-            data:{
-                ...formData
-            },
-            success(res){
-                console.log(res)
-                if(res.data.errcode == 0 ){
+        if(formData.name==''){
+            wx.showToast({
+                title:'房间名字不能为空！',
+                icon:'success',
+                duration:1000
+            })
+        }else if(formData.startTime==''||formData.endTime==''){
+            wx.showToast({
+                title:'开播时间需要在当前时间的10分钟后，并且开始时间不能在6个月后' +
+                    '开播时间和结束时间间隔不得短于30分钟，不得超过24小时',
+                icon:'none',
+                duration:3000
+            })
+        }else {
+            wx.request({
+                url:"https://api.weixin.qq.com/wxaapi/broadcast/room/create?access_token="+that.data.accessToken,
+                method:'POST',
+                data:{
+                    ...formData
+                },
+                success(res){
+                    console.log(res)
+                    if(res.data.errcode == 0 ){
 
-                }else if(res.data.errcode == 0) {
+                    }else if(res.data.errcode == 0) {
 
+                    }
                 }
-            }
-        })
+            })
+        }
+
     },
     fetchToken() {
         wx.hideLoading()
@@ -168,6 +184,17 @@ Page({
                     success (res0){
                         console.log(JSON.parse(res0.data).media_id)
                     }
+                })
+            }
+        })
+    },
+    openLiveProgram(){
+        wx.navigateToMiniProgram({
+            appId: 'wxcbbd86b156ae4441',
+            success(res) {
+                // 打开其他小程序成功同步触发
+                wx.showToast({
+                    title: '跳转成功'
                 })
             }
         })

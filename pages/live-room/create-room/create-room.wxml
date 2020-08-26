@@ -29,8 +29,18 @@
 <!--            <van-switch size="30rpx" checked="{{ isFeedsPublic==1?true:false }}" active-color="#F16500" bind:change="onFeedsPublicChange" />-->
 <!--        </van-cell>-->
     </van-cell-group>
+    <view class="tip">
+        <view class="left">提示：</view>
+        <view class="right">1、直播间名字，最短3个汉字，最长17个汉字，1个汉字相当于2个字符
+            2、开播时间需要在当前时间的10分钟后，并且开始时间不能在6个月后
+        </view>
+    </view>
+
     <view class="btn-box">
         <van-button custom-class="btn" color="#F16500" bind:tap="submitForm">提交</van-button>
+    </view>
+    <view class="btn-box">
+        <van-button custom-class="btn" color="#F16500" bind:tap="openLiveProgram">打开直播小程序</van-button>
     </view>
     <van-popup show="{{ showStartTime }}" bind:close="hiddenStartTime"  position="bottom">
         <van-datetime-picker
