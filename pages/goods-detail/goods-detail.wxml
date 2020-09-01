@@ -126,6 +126,7 @@
             <view class="right">
                 <view class="title">{{goodsDetail.list[0].name}}</view>
                 <view class="price" wx:if="{{skuRes.goodsPrice}}">￥ {{skuRes.goodsPrice}}</view>
+                <view class="stock" wx:if="{{skuRes.goodsPrice}}">库存：{{skuRes.goodsRepetory}}</view>
             </view>
         </view>
         <view class="spe-goods-item" wx:for="{{attributeList}}" wx:key="item">

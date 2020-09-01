@@ -362,6 +362,11 @@
   font-weight: 400;
   color: #ff0404;
 }
+.page .Spe-custom-class .spe-goods-info .right .stock {
+  font-size: 27rpx;
+  font-weight: 400;
+  color: #666;
+}
 .page .Spe-custom-class .spe-goods-item {
   width: 100%;
   padding: 10rpx 20rpx;

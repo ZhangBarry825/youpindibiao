@@ -23,7 +23,16 @@ Page({
                 },
                 success(res){
                     if(res.code == 200){
-                        //TODO
+                        wx.showToast({
+                            title:res.message,
+                            icon:'success',
+                            duration:2000
+                        })
+                        setTimeout(()=>{
+                            wx.navigateBack({
+                                delta:1
+                            })
+                        },2000)
                     }else {
                         wx.showToast({
                             title:res.message,

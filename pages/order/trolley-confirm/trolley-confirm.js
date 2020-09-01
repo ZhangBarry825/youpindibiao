@@ -219,19 +219,19 @@ Page({
     let buyList=JSON.parse(wx.getStorageSync('buyList')).buyList
     let totalPrice=JSON.parse(wx.getStorageSync('buyList')).totalPrice
     let goodList=[]
-    let expressPrice=0
+    let expressPrice=0.00
     for (const Key1 in buyList) {
       for (const Key2 in  buyList[Key1].list) {
         buyList[Key1].list[Key2].reserved1=api.Host+'/'+buyList[Key1].list[Key2].reserved1
-        expressPrice+=parseFloat(buyList[Key1].list[Key2].reserved3)
+        expressPrice=parseFloat(buyList[Key1].list[Key2].reserved3)+parseFloat(expressPrice)
         goodList.push(buyList[Key1].list[Key2])
       }
     }
-    totalPrice+=expressPrice
+    totalPrice=(parseFloat(expressPrice)+parseFloat(totalPrice)).toFixed(2)
     console.log(goodList,'goodList')
     console.log(totalPrice,'totalPrice')
     that.setData({
-      expressPrice:expressPrice,
+      expressPrice:expressPrice.toFixed(2),
       goodsList:goodList,
       totalPrice:totalPrice
     })

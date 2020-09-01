@@ -205,7 +205,7 @@ Page({
       totalPrice+=total
     }
     that.setData({
-      totalPrice:totalPrice,
+      totalPrice:totalPrice.toFixed(2),
       trolleyList:trolleyList
     })
   },

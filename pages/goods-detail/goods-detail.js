@@ -156,6 +156,8 @@ Page({
     })
   },
   selectSpe(e){
+    console.log(e.currentTarget.dataset.index,111)
+    console.log(e.currentTarget.dataset.value,222)
     let that = this
     this.setData({
       [`selectItem[${e.currentTarget.dataset.index}]`]:e.currentTarget.dataset.value
@@ -163,11 +165,11 @@ Page({
     let selectItem=this.data.skuList.filter(item=>{
         return this.data.selectItem.every((value,i)=> value==item.skuAttributeList[i].attributeValueId)
     })
+    console.log(selectItem,333)
     if(selectItem.length==1){
       that.setData({
         skuRes:selectItem[0]
       })
-      console.log(selectItem)
     }
   },
   addTrolley(){
@@ -182,14 +184,23 @@ Page({
           shopid:that.data.shopid
         },
         success(res){
-          wx.showToast({
-            title:'添加成功！',
-            icon:'success',
-            duration:1000
-          })
-          that.setData({
-            showSpecification:false
-          })
+          if(res.code == 200){
+            wx.showToast({
+              title:'添加成功！',
+              icon:'success',
+              duration:1000
+            })
+            that.setData({
+              showSpecification:false
+            })
+          }else{
+            wx.showToast({
+              title:res.message,
+              icon:'none',
+              duration:2000
+            })
+          }
+
         }
       })
     }else {

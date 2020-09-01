@@ -34,7 +34,7 @@ Page({
         console.log(res)
         if(res.code == 200){
           that.setData({
-            detaDetail:res.data
+            dataDetail:res.data
           })
         }
       }

@@ -126,6 +126,8 @@ Page({
     console.log(index)
     if(index != ''){
       this.fetchData(index)
+    }else {
+      this.fetchData()
     }
   },
 
