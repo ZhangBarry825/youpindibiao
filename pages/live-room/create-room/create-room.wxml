@@ -7,10 +7,21 @@
                 label="房间名字"
                 placeholder="请输入房间名字"
         />
-        <van-cell title="背景图" is-link value="" bind:tap="uploadImg"/>
-        <van-cell title="分享图片" is-link value="" />
-        <van-cell title="频道封面" is-link value="" />
-
+        <van-cell title="背景图" is-link value="" bind:tap="uploadImg" data-index="{{1}}">
+            <view slot="title">
+                <image src="{{coverImg1}}"></image>1
+            </view>
+        </van-cell>
+        <van-cell title="分享图片" is-link value="" bind:tap="uploadImg" data-index="{{2}}">
+            <view slot="title">
+                <image src="{{shareImg1}}"></image>1
+            </view>
+        </van-cell>
+        <van-cell title="频道封面" is-link value="" bind:tap="uploadImg" data-index="{{3}}">
+            <view slot="title">
+                <image src="{{feedsImg1}}"></image>1
+            </view>
+        </van-cell>
         <van-cell title="开始时间" is-link value="{{startTime1}}" bind:tap="showStartTime" />
         <van-cell title="结束时间" is-link value="{{endTime1}}" bind:tap="showEndTime" />
         <van-field

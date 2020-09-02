@@ -1,7 +1,7 @@
 <!--pages/myshop/shop-home/shop-home.wxml-->
 <view class="page">
     <view class="mine-back">
-        <image mode="aspectFill" class="back-img" src="../../../static/images/shop-back.png"></image>
+        <image mode="aspectFill" class="back-img" src="{{baseUrl+shopperInfo.bgimg}}"></image>
         <van-search
                 class="searchInput"
                 value="{{ searchKeyword }}"

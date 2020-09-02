@@ -13,9 +13,9 @@ Page({
         endTime: '',// 结束时间
         anchorName: '',// 主播昵称
         anchorWechat: '',// 主播微信号
-        coverImg: 'xtnBPYeMwIrAsaES_cOw7fpQgViRcXxhA2bl723Gd-l-ECwcdT4ZV2-2CPN4y5uM',  // 通过 uploadfile 上传，填写 mediaID
-        shareImg: 'xtnBPYeMwIrAsaES_cOw7fpQgViRcXxhA2bl723Gd-l-ECwcdT4ZV2-2CPN4y5uM', //通过 uploadfile 上传，填写 mediaID
-        feedsImg: 'xtnBPYeMwIrAsaES_cOw7fpQgViRcXxhA2bl723Gd-l-ECwcdT4ZV2-2CPN4y5uM', //通过 uploadfile 上传，填写 mediaID
+        coverImg: 'sS1AxNwXE0i-z99wtvEtVJWzhHXqFsfTFd6zS3rP4r0WtMneOZOykC3cbQB5WIl3',  // 通过 uploadfile 上传，填写 mediaID
+        shareImg: '7cPMgeJFMi9o_8fCNN2703MZwA_5pv-PiobynDTeJRNHAlH32M6JPPcZ5yDIjmGo', //通过 uploadfile 上传，填写 mediaID
+        feedsImg: '7cPMgeJFMi9o_8fCNN2703MZwA_5pv-PiobynDTeJRNHAlH32M6JPPcZ5yDIjmGo', //通过 uploadfile 上传，填写 mediaID
         isFeedsPublic: 0,// 是否开启官方收录，1 开启，0 关闭
         type: 0,//直播类型，1 推流 0 手机直播
         screenType: 0, // 1：横屏 0：竖屏
@@ -26,6 +26,10 @@ Page({
         closeShare: 0,   //  是否关闭分享 1 关闭
         closeKf: 1, // 是否关闭客服，1 关闭
 
+
+        coverImg1: '',
+        shareImg1: '',
+        feedsImg1: '',
         accessToken:'',
         startTime1: '',
         endTime1: '',
@@ -167,8 +171,10 @@ Page({
             }
         })
     },
-    uploadImg(){
+    uploadImg(e){
+
         let that = this
+        let index=e.currentTarget.dataset.index
         wx.chooseImage({
             count: 1,
             sizeType: ['original', 'compressed'],
@@ -176,16 +182,42 @@ Page({
             success (res) {
                 // tempFilePath可以作为img标签的src属性显示图片
                 const tempFilePaths = res.tempFilePaths
-                console.log(res)
+                wx.showLoading()
                 wx.uploadFile({
-                    url: 'https://api.weixin.qq.com/cgi-bin/material/add_material?access_token='+that.data.accessToken+'&type=image',
+                    url: api.Host+'/imageUpload/uploadMedia',
                     filePath: tempFilePaths[0],
-                    name: 'media',
+                    formData:{
+                        type:'image'
+                    },
+                    name: 'file',
                     success (res0){
-                        console.log(JSON.parse(res0.data).media_id)
+                        console.log(JSON.parse(res0.data))
+
+                        if(index==1){
+                            that.setData({
+                                coverImg:res0.data.media_id,
+                                coverImg1:tempFilePaths[0]
+                            })
+                        }else if(index==2){
+                            that.setData({
+                                shareImg:res0.data.media_id,
+                                shareImg1:tempFilePaths[0]
+                            })
+                        }else if(index==3){
+                            that.setData({
+                                feedsImg:res0.data.media_id,
+                                feedsImg1:tempFilePaths[0]
+                            })
+                        }
+
+                        console.log(that.data)
+
+                    },
+                    complete(){
+                        wx.hideLoading()
                     }
                 })
-            }
+            },
         })
     },
     openLiveProgram(){
@@ -203,7 +235,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.fetchToken()
+        // this.fetchToken()
     },
 
     /**

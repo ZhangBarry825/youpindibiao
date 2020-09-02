@@ -99,6 +99,7 @@
 .page .shop-detail {
   margin-top: 10rpx;
   background-color: #fff;
+  padding-bottom: 20rpx;
 }
 .page .shop-detail .title {
   display: flex;
@@ -140,6 +141,7 @@
 .page .comment {
   margin-top: 10rpx;
   background-color: #fff;
+  padding-bottom: 20rpx;
 }
 .page .comment .title {
   display: flex;

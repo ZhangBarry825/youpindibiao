@@ -133,10 +133,13 @@ Page({
         console.log(this.data.searchKeyword)
     },
     goLivePage(){
-        wx.showToast({
-            title:'敬请期待！',
-            icon:'info',
-            duration:1000
+        // wx.showToast({
+        //     title:'敬请期待！',
+        //     icon:'info',
+        //     duration:1000
+        // })
+        wx.navigateTo({
+            url:'/pages/live-room/live-room/live-room'
         })
     },
     onSearchFocus() {
@@ -176,6 +179,9 @@ Page({
             },
             success(res) {
                 if (res.code == 200) {
+                    that.setData({
+                        shopperInfo:res.data.user
+                    })
                     if (res.data.pageInfo.list.length > 0) {
                         if (append) {
                             that.setData({
