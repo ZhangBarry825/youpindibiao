@@ -7,19 +7,28 @@
                 label="房间名字"
                 placeholder="请输入房间名字"
         />
-        <van-cell title="背景图" is-link value="" bind:tap="uploadImg" data-index="{{1}}">
+        <van-cell  is-link value="" bind:tap="uploadImg" data-index="{{1}}">
             <view slot="title">
-                <image src="{{coverImg1}}"></image>1
+                <view class="title-box">
+                    <view class="title-text">背景图片</view>
+                    <image mode="aspectFill" class="up-img" src="{{coverImg1}}"></image>
+                </view>
             </view>
         </van-cell>
-        <van-cell title="分享图片" is-link value="" bind:tap="uploadImg" data-index="{{2}}">
+        <van-cell is-link value="" bind:tap="uploadImg" data-index="{{2}}">
             <view slot="title">
-                <image src="{{shareImg1}}"></image>1
+                <view class="title-box">
+                    <view class="title-text">分享图片</view>
+                    <image mode="aspectFill" class="up-img" src="{{shareImg1}}"></image>
+                </view>
             </view>
         </van-cell>
-        <van-cell title="频道封面" is-link value="" bind:tap="uploadImg" data-index="{{3}}">
+        <van-cell is-link value="" bind:tap="uploadImg" data-index="{{3}}">
             <view slot="title">
-                <image src="{{feedsImg1}}"></image>1
+                <view class="title-box">
+                    <view class="title-text">频道封面</view>
+                    <image mode="aspectFill" class="up-img" src="{{feedsImg1}}"></image>
+                </view>
             </view>
         </van-cell>
         <van-cell title="开始时间" is-link value="{{startTime1}}" bind:tap="showStartTime" />
@@ -43,7 +52,9 @@
     <view class="tip">
         <view class="left">提示：</view>
         <view class="right">1、直播间名字，最短3个汉字，最长17个汉字，1个汉字相当于2个字符
-            2、开播时间需要在当前时间的10分钟后，并且开始时间不能在6个月后
+            2、开播时间需要在当前时间的10分钟后到3天内，结束时间应在开播时间之后
+            3、主播昵称，最短2个汉字，最长15个汉字，1个汉字相当于2个字符
+            4、主播微信号，如果未实名认证，需要先前往“小程序直播”小程序进行实名验证
         </view>
     </view>
 
@@ -51,7 +62,7 @@
         <van-button custom-class="btn" color="#F16500" bind:tap="submitForm">提交</van-button>
     </view>
     <view class="btn-box">
-        <van-button custom-class="btn" color="#F16500" bind:tap="openLiveProgram">打开直播小程序</van-button>
+        <van-button custom-class="btn" color="#F16500" bind:tap="openLiveProgram">打开小程序直播</van-button>
     </view>
     <van-popup show="{{ showStartTime }}" bind:close="hiddenStartTime"  position="bottom">
         <van-datetime-picker

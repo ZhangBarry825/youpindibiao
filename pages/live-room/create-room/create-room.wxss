@@ -31,3 +31,12 @@
   font-size: 25rpx;
   color: #666666;
 }
+.page .title-box {
+  display: flex;
+  align-items: center;
+}
+.page .title-box .up-img {
+  width: 200rpx;
+  height: 50rpx;
+  margin-left: 50rpx;
+}

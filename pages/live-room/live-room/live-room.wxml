@@ -14,11 +14,11 @@
                 <view class="roomTitle">{{item.name}}</view>
                 <view class="roomAuthor">主播：{{item.anchor_name}}</view>
                 <view class="roomGoods">
-                    <view class="goods" wx:for="{{3}}" wx:for-item="item2" wx:key="item2">
-                        <image class="goodsCover" mode="aspectFill" src="{{item.cover_img}}"></image>
-                    </view>
+<!--                    <view class="goods" wx:for="{{3}}" wx:for-item="item2" wx:key="item2">-->
+<!--                        <image class="goodsCover" mode="aspectFill" src="{{item.cover_img}}"></image>-->
+<!--                    </view>-->
                     <view class="goods">
-                        <view class="text">6件直播购</view>
+                        <view class="text">暂无直播购</view>
                     </view>
                 </view>
             </view>
