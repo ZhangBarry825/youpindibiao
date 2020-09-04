@@ -16,6 +16,7 @@ Page({
         creat_time: '',//按照创建时间查询 "asc":升序 "desc"降序
         money: '',//按照价格查询 "asc":升序 "desc"降序
         commission: '',//按佣金查询 "asc":升序 "desc"降序
+        imgUrl:''
     },
     orderBy(e){
         let that = this
@@ -165,6 +166,28 @@ Page({
             }
         })
 
+        api.post({
+            url:'/user/createQRcode',
+            data:{
+                type:2,
+                page:'pages/nearby-shop/nearby-shop',
+            },
+            success(res){
+                console.log(res)
+                if(res.code == 200 && res.data){
+                    that.setData({
+                        imgUrl:res.data
+                    })
+                }else {
+                    wx.showToast({
+                        title:'加载二维码出错！',
+                        icon:'none',
+                        duration:3000
+                    })
+                }
+            }
+        })
+
     },
     fetchGoods(pageNum = 1, append = false) {
         let that = this
@@ -250,6 +273,7 @@ Page({
      */
     onPullDownRefresh: function () {
         this.fetchGoods()
+        this.fetchData()
         setTimeout(() => {
             wx.stopPullDownRefresh()
         }, 1000)

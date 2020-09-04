@@ -82,7 +82,7 @@
 .page .roomList .roomItem .right .roomGoods {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .page .roomList .roomItem .right .roomGoods .goods {
   width: 86rpx;
@@ -91,6 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 20rpx;
 }
 .page .roomList .roomItem .right .roomGoods .goods .goodsCover {
   width: 86rpx;

@@ -63,6 +63,12 @@ module.exports = {
     login(data) {
         let that = this
 
+        let formData={}
+        console.log(wx.getStorageSync('upopenid'))
+        let upopenid=wx.getStorageSync('upopenid')
+        if(upopenid){
+            formData.upopenid=upopenid
+        }
         wx.login({
             success(res) {
                 if (res.code) {
@@ -75,6 +81,7 @@ module.exports = {
                             code: res.code,
                             avatarUrl: data.userInfo.avatarUrl,
                             nickName: data.userInfo.nickName,
+                            ...formData
                         },
                         success:res=>{
                             console.log(res)

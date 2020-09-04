@@ -11,6 +11,7 @@ Page({
   bindGetUserInfo(e) {
     // wx.openSetting()
     console.log(e.detail,'e')
+
     api.login({
       ...e.detail,
       success:res=>{

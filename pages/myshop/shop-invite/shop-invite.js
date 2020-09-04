@@ -42,6 +42,27 @@ Page({
         }
       }
     })
+    api.post({
+      url:'/user/createQRcode',
+      data:{
+        type:1,
+        page:'pages/home/home',
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 200 && res.data){
+          that.setData({
+            imgUrl:res.data
+          })
+        }else {
+          wx.showToast({
+            title:'加载出错！',
+            icon:'none',
+            duration:3000
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

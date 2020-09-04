@@ -13,7 +13,7 @@
 
     <view class="box">
         <image class="back" mode="aspectFill" src="../../../static/images/invite-back.png"></image>
-        <image class="ewm" mode="aspectFill" src="../../../static/images/ewm.jpg"></image>
+        <image class="ewm" mode="aspectFill" src="{{imgUrl}}"></image>
         <text>扫一扫二维码，加入我们</text>
     </view>
 

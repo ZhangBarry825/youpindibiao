@@ -455,6 +455,13 @@
 					"pathName": "pages/live-room/create-room/create-room",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请好友",
+					"pathName": "pages/myshop/shop-invite/shop-invite",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

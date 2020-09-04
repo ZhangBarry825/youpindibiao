@@ -95,7 +95,7 @@
                     {{shopInfo.sysUser.nearbyName}}
                 </view>
                 <view class="line3">
-                    <image src="../../../static/images/ewm.jpg"/>
+                    <image src="{{imgUrl}}"/>
                 </view>
                 <view class="line4">
                     扫描识别二维码

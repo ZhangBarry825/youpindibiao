@@ -371,15 +371,11 @@ Page({
    */
   onLoad: function (options) {
     this.fetchData()
-    // wx.navigateTo({
-    //   url:'/pages/permission/permission',
-    //   events: {
-    //     refreshData(){
-    //       console.log('刷新数据啦')
-    //     }
-    //   }
-    // })
-
+    console.log(options,'options')
+    console.log(options.scene,'options.scene')
+    if(options.scene){
+      wx.setStorageSync('upopenid',options.scene)
+    }
   },
 
   /**
