@@ -24,7 +24,7 @@
             </view>
         </view>
     </view>
-    <view class="createRoom" bind:tap="goCreate">
+    <view class="createRoom" bind:tap="goCreate" wx:if="{{haveRight}}">
         <image src="../../../static/images/video.png"></image>
     </view>
 </view>

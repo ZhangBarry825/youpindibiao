@@ -223,6 +223,10 @@
     </van-overlay>
 
     <van-dialog id="van-dialog"/>
+
+    <view class="zhibo" bind:tap="goLiveRoom">
+        <image mode="aspectFill" src="../../static/images/zb1.png"></image>
+    </view>
 </view>
 
 

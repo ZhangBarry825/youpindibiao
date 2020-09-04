@@ -320,6 +320,11 @@ Page({
     })
 
   },
+  goLiveRoom(){
+    wx.navigateTo({
+      url:'/pages/live-room/live-room/live-room?right=none'
+    })
+  },
   goTo(e){
     let type=e.currentTarget.dataset.type
     if(type && type=='newGoods'||type=='hotGoods'){
