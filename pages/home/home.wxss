@@ -669,8 +669,6 @@
   position: fixed;
   bottom: 100rpx;
   right: 50rpx;
-  width: 110rpx;
-  height: 110rpx;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0,0,50rpx black;
@@ -679,6 +677,6 @@
   align-items: center;
 }
 .page .zhibo image {
-  width: 105%;
-  height: 105%;
+  width: 110rpx;
+  height: 110rpx;
 }
