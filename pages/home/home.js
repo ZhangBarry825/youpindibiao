@@ -248,7 +248,7 @@ Page({
       url:'/image/showAd',
       noLogin:true,
       data:{
-        pageSize:3
+        pageSize:5
       },
       success:res=>{
         for (const resKey in res.data.list) {
@@ -346,6 +346,29 @@ Page({
     })
     // console.log(path)
     // console.log(id)
+  },
+  bannerGo(e){
+    let flag = e.currentTarget.dataset.flag
+    let id = e.currentTarget.dataset.id
+    let path = ""
+    if(flag=='1'){
+      path = "/pages/goods-detail/goods-detail"
+      wx.navigateTo({
+        url:path+'?id='+id,
+      })
+    }else if(flag=='2'){
+      console.log(this.data.categoryList,id)
+      path = "/pages/class/class"
+      for (let i =0;i<this.data.categoryList.length;i++){
+        if(this.data.categoryList[i].id==id){
+          wx.setStorageSync('defaultIndex',i)
+          wx.switchTab({
+            url:path
+          })
+          break;
+        }
+      }
+    }
   },
   addTrolley(e){
     let item = e.currentTarget.dataset.item

@@ -18,7 +18,7 @@
     </view>
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
-        <swiper-item wx:for="{{bannerList}}" wx:key="item">
+        <swiper-item wx:for="{{bannerList}}" wx:key="item" bind:tap="bannerGo" data-flag="{{item.flag}}" data-id="{{item.goodsId}}">
             <image mode="aspectFill" src="{{item.imageUrl}}" class="slide-image" width="100%" height="200"/>
         </swiper-item>
     </swiper>
