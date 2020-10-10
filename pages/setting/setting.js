@@ -25,7 +25,7 @@ Page({
       url:'/user/selectLevelDetail',
       data:{},
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           that.setData({
             tel:res.data.tel

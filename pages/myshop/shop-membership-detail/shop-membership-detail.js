@@ -21,7 +21,7 @@ Page({
         beiuserid:that.data.id
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           res.data.user.createtime=formatTime(res.data.user.createtime)
           that.setData({

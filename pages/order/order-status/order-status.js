@@ -17,7 +17,7 @@ Page({
   },
   commentOrder(e){
     let item=e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
     wx.showToast({
       title:'TODO',
       icon:'none',
@@ -119,12 +119,12 @@ Page({
   },
   applyRefund(e){
     let item=e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
 
     let orderid=e.currentTarget.dataset.item.id
     let payNum=e.currentTarget.dataset.item.payment
-    console.log(orderid)
-    console.log(payNum)
+    //console.log(orderid)
+    //console.log(payNum)
     wx.navigateTo({
       url:'/pages/order/apply-refund/apply-refund?orderid='+orderid+'&payNum='+payNum
     })

@@ -14,7 +14,7 @@ Page({
   },
   goDetail(){
     let that = this
-    console.log(that.data.orderid,'----------------------------')
+    //console.log(that.data.orderid,'----------------------------')
     if(that.data.orderid.length > 1){
       wx.reLaunch({
         url:'/pages/order/order-list/order-list'

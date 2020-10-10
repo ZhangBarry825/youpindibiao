@@ -31,7 +31,7 @@ Page({
         pageNum:pageNum,
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           if(res.data.list.length>0){
             if(append){
@@ -55,7 +55,7 @@ Page({
               duration:1000
             })
           }
-          console.log(that.data.itemList,'itemList')
+          //console.log(that.data.itemList,'itemList')
 
         }
       }

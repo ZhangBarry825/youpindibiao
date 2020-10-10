@@ -41,7 +41,7 @@ Page({
     api.post({
       url:'/order/orderNum',
       success(res){
-        console.log(res)
+        //console.log(res)
         that.setData({
           numberList:res.data
         })
@@ -52,7 +52,7 @@ Page({
     let that = this
     wx.getUserInfo({
       success: function(res) {
-        console.log(res,123)
+        //console.log(res,123)
         api.login({
           ...res,
           success:response=>{
@@ -72,12 +72,12 @@ Page({
         })
       },
       fail(e){
-        console.log('失败',e)
+        //console.log('失败',e)
         wx.navigateTo({
           url:'/pages/permission/permission',
           events:{
             refreshData(){
-              console.log('刷新数据啦')
+              //console.log('刷新数据啦')
               let token = wx.getStorageSync('token')
               let nickName = wx.getStorageSync('nickName')
               let avatarUrl = wx.getStorageSync('avatarUrl')
@@ -139,7 +139,7 @@ Page({
         isLogin:false
       })
     }
-    console.log(that.data.isLogin,'isLogin')
+    //console.log(that.data.isLogin,'isLogin')
     if(wx.getStorageSync('token')){
       this.fetchData()
     }

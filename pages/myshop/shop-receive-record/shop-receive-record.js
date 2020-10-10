@@ -22,7 +22,7 @@ Page({
         flag:3
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           if(res.data.list.length>0){
             for (const Key in res.data.list) {

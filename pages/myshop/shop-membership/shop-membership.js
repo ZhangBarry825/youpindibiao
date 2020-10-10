@@ -55,7 +55,7 @@ Page({
         lv:lv
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           if(res.data.memberListLV1.list.length>0){
             for (const resKey in res.data.memberListLV1.list) {
@@ -82,7 +82,7 @@ Page({
               duration:1000
             })
           }
-          console.log(res.data)
+          //console.log(res.data)
           that.setData({
             totalNum:res.data.totalNum,
             levelNum1:res.data.oneNum,

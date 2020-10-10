@@ -40,7 +40,7 @@ Page({
     }
     if(buyList.length>0){
       wx.setStorageSync('buyList',JSON.stringify(setBuyList))
-      console.log(setBuyList,'setBuyList')
+      //console.log(setBuyList,'setBuyList')
       wx.navigateTo({
         url:'/pages/order/trolley-confirm/trolley-confirm'
       })
@@ -88,9 +88,9 @@ Page({
     let index=event.currentTarget.dataset.index
     let index2=event.currentTarget.dataset.index2
     let trolleyList=this.data.trolleyList
-    console.log(that.data.trolleyList[index].list[index2])
+    //console.log(that.data.trolleyList[index].list[index2])
     let item=that.data.trolleyList[index].list[index2]
-    console.log(that.data.trolleyList)
+    //console.log(that.data.trolleyList)
     if(item.goodsnum>parseInt(item.reserved2)){
       wx.showToast({
         title:'库存不足，库存为'+parseInt(item.reserved2),
@@ -122,7 +122,7 @@ Page({
           skuid:item.skuid
         },
         success(res){
-          console.log(res)
+          //console.log(res)
           if(res.message!='库存不足'){
             that.setData({
               ['trolleyList['+index+'].list['+index2+'].goodsnum']:item.goodsnum+1
@@ -150,7 +150,7 @@ Page({
             skuid:item.skuid
           },
           success(res){
-            console.log(res)
+            //console.log(res)
             that.setData({
               ['trolleyList['+index+'].list['+index2+'].goodsnum']:item.goodsnum-1
             })
@@ -169,7 +169,7 @@ Page({
           skuid:item.skuid
         },
         success(res){
-          console.log(res)
+          //console.log(res)
           trolleyList[index].list.splice(index2,1)
           if(trolleyList[index].list.length==0){
             trolleyList.splice(index,1)
@@ -184,7 +184,7 @@ Page({
   },
   goGoodsDetail(e){
     let item = e.currentTarget.dataset.item
-    console.log(item,'item')
+    //console.log(item,'item')
     wx.navigateTo({
       url:'/pages/goods-detail/goods-detail?id='+item.goodsid
     })

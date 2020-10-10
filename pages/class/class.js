@@ -20,7 +20,7 @@ Page({
     this.setData({
       mainActiveIndex: detail.index || 0,
     });
-    console.log()
+    //console.log()
     this.fetchItem(this.data.mainActiveIndex)
   },
 
@@ -35,14 +35,14 @@ Page({
     })
   },
   onSearchCancel(){
-    console.log('onSearchCancel')
+    //console.log('onSearchCancel')
     this.setData({
       searchKeyword:'',
       focus:false
     })
   },
   onSearchClick(event){
-    console.log(event.detail)
+    //console.log(event.detail)
     wx.navigateTo({
       url:'/pages/search-result/search-result?searchKeyword='+event.detail
     })
@@ -121,9 +121,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow')
+    //console.log('onShow')
     let index = wx.getStorageSync('defaultIndex')
-    console.log(index)
+    //console.log(index)
     if(index != ''){
       this.fetchData(index)
     }else {

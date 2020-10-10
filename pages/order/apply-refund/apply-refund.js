@@ -27,7 +27,7 @@ Page({
   onGoodsConfirm(event){
     let that = this
     const { picker, value, index } = event.detail;
-    console.log(index)
+    //console.log(index)
     that.setData({
       orderDetailId:that.data.goodsList[index].id,
       orderDetailName:that.data.goodsList[index].goodsname,
@@ -38,8 +38,8 @@ Page({
   onReasonConfirm(event){
     let that = this
     const { picker, value, index } = event.detail;
-    console.log(index)
-    console.log(that.data.reasonList[index])
+    //console.log(index)
+    //console.log(that.data.reasonList[index])
     that.setData({
       reasonValue:that.data.reasonList[index].id,
       reasonText:that.data.reasonList[index].reasonName,
@@ -57,8 +57,8 @@ Page({
     })
   },
   showGoods(){
-    console.log(this.data.goodsColumns)
-    console.log(this.data.goodsList)
+    //console.log(this.data.goodsColumns)
+    //console.log(this.data.goodsList)
     this.setData({
       showGoods:true
     })
@@ -70,13 +70,13 @@ Page({
   },
   deleteImg(event){
     let that = this
-    console.log(event.detail.index)
+    //console.log(event.detail.index)
     let fileList=that.data.fileList
     let imgList=that.data.imgList
-    console.log(fileList,imgList,1)
+    //console.log(fileList,imgList,1)
     fileList.splice(event.detail.index,1)
     imgList.splice(event.detail.index,1)
-    console.log(fileList,imgList,2)
+    //console.log(fileList,imgList,2)
     that.setData({
       fileList:fileList,
       imgList:imgList
@@ -85,7 +85,7 @@ Page({
   afterRead(event) {
     let that = this
     const { file } = event.detail;
-    console.log(file,'file')
+    //console.log(file,'file')
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
       url: api.Host+'/imageUpload/upReturnImage', // 仅为示例，非真实的接口地址
@@ -95,7 +95,7 @@ Page({
       success(res) {
         // 上传完成需要更新 fileList
         res= JSON.parse(res.data)
-        console.log(res)
+        //console.log(res)
         let fileList=that.data.fileList
         let imgList=[]
         for (const eventKey in res.data) {
@@ -111,8 +111,8 @@ Page({
           fileList:fileList,
           imgList:imgList
         });
-        console.log(that.data.fileList)
-        console.log(that.data.imgList)
+        //console.log(that.data.fileList)
+        //console.log(that.data.imgList)
       },
     });
   },
@@ -136,7 +136,7 @@ Page({
       imageList:that.data.imgList,
       orderDetailId:that.data.orderDetailId
     }
-    console.log(formData)
+    //console.log(formData)
     if(formData.orderid==''||formData.reasonid==''){
       wx.showToast({
         title:'请选择退货原因',
@@ -183,7 +183,7 @@ Page({
           for (const Key in res.data) {
             columns.push(res.data[Key].reasonName)
           }
-          console.log(columns,'columns')
+          //console.log(columns,'columns')
           that.setData({
             columns:columns,
             reasonList:res.data,
@@ -201,18 +201,18 @@ Page({
     this.setData({
       orderDetail:orderDetail
     })
-    console.log(orderDetail,998)
+    //console.log(orderDetail,998)
     let goodsColumns=[]
     for (const Key in orderDetail.orderDetailslist) {
       goodsColumns.push(orderDetail.orderDetailslist[Key].goodsname+' '+orderDetail.orderDetailslist[Key].goodsParam)
     }
-    console.log(goodsColumns,'goodsColumns')
+    //console.log(goodsColumns,'goodsColumns')
     that.setData({
       goodsColumns:goodsColumns,
       goodsList:orderDetail.orderDetailslist,
     })
-    console.log(that.data.goodsList,'---------')
-    console.log(that.data.goodsColumns,'---------')
+    //console.log(that.data.goodsList,'---------')
+    //console.log(that.data.goodsColumns,'---------')
 
 
     this.fetchData()

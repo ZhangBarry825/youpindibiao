@@ -39,7 +39,7 @@ Page({
     }
   },
   onTimeOut(){
-    console.log('倒计时结束')
+    //console.log('倒计时结束')
     this.getScrapGoods(this.data.nowScrapIndex)
   },
   onTimeChange(e) {
@@ -49,7 +49,7 @@ Page({
   },
   //领取红包
   catchRedPackage(){
-    console.log('我领到红包了')
+    //console.log('我领到红包了')
   },
   //隐藏红包
   hideRedPackage(){
@@ -61,7 +61,7 @@ Page({
     // })
   },
   onSearchChange(event){
-    console.log(event.detail)
+    //console.log(event.detail)
     if(event.detail!=''){
       this.setData({searchKeyword:event.detail})
       wx.navigateTo({
@@ -70,11 +70,11 @@ Page({
     }
   },
   onSearchCancel(event){
-    console.log(event.detail)
+    //console.log(event.detail)
   },
   onTagsChange(event) {
     let index=event.detail.name
-    console.log(index)
+    //console.log(index)
     wx.setStorageSync('defaultIndex',index)
     wx.switchTab({
       url:'/pages/class/class'
@@ -205,7 +205,7 @@ Page({
         pageSize:2,
       },
       success:res=>{
-        console.log(res)
+        //console.log(res)
         for (const resKey in res.data.data.list) {
           res.data.data.list[resKey].thumbnail=api.Host+'/'+res.data.data.list[resKey].thumbnail
         }
@@ -232,7 +232,7 @@ Page({
             scrapStart:true
           })
         }
-        console.log(this.data.leftTime)
+        //console.log(this.data.leftTime)
         that.setData({
           grabList:res.data.data.list
         })
@@ -356,8 +356,8 @@ Page({
       wx.navigateTo({
         url:path+'?id='+id,
       })
-    }else if(flag=='2'){
-      console.log(this.data.categoryList,id)
+    }else if(flag=='2'||flag=='3'){
+      //console.log(this.data.categoryList,id)
       path = "/pages/class/class"
       for (let i =0;i<this.data.categoryList.length;i++){
         if(this.data.categoryList[i].id==id){
@@ -372,7 +372,7 @@ Page({
   },
   addTrolley(e){
     let item = e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
 
     api.post({
       url:'/tCar/addTCarByUser',
@@ -381,7 +381,7 @@ Page({
         shopid:item.userId
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           wx.showToast({
             title:'添加成功！',
@@ -399,8 +399,8 @@ Page({
    */
   onLoad: function (options) {
     this.fetchData()
-    console.log(options,'options')
-    console.log(options.scene,'options.scene')
+    //console.log(options,'options')
+    //console.log(options.scene,'options.scene')
     if(options.scene){
       wx.setStorageSync('upopenid',options.scene)
     }

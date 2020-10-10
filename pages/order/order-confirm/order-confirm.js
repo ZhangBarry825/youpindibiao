@@ -44,7 +44,7 @@ Page({
   },
   onPayChange(event){
     const { type } = event.currentTarget.dataset;
-    console.log(type)
+    //console.log(type)
     let payTypeText=''
     if(type=='1'){
       payTypeText='微信支付'
@@ -71,7 +71,7 @@ Page({
         token:wx.getStorageSync('token')
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           if(res.data.length>0){
             that.setData({
@@ -85,7 +85,7 @@ Page({
   },
   submitForm(){
     if(!this.data.canSubmit){
-      console.log('稍安勿躁')
+      //console.log('稍安勿躁')
       return
     }
     let that = this
@@ -99,7 +99,7 @@ Page({
       skuid:that.data.goodsList[0].sku.id,
       goodsParam:that.data.goodsList[0].goodsParam,
     }
-    console.log(formData)
+    //console.log(formData)
     if(!formData.addressid){
       wx.showToast({
         title:'请添加配送地址',
@@ -107,7 +107,7 @@ Page({
         duration:1000
       })
     }else {
-      console.log(formData)
+      //console.log(formData)
       if(that.data.payType==0){
         Dialog.confirm({
           title: '提示',
@@ -148,8 +148,8 @@ Page({
           data:{...formData},
           success(res){
             let orderids=res.data.orderids
-            console.log(res.data,'res.data')
-            console.log(orderids,'orderids')
+            //console.log(res.data,'res.data')
+            //console.log(orderids,'orderids')
             if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
               wx.requestPayment({
                 timeStamp: res.data.timeStamp,

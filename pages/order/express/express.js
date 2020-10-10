@@ -18,7 +18,7 @@ Page({
         orderid:that.data.orderid
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           res.data.thumbnail=api.Host+'/'+res.data.thumbnail
           // res.data.mapList.reverse()

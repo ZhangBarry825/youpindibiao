@@ -23,7 +23,7 @@ Page({
     uploadImg(e) {
         let that = this
         let type = e.currentTarget.dataset.type
-        console.log(type)
+        //console.log(type)
         wx.chooseImage({
             success(res) {
                 const tempFilePaths = res.tempFilePaths
@@ -34,7 +34,7 @@ Page({
                     formData: {},
                     success(res) {
                         let result = JSON.parse(res.data).data[0]
-                        console.log(result, 'result')
+                        //console.log(result, 'result')
                         if (type == 'headimg') {
                             that.setData({
                                 ['shopInfo.headimg']: result
@@ -44,7 +44,7 @@ Page({
                                 ['shopInfo.bgimg']: result
                             })
                         }
-                        console.log(that.data.shopInfo)
+                        //console.log(that.data.shopInfo)
                     }
                 })
             }
@@ -71,7 +71,7 @@ Page({
             url: '/myShop/userShopInfo',
             data: {},
             success(res) {
-                console.log(res)
+                //console.log(res)
                 if (res.code == 200) {
                     that.setData({
                         shopInfo: res.data
@@ -89,7 +89,7 @@ Page({
             shopHeardImage: this.data.shopInfo.headimg,
             shopBackImage: this.data.shopInfo.bgimg,
         }
-        console.log(formData)
+        //console.log(formData)
         for (const i in formData) {
             if (formData[i] == '' || formData[i] == undefined || formData[i] == 'undefined') {
                 wx.showToast({

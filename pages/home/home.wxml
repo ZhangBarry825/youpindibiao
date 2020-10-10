@@ -142,13 +142,13 @@
         </view>
     </view>
     <view class="banners">
-        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}">
+        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}" bind:tap="bannerGo" data-flag="{{advertisementList[0].flag}}" data-id="{{advertisementList[0].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[0].imageUrl}}"></image>
         </view>
-        <view class="banner" wx:if="{{advertisementList[1].imageUrl}}">
+        <view class="banner" wx:if="{{advertisementList[1].imageUrl}}" bind:tap="bannerGo" data-flag="{{advertisementList[1].flag}}" data-id="{{advertisementList[1].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[1].imageUrl}}"></image>
         </view>
-        <view class="banner" wx:if="{{advertisementList[2].imageUrl}}">
+        <view class="banner" wx:if="{{advertisementList[2].imageUrl}}" bind:tap="bannerGo" data-flag="{{advertisementList[2].flag}}" data-id="{{advertisementList[2].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[2].imageUrl}}"></image>
         </view>
     </view>
@@ -179,7 +179,7 @@
         </view>
     </view>
     <view class="banners" wx:if="{{advertisementList[3].imageUrl}}">
-        <view class="banner">
+        <view class="banner" bind:tap="bannerGo" data-flag="{{advertisementList[3].flag}}" data-id="{{advertisementList[3].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[3].imageUrl}}"></image>
         </view>
     </view>

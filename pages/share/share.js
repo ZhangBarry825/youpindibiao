@@ -25,7 +25,7 @@ Page({
     })
   },
   onTabsClick(e){
-    console.log(e.detail.name)
+    //console.log(e.detail.name)
     if(e.detail.name==1){
       this.setData({
         type:0
@@ -48,7 +48,7 @@ Page({
         pageSize:that.data.pageSize,
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.data.list.length>0){
 
           for (const apiKey in res.data.list) {
@@ -76,7 +76,7 @@ Page({
             duration:1000
           })
         }
-        console.log(that.data.itemList,'1')
+        //console.log(that.data.itemList,'1')
       }
     })
   },

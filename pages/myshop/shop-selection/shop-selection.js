@@ -81,8 +81,8 @@ Page({
 
   },
   onSearchChange(event){
-    console.log(event.detail)
-    console.log(this.data.searchKeyword)
+    //console.log(event.detail)
+    //console.log(this.data.searchKeyword)
     this.setData({
       searchKeyword:event.detail
     })
@@ -94,7 +94,7 @@ Page({
   },
   selectByCat(e){
     let item=e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
     this.setData({
       fk_id:item.fkId,
       pageNum:1,
@@ -103,7 +103,7 @@ Page({
     this.fetchData()
   },
   onSearchCancel(event){
-    console.log(event.detail)
+    //console.log(event.detail)
     this.setData({
       searchKeyword:''
     })
@@ -138,7 +138,7 @@ Page({
   upGoods(e){
     let that = this
     let item = e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
     api.post({
       url:'/myShop/addGoods',
       data:{
@@ -160,7 +160,7 @@ Page({
   },
   goGoodsDetail(e){
     let id=e.currentTarget.dataset.id
-    console.log(id)
+    //console.log(id)
     wx.navigateTo({
       url:'/pages/myshop/goods-detail/goods-detail?id='+id
     })
@@ -224,7 +224,7 @@ Page({
         fk_id:that.data.fk_id
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           if(res.data.list.length>0){
             if(append){

@@ -53,7 +53,7 @@ Page({
     })
   },
   selectArea(e) {
-    console.log(e.detail.values)
+    //console.log(e.detail.values)
     this.setData({
       showSelect: false,
       addressArea: e.detail.values[0].name + e.detail.values[1].name + e.detail.values[2].name
@@ -99,7 +99,7 @@ Page({
             ...that.data.addressData
           },
           success(res) {
-            console.log(res)
+            //console.log(res)
             if (res.code == 200) {
               wx.showToast({
                 title: '提交成功！',
@@ -145,11 +145,11 @@ Page({
   },
   submitForm() {
     let that = this
-    console.log(this.data.addressArea)
-    console.log(this.data.addressDetail)
-    console.log(this.data.shopName)
-    console.log(this.data.userName)
-    console.log(this.data.phone)
+    //console.log(this.data.addressArea)
+    //console.log(this.data.addressDetail)
+    //console.log(this.data.shopName)
+    //console.log(this.data.userName)
+    //console.log(this.data.phone)
      if (this.data.shopName == '') {
       wx.showToast({
         title: '请输入店铺名称',
@@ -189,7 +189,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id)
+    //console.log(options.id)
     let id = options.id
     if (id) {
       this.setData({

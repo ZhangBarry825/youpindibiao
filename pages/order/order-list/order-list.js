@@ -100,7 +100,7 @@ Page({
   },
   commentOrder(e){
     let item=e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
     wx.setStorageSync('commentItem',JSON.stringify(item))
     wx.navigateTo({
       url:'/pages/order/order-appraise/order-appraise'
@@ -135,7 +135,7 @@ Page({
         pageSize: that.data.pageSize
       },
       success(res){
-        console.log(res)
+        //console.log(res)
         if(res.code == 200){
           if(res.data.list.length>0){
             if(append){
@@ -299,7 +299,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('到底啦')
+    //console.log('到底啦')
     let that = this
     this.fetchData(that.data.state,that.data.pageNum+1,true)
   },

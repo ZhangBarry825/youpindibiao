@@ -10,7 +10,7 @@ Page({
   },
   onChange(event) {
     // event.detail 为当前输入的值
-    console.log(event.detail);
+    //console.log(event.detail);
     this.setData({value:event.detail})
   },
   submitForm(){
@@ -32,7 +32,7 @@ Page({
               paySign: res.data.paySign,
               total_fee: res.data.total_fee,
               success (res) {
-                console.log(res,'success')
+                //console.log(res,'success')
                 wx.showToast({
                   title:'支付成功！',
                   icon:'success',

@@ -10,7 +10,7 @@ Page({
 
   onChange(event) {
     // event.detail 为当前输入的值
-    console.log(event.detail);
+    //console.log(event.detail);
   },
   /**
    * 生命周期函数--监听页面加载
