@@ -72,6 +72,7 @@
   width: 100%;
 }
 .page .page-content .nav-box {
+  width: 195rpx !important;
   height: 100% !important;
 }
 .page .page-content .nav-box .van-tree-select {
@@ -82,7 +83,7 @@
   background-color: #ffffff !important;
 }
 .page .page-content .nav-box .main-item-class {
-  width: 100%;
+  width: 195rpx;
   background-color: #ffffff;
   border-bottom: 1px solid #f6f6f6;
   border-right: 1px solid #f6f6f6;
@@ -102,11 +103,12 @@
   box-sizing: border-box;
   padding: 10rpx 5rpx;
   overflow: scroll;
+  width: 560rpx;
 }
 .page .page-content .nav-box .goods-items .goods-item {
   float: left;
   margin: 5rpx;
-  width: 152rpx;
+  width: 178rpx;
   height: 211rpx;
   box-sizing: border-box;
   padding: 20rpx;
@@ -116,12 +118,13 @@
   background-color: #ffffff;
 }
 .page .page-content .nav-box .goods-items .goods-item image {
-  width: 111rpx;
-  height: 111rpx;
+  width: 120rpx;
+  height: 120rpx;
   flex-shrink: 0;
 }
 .page .page-content .nav-box .goods-items .goods-item .text {
-  margin-top: 25rpx;
+  margin-top: 15rpx;
+  font-size: 25rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;

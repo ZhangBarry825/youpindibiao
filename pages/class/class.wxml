@@ -49,8 +49,7 @@
                 main-active-index="{{ mainActiveIndex }}"
                 active-id="{{ activeId }}"
                 bind:click-nav="onClickNav"
-                bind:click-item="onClickNavItem"
-        >
+                bind:click-item="onClickNavItem">
 <!--            <image src="https://img.yzcdn.cn/vant/apple-1.jpg" slot="content" />-->
             <view class="goods-items" slot="content">
                 <view class="goods-item" wx:for="{{classItems}}" wx:key="item" bind:tap="goToGoodsList" data-id="{{item.id}}">
