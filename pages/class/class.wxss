@@ -108,7 +108,7 @@
 .page .page-content .nav-box .goods-items .goods-item {
   float: left;
   margin: 5rpx;
-  width: 178rpx;
+  width: 175rpx;
   height: 211rpx;
   box-sizing: border-box;
   padding: 20rpx;
