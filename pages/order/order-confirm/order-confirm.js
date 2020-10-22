@@ -107,7 +107,6 @@ Page({
         duration:1000
       })
     }else {
-      //console.log(formData)
       if(that.data.payType==0){
         Dialog.confirm({
           title: '提示',
@@ -147,10 +146,8 @@ Page({
           url:'/order/addOrderByGoods',
           data:{...formData},
           success(res){
-            let orderids=res.data.orderids
-            //console.log(res.data,'res.data')
-            //console.log(orderids,'orderids')
             if(res.code == 200 && res.message!='余额不足' && res.message!='商品库存不足'){
+              let orderids=res.data.orderids
               wx.requestPayment({
                 timeStamp: res.data.timeStamp,
                 nonceStr: res.data.nonceStr,
@@ -167,26 +164,26 @@ Page({
                   wx.showToast({
                     title:'支付失败！',
                     icon:'none',
-                    duration:1000
+                    duration:2000
                   })
                   setTimeout(()=>{
                     wx.navigateTo({
                       url:'/pages/order/order-status/order-status?orderid='+orderids[0]
                     })
-                  },1000)
+                  },2000)
                 }
               })
             } else if(res.message=='余额不足'){
               wx.showToast({
                 title:'您的余额不足！',
                 icon:'none',
-                duration:1000
+                duration:2000
               })
             } else if(res.message=='商品库存不足'){
               wx.showToast({
                 title:'商品库存不足',
                 icon:'none',
-                duration:1000
+                duration:2000
               })
             }
           }

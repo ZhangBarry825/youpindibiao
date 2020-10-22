@@ -188,7 +188,7 @@ Page({
             wx.showToast({
               title:'添加成功！',
               icon:'success',
-              duration:1000
+              duration:2000
             })
             that.setData({
               showSpecification:false
@@ -207,23 +207,33 @@ Page({
       wx.showToast({
         title:'请选择规格',
         icon:'none',
-        duration:1000
+        duration:2000
       })
     }
   },
   goToBuy(){
     let that = this
+    console.log(that.data.skuRes)
     if(that.data.skuRes.id){
-      console.log(that.data.goodsDetail.list[0].id)
-      let goodsList=[{
-        goods:that.data.goodsDetail.list[0],
-        number:that.data.number,
-        sku:that.data.skuRes
-      }]
-      goodsList[0].goods.detail=''
-      wx.navigateTo({
-        url:'/pages/order/order-confirm/order-confirm?goodsList='+JSON.stringify(goodsList)+'&type=goods'+'&shopid='+that.data.shopid
-      })
+      if(that.data.skuRes.goodsRepetory>0){
+        console.log(that.data.goodsDetail.list[0].id)
+        let goodsList=[{
+          goods:that.data.goodsDetail.list[0],
+          number:that.data.number,
+          sku:that.data.skuRes
+        }]
+        goodsList[0].goods.detail=''
+        wx.navigateTo({
+          url:'/pages/order/order-confirm/order-confirm?goodsList='+JSON.stringify(goodsList)+'&type=goods'+'&shopid='+that.data.shopid
+        })
+      }else {
+        wx.showToast({
+          title:'库存不足',
+          icon:'none',
+          duration:2000
+        })
+      }
+
     }else {
       wx.showToast({
         title:'请选择规格',
