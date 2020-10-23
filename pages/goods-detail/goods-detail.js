@@ -199,44 +199,43 @@ Page({
             })
         }
         //判断库存为零禁止选择
-        if(e.currentTarget.dataset.index==0){
-            let id1=e.currentTarget.dataset.value
-            for (const key1 in that.data.attributeList[1].attributeValueList) {
-                let id2=that.data.attributeList[1].attributeValueList[key1].id
-                console.log(id1,id2)
-                for (const key2 in that.data.skuList) {
-                    if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory==0){
-                        that.setData({
-                            [`attributeList[1].attributeValueList[${key1}].canSelect`]:false
-                        })
-                    }else if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory!=0) {
-                        that.setData({
-                            [`attributeList[1].attributeValueList[${key1}].canSelect`]:true
-                        })
+        if(that.data.attributeList.length>1){
+            if(e.currentTarget.dataset.index==0){
+                let id1=e.currentTarget.dataset.value
+                for (const key1 in that.data.attributeList[1].attributeValueList) {
+                    let id2=that.data.attributeList[1].attributeValueList[key1].id
+                    console.log(id1,id2)
+                    for (const key2 in that.data.skuList) {
+                        if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory==0){
+                            that.setData({
+                                [`attributeList[1].attributeValueList[${key1}].canSelect`]:false
+                            })
+                        }else if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory!=0) {
+                            that.setData({
+                                [`attributeList[1].attributeValueList[${key1}].canSelect`]:true
+                            })
+                        }
                     }
                 }
-            }
-        }else if(e.currentTarget.dataset.index==1){
-            let id2=e.currentTarget.dataset.value
-            for (const key1 in that.data.attributeList[0].attributeValueList) {
-                let id1=that.data.attributeList[0].attributeValueList[key1].id
-                console.log(id1,id2)
-                for (const key2 in that.data.skuList) {
-                    if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory==0){
-                        that.setData({
-                            [`attributeList[0].attributeValueList[${key1}].canSelect`]:false
-                        })
-                    }else if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory!=0) {
-                        that.setData({
-                            [`attributeList[0].attributeValueList[${key1}].canSelect`]:true
-                        })
+            }else if(e.currentTarget.dataset.index==1){
+                let id2=e.currentTarget.dataset.value
+                for (const key1 in that.data.attributeList[0].attributeValueList) {
+                    let id1=that.data.attributeList[0].attributeValueList[key1].id
+                    console.log(id1,id2)
+                    for (const key2 in that.data.skuList) {
+                        if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory==0){
+                            that.setData({
+                                [`attributeList[0].attributeValueList[${key1}].canSelect`]:false
+                            })
+                        }else if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory!=0) {
+                            that.setData({
+                                [`attributeList[0].attributeValueList[${key1}].canSelect`]:true
+                            })
+                        }
                     }
                 }
             }
         }
-
-
-
 
     },
     addTrolley() {
