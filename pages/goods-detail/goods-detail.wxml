@@ -131,8 +131,8 @@
         </view>
         <view class="spe-goods-item" wx:for="{{attributeList}}" wx:key="item">
             <view class="title">{{item.attributeName}}</view>
-            <view class="item {{selectItem[index]==itm.id?'selected':''}} " wx:for="{{item.attributeValueList}}" wx:for-index="indexa"
-                  bind:tap="selectSpe" data-value="{{itm.id}}" data-index="{{index}}" wx:for-item="itm" wx:key="itm">
+            <view class="item {{selectItem[index]==itm.id?'selected':''}} {{itm.canSelect?'':'disabled'}}" wx:for="{{item.attributeValueList}}" wx:for-index="indexa"
+                  bind:tap="selectSpe" data-disabled="{{!itm.canSelect}}" data-value="{{itm.id}}" data-index="{{index}}" wx:for-item="itm" wx:key="itm">
                 {{itm.valueName}}
                 <image src="../../static/images/angle.png"></image>
             </view>
