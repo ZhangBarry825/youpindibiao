@@ -1,469 +1,467 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.11.3",
-	"appid": "wxb34aa6beac0ea28e",
-	"projectname": "%E4%BC%98%E5%93%81%E5%9C%B0%E6%A0%87",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "搜索结果",
-					"pathName": "pages/search-result/search-result",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的分享",
-					"pathName": "pages/share/share",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "我的店铺-index",
-					"pathName": "pages/myshop/shop-index/shop-index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的订单",
-					"pathName": "pages/order/order-list/order-list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的店铺-home",
-					"pathName": "pages/myshop/shop-home/shop-home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/mine/mine",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "店铺设置",
-					"pathName": "pages/myshop/shop-setting/shop-setting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 7,
-					"name": "添加商品",
-					"pathName": "pages/myshop/shop-addition/shop-addition",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "选品上架",
-					"pathName": "pages/myshop/shop-selection/shop-selection",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "选品上架详情",
-					"pathName": "pages/myshop/shop-selection-detail/shop-selection-detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "店铺申请提现",
-					"pathName": "pages/myshop/shop-encash/shop-encash",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "财富中心",
-					"pathName": "pages/myshop/shop-value/shop-value",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
-					"name": "提现记录",
-					"pathName": "pages/myshop/shop-encash-record/shop-encash-record",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 13,
-					"name": "收入记录",
-					"pathName": "pages/myshop/shop-receive-record/shop-receive-record",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "绑定手机",
-					"pathName": "pages/myshop/shop-bind-phone/shop-bind-phone",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 15,
-					"name": "邀请好友",
-					"pathName": "pages/myshop/shop-invite/shop-invite",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的会员",
-					"pathName": "pages/myshop/shop-membership/shop-membership",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 17,
-					"name": "我的收藏",
-					"pathName": "pages/collect/collect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的会员详情",
-					"pathName": "pages/myshop/shop-membership-detail/shop-membership-detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "首页",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "授权",
-					"pathName": "pages/permission/permission",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的钱包",
-					"pathName": "pages/my-wallet/my-wallet",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 22,
-					"name": "限时抢购",
-					"pathName": "pages/panic-buying/panic-buying",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 23,
-					"name": "商品详情",
-					"pathName": "pages/goods-detail/goods-detail",
-					"query": "id=1513824945624593",
-					"scene": null
-				},
-				{
-					"id": 24,
-					"name": "搜索结果（水）",
-					"pathName": "pages/search-result/search-result",
-					"query": "searchKeyword=水",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "分类",
-					"pathName": "pages/class/class",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 26,
-					"name": "商家详情",
-					"pathName": "pages/nearby-shop/nearby-shop",
-					"query": "id=1513824945623187",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的分享",
-					"pathName": "pages/share/share",
-					"query": "id=1513913791307515",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的收藏",
-					"pathName": "pages/collect/collect",
-					"query": "id=1513913791307515",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "消息通知",
-					"pathName": "pages/message/message",
-					"query": "id=1513913791307515",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "附近商家列表",
-					"pathName": "pages/nearby-shops/nearby-shops",
-					"query": "id=1513913791307515",
-					"scene": null
-				},
-				{
-					"id": 31,
-					"name": "设置",
-					"pathName": "pages/setting/setting",
-					"query": "id=1513824945623187",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "收货地址",
-					"pathName": "pages/address-list/address-list",
-					"query": "id=1513824945623187",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "新增地址",
-					"pathName": "pages/address-detail/address-detail",
-					"query": "id=1513824945623187",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "绑定银行卡",
-					"pathName": "pages/bankcard/bankcard-bind/bankcard-bind",
-					"query": "id=1513824945623187",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "资料修改",
-					"pathName": "pages/edit-userInfo/edit-userInfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "申请开店",
-					"pathName": "pages/myshop/shop-apply/shop-apply",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的店铺",
-					"pathName": "pages/myshop/shop-index/shop-index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "确认订单",
-					"pathName": "pages/order/order-confirm/order-confirm",
-					"query": "id=1513824945624593",
-					"scene": null
-				},
-				{
-					"id": 39,
-					"name": "订单状态",
-					"pathName": "pages/order/order-status/order-status",
-					"query": "orderid=1596163681244900",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "店铺详情",
-					"pathName": "pages/nearby-shop/nearby-shop",
-					"query": "id=1513824945623187",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "购物车",
-					"pathName": "pages/trolley/trolley",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的订单",
-					"pathName": "pages/order/order-list/order-list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "评价",
-					"pathName": "pages/order/order-appraise/order-appraise",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "店铺设置",
-					"pathName": "pages/myshop/shop-setting/shop-setting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的店铺",
-					"pathName": "pages/myshop/shop-index/shop-index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的店铺Home",
-					"pathName": "pages/myshop/shop-home/shop-home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "选品上架",
-					"pathName": "pages/myshop/shop-selection/shop-selection",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "选品下架",
-					"pathName": "pages/myshop/shop-home/shop-home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 49,
-					"name": "上架商品详情",
-					"pathName": "pages/myshop/goods-detail/goods-detail",
-					"query": "id=1596087730152098",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "邀请好友",
-					"pathName": "pages/myshop/shop-invite/shop-invite",
-					"query": "id=1596087730152098",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "附近商家",
-					"pathName": "pages/nearby-shops/nearby-shops",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "收入记录",
-					"pathName": "pages/myshop/shop-receive-record/shop-receive-record",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "余额明细",
-					"pathName": "pages/commission/commission",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "直播",
-					"pathName": "pages/live-room/live-room/live-room",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "创建直播间",
-					"pathName": "pages/live-room/create-room/create-room",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "邀请好友",
-					"pathName": "pages/myshop/shop-invite/shop-invite",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.11.3",
+  "appid": "wxb34aa6beac0ea28e",
+  "projectname": "%E4%BC%98%E5%93%81%E5%9C%B0%E6%A0%87",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "搜索结果",
+          "pathName": "pages/search-result/search-result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的分享",
+          "pathName": "pages/share/share",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "我的店铺-index",
+          "pathName": "pages/myshop/shop-index/shop-index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的订单",
+          "pathName": "pages/order/order-list/order-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的店铺-home",
+          "pathName": "pages/myshop/shop-home/shop-home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "个人中心",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "店铺设置",
+          "pathName": "pages/myshop/shop-setting/shop-setting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 7,
+          "name": "添加商品",
+          "pathName": "pages/myshop/shop-addition/shop-addition",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "选品上架",
+          "pathName": "pages/myshop/shop-selection/shop-selection",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "选品上架详情",
+          "pathName": "pages/myshop/shop-selection-detail/shop-selection-detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 10,
+          "name": "店铺申请提现",
+          "pathName": "pages/myshop/shop-encash/shop-encash",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "财富中心",
+          "pathName": "pages/myshop/shop-value/shop-value",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 12,
+          "name": "提现记录",
+          "pathName": "pages/myshop/shop-encash-record/shop-encash-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 13,
+          "name": "收入记录",
+          "pathName": "pages/myshop/shop-receive-record/shop-receive-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "绑定手机",
+          "pathName": "pages/myshop/shop-bind-phone/shop-bind-phone",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 15,
+          "name": "邀请好友",
+          "pathName": "pages/myshop/shop-invite/shop-invite",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的会员",
+          "pathName": "pages/myshop/shop-membership/shop-membership",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 17,
+          "name": "我的收藏",
+          "pathName": "pages/collect/collect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的会员详情",
+          "pathName": "pages/myshop/shop-membership-detail/shop-membership-detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "首页",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "授权",
+          "pathName": "pages/permission/permission",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的钱包",
+          "pathName": "pages/my-wallet/my-wallet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 22,
+          "name": "限时抢购",
+          "pathName": "pages/panic-buying/panic-buying",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 23,
+          "name": "商品详情",
+          "pathName": "pages/goods-detail/goods-detail",
+          "query": "id=1513824945624593",
+          "scene": null
+        },
+        {
+          "id": 24,
+          "name": "搜索结果（水）",
+          "pathName": "pages/search-result/search-result",
+          "query": "searchKeyword=水",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "分类",
+          "pathName": "pages/class/class",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 26,
+          "name": "商家详情",
+          "pathName": "pages/nearby-shop/nearby-shop",
+          "query": "id=1513824945623187",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的分享",
+          "pathName": "pages/share/share",
+          "query": "id=1513913791307515",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的收藏",
+          "pathName": "pages/collect/collect",
+          "query": "id=1513913791307515",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "消息通知",
+          "pathName": "pages/message/message",
+          "query": "id=1513913791307515",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "附近商家列表",
+          "pathName": "pages/nearby-shops/nearby-shops",
+          "query": "id=1513913791307515",
+          "scene": null
+        },
+        {
+          "id": 31,
+          "name": "设置",
+          "pathName": "pages/setting/setting",
+          "query": "id=1513824945623187",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "收货地址",
+          "pathName": "pages/address-list/address-list",
+          "query": "id=1513824945623187",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "新增地址",
+          "pathName": "pages/address-detail/address-detail",
+          "query": "id=1513824945623187",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "绑定银行卡",
+          "pathName": "pages/bankcard/bankcard-bind/bankcard-bind",
+          "query": "id=1513824945623187",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "资料修改",
+          "pathName": "pages/edit-userInfo/edit-userInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "申请开店",
+          "pathName": "pages/myshop/shop-apply/shop-apply",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的店铺",
+          "pathName": "pages/myshop/shop-index/shop-index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "确认订单",
+          "pathName": "pages/order/order-confirm/order-confirm",
+          "query": "id=1513824945624593",
+          "scene": null
+        },
+        {
+          "id": 39,
+          "name": "订单状态",
+          "pathName": "pages/order/order-status/order-status",
+          "query": "orderid=1596163681244900",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "店铺详情",
+          "pathName": "pages/nearby-shop/nearby-shop",
+          "query": "id=1513824945623187",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "购物车",
+          "pathName": "pages/trolley/trolley",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的订单",
+          "pathName": "pages/order/order-list/order-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "评价",
+          "pathName": "pages/order/order-appraise/order-appraise",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "店铺设置",
+          "pathName": "pages/myshop/shop-setting/shop-setting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的店铺",
+          "pathName": "pages/myshop/shop-index/shop-index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的店铺Home",
+          "pathName": "pages/myshop/shop-home/shop-home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "选品上架",
+          "pathName": "pages/myshop/shop-selection/shop-selection",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "选品下架",
+          "pathName": "pages/myshop/shop-home/shop-home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 49,
+          "name": "上架商品详情",
+          "pathName": "pages/myshop/goods-detail/goods-detail",
+          "query": "id=1596087730152098",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "邀请好友",
+          "pathName": "pages/myshop/shop-invite/shop-invite",
+          "query": "id=1596087730152098",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "附近商家",
+          "pathName": "pages/nearby-shops/nearby-shops",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "收入记录",
+          "pathName": "pages/myshop/shop-receive-record/shop-receive-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "余额明细",
+          "pathName": "pages/commission/commission",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "直播",
+          "pathName": "pages/live-room/live-room/live-room",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "创建直播间",
+          "pathName": "pages/live-room/create-room/create-room",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "邀请好友",
+          "pathName": "pages/myshop/shop-invite/shop-invite",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "余额提现",
+          "pathName": "pages/encash/encash",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

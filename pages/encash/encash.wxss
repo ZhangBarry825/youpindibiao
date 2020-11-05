@@ -24,10 +24,17 @@
   margin-right: 20rpx;
   width: 45rpx;
   height: 38rpx;
+  align-items: flex-start;
 }
 .page .card .left .info {
   display: flex;
   flex-direction: column;
+}
+.page .card .left .info .none {
+  padding: 15rpx 0;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #808080;
 }
 .page .card .left .info .title {
   font-size: 30rpx;

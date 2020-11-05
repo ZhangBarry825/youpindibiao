@@ -83,13 +83,19 @@ Page({
         data:{
           bankName:that.data.bankName,
           cardid:that.data.cardNum,
-          imageurl:'',
+          // imageurl:'',
           cardName:that.data.name,
         },
         success(res){
           if(res.code == 200){
             wx.navigateTo({
               url:'/pages/bankcard/bankcard-bind3/bankcard-bind3'
+            })
+          }else{
+            wx.showToast({
+              title:res.message,
+              icon:'none',
+              duration:2000
             })
           }
         }

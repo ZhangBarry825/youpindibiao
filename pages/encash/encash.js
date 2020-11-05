@@ -7,46 +7,73 @@ Page({
      */
     data: {
         balance: 0,
-        count: ''
+        count: '',
+        bankName:'',
+        bankNumber:'',
+        bankNumberFour:'',
     },
     onCountChange(event) {
         this.setData({count: event.detail})
     },
+    goTo(e){
+        let type = e.currentTarget.dataset.type
+        wx.navigateTo({
+            url:e.currentTarget.dataset.path+'?type='+type
+        })
+    },
+    setCard(e){
+        console.log(e)
+        let that = this
+        that.setData({
+            bankName:e.bankName,
+            bankNumber:e.bankNumber,
+            bankNumberFour:e.codeid2,
+        })
+    },
     submitForm() {
         let that = this
         if (parseFloat(that.data.count) > 0) {
+            if(that.data.bankNumber) {
 
-            api.post({
-                url:'/myMoney/withdrawToCard',
-                data:{
-                    money:that.data.count
-                },
-                success(res){
-                    if(res.code == 200){
-                        wx.showToast({
-                            title:res.message,
-                            icon:'success',
-                            duration:2000
-                        })
-                        setTimeout(()=>{
-                            wx.navigateBack({
-                                delta:1
+                api.post({
+                    url: '/myMoney/withdrawToCard',
+                    data: {
+                        money: that.data.count,
+                        codeid:that.data.bankNumber
+                    },
+                    success(res) {
+                        if (res.code == 200) {
+                            wx.showToast({
+                                title: res.message,
+                                icon: 'success',
+                                duration: 2000
                             })
-                        },2000)
-                    }else {
-                        wx.showToast({
-                            title:res.message,
-                            icon:'none',
-                            duration:2000
-                        })
+                            setTimeout(() => {
+                                wx.navigateBack({
+                                    delta: 1
+                                })
+                            }, 2000)
+                        } else {
+                            wx.showToast({
+                                title: res.message,
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
                     }
-                }
-            })
+                })
+            }else {
+                wx.showToast({
+                    title:'请先选择银行卡',
+                    icon:'none',
+                    duration:2000
+                })
+            }
         }else {
             wx.showToast({
                 title:'请输入正确的金额！',
                 icon:'none',
-                duration:1000
+                duration:2000
             })
         }
     },
