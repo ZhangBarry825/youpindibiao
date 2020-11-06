@@ -9,8 +9,8 @@ Page({
   data: {
     message:'',
     showPay:false,
-    payType:'0',
-    payTypeText:'余额支付',
+    payType:'1',
+    payTypeText:'微信支付',
     goodsList:[],
     addressDetail: '',
     totalPrice:0.00,
@@ -107,7 +107,7 @@ Page({
         duration:1000
       })
     }else {
-      if(that.data.payType==0){
+      if(that.data.payType=='0'){
         Dialog.confirm({
           title: '提示',
           message: '确认余额支付？',

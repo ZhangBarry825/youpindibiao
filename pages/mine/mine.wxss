@@ -108,9 +108,33 @@
 .mine-page .order-box .order-menu .order-item text {
   margin-top: 10rpx;
 }
+.mine-page .menu-box .image {
+  width: 57rpx;
+  height: 57rpx;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .mine-page .menu-box image {
   width: 57rpx;
   height: 57rpx;
+}
+.mine-page .menu-box .kf {
+  width: 65rpx;
+  height: 65rpx;
+  position: absolute;
+  top: -5rpx;
+}
+.mine-page .menu-box button {
+  line-height: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mine-page .menu-box button::after {
+  display: none;
 }
 .mine-page .menu-box text {
   margin-top: 20rpx;

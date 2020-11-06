@@ -64,6 +64,14 @@
             <image src="../../static/images/m2.png"/>
             <text>修改资料</text>
         </van-grid-item>
+        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/address-list/address-list">
+            <image src="../../static/images/m6.png"/>
+            <text>地址管理</text>
+        </van-grid-item>
+        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/message/message">
+            <image src="../../static/images/m7.png"/>
+            <text>消息通知</text>
+        </van-grid-item>
         <van-grid-item use-slot bind:tap="goTo" data-path="/pages/share/share">
             <image src="../../static/images/m3.png"/>
             <text>我的分享</text>
@@ -72,17 +80,13 @@
             <image src="../../static/images/m4.png"/>
             <text>我的收藏</text>
         </van-grid-item>
-        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/trolley/trolley" data-type="switch">
-            <image src="../../static/images/m5.png"/>
-            <text>购物车</text>
-        </van-grid-item>
-        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/address-list/address-list">
-            <image src="../../static/images/m6.png"/>
-            <text>地址管理</text>
-        </van-grid-item>
-        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/message/message">
-            <image src="../../static/images/m7.png"/>
-            <text>我的消息</text>
+        <van-grid-item use-slot>
+            <button open-type="contact" style="border:none;margin: 0;padding: 0;background-color: #ffffff">
+                <view class="image">
+                    <image class="kf" src="../../static/images/kkff.png"/>
+                </view>
+                <text class="kf-text">联系客服</text>
+            </button>
         </van-grid-item>
         <van-grid-item use-slot bind:tap="goTo" data-path="/pages/setting/setting">
             <image src="../../static/images/m8.png"/>

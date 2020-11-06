@@ -30,7 +30,7 @@
                             </view>
                             <view class="line2">x{{item2.goodsnum}}</view>
                             <view class="line3">
-                                <view class="seven">七天退换</view>
+                                <view class="seven">坏果包赔</view>
                             </view>
                         </view>
                     </view>
