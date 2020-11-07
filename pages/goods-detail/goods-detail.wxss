@@ -34,7 +34,7 @@
   flex-direction: row;
 }
 .page .goods-info .goods-price .left {
-  width: calc(100% - 120rpx);
+  width: calc(100% - 260rpx);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -68,7 +68,19 @@
   margin-right: 30rpx;
 }
 .page .goods-info .goods-price .right {
-  width: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.page .goods-info .goods-price .right button:first-child {
+  border: none;
+}
+.page .goods-info .goods-price .right button:first-child image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.page .goods-info .goods-price .right button {
+  width: 130rpx;
   height: 88rpx;
   display: flex;
   flex-direction: column;
@@ -77,17 +89,19 @@
   font-size: 26rpx;
   font-weight: 400;
   color: #4d4d4d;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
   background-color: #ffffff;
   border: none;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: unset;
   line-height: unset;
 }
-.page .goods-info .goods-price .right image {
+.page .goods-info .goods-price .right button image {
   width: 32rpx;
   height: 39rpx;
 }
-.page .goods-info .goods-price .right::after {
+.page .goods-info .goods-price .right button::after {
   border: none;
 }
 .page .specification {
@@ -447,6 +461,19 @@
 }
 .page .Spe-custom-class .spe-goods-num {
   margin-bottom: 30rpx;
+}
+.show-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.show-box van-button {
+  margin: 10rpx 0;
 }
 /**
  * author: Di (微信小程序开发工程师)

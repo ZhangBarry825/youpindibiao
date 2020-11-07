@@ -22,10 +22,17 @@
                     <view class="text2">库存：{{goodsDetail.list[0].stock}}</view>
                 </view>
             </view>
-            <button open-type='share' class="right" bind:tap="showShare">
-                <image src="../../static/images/share.png"></image>
-                分享
-            </button>
+            <view class="right">
+                <button bind:tap="showEWM">
+                    <image src="../../static/images/ewm1.png"></image>
+                    二维码
+                </button>
+                <button open-type='share'  bind:tap="showShare">
+                    <image src="../../static/images/share.png"></image>
+                    分享
+                </button>
+            </view>
+
         </view>
     </view>
 
@@ -149,6 +156,19 @@
         </view>
     </van-popup>
 </view>
+<van-popup show="{{ showEwm }}" bind:close="onCloseEwm">
+    <view class="show-box">
+        <van-image
+                custom-class="showImage"
+                width="20rem"
+                height="20rem"
+                fit="cover"
+                src="https://img.yzcdn.cn/vant/cat.jpeg"
+        />
+        <van-button size="small" type="primary">保存</van-button>
+    </view>
+
+</van-popup>
 
 
 

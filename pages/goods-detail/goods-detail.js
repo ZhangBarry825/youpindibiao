@@ -14,6 +14,7 @@ Page({
             'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
         ],
         showShare: false,
+        showEwm: false,
         showSpecification: false,
         number: 1,//购买数量
         goodsDetail: {},
@@ -71,8 +72,14 @@ Page({
             }
         })
     },
+    showEWM(){
+        this.setData({showEwm: true});
+    },
     onShareClose() {
         this.setData({showShare: false});
+    },
+    onCloseEwm() {
+        this.setData({showEwm: false});
     },
     showSpecification() {
         this.setData({showSpecification: true});
