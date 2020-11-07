@@ -38,7 +38,7 @@
             </view>
         </view>
         <view class="items {{showMenus?'':'heightController'}}">
-            <view class="item" bind:tap="goToClass" data-index="{{idx}}" wx:if="{{idx<12}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
+            <view class="item" bind:tap="goToClass" data-index="{{idx}}" wx:if="{{idx<8}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
         </view>
     </view>
     <view class="shopping">

@@ -459,6 +459,13 @@
         {
           "name": "余额提现",
           "pathName": "pages/encash/encash",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的财富",
+          "pathName": "pages/myshop/shop-value/shop-value",
+          "query": "",
           "scene": null
         }
       ]

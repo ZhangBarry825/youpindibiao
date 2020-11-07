@@ -75,6 +75,7 @@ Page({
       bySales:bySales,
       byStar:byStar,
       byPrice:byPrice,
+      byLaunch:'y'
     }
     if(this.data.goodsType=='classType'){
       formData.typeId=that.data.typeId

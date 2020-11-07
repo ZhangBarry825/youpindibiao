@@ -34,15 +34,24 @@ Page({
   },
   submitForm() {
     let that = this
-    if (parseInt(that.data.count) > 0 && parseInt(that.data.count)<that.data.availableCommission) {
+    if (parseInt(that.data.count) > 0 && parseInt(that.data.count)<=that.data.availableCommission) {
       api.post({
-        url:'/myMoney/withdrawToCard',
+        url:'/myShop/CommissionOut',
         data:{
           money:that.data.count
         },
         success(res){
           if(res.code == 200){
-            //TODO
+            wx.showToast({
+              title:'转出到余额成功！',
+              icon:'success',
+              duration:2000
+            })
+            setTimeout(()=>{
+              wx.navigateBack({
+                delta:1
+              })
+            },2000)
           }
         }
       })

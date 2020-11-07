@@ -307,7 +307,8 @@ Page({
       url:'/newGoods/newGoodsList',
       noLogin:true,
       data:{
-        pageSize:6
+        pageSize:6,
+        byLaunch:'y'
       },
       success:res=>{
         for (const resKey in res.data.list) {

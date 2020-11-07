@@ -82,7 +82,7 @@
 }
 .page .menu-box .items .item {
   color: #4C4C4C;
-  font-size: 28rpx;
+  font-size: 30rpx;
   width: calc(25% - 1px);
   display: flex;
   justify-content: center;
