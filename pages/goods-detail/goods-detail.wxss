@@ -475,6 +475,9 @@
 .show-box van-button {
   margin: 10rpx 0;
 }
+.btn-class {
+  width: 200rpx;
+}
 /**
  * author: Di (微信小程序开发工程师)
  * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)

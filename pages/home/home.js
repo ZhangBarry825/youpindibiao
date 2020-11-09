@@ -131,7 +131,10 @@ Page({
           title: '提示',
           message: '请授权位置信息，以更好地使用本程序',
         }).then(() => {
-          wx.openSetting()
+          // wx.openSetting()
+          wx.navigateTo({
+            url:'/pages/permission/permission?type=address'
+          })
         }).catch(() => {
           // on cancel
         });

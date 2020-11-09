@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    type:1, //1登录 2位置 3相册
+    msg1:'请授权登录，以便使用该应用功能',
+    msg2:'授权登录',
   },
   bindGetUserInfo(e) {
     // wx.openSetting()
@@ -21,14 +23,9 @@ Page({
           duration: 1000
         });
         wx.setStorageSync('token',res.token)
-        // wx.setStorageSync('nickName',e.detail.userInfo.nickName)
-        // wx.setStorageSync('avatarUrl',e.detail.userInfo.avatarUrl)
         wx.setStorageSync('nickName',res.name)
         wx.setStorageSync('avatarUrl',res.headimg)
         setTimeout(()=>{
-          // const eventChannel = this.getOpenerEventChannel()
-          // console.log(eventChannel)
-          // eventChannel.emit('refreshData', {});
           wx.switchTab({
             url:'/pages/home/home'
           })
@@ -37,10 +34,56 @@ Page({
 
     })
   },
+  bindGetSetting(e){
+    console.log(e.detail.authSetting)
+    let that = this
+    if(e.detail.authSetting['scope.userLocation'] && that.data.type==2){
+      wx.showToast({
+        title: '授权成功!',
+        icon: 'success',
+        duration: 1000
+      });
+      setTimeout(()=>{
+        wx.navigateBack({
+          delta:1
+        })
+      },1000)
+    }else if(e.detail.authSetting['scope.writePhotosAlbum'] && that.data.type==3){
+      wx.showToast({
+        title: '授权成功!',
+        icon: 'success',
+        duration: 1000
+      });
+      setTimeout(()=>{
+        wx.navigateBack({
+          delta:1
+        })
+      },1000)
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.type=='login'){
+      this.setData({
+        type:1,
+        msg1:'请授权登录信息，以便使用该应用功能',
+        msg2:'授权登录',
+      })
+    }else if(options.type=='address'){
+      this.setData({
+        type:2,
+        msg1:'请授权位置信息，以便使用该应用功能',
+        msg2:'授权位置',
+      })
+    }else if(options.type=='album'){
+      this.setData({
+        type:3,
+        msg1:'请授权相册信息，以便使用该应用功能',
+        msg2:'授权相册',
+      })
+    }
 
   },
 

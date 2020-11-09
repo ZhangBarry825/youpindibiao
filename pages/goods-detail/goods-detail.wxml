@@ -160,15 +160,16 @@
     <view class="show-box">
         <van-image
                 custom-class="showImage"
-                width="20rem"
-                height="20rem"
+                width="15rem"
+                height="15rem"
                 fit="cover"
-                src="https://img.yzcdn.cn/vant/cat.jpeg"
+                src="{{ewmUrl}}"
         />
-        <van-button size="small" type="primary">保存</van-button>
+        <van-button custom-class="btn-class" size="normal" type="primary" bind:tap="saveImg">保存</van-button>
     </view>
 
 </van-popup>
+<van-dialog id="van-dialog"/>
 
 
 

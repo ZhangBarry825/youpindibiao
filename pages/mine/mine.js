@@ -74,7 +74,7 @@ Page({
       fail(e){
         //console.log('失败',e)
         wx.navigateTo({
-          url:'/pages/permission/permission',
+          url:'/pages/permission/permission?type=login',
           events:{
             refreshData(){
               //console.log('刷新数据啦')

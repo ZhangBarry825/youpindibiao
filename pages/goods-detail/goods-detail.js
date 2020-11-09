@@ -1,5 +1,6 @@
 // pages/goods-detail/goods-detail.js
 import {formatTime} from "../../utils/util";
+import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
 
 const api = require('../../utils/api.js');
 Page({
@@ -13,6 +14,8 @@ Page({
             'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
             'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
         ],
+        ewmUrl: '',
+        openSettingBtnHidden: true,//是否授权保存图片
         showShare: false,
         showEwm: false,
         showSpecification: false,
@@ -72,7 +75,88 @@ Page({
             }
         })
     },
-    showEWM(){
+    // 保存图片
+    saveImg: function (e) {
+        let that = this;
+
+        //获取相册授权
+        wx.getSetting({
+            success(res) {
+                if (!res.authSetting['scope.writePhotosAlbum']) {
+                    wx.authorize({
+                        scope: 'scope.writePhotosAlbum',
+                        success() {
+                            //这里是用户同意授权后的回调
+                            that.saveImgToLocal();
+                        },
+                        fail() {//这里是用户拒绝授权后的回调
+                            Dialog.confirm({
+                                title: '提示',
+                                message: '请授权相册信息，以使用该功能',
+                            }).then(() => {
+                                // wx.openSetting()
+                                wx.navigateTo({
+                                    url: '/pages/permission/permission?type=album'
+                                })
+                            }).catch(() => {
+                                // on cancel
+                            });
+                        }
+                    })
+                } else {//用户已经授权过了
+                    that.saveImgToLocal();
+                }
+            }
+        })
+
+    },
+    saveImgToLocal: function (e) {
+        let that = this;
+
+        let ewmUrl = that.data.ewmUrl;
+        wx.downloadFile({
+            url: ewmUrl,
+            success: function (res) {
+                console.log(res);
+                //图片保存到本地
+                wx.saveImageToPhotosAlbum({
+                    filePath: res.tempFilePath,
+                    success: function (data) {
+                        wx.showToast({
+                            title: '保存成功',
+                            icon: 'success',
+                            duration: 2000
+                        })
+                    },
+                })
+            }
+        })
+
+    },
+    showEWM() {
+        let that = this
+        api.post({
+            url: '/user/createQRcode',
+            data: {
+                type: 3,
+                page: 'pages/goods-detail/goods-detail',
+                id: that.data.id
+            },
+            success(res) {
+                console.log(res)
+                if (res.code == 200 && res.data) {
+                    that.setData({
+                        ewmUrl: res.data
+                    })
+                } else {
+                    wx.showToast({
+                        title: '加载二维码出错！',
+                        icon: 'none',
+                        duration: 3000
+                    })
+                }
+            }
+        })
         this.setData({showEwm: true});
     },
     onShareClose() {
@@ -97,37 +181,48 @@ Page({
                 shopid: that.data.shopid
             },
             success(res) {
-                res.data.list[0].thumbnail = api.Host + '/' + res.data.list[0].thumbnail
-                for (const thatKey in res.data.lunbo) {
-                    res.data.lunbo[thatKey].imageUrl = api.Host + '/' + res.data.lunbo[thatKey].imageUrl
-                }
-                for (const thatKey in res.data.evaluate) {
-                    res.data.evaluate[thatKey].createtime = formatTime(res.data.evaluate[thatKey].createtime)
-                    for (const argumentsKey in res.data.evaluate[thatKey].image) {
-                        res.data.evaluate[thatKey].image[argumentsKey].imageUrl = api.Host + '/' + res.data.evaluate[thatKey].image[argumentsKey].imageUrl
+                if (res.data.list.length > 0) {
+                    res.data.list[0].thumbnail = api.Host + '/' + res.data.list[0].thumbnail
+                    for (const thatKey in res.data.lunbo) {
+                        res.data.lunbo[thatKey].imageUrl = api.Host + '/' + res.data.lunbo[thatKey].imageUrl
                     }
+                    for (const thatKey in res.data.evaluate) {
+                        res.data.evaluate[thatKey].createtime = formatTime(res.data.evaluate[thatKey].createtime)
+                        for (const argumentsKey in res.data.evaluate[thatKey].image) {
+                            res.data.evaluate[thatKey].image[argumentsKey].imageUrl = api.Host + '/' + res.data.evaluate[thatKey].image[argumentsKey].imageUrl
+                        }
+                    }
+
+                    let WxParse = require('../../utils/wxParse/wxParse.js');
+                    // let article = res.data.list[0].detail
+                    let article = res.data.list[0].detail
+                    /**
+                     * WxParse.wxParse(bindName , type, data, target,imagePadding)
+                     * 1.bindName绑定的数据名(必填)
+                     * 2.type可以为html或者md(必填)
+                     * 3.data为传入的具体数据(必填)
+                     * 4.target为Page对象,一般为this(必填)
+                     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+                     */
+                    WxParse.wxParse('article', 'html', article, that, 10);
+
+
+                    that.setData({
+                        goodsDetail: res.data,
+                        // imgUrls:res.data.lunbo
+                    })
+                    console.log(that.data.goodsDetail)
+                }else {
+                    Dialog.alert({
+                        message: '\n商品已下架或未找到该商品\n\n点击确定返回首页',
+                    }).then(() => {
+                       wx.switchTab({
+                           url:'/pages/home/home'
+                       })
+                    });
                 }
-
-                let WxParse = require('../../utils/wxParse/wxParse.js');
-                // let article = res.data.list[0].detail
-                let article = res.data.list[0].detail
-                /**
-                 * WxParse.wxParse(bindName , type, data, target,imagePadding)
-                 * 1.bindName绑定的数据名(必填)
-                 * 2.type可以为html或者md(必填)
-                 * 3.data为传入的具体数据(必填)
-                 * 4.target为Page对象,一般为this(必填)
-                 * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
-                 */
-                WxParse.wxParse('article', 'html', article, that, 10);
-
-
-                that.setData({
-                    goodsDetail: res.data,
-                    // imgUrls:res.data.lunbo
-                })
-                console.log(that.data.goodsDetail)
             }
+
         })
         api.post({
             url: '/showGoods/goods_sku',
@@ -140,18 +235,18 @@ Page({
                 //设置全部均可选择
                 for (let key0 in res.data.attributeList) {
                     for (let key1 in res.data.attributeList[key0].attributeValueList) {
-                        res.data.attributeList[key0].attributeValueList[key1].canSelect=true
+                        res.data.attributeList[key0].attributeValueList[key1].canSelect = true
                     }
                 }
                 //判断库存为零禁止选择
-                console.log(res.data.attributeList,'true')
+                console.log(res.data.attributeList, 'true')
                 if (res.data.attributeList.length == 1) {
                     for (let key3 in res.data.attributeList[0].attributeValueList) {
-                        let attributeVal=res.data.attributeList[0].attributeValueList[key3]
+                        let attributeVal = res.data.attributeList[0].attributeValueList[key3]
                         for (let key4 in res.data.skuList) {
-                            if(res.data.skuList[key4].skuAttributeList[0].attributeValueId==attributeVal.id && res.data.skuList[key4].goodsRepetory==0){
-                                console.log(res.data.skuList[key4].skuAttributeList[0].attributeValueId,attributeVal.id,res.data.skuList[key4].goodsRepetory,'----',key3)
-                                res.data.attributeList[0].attributeValueList[key3].canSelect=false
+                            if (res.data.skuList[key4].skuAttributeList[0].attributeValueId == attributeVal.id && res.data.skuList[key4].goodsRepetory == 0) {
+                                console.log(res.data.skuList[key4].skuAttributeList[0].attributeValueId, attributeVal.id, res.data.skuList[key4].goodsRepetory, '----', key3)
+                                res.data.attributeList[0].attributeValueList[key3].canSelect = false
                             }
 
                         }
@@ -190,10 +285,10 @@ Page({
         console.log(e.currentTarget.dataset.index, 111)
         console.log(e.currentTarget.dataset.value, 222)
         let that = this
-        if(e.currentTarget.dataset.disabled){
+        if (e.currentTarget.dataset.disabled) {
             return
         }
-       this.setData({
+        this.setData({
             [`selectItem[${e.currentTarget.dataset.index}]`]: e.currentTarget.dataset.value
         })
         let selectItem = this.data.skuList.filter(item => {
@@ -206,37 +301,37 @@ Page({
             })
         }
         //判断库存为零禁止选择
-        if(that.data.attributeList.length>1){
-            if(e.currentTarget.dataset.index==0){
-                let id1=e.currentTarget.dataset.value
+        if (that.data.attributeList.length > 1) {
+            if (e.currentTarget.dataset.index == 0) {
+                let id1 = e.currentTarget.dataset.value
                 for (const key1 in that.data.attributeList[1].attributeValueList) {
-                    let id2=that.data.attributeList[1].attributeValueList[key1].id
-                    console.log(id1,id2)
+                    let id2 = that.data.attributeList[1].attributeValueList[key1].id
+                    console.log(id1, id2)
                     for (const key2 in that.data.skuList) {
-                        if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory==0){
+                        if (((that.data.skuList[key2].skuAttributeList[0].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[1].attributeValueId == id2) || (that.data.skuList[key2].skuAttributeList[1].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[0].attributeValueId == id2)) && that.data.skuList[key2].goodsRepetory == 0) {
                             that.setData({
-                                [`attributeList[1].attributeValueList[${key1}].canSelect`]:false
+                                [`attributeList[1].attributeValueList[${key1}].canSelect`]: false
                             })
-                        }else if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory!=0) {
+                        } else if (((that.data.skuList[key2].skuAttributeList[0].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[1].attributeValueId == id2) || (that.data.skuList[key2].skuAttributeList[1].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[0].attributeValueId == id2)) && that.data.skuList[key2].goodsRepetory != 0) {
                             that.setData({
-                                [`attributeList[1].attributeValueList[${key1}].canSelect`]:true
+                                [`attributeList[1].attributeValueList[${key1}].canSelect`]: true
                             })
                         }
                     }
                 }
-            }else if(e.currentTarget.dataset.index==1){
-                let id2=e.currentTarget.dataset.value
+            } else if (e.currentTarget.dataset.index == 1) {
+                let id2 = e.currentTarget.dataset.value
                 for (const key1 in that.data.attributeList[0].attributeValueList) {
-                    let id1=that.data.attributeList[0].attributeValueList[key1].id
-                    console.log(id1,id2)
+                    let id1 = that.data.attributeList[0].attributeValueList[key1].id
+                    console.log(id1, id2)
                     for (const key2 in that.data.skuList) {
-                        if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory==0){
+                        if (((that.data.skuList[key2].skuAttributeList[0].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[1].attributeValueId == id2) || (that.data.skuList[key2].skuAttributeList[1].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[0].attributeValueId == id2)) && that.data.skuList[key2].goodsRepetory == 0) {
                             that.setData({
-                                [`attributeList[0].attributeValueList[${key1}].canSelect`]:false
+                                [`attributeList[0].attributeValueList[${key1}].canSelect`]: false
                             })
-                        }else if(((that.data.skuList[key2].skuAttributeList[0].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[1].attributeValueId==id2)||(that.data.skuList[key2].skuAttributeList[1].attributeValueId==id1 &&that.data.skuList[key2].skuAttributeList[0].attributeValueId==id2)) && that.data.skuList[key2].goodsRepetory!=0) {
+                        } else if (((that.data.skuList[key2].skuAttributeList[0].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[1].attributeValueId == id2) || (that.data.skuList[key2].skuAttributeList[1].attributeValueId == id1 && that.data.skuList[key2].skuAttributeList[0].attributeValueId == id2)) && that.data.skuList[key2].goodsRepetory != 0) {
                             that.setData({
-                                [`attributeList[0].attributeValueList[${key1}].canSelect`]:true
+                                [`attributeList[0].attributeValueList[${key1}].canSelect`]: true
                             })
                         }
                     }
@@ -321,16 +416,27 @@ Page({
      */
     onLoad: function (options) {
         console.log(options, 990)
-
-        this.setData({
-            id: options.id
-        })
-        if (options.shopid) {
+        if (options.scene) {
             this.setData({
-                shopid: options.shopid
+                id: options.scene
             })
+            if (options.shopid) {
+                this.setData({
+                    shopid: options.shopid
+                })
+            }
+            this.fetchData()
+        } else {
+            this.setData({
+                id: options.id
+            })
+            if (options.shopid) {
+                this.setData({
+                    shopid: options.shopid
+                })
+            }
+            this.fetchData()
         }
-        this.fetchData()
     },
 
     /**
