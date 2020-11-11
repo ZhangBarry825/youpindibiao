@@ -4,18 +4,7 @@
         <image src="../../static/images/location.png"></image>
         <view class="text">{{addressDetail.recommend}}</view>
     </view>
-    <view class="search-box">
-        <van-search
-                bind:focus="onSearchFocus"
-                class="searchInput"
-                value="{{ searchKeyword }}"
-                bind:search="onSearchChange"
-                bind:cancel="onSearchCancel"
-                shape="round"
-                background="none"
-                placeholder="请输入搜索关键词"
-        />
-    </view>
+
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
         <swiper-item wx:for="{{bannerList}}" wx:key="item" bind:tap="bannerGo" data-flag="{{item.flag}}" data-id="{{item.goodsId}}">
@@ -23,20 +12,32 @@
         </swiper-item>
     </swiper>
     <view class="menu-box">
-        <view class="top">
-            <view class="left">
-                <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">
-                    <van-tab bind:tap="goToClass" data-index="{{idx}}" title="{{item.typeName}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item"></van-tab>
-<!--                    <van-tab title="国酒茅台"></van-tab>-->
-<!--                    <van-tab title="美容护肤"></van-tab>-->
-<!--                    <van-tab title="梦洁家纺"></van-tab>-->
-                </van-tabs>
-            </view>
-            <view class="right" bind:tap="toggleShow">
-                <image wx:if="{{!showMenus}}" mode="aspectFit" src="../../static/images/top.png"></image>
-                <image wx:if="{{showMenus}}" mode="aspectFit" src="../../static/images/down.png"></image>
-            </view>
+    <view class="search-box">
+            <van-search
+                    bind:focus="onSearchFocus"
+                    class="searchInput"
+                    value="{{ searchKeyword }}"
+                    bind:search="onSearchChange"
+                    bind:cancel="onSearchCancel"
+                    shape="round"
+                    background="none"
+                    placeholder="请输入搜索关键词"
+            />
         </view>
+<!--        <view class="top">-->
+<!--            <view class="left">-->
+<!--                <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">-->
+<!--                    <van-tab bind:tap="goToClass" data-index="{{idx}}" title="{{item.typeName}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item"></van-tab>-->
+<!--&lt;!&ndash;                    <van-tab title="国酒茅台"></van-tab>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <van-tab title="美容护肤"></van-tab>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <van-tab title="梦洁家纺"></van-tab>&ndash;&gt;-->
+<!--                </van-tabs>-->
+<!--            </view>-->
+<!--            <view class="right" bind:tap="toggleShow">-->
+<!--                <image wx:if="{{!showMenus}}" mode="aspectFit" src="../../static/images/top.png"></image>-->
+<!--                <image wx:if="{{showMenus}}" mode="aspectFit" src="../../static/images/down.png"></image>-->
+<!--            </view>-->
+<!--        </view>-->
         <view class="items {{showMenus?'':'heightController'}}">
             <view class="item" bind:tap="goToClass" data-index="{{idx}}" wx:if="{{idx<8}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
         </view>
