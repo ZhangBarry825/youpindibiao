@@ -1,14 +1,26 @@
 <!--pages/mine-shop/mine-shop.wxml-->
 <view class="page">
+<!--    <view class="shop-none" wx:if="{{status==-1}}">-->
+<!--        <view class="tips">-->
+<!--            <image src="../../../static/images/shop-none.png"></image>-->
+<!--            <v          })
+        }).catch(() => {
+   iew class="line1">暂未开通</view>-->
+<!--            <view class="line2">点击下方按钮去开通商家入驻！</view>-->
+<!--        </view>-->
+<!--        <view class="buttons">-->
+<!--            <view class="button button1" bind:tap="goApply">去开通</view>-->
+<!--        </view>-->
+<!--    </view>-->
     <view class="shop-none" wx:if="{{status==-1}}">
-
         <view class="tips">
             <image src="../../../static/images/shop-none.png"></image>
             <view class="line1">暂未开通</view>
             <view class="line2">点击下方按钮去开通商家入驻！</view>
         </view>
         <view class="buttons">
-            <view class="button button1" bind:tap="goApply">去开通</view>
+<!--            <button class="button button1" open-type="getPhoneNumber" bindgetphonenumber="authorizePass" >一键开通</button>-->
+            <view class="button button1" bind:tap="authorizePass">一键开通</view>
         </view>
     </view>
     <view class="shop-show" wx:if="{{status==1}}">
@@ -100,7 +112,8 @@
             </view>
         </view>
         <view class="buttons">
-            <view class="button button1" bind:tap="goApply">再次申请</view>
+            <view class="button button1" bind:tap="authorizePass">再次申请</view>
         </view>
     </view>
+    <van-dialog id="van-dialog" />
 </view>

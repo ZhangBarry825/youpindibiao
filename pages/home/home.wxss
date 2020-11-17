@@ -87,8 +87,11 @@
   justify-content: center;
   align-items: center;
   padding: 20rpx 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.page .menu-box .items .item:nth-child(n+5) {
+  border-bottom: none;
 }
 .page .menu-box .heightController {
   height: 0;
@@ -400,12 +403,15 @@
   height: 27rpx;
 }
 .page .banners {
-  background-color: #fff;
+  background-color: #f7f7f7;
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0 20rpx;
+  box-sizing: border-box;
 }
 .page .banners .banner {
+  background-color: #ffffff;
   margin: 10rpx 0;
   width: 100%;
   height: 257rpx;
@@ -419,7 +425,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20rpx 0;
   box-sizing: border-box;
 }
 .page .hot-goods .title {
@@ -452,7 +457,7 @@
 }
 .page .hot-goods .good-items {
   width: 100%;
-  padding: 20rpx;
+  padding: 0 20rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -518,7 +523,6 @@
   height: 100%;
 }
 .page .new-goods {
-  margin-top: 20rpx;
   width: 100%;
   display: flex;
   flex-direction: column;

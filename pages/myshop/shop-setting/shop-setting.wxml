@@ -28,6 +28,32 @@
                 border="{{ false }}"
                 bind:change="onTextChange"
         />
+<!--        <van-field-->
+<!--                label-class="label-class"-->
+<!--                input-class="input-class"-->
+<!--                label="店铺地址"-->
+<!--                value="{{ shopInfo.shopAddress=='undefined'?'':shopInfo.shopAddress }}"-->
+<!--                placeholder="青选择"-->
+<!--                border="{{ false }}"-->
+<!--                bind:change="getLocation"-->
+<!--        />-->
+        <van-cell
+                bind:tap="getLocation"
+                value-class="value-class"
+                label-class="label-class"
+                custom-class="custom-class"
+                title-class="title-class">
+            <view slot="title" class="bbb">
+                <view class="left">店铺地址</view>
+                <view class="middle address-none" wx:if="{{shopInfo.shopAddress==''||shopInfo.shopAddress=='underfined'}}">
+                    请选择
+                </view>
+                <view class="middle address-detail" wx:if="{{shopInfo.shopAddress}}">
+                    {{shopInfo.shopAddress}}
+                </view>
+                <view class="right"></view>
+            </view>
+        </van-cell>
         <van-field
                 label-class="label-class"
                 input-class="input-class"
@@ -74,4 +100,5 @@
     <view class="button-box">
         <view class="button" bind:tap="submitForm">保存修改</view>
     </view>
+    <van-dialog id="van-dialog" />
 </view>

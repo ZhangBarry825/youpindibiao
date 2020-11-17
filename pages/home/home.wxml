@@ -7,12 +7,13 @@
 
     <swiper indicator-color="#ffffff" indicator-active-color="#F16500" indicator-dots="{{true}}" class="swiper-box"
             autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}">
-        <swiper-item wx:for="{{bannerList}}" wx:key="item" bind:tap="bannerGo" data-flag="{{item.flag}}" data-id="{{item.goodsId}}">
+        <swiper-item wx:for="{{bannerList}}" wx:key="item" bind:tap="bannerGo" data-flag="{{item.flag}}"
+                     data-id="{{item.goodsId}}">
             <image mode="aspectFill" src="{{item.imageUrl}}" class="slide-image" width="100%" height="200"/>
         </swiper-item>
     </swiper>
     <view class="menu-box">
-    <view class="search-box">
+        <view class="search-box">
             <van-search
                     bind:focus="onSearchFocus"
                     class="searchInput"
@@ -24,22 +25,10 @@
                     placeholder="请输入搜索关键词"
             />
         </view>
-<!--        <view class="top">-->
-<!--            <view class="left">-->
-<!--                <van-tabs color="#F16500" active="{{ tagsActive }}" bind:change="onTagsChange" border="{{false}}">-->
-<!--                    <van-tab bind:tap="goToClass" data-index="{{idx}}" title="{{item.typeName}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item"></van-tab>-->
-<!--&lt;!&ndash;                    <van-tab title="国酒茅台"></van-tab>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <van-tab title="美容护肤"></van-tab>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <van-tab title="梦洁家纺"></van-tab>&ndash;&gt;-->
-<!--                </van-tabs>-->
-<!--            </view>-->
-<!--            <view class="right" bind:tap="toggleShow">-->
-<!--                <image wx:if="{{!showMenus}}" mode="aspectFit" src="../../static/images/top.png"></image>-->
-<!--                <image wx:if="{{showMenus}}" mode="aspectFit" src="../../static/images/down.png"></image>-->
-<!--            </view>-->
-<!--        </view>-->
         <view class="items {{showMenus?'':'heightController'}}">
-            <view class="item" bind:tap="goToClass" data-index="{{idx}}" wx:if="{{idx<8}}" wx:for-index="idx" wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}</view>
+            <view class="item" bind:tap="goToClass" data-index="{{idx}}" wx:if="{{idx<8}}" wx:for-index="idx"
+                  wx:for="{{categoryList}}" wx:key="item">{{item.typeName}}
+            </view>
         </view>
     </view>
     <view class="shopping">
@@ -60,7 +49,9 @@
             <text wx:if="{{!scrapStart}}">未开始，离开始还有</text>
             <view class="red">
                 <van-count-down bind:finish="onTimeOut" use-slot time="{{ leftTime }}" bind:change="onTimeChange">
-                    <text class="timeItem">{{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{ timeData.seconds }}</text>
+                    <text class="timeItem">{{timeData.days*24+timeData.hours }} : {{ timeData.minutes }} : {{
+                        timeData.seconds }}
+                    </text>
                 </van-count-down>
             </view>
         </view>
@@ -70,12 +61,12 @@
         </view>
 
         <view class="goods">
-            <view class="good" wx:for="{{grabList}}" wx:key="item" >
+            <view class="good" wx:for="{{grabList}}" wx:key="item">
                 <view class="left">
-                    <image mode="aspectFill" src="{{item.thumbnail}}" ></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}"></image>
                 </view>
                 <view class="right">
-                    <view class="title" >
+                    <view class="title">
                         {{item.name}}
                     </view>
                     <view class="detail">
@@ -89,8 +80,10 @@
                                 <view class="color">￥{{item.marketMoney}}</view>
                             </view>
                         </view>
-                        <view wx:if="{{scrapStart}}" class="button" bind:tap="goTo" data-id="{{item.id}}" data-path="/pages/goods-detail/goods-detail">立即抢购</view>
-                        <view wx:if="{{!scrapStart}}" class="button disabled" bind:tap="goTo" >立即抢购</view>
+                        <view wx:if="{{scrapStart}}" class="button" bind:tap="goTo" data-id="{{item.id}}"
+                              data-path="/pages/goods-detail/goods-detail">立即抢购
+                        </view>
+                        <view wx:if="{{!scrapStart}}" class="button disabled" bind:tap="goTo">立即抢购</view>
                     </view>
                 </view>
             </view>
@@ -105,7 +98,8 @@
             <view class="right" bind:tap="goTo" data-type="nearbyShops">查看更多+</view>
         </view>
         <view class="items">
-            <view class="item" wx:for="{{nearbyShopList}}" wx:key="item" bind:tap="goTo" data-path="/pages/nearby-shop/nearby-shop" data-id="{{item.user_id}}">
+            <view class="item" wx:for="{{nearbyShopList}}" wx:key="item" bind:tap="goTo"
+                  data-path="/pages/nearby-shop/nearby-shop" data-id="{{item.user_id}}">
                 <view class="left">
                     <image mode="aspectFill" src="{{item.nearby_img}}"></image>
                 </view>
@@ -123,9 +117,9 @@
                     <view class="line3">
                         <view class="count">人均：{{item.consume}} 月售{{item.shopsales}}单</view>
                         <view class="score">
-<!--                            <image src="../../static/images/star.png" wx:for="{{item.shopstar/1}}"></image>-->
-<!--                            <image src="../../static/images/star-half.png"></image>-->
-<!--                            <image src="../../static/images/star-none.png" ></image>-->
+                            <!--                            <image src="../../static/images/star.png" wx:for="{{item.shopstar/1}}"></image>-->
+                            <!--                            <image src="../../static/images/star-half.png"></image>-->
+                            <!--                            <image src="../../static/images/star-none.png" ></image>-->
                             <van-rate
                                     allow-half
                                     readonly
@@ -135,7 +129,7 @@
                                     void-icon="star"
                                     void-color="#eee"
                             />
-                           <text style="margin-left: 10rpx">{{item.shopstar}}</text>
+                            <text style="margin-left: 10rpx">{{item.shopstar}}</text>
                         </view>
                     </view>
                 </view>
@@ -143,14 +137,13 @@
         </view>
     </view>
     <view class="banners">
-        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}" bind:tap="bannerGo" data-flag="{{advertisementList[0].flag}}" data-id="{{advertisementList[0].goodsId}}">
+        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}" bind:tap="bannerGo"
+              data-flag="{{advertisementList[0].flag}}" data-id="{{advertisementList[0].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[0].imageUrl}}"></image>
         </view>
-        <view class="banner" wx:if="{{advertisementList[1].imageUrl}}" bind:tap="bannerGo" data-flag="{{advertisementList[1].flag}}" data-id="{{advertisementList[1].goodsId}}">
+        <view class="banner" wx:if="{{advertisementList[1].imageUrl}}" bind:tap="bannerGo"
+              data-flag="{{advertisementList[1].flag}}" data-id="{{advertisementList[1].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[1].imageUrl}}"></image>
-        </view>
-        <view class="banner" wx:if="{{advertisementList[2].imageUrl}}" bind:tap="bannerGo" data-flag="{{advertisementList[2].flag}}" data-id="{{advertisementList[2].goodsId}}">
-            <image mode="aspectFill" src="{{advertisementList[2].imageUrl}}"></image>
         </view>
     </view>
     <view class="hot-goods">
@@ -164,23 +157,32 @@
         <view class="good-items">
             <view class="good-item" wx:for="{{hotGoodsList}}" wx:key="item">
                 <view class="good-pic">
-                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo"
+                           data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
                 </view>
-                <view class="title" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">{{item.name}}</view>
+                <view class="title" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">
+                    {{item.name}}
+                </view>
                 <view class="detail">
                     <view class="price">
                         <view class="text1">￥{{item.money}}</view>
                         <view class="text2">￥{{item.marketMoney}}</view>
                     </view>
-                    <view class="trolley" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">
+                    <view class="trolley" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail"
+                          data-id="{{item.id}}">
                         <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
                     </view>
                 </view>
             </view>
         </view>
     </view>
-    <view class="banners" wx:if="{{advertisementList[3].imageUrl}}">
-        <view class="banner" bind:tap="bannerGo" data-flag="{{advertisementList[3].flag}}" data-id="{{advertisementList[3].goodsId}}">
+    <view class="banners" wx:if="{{advertisementList[2].imageUrl || advertisementList[3].imageUrl}}">
+        <view class="banner" wx:if="{{advertisementList[2].imageUrl}}" bind:tap="bannerGo"
+              data-flag="{{advertisementList[2].flag}}" data-id="{{advertisementList[2].goodsId}}">
+            <image mode="aspectFill" src="{{advertisementList[2].imageUrl}}"></image>
+        </view>
+        <view class="banner" wx:if="{{advertisementList[3].imageUrl}}" bind:tap="bannerGo"
+              data-flag="{{advertisementList[3].flag}}" data-id="{{advertisementList[3].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[3].imageUrl}}"></image>
         </view>
     </view>
@@ -195,15 +197,19 @@
         <view class="good-items">
             <view class="good-item" wx:for="{{newGoodsList}}" wx:key="item">
                 <view class="good-pic">
-                    <image mode="aspectFill" src="{{item.thumbnail}}"  bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
+                    <image mode="aspectFill" src="{{item.thumbnail}}" bind:tap="goTo"
+                           data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}"></image>
                 </view>
-                <view class="title"  bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">{{item.name}}</view>
+                <view class="title" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">
+                    {{item.name}}
+                </view>
                 <view class="detail">
                     <view class="price">
                         <view class="text1">￥{{item.money}}</view>
                         <view class="text2">￥{{item.marketMoney}}</view>
                     </view>
-                    <view class="trolley" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail" data-id="{{item.id}}">
+                    <view class="trolley" bind:tap="goTo" data-path="/pages/goods-detail/goods-detail"
+                          data-id="{{item.id}}">
                         <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
                     </view>
                 </view>

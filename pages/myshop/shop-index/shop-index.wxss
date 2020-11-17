@@ -156,6 +156,12 @@
   font-weight: 400;
   border-radius: 12rpx;
 }
+.page .shop-none .buttons button {
+  height: unset !important;
+  margin: unset !important;
+  width: 80% !important;
+  padding: 10rpx 0 !important;
+}
 .page .shop-none .buttons .button1 {
   color: #ffffff;
   background: #f26500;

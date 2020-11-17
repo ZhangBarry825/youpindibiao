@@ -1,5 +1,6 @@
 // pages/myshop/shop-setting/shop-setting.js
 import {checkPhone} from "../../../utils/util";
+import Dialog from "../../../miniprogram_npm/@vant/weapp/dialog/dialog";
 
 const api = require('../../../utils/api.js');
 Page({
@@ -12,10 +13,13 @@ Page({
         shopInfo: {
             shopname: '',
             usercode: '',
+            shopAddress: '',
             text: '',
             tel: '',
             headimg: '',
             bgimg: '',
+            lat: '',
+            lng: '',
         },
         headimg: '',
         bgimg: '',
@@ -60,6 +64,11 @@ Page({
             ['shopInfo.text']: e.detail
         })
     },
+    onShopAddressChange(e) {
+        this.setData({
+            ['shopInfo.shopAddress']: e.detail
+        })
+    },
     onTelChange(e) {
         this.setData({
             ['shopInfo.tel']: e.detail
@@ -80,53 +89,81 @@ Page({
             }
         })
     },
+    getLocation() {
+        let that = this
+        wx.chooseLocation({
+            type: 'wgs84',
+            success(res) {
+                const latitude = res.latitude
+                const longitude = res.longitude
+                that.setData({
+                    ['shopInfo.shopAddress']:res.address+res.name,
+                    ['shopInfo.lat']:res.latitude,
+                    ['shopInfo.lng']:res.longitude
+                })
+            },
+            fail() {
+                Dialog.confirm({
+                    title: '提示',
+                    message: '请授权位置信息，以便申请店铺地理位置',
+                }).then(() => {
+                    wx.navigateTo({
+                        url: '/pages/permission/permission?type=address'
+                        // on cancel
+                    })
+                });
+            }
+        })
+    },
     submitForm() {
-
-        let formData = {
-            shopName: this.data.shopInfo.shopname,
-            text: this.data.shopInfo.text,
-            phoneNumber: this.data.shopInfo.tel,
-            shopHeardImage: this.data.shopInfo.headimg,
-            shopBackImage: this.data.shopInfo.bgimg,
-        }
-        //console.log(formData)
-        for (const i in formData) {
-            if (formData[i] == '' || formData[i] == undefined || formData[i] == 'undefined') {
+            let formData = {
+                shopName: this.data.shopInfo.shopname,
+                text: this.data.shopInfo.text,
+                phoneNumber: this.data.shopInfo.tel,
+                shopAddress: this.data.shopInfo.shopAddress,
+                shopHeardImage: this.data.shopInfo.headimg,
+                shopBackImage: this.data.shopInfo.bgimg,
+                lat:this.data.shopInfo.lat,
+                lng:this.data.shopInfo.lng,
+            }
+            //console.log(formData)
+            for (const i in formData) {
+                if (formData[i] == '' || formData[i] == undefined || formData[i] == 'undefined') {
+                    wx.showToast({
+                        title: '请检查输入是否完整！',
+                        icon: 'none',
+                        duration: 1000
+                    })
+                    return
+                }
+            }
+            if(!checkPhone(formData.phoneNumber)){
                 wx.showToast({
-                    title: '请检查输入是否完整！',
+                    title: '请输入正确的手机号！',
                     icon: 'none',
                     duration: 1000
                 })
-                return
+                return;
             }
-        }
-        if(!checkPhone(formData.phoneNumber)){
-            wx.showToast({
-                title: '请输入正确的手机号！',
-                icon: 'none',
-                duration: 1000
-            })
-            return;
-        }
-        api.post({
-            url: '/myShop/updateShopInfo',
-            data: formData,
-            success(res) {
-                if (res.code == 200) {
-                    wx.showToast({
-                        title:'保存成功！',
-                        icon:'success',
-                        duration:2000
-                    })
-                  setTimeout(()=>{
-                      wx.navigateBack({
-                          delta:1
-                      })
-                  },1500)
+            api.post({
+                url: '/myShop/updateShopInfo',
+                data: formData,
+                success(res) {
+                    if (res.code == 200) {
+                        wx.showToast({
+                            title:'保存成功！',
+                            icon:'success',
+                            duration:2000
+                        })
+                        setTimeout(()=>{
+                            wx.navigateBack({
+                                delta:1
+                            })
+                        },1500)
 
+                    }
                 }
-            }
-        })
+            })
     }
     ,
     /**
