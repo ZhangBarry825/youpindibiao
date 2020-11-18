@@ -14,6 +14,7 @@ Page({
             'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
             'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
         ],
+        goodsImgBaseUrl: api.Host+'/',
         ewmUrl: '',
         openSettingBtnHidden: true,//是否授权保存图片
         showShare: false,
@@ -27,6 +28,24 @@ Page({
         skuList: [],
         selectItem: [],//匹配sku列表
         skuRes: {},//匹配sku结果
+        suggestionList:[]
+    },
+    fetchSuggestion(){
+        let that = this
+        api.post({
+            url:'/showGoods/randomGoodList',
+            data:{
+                pageNum:1,
+                pageSize:4
+            },
+            success(res){
+                if(res.code == 200 && res.data.length>0){
+                    that.setData({
+                        suggestionList:res.data
+                    })
+                }
+            }
+        })
     },
     goTo(e) {
         let type = e.currentTarget.dataset.type
@@ -37,6 +56,10 @@ Page({
                 url: '/pages/goods-comment/goods-comment?id=' + id + '&type=goods',
             })
             return
+        }else if(type == 'goods'){
+            wx.navigateTo({
+                url: '/pages/goods-detail/goods-detail?id=' + id
+            })
         }
         // console.log(path)
     },
@@ -437,6 +460,7 @@ Page({
             }
             this.fetchData()
         }
+        this.fetchSuggestion()
     },
 
     /**

@@ -218,7 +218,6 @@
   color: #666666;
 }
 .page .goods-detail {
-  padding-bottom: 97rpx;
   margin-top: 10rpx;
   background-color: #fff;
 }
@@ -245,6 +244,110 @@
 }
 .page .goods-detail .content image {
   width: 100% !important;
+}
+.page .hot-goods {
+  margin-top: 20rpx;
+  padding-bottom: 97rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.page .hot-goods .title {
+  box-sizing: border-box;
+  padding: 20rpx;
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.page .hot-goods .title .left {
+  display: flex;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #4c4c4c;
+  line-height: 35rpx;
+  align-items: center;
+}
+.page .hot-goods .title .left image {
+  width: 32rpx;
+  height: 37rpx;
+  margin: 0 10rpx;
+}
+.page .hot-goods .title .right {
+  font-size: 21rpx;
+  font-weight: 400;
+  color: #7f7f7f;
+  line-height: 35rpx;
+}
+.page .hot-goods .good-items {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.page .hot-goods .good-items .good-item {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 345rpx;
+}
+.page .hot-goods .good-items .good-item .good-pic {
+  width: 345rpx;
+  height: 330rpx;
+  overflow: hidden;
+}
+.page .hot-goods .good-items .good-item .good-pic image {
+  width: 100%;
+  height: 100%;
+}
+.page .hot-goods .good-items .good-item .title {
+  margin: 20rpx 0;
+  width: 100%;
+  padding: 0 10rpx;
+  font-size: 28rpx;
+  font-weight: normal;
+  color: #464646;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.page .hot-goods .good-items .good-item .detail {
+  padding: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.page .hot-goods .good-items .good-item .detail .price {
+  display: flex;
+  align-items: center;
+}
+.page .hot-goods .good-items .good-item .detail .price .text1 {
+  font-size: 27rpx;
+  color: #F16500;
+}
+.page .hot-goods .good-items .good-item .detail .price .text2 {
+  color: #7F7F7F;
+  font-size: 22rpx;
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}
+.page .hot-goods .good-items .good-item .detail .trolley {
+  width: 50rpx;
+  height: 50rpx;
+}
+.page .hot-goods .good-items .good-item .detail .trolley image {
+  width: 100%;
+  height: 100%;
 }
 .page .bottom-box {
   width: 100%;

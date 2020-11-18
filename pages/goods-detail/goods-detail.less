@@ -254,7 +254,6 @@
   }
 
   .goods-detail {
-    padding-bottom: 97rpx;
     margin-top: 10rpx;
     background-color: #fff;
 
@@ -282,6 +281,126 @@
       width: 100%;
       image{
         width: 100% !important;
+      }
+    }
+  }
+
+  .hot-goods {
+    margin-top: 20rpx;
+    padding-bottom: 97rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    .title {
+      box-sizing: border-box;
+      padding: 20rpx;
+      background-color: #ffffff;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      //border-bottom: 1px solid rgba(0,0,0,0.1);
+
+      .left {
+        display: flex;
+        font-size: 28rpx;
+        font-weight: 400;
+        color: rgba(76, 76, 76, 1);
+        line-height: 35rpx;
+        align-items: center;
+
+        image {
+          width: 32rpx;
+          height: 37rpx;
+          margin: 0 10rpx;
+        }
+      }
+
+      .right {
+        font-size: 21rpx;
+        font-weight: 400;
+        color: rgba(127, 127, 127, 1);
+        line-height: 35rpx;
+      }
+    }
+
+    .good-items {
+      width: 100%;
+      padding: 0 20rpx;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .good-item {
+        margin-bottom: 20rpx;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        width: 345rpx;
+
+        .good-pic {
+          width: 345rpx;
+          height: 330rpx;
+          overflow: hidden;
+          image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .title {
+          margin: 20rpx 0;
+          width: 100%;
+          padding: 0 10rpx;
+          font-size:28rpx;
+          font-weight:normal;
+          color:rgba(70,70,70,1);
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .detail {
+          padding: 10rpx;
+          box-sizing: border-box;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .price {
+            display: flex;
+            align-items: center;
+
+            .text1 {
+              font-size: 27rpx;
+              color: #F16500;
+            }
+
+            .text2 {
+              color: #7F7F7F;
+              font-size: 22rpx;
+              text-decoration: line-through;
+              margin-left: 20rpx;
+            }
+          }
+
+          .trolley {
+            width: 50rpx;
+            height: 50rpx;
+
+            image {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
       }
     }
   }

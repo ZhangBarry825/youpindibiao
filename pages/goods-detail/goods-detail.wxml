@@ -80,6 +80,34 @@
         </view>
     </view>
 
+    <view class="hot-goods" >
+        <view class="title" wx:if="{{suggestionList.length>0}}">
+            <view class="left">
+                <image src="../../static/images/goods.png"></image>
+                推荐商品
+            </view>
+        </view>
+        <view class="good-items" wx:if="{{suggestionList.length>0}}">
+            <view class="good-item" wx:for="{{suggestionList}}" wx:key="item" bind:tap="goTo" data-type="goods" data-id="{{item.id}}">
+                <view class="good-pic">
+                    <image mode="aspectFill" src="{{goodsImgBaseUrl+item.thumbnail}}" ></image>
+                </view>
+                <view class="title" >
+                    {{item.name}}
+                </view>
+                <view class="detail">
+                    <view class="price">
+                        <view class="text1">￥{{item.money}}</view>
+                        <view class="text2">￥{{item.marketMoney}}</view>
+                    </view>
+                    <view class="trolley" >
+                        <image mode="aspectFill" src="../../static/images/goods-trolley.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
     <view class="bottom-box">
         <view class="like" bind:tap="goCollect">
             <image src="../../static/images/like.png"></image>
