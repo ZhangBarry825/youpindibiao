@@ -30,15 +30,18 @@
     </van-cell-group>
     <view class="tips">
         <view class="tip">温馨提示：</view>
-        <view class="tip">
-            1.微信号需要实名认证，才能提现成功；
-        </view>
-        <view class="tip">
-            2.提现的金额将通过微信零钱发送到您的微信钱包中。
-        </view>
 <!--        <view class="tip">-->
-<!--            3.提现的金额将进入您的账户钱包余额(我的-我的钱包)。-->
+<!--            1.微信号需要实名认证，才能提现成功；-->
 <!--        </view>-->
+<!--        <view class="tip">-->
+<!--            2.提现的金额将通过微信零钱发送到您的微信钱包中。-->
+<!--        </view>-->
+        <view class="tip">
+            1、提现的金额将进入您的账户钱包余额(我的-我的钱包)。
+        </view>
+        <view class="tip">
+            2、直接提现到微信钱包功能暂未开放，进入我的钱包，其余额可以提现到自己银行卡账户。
+        </view>
     </view>
     <view class="button-box">
         <view class="button" bind:tap="submitForm">提交申请</view>
