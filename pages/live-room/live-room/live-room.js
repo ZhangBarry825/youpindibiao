@@ -18,6 +18,17 @@ Page({
             url: '/pages/live-room/create-room/create-room'
         })
     },
+    openLiveProgram(){
+        wx.navigateToMiniProgram({
+            appId: 'wxcbbd86b156ae4441',
+            success(res) {
+                // 打开其他小程序成功同步触发
+                wx.showToast({
+                    title: '跳转成功'
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
