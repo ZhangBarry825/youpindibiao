@@ -89,6 +89,12 @@
             </view>
         </view>
     </view>
+    <view class="banners">
+        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}" bind:tap="bannerGo"
+              data-flag="{{advertisementList[0].flag}}" data-id="{{advertisementList[0].goodsId}}">
+            <image mode="aspectFill" src="{{advertisementList[0].imageUrl}}"></image>
+        </view>
+    </view>
     <view class="shops" wx:if="{{nearbyShopList.length>0}}">
         <view class="title">
             <view class="left">
@@ -137,10 +143,6 @@
         </view>
     </view>
     <view class="banners">
-        <view class="banner" wx:if="{{advertisementList[0].imageUrl}}" bind:tap="bannerGo"
-              data-flag="{{advertisementList[0].flag}}" data-id="{{advertisementList[0].goodsId}}">
-            <image mode="aspectFill" src="{{advertisementList[0].imageUrl}}"></image>
-        </view>
         <view class="banner" wx:if="{{advertisementList[1].imageUrl}}" bind:tap="bannerGo"
               data-flag="{{advertisementList[1].flag}}" data-id="{{advertisementList[1].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[1].imageUrl}}"></image>
@@ -176,14 +178,10 @@
             </view>
         </view>
     </view>
-    <view class="banners" wx:if="{{advertisementList[2].imageUrl || advertisementList[3].imageUrl}}">
+    <view class="banners" wx:if="{{advertisementList[2].imageUrl}}">
         <view class="banner" wx:if="{{advertisementList[2].imageUrl}}" bind:tap="bannerGo"
               data-flag="{{advertisementList[2].flag}}" data-id="{{advertisementList[2].goodsId}}">
             <image mode="aspectFill" src="{{advertisementList[2].imageUrl}}"></image>
-        </view>
-        <view class="banner" wx:if="{{advertisementList[3].imageUrl}}" bind:tap="bannerGo"
-              data-flag="{{advertisementList[3].flag}}" data-id="{{advertisementList[3].goodsId}}">
-            <image mode="aspectFill" src="{{advertisementList[3].imageUrl}}"></image>
         </view>
     </view>
     <view class="new-goods">
@@ -216,8 +214,6 @@
             </view>
         </view>
     </view>
-
-
     <van-overlay show="{{ showRedPackage }}" bind:click="hideRedPackage">
         <view class="wrapper">
             <image mode="aspectFit" src="../../static/images/red-package.png"></image>
@@ -228,9 +224,7 @@
             <view class="count">￥10</view>
         </view>
     </van-overlay>
-
     <van-dialog id="van-dialog"/>
-
     <view class="zhibo" bind:tap="goLiveRoom">
         <image mode="aspectFill" src="../../static/images/zb1.png"></image>
     </view>
