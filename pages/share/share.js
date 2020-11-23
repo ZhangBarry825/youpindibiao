@@ -50,13 +50,13 @@ Page({
       success(res){
         //console.log(res)
         if(res.data.list.length>0){
-
           for (const apiKey in res.data.list) {
             res.data.list[apiKey].nearby_img=api.Host+'/'+res.data.list[apiKey].nearby_img
             res.data.list[apiKey].thumbnail=api.Host+'/'+res.data.list[apiKey].thumbnail
           }
           if(append){
             that.setData({
+              pageNum:pageNum,
               itemList:that.data.itemList.concat(res.data.list)
             })
           }else {

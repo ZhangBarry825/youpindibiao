@@ -91,29 +91,61 @@ Page({
     },
     getLocation() {
         let that = this
-        wx.chooseLocation({
-            type: 'wgs84',
+        wx.getSetting({
             success(res) {
-                const latitude = res.latitude
-                const longitude = res.longitude
-                that.setData({
-                    ['shopInfo.shopAddress']:res.address+res.name,
-                    ['shopInfo.lat']:res.latitude,
-                    ['shopInfo.lng']:res.longitude
-                })
-            },
-            fail() {
-                Dialog.confirm({
-                    title: '提示',
-                    message: '请授权位置信息，以便申请店铺地理位置',
-                }).then(() => {
-                    wx.navigateTo({
-                        url: '/pages/permission/permission?type=address'
-                        // on cancel
+                console.log(res.authSetting)
+                if (!res.authSetting['scope.userLocation']) {
+                    wx.authorize({
+                        scope: 'scope.userLocation',
+                        success () {
+                            wx.chooseLocation({
+                                type: 'wgs84',
+                                success(res) {
+                                    const latitude = res.latitude
+                                    const longitude = res.longitude
+                                    that.setData({
+                                        ['shopInfo.shopAddress']:res.address+res.name,
+                                        ['shopInfo.lat']:res.latitude,
+                                        ['shopInfo.lng']:res.longitude
+                                    })
+                                },
+                                fail() {
+
+                                }
+                            })
+                        },
+                        fail(){
+                            Dialog.confirm({
+                                title: '提示',
+                                message: '请授权位置信息，以便申请店铺地理位置',
+                            }).then(() => {
+                                wx.navigateTo({
+                                    url: '/pages/permission/permission?type=address'
+                                    // on cancel
+                                })
+                            });
+                        }
                     })
-                });
+                }else {
+                    wx.chooseLocation({
+                        type: 'wgs84',
+                        success(res) {
+                            const latitude = res.latitude
+                            const longitude = res.longitude
+                            that.setData({
+                                ['shopInfo.shopAddress']:res.address+res.name,
+                                ['shopInfo.lat']:res.latitude,
+                                ['shopInfo.lng']:res.longitude
+                            })
+                        },
+                        fail() {
+
+                        }
+                    })
+                }
             }
         })
+
     },
     submitForm() {
             let formData = {
