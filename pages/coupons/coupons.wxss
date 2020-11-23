@@ -1,0 +1,196 @@
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20rpx;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+.page .items {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30rpx 0;
+}
+.page .items .coupon {
+  flex-shrink: 0;
+  margin: 5rpx 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10rpx;
+  box-sizing: border-box;
+}
+.page .items .coupon .coupon-left {
+  position: relative;
+  width: 250rpx;
+  height: 200rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.page .items .coupon .coupon-left image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.page .items .coupon .coupon-left .line1 {
+  z-index: 2;
+  color: #ffffff;
+  align-items: flex-end;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+.page .items .coupon .coupon-left .line1 text {
+  font-size: 25rpx;
+  font-weight: normal;
+}
+.page .items .coupon .coupon-left .line2 {
+  z-index: 2;
+  color: #ffffff;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.page .items .coupon .coupon-right {
+  width: calc(100% - 250rpx);
+  height: 200rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.page .items .coupon .coupon-right .line1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.page .items .coupon .coupon-right .line1 .type {
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+  color: #ffffff;
+  background-color: #297ee7;
+}
+.page .items .coupon .coupon-right .line1 .des {
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+.page .items .coupon .coupon-right .line2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.page .items .coupon .coupon-right .line2 .time {
+  font-size: 24rpx;
+}
+.page .items .coupon .coupon-right .line2 .get {
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  padding: 7rpx 15rpx;
+  color: #ffffff;
+  background-color: #297ee7;
+}
+.page .items .coupon .coupon-right .line2 .got {
+  background-color: #999999;
+}
+.page .items .disable {
+  flex-shrink: 0;
+  margin: 5rpx 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10rpx;
+  box-sizing: border-box;
+}
+.page .items .disable .coupon-left {
+  position: relative;
+  width: 250rpx;
+  height: 200rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.page .items .disable .coupon-left image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.page .items .disable .coupon-left .line1 {
+  z-index: 2;
+  color: #ffffff;
+  align-items: flex-end;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+.page .items .disable .coupon-left .line1 text {
+  font-size: 25rpx;
+  font-weight: normal;
+}
+.page .items .disable .coupon-left .line2 {
+  z-index: 2;
+  color: #ffffff;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.page .items .disable .coupon-right {
+  width: calc(100% - 250rpx);
+  height: 200rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.page .items .disable .coupon-right .line1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.page .items .disable .coupon-right .line1 .type {
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+  color: #ffffff;
+  background-color: #999999;
+}
+.page .items .disable .coupon-right .line1 .des {
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+.page .items .disable .coupon-right .line2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.page .items .disable .coupon-right .line2 .time {
+  font-size: 24rpx;
+}
+.page .items .disable .coupon-right .line2 .get {
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  padding: 7rpx 15rpx;
+  color: #ffffff;
+  background-color: #999999;
+}
+.page .items .disable .coupon-right .line2 .got {
+  background-color: #999999;
+}

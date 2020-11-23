@@ -18,6 +18,7 @@
 .mine-page .mine-back .left {
   width: 133rpx;
   height: 133rpx;
+  flex-shrink: 0;
   border-radius: 50%;
   overflow: hidden;
   background-color: #ffffff;
@@ -125,6 +126,19 @@
   height: 65rpx;
   position: absolute;
   top: -5rpx;
+}
+.mine-page .menu-box .cheap-box {
+  width: 57rpx;
+  height: 57rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.mine-page .menu-box .cheap-box .cheap {
+  position: absolute;
+  width: 70rpx;
+  height: 70rpx;
 }
 .mine-page .menu-box button {
   line-height: unset;

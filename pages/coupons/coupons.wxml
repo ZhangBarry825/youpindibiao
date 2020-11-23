@@ -1,0 +1,122 @@
+<!--pages/coupons/coupons.wxml-->
+<view class="page">
+    <van-tabs animated swipeable active="{{ active }}" bind:change="onChange">
+        <van-tab title="全部">
+            <van-empty description="暂无数据" />
+            <view class="items">
+                <view class="coupon" wx:for="{{5}}" wx:key="*this">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get">去使用</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="coupon disable">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get got">已使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="已使用">
+            <van-empty description="暂无数据" />
+            <view class="items">
+                <view class="coupon" wx:for="{{5}}" wx:key="*this">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get">去使用</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="coupon">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get got">已使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="已过期">
+            <van-empty description="暂无数据" />
+            <view class="items">
+                <view class="coupon" wx:for="{{5}}" wx:key="*this">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get">去使用</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="coupon">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get got">已使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>

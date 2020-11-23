@@ -72,9 +72,11 @@
             <image src="../../static/images/m7.png"/>
             <text>消息通知</text>
         </van-grid-item>
-        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/share/share">
-            <image src="../../static/images/m3.png"/>
-            <text>我的分享</text>
+        <van-grid-item use-slot bind:tap="goTo" data-path="/pages/coupons/coupons">
+            <view class="cheap-box">
+                <image class="cheap" src="../../static/images/cheap.png"/>
+            </view>
+            <text>优惠券</text>
         </van-grid-item>
         <van-grid-item use-slot bind:tap="goTo" data-path="/pages/collect/collect">
             <image src="../../static/images/m4.png"/>

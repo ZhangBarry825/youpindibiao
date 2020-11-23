@@ -219,10 +219,9 @@
           "scene": null
         },
         {
-          "id": 23,
           "name": "商品详情",
           "pathName": "pages/goods-detail/goods-detail",
-          "query": "id=1513824945624593",
+          "query": "id=1604995258830875",
           "scene": null
         },
         {
@@ -465,6 +464,12 @@
         {
           "name": "我的财富",
           "pathName": "pages/myshop/shop-value/shop-value",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "优惠券",
+          "pathName": "pages/coupons/coupons",
           "query": "",
           "scene": null
         }

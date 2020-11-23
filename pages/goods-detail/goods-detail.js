@@ -20,6 +20,7 @@ Page({
         showShare: false,
         showEwm: false,
         showSpecification: false,
+        showCoupon: true,
         number: 1,//购买数量
         goodsDetail: {},
         id: '',
@@ -181,6 +182,18 @@ Page({
             }
         })
         this.setData({showEwm: true});
+    },
+    showCoupon(){
+        let that = this
+        that.setData({
+            showCoupon:true
+        })
+    },
+    onCloseCoupon(){
+        let that = this
+        that.setData({
+            showCoupon:false
+        })
     },
     onShareClose() {
         this.setData({showShare: false});

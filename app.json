@@ -67,6 +67,7 @@
     "pages/order/express/express",
     "pages/live-room/live-room/live-room",
     "pages/live-room/create-room/create-room",
+    "pages/coupons/coupons",
 
     "pages/index/index",
     "pages/logs/logs"
