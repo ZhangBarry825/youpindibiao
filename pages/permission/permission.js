@@ -9,30 +9,49 @@ Page({
     type:1, //1登录 2位置 3相册
     msg1:'请授权登录，以便使用该应用功能',
     msg2:'授权登录',
+    forbidden:false
   },
   bindGetUserInfo(e) {
     // wx.openSetting()
-    console.log(e.detail,'e')
-
-    api.login({
-      ...e.detail,
-      success:res=>{
-        wx.showToast({
-          title: '登录成功!',
-          icon: 'success',
-          duration: 1000
-        });
-        wx.setStorageSync('token',res.token)
-        wx.setStorageSync('nickName',res.name)
-        wx.setStorageSync('avatarUrl',res.headimg)
-        setTimeout(()=>{
-          wx.switchTab({
-            url:'/pages/home/home'
-          })
-        },1000)
-      }
-
+    let that = this
+    that.setData({
+      forbidden:true
     })
+    console.log(e.detail,'e')
+    if(e.detail.rawData){
+      api.login({
+        ...e.detail,
+        success:res=>{
+          wx.showToast({
+            title: '登录成功!',
+            icon: 'success',
+            duration: 2000
+          });
+          wx.setStorageSync('token',res.token)
+          wx.setStorageSync('nickName',res.name)
+          wx.setStorageSync('avatarUrl',res.headimg)
+          setTimeout(()=>{
+            wx.switchTab({
+              url:'/pages/home/home'
+            })
+          },500)
+        },
+        fail(){
+          that.setData({
+            forbidden:false
+          })
+        },
+        complete(){
+          // that.setData({
+          //   forbidden:false
+          // })
+        }
+      })
+    }else{
+      that.setData({
+        forbidden:false
+      })
+    }
   },
   bindGetSetting(e){
     console.log(e.detail.authSetting)

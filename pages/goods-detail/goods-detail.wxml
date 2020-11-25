@@ -41,12 +41,12 @@
         <image src="../../static/images/right.png"></image>
     </view>
 
-    <view class="coupon-select-box" bind:tap="showCoupon">
+    <view class="coupon-select-box" bind:tap="showCoupon" wx:if="{{couponList.length>0}}">
         <view class="left">
             <text>优惠</text>
             <view class="pic">
 <!--                <image class="coupon" src="../../static/images/coupon.png"></image>-->
-                <text>满100减5</text>
+                <text wx:for="{{couponList}}" wx:if="{{index<2}}" wx:key="*this">{{item.couponExplain}}</text>
             </view>
             <text class="get">领券</text>
         </view>
@@ -165,37 +165,24 @@
         <view class="coupons">
             <view class="title">优惠</view>
             <view class="items">
-                <view class="coupon" wx:for="{{5}}" wx:key="*this">
+                <view class="coupon" wx:for="{{couponList}}" wx:key="*this">
                     <view class="coupon-left">
                         <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
-                        <view class="line1"> <text>￥</text>40</view>
-                        <view class="line2">满300元可用</view>
+                        <view class="line1"> <text>￥</text>{{item.couponQuota}}</view>
+                        <view class="line2">满{{item.couponFull}}元可用</view>
                     </view>
                     <view class="coupon-right">
                         <view class="line1">
                             <view class="type">商品券</view>
-                            <view class="des">仅购买当前商品可用</view>
+                            <view class="des">仅购买此商品可用</view>
                         </view>
                         <view class="line2">
-                            <view class="time">有效期至：2020.11.20</view>
-                            <view class="get">点击领取</view>
+                            <text class="time">有效期：{{item.couponStartTimeStr}}至
+                                {{item.couponEndTimeStr}}</text>
                         </view>
-                    </view>
-                </view>
-                <view class="coupon">
-                    <view class="coupon-left">
-                        <image mode="widthFix" src="../../static/images/coupon-bg.png"></image>
-                        <view class="line1"> <text>￥</text>40</view>
-                        <view class="line2">满300元可用</view>
-                    </view>
-                    <view class="coupon-right">
-                        <view class="line1">
-                            <view class="type">商品券</view>
-                            <view class="des">仅购买平台指定商品可用</view>
-                        </view>
-                        <view class="line2">
-                            <view class="time">有效期至：2020.11.20</view>
-                            <view class="get got">已领取</view>
+                        <view class="line3">
+                            <view wx:if="{{item.got}}" class="get got" >已领取</view>
+                            <view data-item="{{item}}" wx:if="{{!item.got}}" class="get" bind:tap="getCoupon">点击领取</view>
                         </view>
                     </view>
                 </view>

@@ -20,7 +20,7 @@ Page({
         showShare: false,
         showEwm: false,
         showSpecification: false,
-        showCoupon: true,
+        showCoupon: false,
         number: 1,//购买数量
         goodsDetail: {},
         id: '',
@@ -28,8 +28,10 @@ Page({
         attributeList: [],
         skuList: [],
         selectItem: [],//匹配sku列表
+        testItem: [],//匹配sku列表
         skuRes: {},//匹配sku结果
-        suggestionList:[]
+        suggestionList:[],
+        couponList:[],//可用优惠券列表
     },
     fetchSuggestion(){
         let that = this
@@ -299,6 +301,56 @@ Page({
         })
 
     },
+    fetchCoupon(){
+        let that = this
+        api.post({
+            url:'/coupon/getList',
+            data:{
+                goodsId:that.data.id
+            },
+            success(res){
+                if(res.code == 200){
+                    res.data=res.data.map(item=>{
+                        if(item.got==1){
+                            item.got=true
+                        }else {
+                            item.got=false
+                        }
+                        return item
+                    })
+                    that.setData({
+                        couponList:res.data
+                    })
+                }else {
+                    that.setData({
+                        couponList:[]
+                    })
+                }
+            }
+        })
+    },
+    getCoupon(e){
+        let that = this
+        let item = e.currentTarget.dataset.item
+        api.post({
+            url:'/coupon/receiveCoupon',
+            data:{
+                couponId:item.id
+            },
+            success(res){
+                if(res.code == 200){
+                    wx.showToast({
+                        title:'领取成功！',
+                        icon:'success',
+                        duration:2000
+                    })
+                    setTimeout(()=>{
+                        that.fetchCoupon()
+                    },1000)
+                }
+            }
+        })
+    },
     goCollect() {
         let that = this
         api.post({
@@ -324,13 +376,21 @@ Page({
         if (e.currentTarget.dataset.disabled) {
             return
         }
-        this.setData({
-            [`selectItem[${e.currentTarget.dataset.index}]`]: e.currentTarget.dataset.value
+        that.setData({
+            [`selectItem[${e.currentTarget.dataset.index}]`]: e.currentTarget.dataset.value,
         })
         let selectItem = this.data.skuList.filter(item => {
-            return this.data.selectItem.every((value, i) => value == item.skuAttributeList[i].attributeValueId)
+            return this.data.selectItem.every((value, i) => {
+                console.log(value, item.skuAttributeList[i].attributeValueId,9999)
+                let flag=false
+                for (const iKey in item.skuAttributeList) {
+                    if(value==item.skuAttributeList[iKey].attributeValueId){
+                        flag=true
+                    }
+                }
+                 return flag
+            })
         })
-        console.log(selectItem, 333)
         if (selectItem.length == 1) {
             that.setData({
                 skuRes: selectItem[0]
@@ -474,6 +534,7 @@ Page({
             this.fetchData()
         }
         this.fetchSuggestion()
+        this.fetchCoupon()
     },
 
     /**
@@ -509,6 +570,7 @@ Page({
      */
     onPullDownRefresh: function () {
         this.fetchData()
+        this.fetchCoupon()
 
         setTimeout(() => {
             wx.stopPullDownRefresh()

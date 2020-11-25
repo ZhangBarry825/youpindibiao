@@ -62,7 +62,6 @@ module.exports = {
     },
     login(data) {
         let that = this
-
         let formData={}
         console.log(wx.getStorageSync('upopenid'))
         let upopenid=wx.getStorageSync('upopenid')

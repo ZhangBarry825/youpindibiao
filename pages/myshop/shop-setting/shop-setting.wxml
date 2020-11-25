@@ -22,6 +22,15 @@
         <van-field
                 label-class="label-class"
                 input-class="input-class"
+                label="店铺账号"
+                value="{{ shopInfo.userName }}"
+                placeholder="店铺账号"
+                border="{{ false }}"
+                disabled
+        />
+        <van-field
+                label-class="label-class"
+                input-class="input-class"
                 label="店铺描述"
                 value="{{ shopInfo.text=='undefined'?'':shopInfo.text }}"
                 placeholder="店铺描述"

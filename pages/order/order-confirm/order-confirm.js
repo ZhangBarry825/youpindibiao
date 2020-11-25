@@ -11,11 +11,25 @@ Page({
     showPay:false,
     payType:'1',
     payTypeText:'微信支付',
+    couponText:'请选择',
     goodsList:[],
     addressDetail: '',
     totalPrice:0.00,
     shopid:'',//附近商家的商品会有shopid
     canSubmit:true,
+    showCoupon:false,
+  },
+  showCoupon(){
+    let that = this
+    that.setData({
+      showCoupon:true
+    })
+  },
+  onCloseCoupon(){
+    let that = this
+    that.setData({
+      showCoupon:false
+    })
   },
   minusNum(){
     let that = this

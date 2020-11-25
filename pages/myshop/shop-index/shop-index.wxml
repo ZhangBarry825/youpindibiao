@@ -20,7 +20,7 @@
         </view>
         <view class="buttons">
 <!--            <button class="button button1" open-type="getPhoneNumber" bindgetphonenumber="authorizePass" >一键开通</button>-->
-            <view class="button button1" bind:tap="authorizePass">一键开通</view>
+            <view class="button button1" bind:tap="authorizePass">授权开通</view>
         </view>
     </view>
     <view class="shop-show" wx:if="{{status==1}}">

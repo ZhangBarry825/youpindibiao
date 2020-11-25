@@ -92,16 +92,26 @@
   align-items: center;
 }
 .page .items .coupon .coupon-right .line2 .time {
+  color: #666666;
+  margin-top: 10rpx;
   font-size: 24rpx;
+  word-break: break-all;
+  word-wrap: break-word;
 }
-.page .items .coupon .coupon-right .line2 .get {
+.page .items .coupon .coupon-right .line3 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.page .items .coupon .coupon-right .line3 .get {
+  display: block;
   border-radius: 20rpx;
   font-size: 24rpx;
   padding: 7rpx 15rpx;
   color: #ffffff;
   background-color: #297ee7;
 }
-.page .items .coupon .coupon-right .line2 .got {
+.page .items .coupon .coupon-right .line3 .got {
   background-color: #999999;
 }
 .page .items .disable {
@@ -182,15 +192,25 @@
   align-items: center;
 }
 .page .items .disable .coupon-right .line2 .time {
+  color: #666666;
+  margin-top: 10rpx;
   font-size: 24rpx;
+  word-break: break-all;
+  word-wrap: break-word;
 }
-.page .items .disable .coupon-right .line2 .get {
+.page .items .disable .coupon-right .line3 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.page .items .disable .coupon-right .line3 .get {
+  display: block;
   border-radius: 20rpx;
   font-size: 24rpx;
   padding: 7rpx 15rpx;
   color: #ffffff;
-  background-color: #999999;
+  background-color: #297ee7;
 }
-.page .items .disable .coupon-right .line2 .got {
+.page .items .disable .coupon-right .line3 .got {
   background-color: #999999;
 }

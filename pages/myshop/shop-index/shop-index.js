@@ -45,7 +45,6 @@ Page({
                 }
             }
         })
-
         api.post({
             url: '/myShop/toIndex',
             data: {},
@@ -113,19 +112,19 @@ Page({
                 if(res.code == 200){
                     console.log(res,88888)
                     if(res.data.tel){
-                        console.log(res.data.tel)
                         callback(res.data.tel)
                     }else {
-                        wx.showToast({
-                            title:'请先填写个人资料中手机号',
-                            icon:'none',
-                            duration:2000
-                        })
-                        setTimeout(()=>{
-                            wx.navigateTo({
-                                url:'/pages/edit-userInfo/edit-userInfo'
-                            })
-                        },1000)
+                        callback('')
+                        // wx.showToast({
+                        //     title:'请先填写个人资料中手机号',
+                        //     icon:'none',
+                        //     duration:2000
+                        // })
+                        // setTimeout(()=>{
+                        //     wx.navigateTo({
+                        //         url:'/pages/edit-userInfo/edit-userInfo'
+                        //     })
+                        // },1000)
 
                     }
                 }
@@ -140,7 +139,6 @@ Page({
             that.getLocation((res2) => {
                 console.log('获取位置信息', res2)
                 //TODO
-
                 api.post({
                     url: '/businessApply/toShopApply',
                     data: {
@@ -160,31 +158,33 @@ Page({
                                 duration: 1000
                             })
                            that.fetchData()
-                        }else if(res.code == 500 && res.message=='店铺名重复，请重新输入'){
+                        }
+                        // else if(res.code == 500 && res.message=='店铺名重复，请重新输入'){
+                        //     wx.showToast({
+                        //         title: '店铺名已存在，请修改昵称',
+                        //         icon: 'none',
+                        //         duration: 2000
+                        //     })
+                        //     setTimeout(()=>{
+                        //         wx.navigateTo({
+                        //             url:'/pages/edit-userInfo/edit-userInfo'
+                        //         })
+                        //     },1000)
+                        // }else if(res.code == 500 && res.message=='该手机号已存在，请更换其他账号'){
+                        //     wx.showToast({
+                        //         title: '该手机号已存在，请更换其他手机号',
+                        //         icon: 'none',
+                        //         duration: 2000
+                        //     })
+                        //     setTimeout(()=>{
+                        //         wx.navigateTo({
+                        //             url:'/pages/edit-userInfo/edit-userInfo'
+                        //         })
+                        //     },1000)
+                        // }
+                        else {
                             wx.showToast({
-                                title: '店铺名已存在，请修改昵称',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                            setTimeout(()=>{
-                                wx.navigateTo({
-                                    url:'/pages/edit-userInfo/edit-userInfo'
-                                })
-                            },1000)
-                        }else if(res.code == 500 && res.message=='该手机号已存在，请更换其他账号'){
-                            wx.showToast({
-                                title: '该手机号已存在，请更换其他手机号',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                            setTimeout(()=>{
-                                wx.navigateTo({
-                                    url:'/pages/edit-userInfo/edit-userInfo'
-                                })
-                            },1000)
-                        }else {
-                            wx.showToast({
-                                title: '提交失败，请检查后刷新重试！',
+                                title: '提交失败，请稍后重试！',
                                 icon: 'none',
                                 duration: 2000
                             })

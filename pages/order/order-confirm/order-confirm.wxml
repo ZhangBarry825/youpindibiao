@@ -59,6 +59,11 @@
                 </view>
             </view>
         </van-cell>
+        <van-cell value="{{couponText}}" is-link bind:tap="showCoupon">
+            <view slot="title">
+                <view class="van-cell-text">优惠券</view>
+            </view>
+        </van-cell>
         <van-cell value="{{payTypeText}}" is-link bind:tap="onPayShow">
             <view slot="title">
                 <view class="van-cell-text">支付方式</view>
@@ -107,7 +112,51 @@
         </view>
         <view class="count-button" bind:tap="submitForm">结算</view>
     </view>
-
+    <van-popup
+            show="{{ showCoupon }}"
+            position="bottom"
+            bind:close="onCloseCoupon">
+        <view class="coupons">
+            <view class="title">使用优惠</view>
+            <view class="items">
+                <view class="coupon" wx:for="{{5}}" wx:key="*this">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买当前商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get">选择使用</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="coupon selected">
+                    <view class="coupon-left">
+                        <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>
+                        <view class="line1"> <text>￥</text>40</view>
+                        <view class="line2">满300元可用</view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="line1">
+                            <view class="type">商品券</view>
+                            <view class="des">仅购买平台指定商品可用</view>
+                        </view>
+                        <view class="line2">
+                            <view class="time">有效期至：2020.11.20</view>
+                            <view class="get got">已选中</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <van-button custom-class="shareCancel" color="#f26500" catch:tap="onCloseCoupon">确定</van-button>
+    </van-popup>
     <van-popup
             show="{{ showPay }}"
             position="bottom"

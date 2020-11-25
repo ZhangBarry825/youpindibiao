@@ -3,6 +3,7 @@
     <view class="tip">{{msg1}}</view>
     <button class="button"
             wx:if="{{type==1}}"
+            disabled="{{forbidden}}"
              open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">{{msg2}}
     </button>
     <button class="button"

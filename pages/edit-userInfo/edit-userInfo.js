@@ -40,6 +40,18 @@ Page({
               duration:1000
             })
             wx.setStorageSync('nickName',res.data.name)
+          }else if(res.code == 500 && res.message=="该手机号已存在"){
+            wx.showToast({
+              title: '该手机号已存在',
+              icon: 'none',
+              duration: 2000
+            })
+          }else {
+            wx.showToast({
+              title: '保存失败',
+              icon: 'none',
+              duration: 2000
+            })
           }
         }
       })

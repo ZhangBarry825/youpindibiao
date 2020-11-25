@@ -9,8 +9,8 @@ Page({
   data: {
     message:'',
     showPay:false,
-    payType:'0',
-    payTypeText:'余额支付',
+    payType:'1',
+    payTypeText:'微信支付',
     goodsList:[],
     addressDetail: '',
     totalPrice:0.00,
@@ -44,7 +44,7 @@ Page({
   },
   onPayChange(event){
     const { type } = event.currentTarget.dataset;
-    console.log(type)
+    // console.log(type)
     let payTypeText=''
     if(type=='1'){
       payTypeText='微信支付'

@@ -31,6 +31,7 @@ Page({
     })
     if(this.data.activeIndex==0){
       this.setData({
+        pageNum:1,
         juli:'y',
         renjun:'',
         counts:'',
@@ -39,6 +40,7 @@ Page({
     }
     if(this.data.activeIndex==1){
       this.setData({
+        pageNum:1,
         juli:'',
         renjun:'y',
         counts:'',
@@ -47,6 +49,7 @@ Page({
     }
     if(this.data.activeIndex==2){
       this.setData({
+        pageNum:1,
         juli:'',
         renjun:'',
         counts:'y',
@@ -55,6 +58,7 @@ Page({
     }
     if(this.data.activeIndex==3){
       this.setData({
+        pageNum:1,
         juli:'',
         renjun:'',
         counts:'',
@@ -233,7 +237,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getLocation(this.pageNum+1,true)
+    this.fetchData(this.data.pageNum+1,true)
   },
 
   /**
