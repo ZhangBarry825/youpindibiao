@@ -230,7 +230,16 @@
 .page .coupons .none {
   padding: 50rpx 0;
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page .coupons .none image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.page .coupons .none text {
+  margin: 30rpx 0;
   font-size: 28rpx;
   color: #666666;
 }

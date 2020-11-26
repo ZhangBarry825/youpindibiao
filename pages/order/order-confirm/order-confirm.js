@@ -277,7 +277,7 @@ Page({
                     duration:2000
                   })
                   setTimeout(()=>{
-                    wx.navigateTo({
+                    wx.redirectTo({
                       url:'/pages/order/order-status/order-status?orderid='+orderids[0]
                     })
                   },2000)

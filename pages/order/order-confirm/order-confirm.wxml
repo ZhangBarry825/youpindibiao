@@ -108,7 +108,9 @@
 
     <view class="bottom-count">
         <view class="count">
-            合计：<view class="color">￥{{totalPrice-couponSelected.coupon.couponQuota}}</view>
+            <!-- 引入.wxs文件 src为相对路径，module指定当前模块的名称 -->
+            <wxs module="filter" src="./order-confirm.wxs"></wxs>
+            合计：<view class="color">￥{{filter.numberToFixed(totalPrice-couponSelected.coupon.couponQuota)}}</view>
         </view>
         <view class="count-button" bind:tap="submitForm">结算</view>
     </view>
@@ -118,7 +120,11 @@
             bind:close="onCloseCoupon">
         <view class="coupons">
             <view class="title">使用优惠</view>
-            <view class="items">
+            <view class="none" wx:if="{{couponList.length==0}}">
+                <image src="../../../static/images/empty0.png"></image>
+                <text>暂无可用优惠</text>
+            </view>
+            <view class="items" wx:if="{{couponList.length!=0}}">
                 <view class="coupon {{item.selected?'selected':''}}" wx:for="{{couponList}}" wx:key="*this">
                     <view class="coupon-left">
                         <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>
