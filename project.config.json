@@ -472,6 +472,12 @@
           "pathName": "pages/coupons/coupons",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "下单－购物车",
+          "pathName": "pages/order/trolley-confirm/trolley-confirm",
+          "query": "",
+          "scene": null
         }
       ]
     }

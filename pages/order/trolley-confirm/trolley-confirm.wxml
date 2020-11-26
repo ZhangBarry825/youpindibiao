@@ -59,6 +59,11 @@
                 </view>
             </view>
         </van-cell>
+        <van-cell value="{{couponText}}" is-link bind:tap="showCoupon">
+            <view slot="title">
+                <view class="van-cell-text">优惠券</view>
+            </view>
+        </van-cell>
         <van-cell value="{{payTypeText}}" is-link bind:tap="onPayShow">
             <view slot="title">
                 <view class="van-cell-text">支付方式</view>
@@ -89,11 +94,51 @@
 
     <view class="bottom-count">
         <view class="count">
-            合计：<view class="color">￥{{totalPrice}}</view>
+            <wxs module="filter" src="./trolley-confirm.wxs"></wxs>
+            合计：<view class="color">￥{{filter.numberToFixed(totalPrice-saveMoney)}}</view>
         </view>
         <view class="count-button" bind:tap="submitForm">结算</view>
     </view>
+    <van-popup
+            show="{{ showCoupon }}"
+            position="bottom"
+            bind:close="onCloseCoupon">
+        <view class="coupons">
+            <view class="title">使用优惠</view>
+            <view class="none" wx:if="{{couponList.length==0}}">
+                <image src="../../../static/images/empty0.png"></image>
+                <text>暂无可用优惠</text>
+            </view>
+            <view class="items-box">
+                <view class="items" wx:if="{{couponList.length!=0}}" wx:for="{{couponList}}" wx:key="*this" wx:for-item="itm" wx:for-index="idx">
+                    <view class="goods-title">商品<text>{{goodsList[idx].goodsName}}</text>可用</view>
+                    <view class="coupon {{item.selected?'selected':''}}" wx:for="{{itm.couponList}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
+                        <view class="coupon-left">
+                            <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>
+                            <view class="line1"> <text>￥</text>{{item.coupon.couponQuota}}</view>
+                            <view class="line2">满{{item.coupon.couponFull}}元可用</view>
+                        </view>
+                        <view class="coupon-right">
+                            <view class="line1">
+                                <view class="type">商品券</view>
+                                <view class="des">仅购买此商品可用</view>
+                            </view>
+                            <view class="line2">
+                                <text class="time">有效期：{{item.coupon.couponStartTimeStr}}至
+                                    {{item.coupon.couponEndTimeStr}}</text>
+                            </view>
+                            <view class="line3">
+                                <view class="get got" wx:if="{{item.selected}}" data-index1="{{idx}}" data-index2="{{index}}" bind:tap="cancelCoupon">取消选择</view>
+                                <view class="get" wx:if="{{!item.selected}}" data-index1="{{idx}}" data-index2="{{index}}" bind:tap="selectCoupon">选择使用</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
 
+            </view>
+        </view>
+        <van-button custom-class="shareCancel" color="#f26500" catch:tap="onConfirmCoupon">确定</van-button>
+    </van-popup>
     <van-popup
             show="{{ showPay }}"
             position="bottom"
