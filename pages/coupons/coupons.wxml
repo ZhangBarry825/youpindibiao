@@ -42,8 +42,8 @@
                             <view class="des">仅购买平台指定商品可用</view>
                         </view>
                         <view class="line2">
-                            <view class="time">有效期：{{item.useTimeStr}}至
-                                {{item.invalidTimeStr}}
+                            <view class="time">有效期：{{item.coupon.couponStartTimeStr}}至
+                                {{item.coupon.couponEndTimeStr}}
                             </view>
                         </view>
                         <view class="line3">
@@ -68,8 +68,8 @@
                             <view class="des">仅购买平台指定商品可用</view>
                         </view>
                         <view class="line2">
-                            <view class="time">有效期：{{item.useTimeStr}} 至
-                                {{item.invalidTimeStr}}
+                            <view class="time">有效期：{{item.coupon.couponStartTimeStr}}至
+                                {{item.coupon.couponEndTimeStr}}
                             </view>
                         </view>
                         <view class="line3">

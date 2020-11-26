@@ -28,11 +28,16 @@ Page({
     let that = this
     const { picker, value, index } = event.detail;
     //console.log(index)
+    console.log(that.data.goodsList[index])
+    let saveMoney = 0
+    if(that.data.goodsList[index].couponUser!=null){
+      saveMoney = that.data.goodsList[index].couponUser.coupon.couponQuota
+    }
     that.setData({
       orderDetailId:that.data.goodsList[index].id,
       orderDetailName:that.data.goodsList[index].goodsname,
       showGoods:false,
-      refundCount:parseFloat(that.data.goodsList[index].goodsmoney)*that.data.goodsList[index].goodsnum
+      refundCount:parseFloat(that.data.goodsList[index].goodsmoney)*that.data.goodsList[index].goodsnum - saveMoney
     })
   },
   onReasonConfirm(event){

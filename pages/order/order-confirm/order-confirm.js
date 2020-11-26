@@ -18,6 +18,86 @@ Page({
     shopid:'',//附近商家的商品会有shopid
     canSubmit:true,
     showCoupon:false,
+    couponList:[],//优惠券列表
+    couponSelected: {
+      coupon:{
+        couponQuota:0
+      }
+    },//选中优惠券
+  },
+  fetchCoupon(){
+    let that = this
+    let paramArrStr=[]
+    that.data.goodsList.map(item=>{
+      paramArrStr.push({
+        goodsId:item.goods.id,
+        skuId:item.sku.id,
+        goodNum:item.number,
+      })
+      return item
+    })
+    api.post({
+      url:'/coupon/getSettlementList',
+      data:{
+        paramArrStr:JSON.stringify(paramArrStr)
+      },
+      success(res){
+        if(res.code == 200 && res.data.length>0){
+          res.data.map(item=>{
+            item.selected=false
+            return item
+          })
+          that.setData({
+            couponList:res.data[0].couponList,
+            couponSelected:{
+              coupon:{
+                couponQuota:0
+              }
+            },
+            couponText:'请选择',
+          })
+        }else {
+          that.setData({
+            couponList:[],
+            couponSelected:{
+              coupon:{
+                couponQuota:0
+              }
+            },
+            couponText:'请选择',
+          })
+        }
+        console.log(res.data[0].couponList)
+      }
+    })
+  },
+  selectCoupon(e){
+    let that = this
+    let index = e.currentTarget.dataset.index
+    let couponList=that.data.couponList.map(item=>{
+      item.selected=false
+      return item
+    })
+    couponList[index].selected=true
+    that.setData({
+      couponList:couponList,
+      couponSelected:couponList[index],
+      couponText:'已优惠'+couponList[index].coupon.couponQuota+'元',
+      showCoupon:false
+    })
+  },
+  cancelCoupon(e){
+    let that = this
+    let index = e.currentTarget.dataset.index
+    that.setData({
+      ['couponList['+index+'].selected']:false,
+      couponSelected: {
+        coupon:{
+          couponQuota:0
+        }
+      },
+      couponText:'请选择'
+    })
   },
   showCoupon(){
     let that = this
@@ -26,6 +106,17 @@ Page({
     })
   },
   onCloseCoupon(){
+    let that = this
+    // let couponList=that.data.couponList.map(item=>{
+    //   item.selected=false
+    //   return item
+    // })
+    that.setData({
+      showCoupon:false,
+      // couponList:couponList
+    })
+  },
+  onConfirmCoupon(){
     let that = this
     that.setData({
       showCoupon:false
@@ -40,6 +131,7 @@ Page({
         ['goodsList[0].number']:that.data.goodsList[0].number-1,
         totalPrice:totalPrice
       })
+      this.fetchCoupon()
     }
   },
   addNum(){
@@ -50,6 +142,7 @@ Page({
       ['goodsList[0].number']:that.data.goodsList[0].number+1,
       totalPrice:totalPrice
     })
+    this.fetchCoupon()
   },
   goAddressList(){
     wx.navigateTo({
@@ -113,7 +206,10 @@ Page({
       skuid:that.data.goodsList[0].sku.id,
       goodsParam:that.data.goodsList[0].goodsParam,
     }
-    //console.log(formData)
+    if(this.data.couponSelected.id){
+      formData.couponUserId=that.data.couponSelected.id
+    }
+    console.log(formData)
     if(!formData.addressid){
       wx.showToast({
         title:'请添加配送地址',
@@ -223,8 +319,6 @@ Page({
         shopid:shopid
       })
     }
-    console.log(options,'options')
-    console.log(options.goodsList,'options.goodsList')
     let goodsList=JSON.parse(options.goodsList)
     if(type=='goods'){
       let totalPrice=parseFloat(goodsList[0].goods.freight)
@@ -239,8 +333,10 @@ Page({
 
     }
     that.fetchData()
+    that.fetchCoupon()
 
-    console.log(goodsList)
+
+    console.log(goodsList,'goodsList')
     // that.fetchData()
   },
 
@@ -255,7 +351,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this
+    that.setData({
+      canSubmit:true
+    })
   },
 
   /**

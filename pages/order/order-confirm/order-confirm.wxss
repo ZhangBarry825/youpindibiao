@@ -227,9 +227,16 @@
   font-size: 30rpx;
   color: #333333;
 }
+.page .coupons .none {
+  padding: 50rpx 0;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666666;
+}
 .page .coupons .items {
   width: 100%;
-  height: 700rpx;
+  height: 500rpx;
   overflow: scroll;
   display: flex;
   flex-direction: column;
@@ -314,22 +321,32 @@
   align-items: center;
 }
 .page .coupons .items .coupon .coupon-right .line2 .time {
+  color: #666666;
+  margin-top: 10rpx;
   font-size: 24rpx;
+  word-break: break-all;
+  word-wrap: break-word;
 }
-.page .coupons .items .coupon .coupon-right .line2 .get {
+.page .coupons .items .coupon .coupon-right .line3 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.page .coupons .items .coupon .coupon-right .line3 .get {
+  display: block;
   border-radius: 20rpx;
   font-size: 24rpx;
   padding: 7rpx 15rpx;
   color: #ffffff;
   background-color: #297ee7;
 }
-.page .coupons .items .coupon .coupon-right .line2 .got {
+.page .coupons .items .coupon .coupon-right .line3 .got {
   background-color: #999999;
 }
 .page .coupons .items .selected {
-  border-top: 2px solid #297ee7;
-  border-right: 2px solid #297ee7;
-  border-bottom: 2px solid #297ee7;
+  border-top: 1px solid #297ee7;
+  border-right: 1px solid #297ee7;
+  border-bottom: 1px solid #297ee7;
 }
 .page .shareCancel {
   width: 100%;
@@ -337,6 +354,11 @@
 .page .pay-custom-class {
   padding: 40rpx 0;
   box-sizing: border-box;
+}
+.page .pay-custom-class .van-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .page .pay-custom-class .pay-title {
   padding-bottom: 40rpx;
@@ -349,6 +371,7 @@
 .page .pay-custom-class .pay-button {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
+  box-sizing: border-box;
   padding: 20rpx;
   text-align: center;
   font-size: 26rpx;

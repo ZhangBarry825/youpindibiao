@@ -14,6 +14,7 @@ Page({
     orderid:'',
     orderDetail:{},
     timeData: {},
+    saveMoney:0, //优惠金额
   },
   commentOrder(e){
     let item=e.currentTarget.dataset.item
@@ -120,7 +121,7 @@ Page({
   applyRefund(e){
     let item=e.currentTarget.dataset.item
     //console.log(item)
-
+    wx.setStorageSync('refundItem',JSON.stringify(item))
     let orderid=e.currentTarget.dataset.item.id
     let payNum=e.currentTarget.dataset.item.payment
     //console.log(orderid)
@@ -230,6 +231,13 @@ Page({
       },
       success(res){
         if(res.code == 200){
+          let saveMoney =0
+          res.data.orderDetailslist.map(item=>{
+            console.log(item.couponUser==null,'哈哈')
+            if(item.couponUser!=null){
+              saveMoney+=item.couponUser.coupon.couponQuota
+            }
+          })
           res.data.createtime=formatTime(res.data.createtime)
           res.data.paytime=formatTime(res.data.paytime)
           res.data.sendtime=formatTime(res.data.sendtime)
@@ -238,7 +246,8 @@ Page({
           res.data.leftDate=res.data.endDate-res.data.nowDate
           that.setData({
             orderStatus:res.data.status,
-            orderDetail:res.data
+            orderDetail:res.data,
+            saveMoney:saveMoney||0
           })
         }
       }

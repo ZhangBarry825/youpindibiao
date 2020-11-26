@@ -77,9 +77,11 @@
         <van-cell title="支付金额" value="￥{{orderDetail.payment}}" value-class="cell-item-value"
                   label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
+        <van-cell title="优惠金额" wx:if="{{saveMoney>0}}" value="￥{{saveMoney}}" value-class="cell-item-value" label-class="cell-item-label"
+                  title-class="cell-item-title" custom-class="cell-item-custom"/>
         <van-cell title="运费" value="￥{{orderDetail.yunfei}}" value-class="cell-item-value" label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
-        <van-cell title="应支付" value="￥{{orderDetail.actualpayment}}" value-class="cell-item-value red-value"
+        <van-cell title="实际支付" value="￥{{orderDetail.actualpayment}}" value-class="cell-item-value red-value"
                   label-class="cell-item-label"
                   title-class="cell-item-title" custom-class="cell-item-custom"/>
         <van-cell title="备注" value="{{orderDetail.notes||'无'}}" value-class="cell-item-value"

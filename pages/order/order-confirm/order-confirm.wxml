@@ -108,7 +108,7 @@
 
     <view class="bottom-count">
         <view class="count">
-            合计：<view class="color">￥{{totalPrice}}</view>
+            合计：<view class="color">￥{{totalPrice-couponSelected.coupon.couponQuota}}</view>
         </view>
         <view class="count-button" bind:tap="submitForm">结算</view>
     </view>
@@ -119,43 +119,30 @@
         <view class="coupons">
             <view class="title">使用优惠</view>
             <view class="items">
-                <view class="coupon" wx:for="{{5}}" wx:key="*this">
+                <view class="coupon {{item.selected?'selected':''}}" wx:for="{{couponList}}" wx:key="*this">
                     <view class="coupon-left">
                         <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>
-                        <view class="line1"> <text>￥</text>40</view>
-                        <view class="line2">满300元可用</view>
+                        <view class="line1"> <text>￥</text>{{item.coupon.couponQuota}}</view>
+                        <view class="line2">满{{item.coupon.couponFull}}元可用</view>
                     </view>
                     <view class="coupon-right">
                         <view class="line1">
                             <view class="type">商品券</view>
-                            <view class="des">仅购买当前商品可用</view>
+                            <view class="des">仅购买此商品可用</view>
                         </view>
                         <view class="line2">
-                            <view class="time">有效期至：2020.11.20</view>
-                            <view class="get">选择使用</view>
+                            <text class="time">有效期：{{item.coupon.couponStartTimeStr}}至
+                                {{item.coupon.couponEndTimeStr}}</text>
                         </view>
-                    </view>
-                </view>
-                <view class="coupon selected">
-                    <view class="coupon-left">
-                        <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>
-                        <view class="line1"> <text>￥</text>40</view>
-                        <view class="line2">满300元可用</view>
-                    </view>
-                    <view class="coupon-right">
-                        <view class="line1">
-                            <view class="type">商品券</view>
-                            <view class="des">仅购买平台指定商品可用</view>
-                        </view>
-                        <view class="line2">
-                            <view class="time">有效期至：2020.11.20</view>
-                            <view class="get got">已选中</view>
+                        <view class="line3">
+                            <view class="get got" wx:if="{{item.selected}}" data-index="{{index}}" bind:tap="cancelCoupon">取消选择</view>
+                            <view class="get" wx:if="{{!item.selected}}" data-index="{{index}}" bind:tap="selectCoupon">选择使用</view>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
-        <van-button custom-class="shareCancel" color="#f26500" catch:tap="onCloseCoupon">确定</van-button>
+        <van-button custom-class="shareCancel" color="#f26500" catch:tap="onConfirmCoupon">确定</van-button>
     </van-popup>
     <van-popup
             show="{{ showPay }}"
@@ -167,10 +154,10 @@
         <van-radio-group value="{{ payType }}">
             <van-cell-group >
                 <van-cell title="微信支付" clickable data-type="1" bind:click="onPayChange">
-                    <van-radio shape="square" icon-size="25rpx" checked-color="#f26500" slot="right-icon" name="1" />
+                    <van-radio shape="square" icon-size="28rpx" checked-color="#f26500" slot="right-icon" name="1" />
                 </van-cell>
                 <van-cell title="余额支付" clickable data-type="0" bind:click="onPayChange">
-                    <van-radio shape="square" icon-size="25rpx" checked-color="#f26500" slot="right-icon" name="0" />
+                    <van-radio shape="square" icon-size="28rpx" checked-color="#f26500" slot="right-icon" name="0" />
                 </van-cell>
             </van-cell-group>
         </van-radio-group>
