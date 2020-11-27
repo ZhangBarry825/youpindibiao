@@ -85,6 +85,14 @@ Page({
             }
         }
         couponList[index1].couponList[index2].selected = true
+        //取消其他相同其他规格的优惠券
+        for (const key1 in couponList) {
+                for (const key2 in couponList[key1].couponList) {
+                    if(couponList[index1].couponList[index2].id== couponList[key1].couponList[key2].id && index1!=key1){
+                        couponList[key1].couponList[key2].selected = false
+                }
+            }
+        }
         let saveMoney = 0
         for (const key1 in couponList) {
             for (const key2 in couponList[key1].couponList) {
