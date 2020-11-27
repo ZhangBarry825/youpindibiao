@@ -140,11 +140,6 @@ Page({
         });
       }
     })
-
-
-
-
-
   },
   /**
    * 发送请求获取地图接口的返回值
@@ -179,7 +174,6 @@ Page({
         pageNum:1,
         lng:that.data.addressData.longitude,
         lat:that.data.addressData.latitude
-
       },
       success:res=>{
         if(res.data.list){
@@ -192,6 +186,10 @@ Page({
           }
           that.setData({
             nearbyShopList:res.data.list
+          })
+        }else {
+          that.setData({
+            nearbyShopList:[]
           })
         }
       }

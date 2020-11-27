@@ -11,6 +11,11 @@ Page({
     msg2:'授权登录',
     forbidden:false
   },
+  goHome(){
+    wx.switchTab({
+      url:'/pages/home/home'
+    })
+  },
   bindGetUserInfo(e) {
     // wx.openSetting()
     let that = this

@@ -69,7 +69,6 @@ Page({
             }
         })
     },
-
     selectCoupon(e) {
         let that = this
         let index1 = e.currentTarget.dataset.index1
@@ -148,7 +147,26 @@ Page({
             showCoupon: false
         })
     },
-
+    checkAddress(callback){
+        let that = this
+        api.post({
+            url:'/user/checkAddress',
+            data:{
+                addressId:that.data.addressDetail.id
+            },
+            success(res){
+                if(res.data == 1 && res.code ==200){
+                    callback()
+                }else {
+                    wx.showToast({
+                        title: res.message,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+            }
+        })
+    },
     minusNum() {
         let that = this
         if (that.data.goodsList[0].number > 1) {
@@ -230,7 +248,7 @@ Page({
         let couponList = that.data.couponList
         let selectedCouponId=[]
         for (const key1 in couponList) {
-            let has = ''
+            let has = ' '
             for (const key2 in couponList[key1].couponList) {
                 if (couponList[key1].couponList[key2].selected == true) {
                     has=couponList[key1].couponList[key2].id
@@ -247,33 +265,97 @@ Page({
                 duration: 1000
             })
         } else {
-            if (that.data.payType == 0) {
-                Dialog.confirm({
-                    title: '提示',
-                    message: '确认余额支付？',
-                }).then(() => {
+            that.checkAddress(res=>{
+                if (that.data.payType == 0) {
+                    Dialog.confirm({
+                        title: '提示',
+                        message: '确认余额支付？',
+                    }).then(() => {
+                        api.post({
+                            url: '/order/addOrderByCars',
+                            data: {...formData},
+                            success(res) {
+                                if (res.code == 200) {
+                                    if (res.message == '余额不足') {
+                                        wx.showToast({
+                                            title: '您的余额不足!',
+                                            icon: 'none',
+                                            duration: 1000
+                                        })
+                                    } else if (res.message == '商品库存不足') {
+                                        wx.showToast({
+                                            title: '商品库存不足!',
+                                            icon: 'none',
+                                            duration: 1000
+                                        })
+                                    } else {
+                                        wx.navigateTo({
+                                            url: '/pages/order/order-payed/order-payed?orderid=' + JSON.stringify(res.data)
+                                        })
+                                    }
+                                } else if (res.code == 205) {
+                                    wx.showToast({
+                                        title: res.message,
+                                        icon: 'none',
+                                        duration: 2000
+                                    })
+                                } else {
+                                    wx.showToast({
+                                        title: '数据异常',
+                                        icon: 'none',
+                                        duration: 1000
+                                    })
+                                }
+                            }
+                        })
+                    }).catch(() => {
+                        // on cancel
+                    });
+                } else {
                     api.post({
                         url: '/order/addOrderByCars',
                         data: {...formData},
                         success(res) {
-                            if (res.code == 200) {
-                                if (res.message == '余额不足') {
-                                    wx.showToast({
-                                        title: '您的余额不足!',
-                                        icon: 'none',
-                                        duration: 1000
-                                    })
-                                } else if (res.message == '商品库存不足') {
-                                    wx.showToast({
-                                        title: '商品库存不足!',
-                                        icon: 'none',
-                                        duration: 1000
-                                    })
-                                } else {
-                                    wx.navigateTo({
-                                        url: '/pages/order/order-payed/order-payed?orderid=' + JSON.stringify(res.data)
-                                    })
-                                }
+                            if (res.code == 200 && res.message != '余额不足' && res.message != '商品库存不足') {
+                                let orderids=res.data.orderids
+                                wx.requestPayment({
+                                    timeStamp: res.data.timeStamp,
+                                    nonceStr: res.data.nonceStr,
+                                    package: res.data.package,
+                                    signType: res.data.signType,
+                                    paySign: res.data.paySign,
+                                    total_fee: res.data.total_fee,
+                                    success(res1) {
+                                        wx.navigateTo({
+                                            url: '/pages/order/order-payed/order-payed?orderid=' + JSON.stringify(res.data.orderids)
+                                        })
+                                    },
+                                    fail(res) {
+                                        wx.showToast({
+                                            title: '支付失败！',
+                                            icon: 'none',
+                                            duration: 2000
+                                        })
+
+                                        setTimeout(()=>{
+                                            wx.redirectTo({
+                                                url:'/pages/order/order-status/order-status?orderid='+orderids[0]
+                                            })
+                                        },2000)
+                                    }
+                                })
+                            } else if (res.message == '余额不足') {
+                                wx.showToast({
+                                    title: '您的余额不足！',
+                                    icon: 'none',
+                                    duration: 1000
+                                })
+                            } else if (res.message == '商品库存不足') {
+                                wx.showToast({
+                                    title: '商品库存不足',
+                                    icon: 'none',
+                                    duration: 1000
+                                })
                             } else if (res.code == 205) {
                                 wx.showToast({
                                     title: res.message,
@@ -289,71 +371,8 @@ Page({
                             }
                         }
                     })
-                }).catch(() => {
-                    // on cancel
-                });
-            } else {
-                api.post({
-                    url: '/order/addOrderByCars',
-                    data: {...formData},
-                    success(res) {
-                        if (res.code == 200 && res.message != '余额不足' && res.message != '商品库存不足') {
-                            let orderids=res.data.orderids
-                            wx.requestPayment({
-                                timeStamp: res.data.timeStamp,
-                                nonceStr: res.data.nonceStr,
-                                package: res.data.package,
-                                signType: res.data.signType,
-                                paySign: res.data.paySign,
-                                total_fee: res.data.total_fee,
-                                success(res1) {
-                                    wx.navigateTo({
-                                        url: '/pages/order/order-payed/order-payed?orderid=' + JSON.stringify(res.data.orderids)
-                                    })
-                                },
-                                fail(res) {
-                                    wx.showToast({
-                                        title: '支付失败！',
-                                        icon: 'none',
-                                        duration: 2000
-                                    })
-
-                                    setTimeout(()=>{
-                                        wx.redirectTo({
-                                            url:'/pages/order/order-status/order-status?orderid='+orderids[0]
-                                        })
-                                    },2000)
-                                }
-                            })
-                        } else if (res.message == '余额不足') {
-                            wx.showToast({
-                                title: '您的余额不足！',
-                                icon: 'none',
-                                duration: 1000
-                            })
-                        } else if (res.message == '商品库存不足') {
-                            wx.showToast({
-                                title: '商品库存不足',
-                                icon: 'none',
-                                duration: 1000
-                            })
-                        } else if (res.code == 205) {
-                            wx.showToast({
-                                title: res.message,
-                                icon: 'none',
-                                duration: 2000
-                            })
-                        } else {
-                            wx.showToast({
-                                title: '数据异常',
-                                icon: 'none',
-                                duration: 1000
-                            })
-                        }
-                    }
-                })
-            }
-
+                }
+            })
         }
 
     },

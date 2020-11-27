@@ -105,13 +105,14 @@
             bind:close="onCloseCoupon">
         <view class="coupons">
             <view class="title">使用优惠</view>
-            <view class="none" wx:if="{{couponList.length==0}}">
-                <image src="../../../static/images/empty0.png"></image>
-                <text>暂无可用优惠</text>
-            </view>
+
             <view class="items-box">
                 <view class="items" wx:if="{{couponList.length!=0}}" wx:for="{{couponList}}" wx:key="*this" wx:for-item="itm" wx:for-index="idx">
                     <view class="goods-title">商品<text>{{goodsList[idx].goodsName}}</text>可用</view>
+                    <view class="none" wx:if="{{itm.couponList.length==0}}">
+                        <image src="../../../static/images/empty0.png"></image>
+                        <text>暂无可用优惠</text>
+                    </view>
                     <view class="coupon {{item.selected?'selected':''}}" wx:for="{{itm.couponList}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
                         <view class="coupon-left">
                             <image mode="widthFix" src="../../../static/images/coupon-bg.png"></image>

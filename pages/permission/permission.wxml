@@ -14,4 +14,5 @@
             wx:if="{{type==3}}"
             open-type="openSetting" bindopensetting="bindGetSetting">{{msg2}}
     </button>
+    <button wx:if="{{type==1}}" class="button home" bind:tap="goHome">返回首页</button>
 </view>
