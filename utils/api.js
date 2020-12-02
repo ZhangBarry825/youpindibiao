@@ -20,7 +20,7 @@ module.exports = {
         })
         let token = '';
         try {
-            token = wx.getStorageSync('token');wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+            token = wx.getStorageSync('token');
         } catch (e) {
             // Do something when catch error
         }
