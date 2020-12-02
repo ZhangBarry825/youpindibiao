@@ -122,10 +122,10 @@
     </van-cell-group>
     <view class="submit-button" bind:tap="submitForm">提交申请</view>
 
-    <van-popup show="{{ showReason }}"  bind:close="hideReason"   position="bottom" custom-style="height: 40%;">
+wwwwwwwwwwwwwwwwww    <van-popup show="{{ showReason }}"  bind:close="hideReason"   position="bottom" custom-style="height: 50%;">
         <van-picker columns="{{ columns }}" show-toolbar bind:change="onReasonChange" bind:confirm="onReasonConfirm" />
     </van-popup>
-    <van-popup show="{{ showGoods }}"  bind:close="hideGoods"   position="bottom" custom-style="height: 40%;">
+    <van-popup show="{{ showGoods }}"  bind:close="hideGoods"   position="bottom" custom-style="height: 50%;">
         <van-picker columns="{{ goodsColumns }}" show-toolbar bind:change="onGoodsChange" bind:confirm="onGoodsConfirm" />
     </van-popup>
 </view>

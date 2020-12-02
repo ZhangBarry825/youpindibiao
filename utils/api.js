@@ -1,6 +1,6 @@
 
-// const Host = 'https://youpin.qqwea.com'
-const Host = 'http://192.168.1.8:8081'
+const Host = 'https://youpin.qqwea.com'
+// const Host = 'http://192.168.1.8:8081'
 
 module.exports = {
     Host: Host,
@@ -20,7 +20,7 @@ module.exports = {
         })
         let token = '';
         try {
-            token = wx.getStorageSync('token');
+            token = wx.getStorageSync('token');wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
         } catch (e) {
             // Do something when catch error
         }
