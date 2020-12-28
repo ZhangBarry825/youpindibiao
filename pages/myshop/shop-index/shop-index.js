@@ -184,7 +184,7 @@ Page({
                         // }
                         else {
                             wx.showToast({
-                                title: '提交失败，请稍后重试！',
+                                title: res.message,
                                 icon: 'none',
                                 duration: 2000
                             })
